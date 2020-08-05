@@ -1,12 +1,10 @@
 (ns TestOptimalPlay
   (:require
     [speclj.core :refer :all]
-    [OptimalPlay :refer :all]
-    [Board :refer :all]))
+    [ttt.OptimalPlay :refer :all]
+    [ttt.Board :refer :all]))
 
 (describe "Tests for an optimal box to play"
-  (def computer-is-player1 1)
-  (def computer-is-player2 2)
   (def player1 1)
   (def player2 2)
 
@@ -21,8 +19,7 @@
   (def three-boxes-open-678 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 6 7 7 8 8})
   (def four-boxes-open-4678 {0 "X" 1 "O" 2 "X" 3 "O" 4 4 5 "X" 6 6 7 7 8 8})
   (def one-box-played-0 {0 "X" 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-  (def one-box-played-1 {0 0 1 "X" 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-  (def one-box-played-4 {0 0 1 1 2 2 3 3 4 "X" 5 5 6 6 7 7 8 8})
+
 
   (it "gets score of move"
       (should= 10 (get-score player1 0))

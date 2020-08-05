@@ -1,7 +1,7 @@
-(ns OptimalPlay
+(ns ttt.OptimalPlay
   (:require
-    [GameRules :refer :all]
-    [Board :refer :all]))
+    [ttt.GameRules :refer :all]
+    [ttt.Board :refer :all]))
 
 (defn get-score [winner depth]
   (cond (= winner 1) (- 10 depth)

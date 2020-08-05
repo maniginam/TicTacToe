@@ -1,7 +1,7 @@
 (ns TestBoard
   (:require
     [speclj.core :refer :all]
-    [Board :refer :all]))
+    [ttt.Board :refer :all]))
 
 (describe "tic tac toe terminal board "
   (def this-is-a-test true)
@@ -38,13 +38,6 @@
   (it "checks that played box is open"
       (should (is-box-selection-open? empty-board 8))
       (should-not (is-box-selection-open? full-board-cats-game 8)))
-
-  (it "prints string message for string entry"
-      (should= "You didn't enter anything..." (string-message "")))
-
-  (it "prints bad box choice message"
-      (should= "Box 2 is already taken...  Try again..." (bad-box-message 2)))
-  ;(should= "Box rex is not a box.  Try again..." (bad-box-message empty-board "rex")))
 
   (it "checks for existing & available box"
       (should (is-good-box? empty-board 8))

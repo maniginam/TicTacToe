@@ -1,4 +1,4 @@
-(ns GameRules)
+(ns ttt.GameRules)
 
 (defn is-row-win? [board]
   (or (= (board 0) (board 1) (board 2))

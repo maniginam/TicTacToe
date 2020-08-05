@@ -1,9 +1,9 @@
-(ns tttTest
+(ns Test-ttt
   (:require
     [speclj.core :refer :all]
-    [ttt :refer :all]
-    [OptimalPlay :refer :all]
-    [Board :refer :all]))
+    [ttt.core :refer :all]
+    [ttt.OptimalPlay :refer :all]
+    [ttt.Board :refer :all]))
 
 (describe "tic tac toe game setup: "
   (def this-is-a-test true)
@@ -27,12 +27,13 @@
   ;    (let [test-box (human-turn empty-board 1 false)]
   ;         (should (and (int? test-box) (> test-box -1) (< test-box 9)))))
 
-  ;(it "plays human box selected by computer via is-test? true"
-  ;    (def corners [0 2 6 8])
-  ;    (let [play (human-turn empty-board 1 true)]
-  ;      (should (some #(= play %) corners))))
+  (it "plays human box selected by computer via is-test? true"
+      (def corners [0 2 6 8])
+      (let [play (human-turn empty-board 1 true)]
+        (should (some #(= play %) corners))))
 
   ;(it "plays TTT"
+  ;        (binding )
   ;    (loop [winners []
   ;           game 0]
   ;          (if (< game 10)
@@ -41,7 +42,7 @@
   ;    (should= 0 (play-ttt human-is-player1 this-is-a-test))
   ;    (should= 0 (play-ttt human-is-player2 this-is-a-test)))
 
-  (it "gets user player choice"
+  (it "gets human game-piece choice"
       (should= 1 (set-human-game-piece 0 "x"))
       (should= 1 (set-human-game-piece 1 "x"))
       (should= 1 (set-human-game-piece 0 "X"))

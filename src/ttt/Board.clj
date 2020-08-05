@@ -1,4 +1,4 @@
-(ns Board)
+(ns ttt.Board)
 
 (def board
   (sorted-map 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8))
@@ -33,14 +33,3 @@
 (defn is-good-box? [board box]
   (let [box (if (int? box) box (Integer/parseInt box))]
     (and (does-box-exist? box) (is-box-selection-open? board box))))
-
-(defn bad-box-message [box]
-  (let [bad-box-message
-        (cond (not (does-box-exist? box)) (apply str ["Box " box " is not a box.  Try again..."])
-              :else (apply str "Box " box " is already taken...  Try again..."))]
-    bad-box-message))
-
-(defn string-message [input]
-  (let [msg (cond (= "" input) "You didn't enter anything..."
-                  :else (apply str ["Box " input " is not a box.  Try again..."]))]
-    msg))

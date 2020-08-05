@@ -1,8 +1,10 @@
-(ns ttt
+(ns ttt.core
+  (:gen-class)
   (:require
-    [OptimalPlay :refer :all]
-    [GameRules :refer :all]
-    [Board :refer :all]))
+    [ttt.OptimalPlay :refer :all]
+    [ttt.GameRules :refer :all]
+    [ttt.Board :refer :all]
+    [ttt.HumanBoxInput :refer :all]))
 
 (defn game-results [winner human]
   (let [results-msg
@@ -17,30 +19,21 @@
     (println "I choose box" box)
     box))
 
-(defn ask-user-for-box-to-play []
-  (println "Select a box 0-8")
-  (let [selection (read-line)]
-    selection))
+(defn initiate-human-turn [board]
+  (println "Your Turn")
+  (draw-board board))
 
 (defn human-turn [board player is-test?]
-  (println "Your Turn")
-  (draw-board board)
+  (initiate-human-turn board)
   (if is-test?
     (play-optimal-box board player)
-    (loop [selection (ask-user-for-box-to-play)]
-      (if (= "" selection)
-        (do (println (string-message selection))
-            (recur (ask-user-for-box-to-play)))
-        (if (is-good-box? board (Integer/parseInt selection))
-          (Integer/parseInt selection)
-          (do (println (bad-box-message (Integer/parseInt selection)))
-              (recur (ask-user-for-box-to-play))))))))
+    (get-human-selection board)))
 
 (defn play-ttt [human is-test?]
   (let [computer (get-next-player human)]
     (loop [board board
            player 1]
-      (cond (is-win? board) (get-next-player player)
+      (cond (is-win? board) (do (draw-board board) (get-next-player player))
             (full-board? board) 0
             :else (let [box-played
                         (if (= player human) (human-turn board human is-test?) (computer-turn board computer))]
@@ -64,3 +57,6 @@
   (let [human (if (nil? human) (set-human-game-piece 0 (offer-x-or-o)) human)
         winner (play-ttt human false)]
     (game-results winner human)))
+
+(defn -main []
+  (welcome nil))
