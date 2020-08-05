@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/core.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/core1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spec/TestHumanBoxInput.clj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/Board.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/Box.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/CenterPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/GameMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/GamePiece.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/ResultField.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/StartButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/TestGameMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/TicTacToeGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TicTacToeGUI/Win.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ttt/HumanBoxInput.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.clj" beforeDir="false" afterPath="$PROJECT_DIR$/project.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestBoard.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/TestBoard.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestGameRules.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/TestGameRules.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestOptimalPlay.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/TestOptimalPlay.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/tttTest.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/Test_ttt.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Board.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/Board.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GameRules.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/GameRules.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OptimalPlay.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/OptimalPlay.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/core.clj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tic-tac-toe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tic-tac-toe.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,6 +49,9 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/tttGUI" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ttt" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/ttt" />
