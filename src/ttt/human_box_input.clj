@@ -1,6 +1,6 @@
-(ns ttt.HumanBoxInput
+(ns ttt.human-box-input
   (:require
-    [ttt.Board :refer :all]))
+    [ttt.board :refer :all]))
 
 (defn ask-user-for-box-to-play []
   (println "Select a box 0-8")

@@ -1,19 +1,12 @@
-(ns TestBoard
+(ns test-board
   (:require
     [speclj.core :refer :all]
-    [ttt.Board :refer :all]))
+    [ttt.board :refer :all]))
 
 (describe "tic tac toe terminal board "
-  (def this-is-a-test true)
-  (def human-is-player1 1)
-  (def human-is-player2 2)
-  (def computer-is-player1 1)
-  (def computer-is-player2 2)
-  (def computer-wins 2)
 
   (def empty-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
   (def full-board-cats-game {0 "X" 1 "X" 2 "O" 3 "O" 4 "O" 5 "X" 6 "X" 7 "O" 8 "X"})
-  (def game-is-won-board {0 "X" 1 1 2 2 3 3 4 "X" 5 5 6 6 7 7 8 "X"})
   (def one-box-open-cats-game-6 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 6 7 "X" 8 "O"})
 
   (it "returns all open, unplayed boxes in game"

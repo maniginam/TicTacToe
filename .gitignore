@@ -1,0 +1,12 @@
+/shelf/
+.idea
+lib
+.target
+.lein-repl-history
+*.iml
+*jar
+pom.*
+out
+
+.gui.clj
+

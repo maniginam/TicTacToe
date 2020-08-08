@@ -1,7 +1,7 @@
-(ns TestHumanBoxInput
+(ns test-human-box-input
   (:require
     [speclj.core :refer :all]
-    [ttt.HumanBoxInput :refer :all]))
+    [ttt.human-box-input :refer :all]))
 
 (describe "Checks Human Box Selection:"
 

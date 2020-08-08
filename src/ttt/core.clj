@@ -1,10 +1,9 @@
 (ns ttt.core
-  (:gen-class)
   (:require
-    [ttt.OptimalPlay :refer :all]
-    [ttt.GameRules :refer :all]
-    [ttt.Board :refer :all]
-    [ttt.HumanBoxInput :refer :all]))
+    [ttt.optimal-play :refer :all]
+    [ttt.game-rules :refer :all]
+    [ttt.board :refer :all]
+    [ttt.human-box-input :refer :all]))
 
 (defn game-results [winner human]
   (let [results-msg

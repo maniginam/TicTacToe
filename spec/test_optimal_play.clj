@@ -1,17 +1,14 @@
-(ns TestOptimalPlay
+(ns test-optimal-play
   (:require
     [speclj.core :refer :all]
-    [ttt.OptimalPlay :refer :all]
-    [ttt.Board :refer :all]))
+    [ttt.optimal-play :refer :all]
+    [ttt.board :refer :all]))
 
 (describe "Tests for an optimal box to play"
   (def player1 1)
   (def player2 2)
 
   (def empty-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-  (def corners [0 2 6 8])
-  (def full-board-cats-game {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 "X" 7 "X" 8 "O"})
-  (def full-board-player1-wins {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 "O" 7 "O" 8 "X"})
   (def one-box-open-cats-game-6 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 6 7 "X" 8 "O"})
   (def one-box-open-player1-wins-8 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 "O" 7 "X" 8 8})
   (def two-boxes-open-78 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 "O" 7 7 8 8})
@@ -19,7 +16,6 @@
   (def three-boxes-open-678 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 6 7 7 8 8})
   (def four-boxes-open-4678 {0 "X" 1 "O" 2 "X" 3 "O" 4 4 5 "X" 6 6 7 7 8 8})
   (def one-box-played-0 {0 "X" 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-
 
   (it "gets score of move"
       (should= 10 (get-score player1 0))
@@ -67,8 +63,7 @@
       (loop [results [] i 0]
             (if (< i 20)
               (recur (conj results (play-optimal-box empty-board player1)) (inc i))
-              (do (println results)
-                (should= [] (filter false? results))))))
+              (should= [] (filter false? results)))))
 )
 
 
