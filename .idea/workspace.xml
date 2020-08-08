@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="" />
 =======
     <list default="true" id="bcd1e6b0-158d-435a-bfdf-b2b264f7a4e1" name="Default Changelist" comment="" />
@@ -13,6 +14,9 @@
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" afterDir="false" />
     </list>
 >>>>>>> parent of ce01429... eek changed the repository name
+=======
+    <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="" />
+>>>>>>> parent of cfa4edd... updating files
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Clojure Test Namespace" />
-        <option value="AnnotationType" />
         <option value="Clojure Namespace" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -49,9 +53,9 @@
     <property name="cursive.last.file.extension./Users/maniginam/TicTacToe-Clojure/spec" value="clj" />
     <property name="cursive.last.file.extension./Users/maniginam/TicTacToe-Clojure/src" value="clj" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/tttGUI" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -65,15 +69,11 @@
       <recent name="ttt" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/ttt" />
-      <recent name="$PROJECT_DIR$/src/ttt/ttt-quil-gui" />
-      <recent name="$PROJECT_DIR$/src/ttt-quil-gui" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="ReplState" timestamp="1596893784140">{:repl-history {:ide [], :local [], :remote []}}</component>
-  <component name="RunManager" selected="Clojure REPL.REPL for tic-tac-toe">
+  <component name="RunManager" selected="Application.TicTacToeGUI">
     <configuration name="TicTacToeGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="TicTacToeGUI.TicTacToeGUI" />
       <module name="tic-tac-toe" />
@@ -120,10 +120,10 @@
       <setting name="fixLineNumbers" value="false" />
       <method v="2" />
     </configuration>
-    <configuration name="ttt.core" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
+    <configuration name="core" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
       <module name="tic-tac-toe" />
       <setting name="path" value="" />
-      <setting name="namespace" value="ttt.core" />
+      <setting name="namespace" value="core" />
       <setting name="execution" value="INTELLIJ" />
       <setting name="profiles" value="" />
       <setting name="aliases" value="" />
@@ -132,10 +132,10 @@
       <setting name="workDir" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="ttt.gui" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
+    <configuration name="ttt.clj" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
       <module name="tic-tac-toe" />
       <setting name="path" value="" />
-      <setting name="namespace" value="ttt.gui" />
+      <setting name="namespace" value="ttt.clj" />
       <setting name="execution" value="INTELLIJ" />
       <setting name="profiles" value="" />
       <setting name="aliases" value="" />
@@ -144,32 +144,12 @@
       <setting name="workDir" value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
-    <configuration name="ttt.ttt-quil-gui.gui" type="ClojureScriptRunConfiguration" factoryName="Clojure Script" temporary="true">
-      <module name="tic-tac-toe" />
-      <setting name="path" value="" />
-      <setting name="namespace" value="ttt.ttt-quil-gui.gui" />
-      <setting name="execution" value="INTELLIJ" />
-      <setting name="profiles" value="" />
-      <setting name="aliases" value="" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.TicTacToeGUI" />
-      <item itemvalue="Clojure Application.ttt.ttt-quil-gui.gui" />
-      <item itemvalue="Clojure Application.ttt.core" />
-      <item itemvalue="Clojure Application.ttt.gui" />
-      <item itemvalue="Clojure REPL.REPL for tic-tac-toe" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Clojure Application.ttt.core" />
-        <item itemvalue="Clojure Application.ttt.gui" />
-        <item itemvalue="Clojure Application.ttt.ttt-quil-gui.gui" />
-        <item itemvalue="Clojure REPL.REPL for tic-tac-toe" />
         <item itemvalue="Application.TicTacToeGUI" />
+        <item itemvalue="Clojure Application.core" />
+        <item itemvalue="Clojure Application.ttt.clj" />
+        <item itemvalue="Clojure REPL.REPL for tic-tac-toe" />
       </list>
     </recent_temporary>
   </component>
@@ -181,4 +161,45 @@
   <component name="TaskManager">
     <servers />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="WindowStateProjectService">
+    <state x="176" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596654945736">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="176" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/1440.-318.1920.1057/0.23.1440.822@0.23.1440.822" timestamp="1596654945736" />
+    <state x="908" y="104" key="#com.intellij.ide.util.MemberChooser" timestamp="1596658992494">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="908" y="104" key="#com.intellij.ide.util.MemberChooser/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596658992494" />
+    <state x="450" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1596658974300">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="450" y="181" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596658974300" />
+    <state width="1149" height="201" key="GridCell.Tab.0.bottom" timestamp="1596659399751">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1149" height="201" key="GridCell.Tab.0.bottom/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596659399751" />
+    <state width="1149" height="201" key="GridCell.Tab.0.center" timestamp="1596659399750">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1149" height="201" key="GridCell.Tab.0.center/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596659399750" />
+    <state width="1149" height="201" key="GridCell.Tab.0.left" timestamp="1596659399750">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1149" height="201" key="GridCell.Tab.0.left/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596659399750" />
+    <state width="1149" height="201" key="GridCell.Tab.0.right" timestamp="1596659399751">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state width="1149" height="201" key="GridCell.Tab.0.right/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596659399751" />
+    <state x="200" y="23" width="1024" height="821" key="SettingsEditor" timestamp="1596658552710">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="200" y="23" width="1024" height="821" key="SettingsEditor/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596658552710" />
+    <state x="409" y="327" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1596659300122">
+      <screen x="0" y="23" width="1440" height="821" />
+    </state>
+    <state x="409" y="327" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1440.-318.1920.1057/0.23.1440.821@0.23.1440.821" timestamp="1596659300122" />
+  </component>
+>>>>>>> parent of cfa4edd... updating files
 </project>
