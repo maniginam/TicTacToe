@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/maniginam.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.lein-repl-history" beforeDir="false" afterPath="$PROJECT_DIR$/.lein-repl-history" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.clj" beforeDir="false" afterPath="$PROJECT_DIR$/project.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestBoard.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/test_board.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestGameRules.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/test_game_rules.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestHumanBoxInput.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/test_human_box_input.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/TestOptimalPlay.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/test_optimal_play.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spec/Test_ttt.clj" beforeDir="false" afterPath="$PROJECT_DIR$/spec/test_ttt.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt/Board.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/board.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt/GameRules.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/game_rules.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt/HumanBoxInput.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/human_box_input.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt/OptimalPlay.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/optimal_play.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ttt/core.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/ttt/core.clj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/stale/leiningen.core.classpath.extract-native-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/target/stale/leiningen.core.classpath.extract-native-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tic-tac-toe.iml" beforeDir="false" afterPath="$PROJECT_DIR$/tic-tac-toe.iml" afterDir="false" />
-    </list>
+    <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +20,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1fgTePjc0AsjiKlsbbLETcxNX6e" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,6 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="cursive.last.file.extension./Users/maniginam/TicTacToe-Clojure/spec" value="clj" />
     <property name="cursive.last.file.extension./Users/maniginam/TicTacToe-Clojure/src" value="clj" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/tttGUI" />
