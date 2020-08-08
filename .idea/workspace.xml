@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="" />
 =======
     <list default="true" id="bcd1e6b0-158d-435a-bfdf-b2b264f7a4e1" name="Default Changelist" comment="" />
 >>>>>>> e0daba67b13f81ab07d3044f62fb39fe60980cba
+=======
+    <list default="true" id="ec3c5120-c954-4771-93f5-44090ab83d8a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/maven/tic-tac-toe/tic-tac-toe/pom.properties" afterDir="false" />
+    </list>
+>>>>>>> parent of ce01429... eek changed the repository name
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
