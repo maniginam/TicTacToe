@@ -1,6 +1,4 @@
 /shelf/
-.idea
-lib
 .target
 .lein-repl-history
 *.iml
