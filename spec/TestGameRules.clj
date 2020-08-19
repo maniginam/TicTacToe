@@ -1,7 +1,7 @@
-(ns test-game-rules
+(ns TestGameRules
   (:require
-      [speclj.core :refer :all]
-      [ttt.game-rules :refer :all]))
+    [speclj.core :refer :all]
+    [ttt.GameRules :refer :all]))
 
 (describe "Sets rules for game:"
 
