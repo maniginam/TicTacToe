@@ -1,4 +1,4 @@
-(ns ttt.Board)
+(ns ttt.board)
 
 (def board
   (sorted-map 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8))
@@ -31,5 +31,4 @@
     (= [played-box] (filter #(= played-box %) open-boxes))))
 
 (defn is-good-box? [board box]
-  (let [box (if (int? box) box (Integer/parseInt box))]
-    (and (does-box-exist? box) (is-box-selection-open? board box))))
+    (and (does-box-exist? box) (is-box-selection-open? board box)))

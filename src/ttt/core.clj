@@ -1,5 +1,7 @@
 (ns ttt.core
   (:require
+    ;[quil-gui.gui :refer :all]
+    [ttt.terminal-gui :refer :all]
     [ttt.optimal-play :refer :all]
     [ttt.game-rules :refer :all]
     [ttt.board :refer :all]
@@ -7,10 +9,9 @@
 
 (defn game-results [winner]
   (let [results-msg
-        (cond (zero? winner) "Cat's Game"
-              (= winner 1) "X Wins!"
-              :else "O Wins!")]
-    (println results-msg)
+        (cond (zero? winner) (str "Cat's Game")
+              (= winner 1) (str "X Wins!")
+              :else (str "O Wins!"))]
     results-msg))
 
 (defn computer-turn [board player]
@@ -18,29 +19,37 @@
     (println "Computer plays box" box)
     box))
 
-(defn human-turn [board player human]
+(defn human-turn-message [board player human]
   (if (= human player)
     (println "Your Turn")
-    (println (str (get-player-piece player) "'s Turn")))
-  (get-human-selection board))
+    (println (str (get-player-piece player) "'s Turn"))))
+
+(defn human-turn [board player human]
+  (human-turn-message board player human)
+  (get-human-selection board (ask-user-for-box-to-play)))
 
 (defn offer-x-or-o []
   (println "X goes first.  Do you want to be X or O")
   (read-line))
 
+(defn bad-piece-selection [tries user-input]
+  (if (< tries 2)
+    (println (str user-input " is not an option.  Try again..."))
+    (println (str "Nevermind, I'll go first."))))
+
 (defn set-human-game-piece [tries user-input]
-  (cond (or (= user-input "X") (= user-input "x")) 1
-        (or (= user-input "O") (= user-input "o")) 2
-        :else (cond (= tries 0) (do (println user-input "is not an option.  Try again...")
-                                    (set-human-game-piece (inc tries) (offer-x-or-o)))
-                    :else (do (println "Nevermind, I'll go first.") 2))))
+  (if (> tries 1)
+    (do (bad-piece-selection tries user-input) 2)
+    (cond (empty? (filter #(= user-input %) ["X" "x" "O" "o"])) (do (bad-piece-selection tries user-input) (set-human-game-piece (inc tries) (offer-x-or-o)))
+          (or (= user-input "X") (= user-input "x")) 1
+          (or (= user-input "O") (= user-input "o")) 2)))
 
 (defn get-box-played [board player human]
   (cond (nil? human) (human-turn board player human)
         (= human 0) (computer-turn board player)
         :else (if (= human player) (human-turn board player human) (computer-turn board player))))
 
-(defn play-ttt [players human]
+(defn play-ttt [human]
   (loop [board board
          player 1]
     (cond (is-win? board) (get-next-player player)
@@ -68,6 +77,8 @@
   (println "Let's Play Tic-Tac-Toe!")
   (if (or (= players 2) (= human 1)) (draw-board board)))
 
+(defn get-human-game-piece []
+  )
 (defn welcome []
   (println "Welcome to Tic-Tac-Toe!")
   (let [players (who-is-playing 0)
@@ -75,7 +86,9 @@
                     (= players 1) (set-human-game-piece 0 (offer-x-or-o))
                     :else nil)]
     (start-game players human)
-    (game-results (play-ttt players human))))
+    (println (game-results (play-ttt human)))))
 
 (defn -main []
+  ;(:setup :waiting)
   (welcome))
+

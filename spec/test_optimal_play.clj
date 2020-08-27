@@ -1,7 +1,7 @@
 (ns test-optimal-play
   (:require
     [speclj.core :refer :all]
-    [ttt.OptimalPlay :refer :all]
+    [ttt.optimal-play :refer :all]
     [ttt.board :refer :all]))
 
 (describe "Tests for an optimal box to play"
@@ -67,8 +67,7 @@
       (loop [results [] i 0]
             (if (< i 20)
               (recur (conj results (play-optimal-box empty-board player1)) (inc i))
-              (do (println results)
-                (should= [] (filter false? results))))))
+              (should= [] (filter #(and (odd? %) (not (= 4 %))) results)))))
 )
 
 
