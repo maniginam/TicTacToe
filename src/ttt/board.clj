@@ -3,12 +3,12 @@
 (def board
   (sorted-map 0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8))
 
-(defn draw-board [board]
-  (println " " (board 0) "||" (board 1) "||" (board 2))
-  (println "====||===||====")
-  (println " " (board 3) "||" (board 4) "||" (board 5))
-  (println "====||===||====")
-  (println " " (board 6) "||" (board 7) "||" (board 8)))
+;(defn draw-board [board]
+;  (println " " (board 0) "||" (board 1) "||" (board 2))
+;  (println "====||===||====")
+;  (println " " (board 3) "||" (board 4) "||" (board 5))
+;  (println "====||===||====")
+;  (println " " (board 6) "||" (board 7) "||" (board 8)))
 
 (defn put-piece-on-board [board box-played game-piece]
   (assoc (dissoc board box-played) box-played game-piece))

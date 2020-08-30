@@ -1,2 +1,11 @@
 lein run
 
+(defprotocol Players
+  (who-is-playing [this]))
+(defrecord Humans [tries]
+  Players
+  (who-is-playing [this]))
+(def players (Human. 0))
+(def players (Humans. 0))
+(who-is-playing 0)
+lein run
