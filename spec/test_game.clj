@@ -5,10 +5,13 @@
     [ttt.game :refer :all]
     [ttt.optimal-play :refer :all]
     [ttt.board :refer :all]
-    [ttt.human-box-input :refer :all])
-  (:import (ttt.game PlayTTT)))
+    [ttt.human-box-input :refer :all]))
 
 (describe "tic tac toe game setup: "
+
+  (def comp-player1 {:player 1 :player-type :ai})
+  (def comp-player2 {:player 2 :player-type :ai})
+
   (it "returns game results"
       (should= "O Wins!" (game-results 2))
       (should= "X Wins!" (game-results 1))
@@ -19,12 +22,7 @@
              game 1]
       (if (zero? game)
         (should= [] (remove zero? winners))
-        (recur (conj winners (play-ttt (PlayTTT. 0))) (dec game)))))
+        (recur (conj winners (play-ttt 0)) (dec game)))))
 
-  (it "gets human game-piece choice"
-      (should= 1 (set-human-game-piece 0 "x"))
-      (should= 1 (set-human-game-piece 1 "x"))
-      (should= 1 (set-human-game-piece 0 "X"))
-      (should= 2 (set-human-game-piece 0 "O"))
-      (should= 3 (set-human-game-piece 2 "rex")))
+
 )
