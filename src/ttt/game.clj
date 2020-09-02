@@ -45,14 +45,14 @@
 (defmethod player-move :ai [board player]
   (play-optimal-box board player))
 
-(defn play-ttt [human]
-  (loop [board board
-         player 1]
-    (cond (is-win? board) (get-next-player player)
-          (full-board? board) 0
-          :else (let [box-played (get-box-played board player human)]
-                  (recur (put-piece-on-board board box-played (get-player-piece player))
-                         (get-next-player player))))))
+;(defn play-ttt [human]
+;  (loop [board board
+;         player 1]
+;    (cond (is-win? board) (get-next-player player)
+;          (full-board? board) 0
+;          :else (let [box-played (get-box-played board player human)]
+;                  (recur (put-piece-on-board board box-played (get-player-piece player))
+;                         (get-next-player player))))))
 
 
 

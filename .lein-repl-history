@@ -9,3 +9,7 @@ lein run
 (def players (Humans. 0))
 (who-is-playing 0)
 lein run
+(with-open [o (output-stream "gina.txt"]
+(with-open [o (output-stream "gina.txt")]
+(.write o 65))
+lein spec -a

@@ -4,7 +4,8 @@
             [ttt.game-rules :refer :all]
             [ttt.game :refer :all]
             [ttt.human-box-input :refer :all]
-            [ttt.board :refer :all]))
+            [ttt.board :refer :all]
+            [ttt.the-game :refer :all]))
 
 
 (defn draw-board [board]
@@ -34,8 +35,6 @@
       (do (println "Entry not an option...  ")
           (who-is-playing))
       players)))
-
-
 
 (defn offer-x-or-o []
   (println "X goes first.  Do you want to be X or O")
@@ -90,17 +89,18 @@
 ;            (check-players))
 ;        input))))
 
-(defn play-ttt-gui [human]
-  (loop [board board
-         player 1]
-    (cond (is-win? board) (get-next-player player)
+;(defmethod make-move :human [player board] nil)
+
+(defmethod play-ttt :terminal [game]
+  (loop [board (:board game)
+         player (:player1 game)]
+    (cond (is-win? board) (:player (next-player game player))
           (full-board? board) 0
-          :else (let [box-played (get-box-played board player human)]
-                  (if (zero? human)
-                    (println "Computer Plays " box-played))
-                  (draw-board (put-piece-on-board board box-played (get-player-piece player)))
-                  (recur (put-piece-on-board board box-played (get-player-piece player))
-                         (get-next-player player))))))
+          :else (let [box-played (make-move player board)]
+                  (println "Computer Plays " box-played)
+                  (draw-board (put-piece-on-board board box-played (:piece player)))
+                  (recur (put-piece-on-board board box-played (:piece player))
+                         (next-player game player))))))
 
 
 (defn ask-num-of-players []

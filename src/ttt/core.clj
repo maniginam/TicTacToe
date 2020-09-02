@@ -21,18 +21,18 @@
                   :ai)
                 (if (= player1-type :human) :ai :human))))
 
-(defn welcome []
-  (gui-welcome)
-  (let [players (who-is-playing)
-        game-type (get-game-type players)
-        ;player1 {:player 1 :player-type (assign-player game-type 1)}
-        ;player2 {:player 2 :player-type (assign-player game-type 2 (:player-type player1))}
-        human (cond (= players 0) 0
-                    (= players 1) (set-human-game-piece (offer-x-or-o) 0)
-                    :else nil)]
-    (start-game game-type board)
-    (println (game-results (play-ttt-gui human)))))
+;(defn welcome []
+;  (gui-welcome)
+;  (let [players (who-is-playing)
+;        game-type (get-game-type players)
+;        ;player1 {:player 1 :player-type (assign-player game-type 1)}
+;        ;player2 {:player 2 :player-type (assign-player game-type 2 (:player-type player1))}
+;        human (cond (= players 0) 0
+;                    (= players 1) (set-human-game-piece (offer-x-or-o) 0)
+;                    :else nil)]
+;    (start-game game-type board)
+;    (println (game-results (play-ttt game)))))
 
 (defn -main []
-  (welcome))
-
+  ;(welcome))
+  )
