@@ -1,25 +1,19 @@
 (ns ttt.core
   (:require
     ;[quil-gui.gui :refer :all]
-    [ttt.game :refer :all]
+    [ttt.the-game :refer :all]
     [ttt.terminal-gui :refer :all]
-    [ttt.board :refer :all]
-    ))
+    [ttt.board :refer :all]))
 
-(def player1-piece "X")
-(def player2-piece "O")
 
-(defn assign-piece [player]
-  (if (= 1 player) "X" "O"))
-
-(defn assign-player [game-type player & player1-type]
-  (cond (= game-type "comp-v-comp") :ai
-        (= game-type "human-v-human") :human
-        :else (if (= 1 player)
-                (if (= 1 (set-human-game-piece (offer-x-or-o) 0))
-                  :human
-                  :ai)
-                (if (= player1-type :human) :ai :human))))
+;(defn assign-player [game-type player & player1-type]
+;  (cond (= game-type "comp-v-comp") :ai
+;        (= game-type "human-v-human") :human
+;        :else (if (= 1 player)
+;                (if (= 1 (set-human-game-piece (offer-x-or-o) 0))
+;                  :human
+;                  :ai)
+;                (if (= player1-type :human) :ai :human))))
 
 ;(defn welcome []
 ;  (gui-welcome)
@@ -33,6 +27,10 @@
 ;    (start-game game-type board)
 ;    (println (game-results (play-ttt game)))))
 
+
 (defn -main []
-  ;(welcome))
-  )
+  (let [player1 {:player 1 :type :computer :piece "X"}
+        player2 {:player 2 :type :computer :piece "O"}
+        standard-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}]
+  ;CHANGE run-game to play-game
+    (run-game {:gui :terminal :player1 player1 :player2 player2 :board standard-board})))

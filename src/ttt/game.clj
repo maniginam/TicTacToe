@@ -8,7 +8,7 @@
     )
   )
 
-(defn game-results [winner]
+(defn game-results-old [winner]
   (let [results-msg
         (cond (zero? winner) (str "Cat's Game")
               (= winner 1) (str "X Wins!")
