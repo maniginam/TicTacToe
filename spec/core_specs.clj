@@ -1,4 +1,4 @@
-(ns test-core
+(ns core-specs
   (:require [speclj.core :refer :all]
             [ttt.core :refer :all]
             [ttt.terminal-gui :refer :all]))

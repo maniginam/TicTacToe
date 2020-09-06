@@ -1,9 +1,9 @@
-(ns test-board
+(ns board-specs
   (:require
     [speclj.core :refer :all]
     [ttt.board :refer :all]))
 
-(describe "tic tac toe terminal board "
+(describe "Board Tests"
   (def this-is-a-test true)
   (def human-is-player1 1)
   (def human-is-player2 2)

@@ -1,4 +1,4 @@
-(ns test-game-rules
+(ns game-rules-specs
   (:require
     [speclj.core :refer :all]
     [ttt.game-rules :refer :all]))
