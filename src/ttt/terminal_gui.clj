@@ -21,8 +21,9 @@
 
 (defn valid-user-count? [input]
   (if (true? (valid-user-count-type? input))
-    (valid-user-count-option? (Integer/parseInt input))
-    false))
+    (if (valid-user-count-option? (Integer/parseInt input))
+      true
+      (do (println (str input " is not an option") false)))))
 
 (defmethod ask-num-of-players :terminal [console]
   (println "0 Computer v Computer")
@@ -34,7 +35,7 @@
 (defn validate-player-count [console]
   (loop [input (ask-num-of-players console)
          tries 0]
-    (cond (> tries 2) (do (println "Nevermind, I'll play on my own.") 0)
+    (cond (>= tries 2) (do (println "Nevermind, I'll play on my own.") 0)
           (valid-user-count? input) (Integer/parseInt input)
           :else (recur (ask-num-of-players console) (inc tries)))))
 
@@ -99,9 +100,9 @@
              (catch Exception e (println (str input " not valid option")) false))))
 
 (defn box-open? [input board]
-    (if (is-box-selection-open? board input)
-      true
-      (do (println (str input " box already taken")) false)))
+  (if (is-box-selection-open? board input)
+    true
+    (do (println (str input " box already taken")) false)))
 
 (defn valid-box-option? [input board]
   (if (and (>= input 0) (< input (count board)))
