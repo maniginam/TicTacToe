@@ -31,13 +31,13 @@
     (with-out-str (should= 0 (with-in-str "rex" (validate-player-count console)))))
 
   (it "tests for valid user piece"
-    (with-out-str (should= :human (with-in-str "x" (validate-user-position))))
-    (with-out-str (should= :human (with-in-str "X" (validate-user-position))))
-    (with-out-str (should= :computer (with-in-str "o" (validate-user-position))))
-    (with-out-str (should= :computer (with-in-str "O" (validate-user-position))))
-    (with-out-str (should= :computer (with-in-str "3" (validate-user-position))))
-    (with-out-str (should= :computer (with-in-str "leo" (validate-user-position))))
-    (with-out-str (should= :computer (with-in-str "" (validate-user-position)))))
+    (with-out-str (should= :human (with-in-str "x" (validate-user-position console))))
+    (with-out-str (should= :human (with-in-str "X" (validate-user-position console))))
+    (with-out-str (should= :computer (with-in-str "o" (validate-user-position console))))
+    (with-out-str (should= :computer (with-in-str "O" (validate-user-position console))))
+    (with-out-str (should= :computer (with-in-str "3" (validate-user-position console))))
+    (with-out-str (should= :computer (with-in-str "leo" (validate-user-position console))))
+    (with-out-str (should= :computer (with-in-str "" (validate-user-position console)))))
 
   (it "Sets players with 0 users"
     (let [console {:gui :terminal :users 0}

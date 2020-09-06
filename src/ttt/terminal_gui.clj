@@ -38,7 +38,7 @@
           (valid-user-count? input) (Integer/parseInt input)
           :else (recur (ask-num-of-players console) (inc tries)))))
 
-(defn offer-position []
+(defmethod offer-position :terminal [console]
   (println "X goes first.  Do you want to be X or O")
   (read-line))
 
@@ -57,19 +57,19 @@
 (defn set-position [input]
   (if (= "X" (.toUpperCase input)) :human :computer))
 
-(defn validate-user-position []
-  (loop [input (offer-position)
+(defn validate-user-position [console]
+  (loop [input (offer-position console)
          tries 0]
     (cond (>= tries 2) (do (println "Nevermind, I'll play on my own.") :computer)
           (valid-position? input) (set-position input)
-          :else (recur (offer-position) (inc tries)))))
+          :else (recur (offer-position console) (inc tries)))))
 
 (defmethod assign-player :terminal [console player]
   (let [piece (if (= 1 player) player1-piece player2-piece)
         type (cond (zero? (:users console)) :computer
                    (= 2 (:users console)) :human
                    :else (if (= 1 player)
-                           (validate-user-position)
+                           (validate-user-position console)
                            (if (= (:player1 console) :human) :computer :human)))
         player-map {:player player :type type :piece piece}]
     player-map))

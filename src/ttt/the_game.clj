@@ -7,6 +7,7 @@
 (defmulti welcome :gui)
 (defmulti setup-game :gui)
 (defmulti assign-player :gui)
+(defmulti offer-position :gui)
 (defmulti ask-num-of-players :gui)
 (defmulti make-move (fn [player _] (:type player)))
 
