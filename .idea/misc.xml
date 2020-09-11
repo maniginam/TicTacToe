@@ -8,7 +8,7 @@
     </option>
   </component>
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/spec/TestOptimalPlay.clj" />
+    <file url="file://$PROJECT_DIR$/src/ttt/game_master.clj" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="1.5" project-jdk-type="JavaSDK" />
 </project>

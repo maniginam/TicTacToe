@@ -1,43 +1,52 @@
-(ns ttt.terminal-gui
+(ns ttt.ui
   (:require [clojure.java.io :as io]
             [ttt.optimal-play :refer :all]
             [ttt.game-rules :refer :all]
             [ttt.board :refer :all]
-            [ttt.the-game :refer :all])
-  (:import (java.io BufferedReader)))
+            [ttt.core :refer :all]))
 
-(def player1-piece "X")
-(def player2-piece "O")
 
 (defmethod welcome :terminal [console]
   (println "Welcome to Tic-Tac-Toe!"))
 
+(defn bad-users-type [input]
+  (println (str input " is not a valid option"))
+  false)
+
 (defn valid-user-count-type? [input]
   (int? (try (Integer/parseInt input)
-             (catch Exception e (println (str input " not valid option")) false))))
+             (catch Exception e (bad-users-type input)))))
 
 (defn valid-user-count-option? [input]
   (and (>= input 0) (<= input 2)))
+
+(defn bad-user-count [input]
+  (println (str input " is not an option"))
+  false)
 
 (defn valid-user-count? [input]
   (if (true? (valid-user-count-type? input))
     (if (valid-user-count-option? (Integer/parseInt input))
       true
-      (do (println (str input " is not an option") false)))))
+      (bad-user-count input))))
 
-(defmethod ask-num-of-players :terminal [console]
+(defn ask-num-of-players []
   (println "0 Computer v Computer")
   (println "1 Human v Computer")
   (println "2 Human v Human")
   (println "How many humans are playing?  Please enter 0, 1, or 2")
   (read-line))
 
-(defn validate-player-count [console]
-  (loop [input (ask-num-of-players console)
+(defn too-many-players-tries []
+  (println "Nevermind, I'll play on my own.")
+  0)
+
+(defmethod validate-player-count :terminal [console]
+  (loop [input (ask-num-of-players)
          tries 0]
-    (cond (>= tries 2) (do (println "Nevermind, I'll play on my own.") 0)
+    (cond (>= tries 3) (too-many-players-tries)
           (valid-user-count? input) (Integer/parseInt input)
-          :else (recur (ask-num-of-players console) (inc tries)))))
+          :else (recur (if (>= (inc tries) 3) nil (ask-num-of-players)) (inc tries)))))
 
 (defmethod offer-position :terminal [console]
   (println "X goes first.  Do you want to be X or O")
@@ -53,27 +62,29 @@
   (if (valid-position-type? input)
     (if (or (= "X" (.toUpperCase input)) (= "O" (.toUpperCase input)))
       true
-      (do (println (str input " is not an option.") false)))))
+      (do (println (str input " is not an option.")) false))))
 
 (defn set-position [input]
   (if (= "X" (.toUpperCase input)) :human :computer))
 
+(defn too-many-tries []
+  (println "Nevermind, I'll go first.")
+  :computer)
+
 (defn validate-user-position [console]
   (loop [input (offer-position console)
          tries 0]
-    (cond (>= tries 2) (do (println "Nevermind, I'll play on my own.") :computer)
+    (cond (>= tries 3) (too-many-tries)
           (valid-position? input) (set-position input)
-          :else (recur (offer-position console) (inc tries)))))
+          :else (recur (if (= (inc tries) 3) nil (offer-position console)) (inc tries)))))
 
-(defmethod assign-player :terminal [console player]
-  (let [piece (if (= 1 player) player1-piece player2-piece)
-        type (cond (zero? (:users console)) :computer
-                   (= 2 (:users console)) :human
-                   :else (if (= 1 player)
-                           (validate-user-position console)
-                           (if (= (:player1 console) :human) :computer :human)))
-        player-map {:player player :type type :piece piece}]
-    player-map))
+(defmethod assign-type :terminal [console users]
+  (cond (zero? users) :computer
+        (= 2 users) :human
+        :else (validate-user-position console)))
+
+(defn assign-player2-type [player1]
+  (if (= (:type player1) :human) :computer :human))
 
 (defn draw-board [board]
   (println " " (board 0) "||" (board 1) "||" (board 2))
@@ -82,27 +93,18 @@
   (println "====||===||====")
   (println " " (board 6) "||" (board 7) "||" (board 8)))
 
-(defmethod setup-game :terminal [console]
-  (let [console (assoc console :piece1 player1-piece :piece2 player2-piece)
-        users (validate-player-count console)
-        player1 (assign-player (assoc console :users users) 1)
-        player2 (assign-player (assoc console :users users :player1 (:type player1)) 2)
-        board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}
-        game {:gui :terminal :users users :player1 player1 :player2 player2 :board board}]
-    game))
-
 (defn ask-for-box []
   (println "Select a box 0-8")
   (read-line))
 
 (defn valid-box-type? [input]
   (int? (try (Integer/parseInt input)
-             (catch Exception e (println (str input " not valid option")) false))))
+             (catch Exception e (println (str input " is not a valid option")) false))))
 
 (defn box-open? [input board]
   (if (is-box-selection-open? board input)
     true
-    (do (println (str input " box already taken")) false)))
+    (do (println (str "box " input " is already taken")) false)))
 
 (defn valid-box-option? [input board]
   (if (and (>= input 0) (< input (count board)))
@@ -136,8 +138,7 @@
     (println (str "Computer plays box " box))
     box))
 
-(defmethod report :terminal [game]
-  (let [results (game-results game)]
-    (println results)))
+(defmethod report :terminal [console results]
+    (println results))
 
 

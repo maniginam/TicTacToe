@@ -1,9 +1,14 @@
-(ns ttt.core
-  (:require
-    ;[quil-gui.gui :refer :all]
-    [ttt.the-game :refer :all]
-    [ttt.terminal-gui :refer :all]
-    [ttt.board :refer :all]))
+(ns ttt.core)
 
-(defn -main []
-    (run-game {:gui :terminal}))
+
+(defmulti report :console)
+(defmulti welcome :console)
+(defmulti assign-type (fn [console _] (:console console)))
+(defmulti offer-position :console)
+(defmulti make-move (fn [player _] (:type player)))
+(defmulti validate-player-count :console)
+
+
+
+
+

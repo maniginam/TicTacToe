@@ -13,3 +13,6 @@ lein run
 (with-open [o (output-stream "gina.txt")]
 (.write o 65))
 lein spec -a
+(def arr (into-array Byte/TYPE (range 128)))
+(slurp arr)
+(println arr)

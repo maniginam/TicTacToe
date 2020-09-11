@@ -1,12 +1,25 @@
 (ns ttt.board)
 
+(def player1-piece "X")
+(def player2-piece "O")
+(def game-pieces {:player1-piece "X" :player2-piece "O"})
 
-;(defn draw-board [board]
-;  (println " " (board 0) "||" (board 1) "||" (board 2))
-;  (println "====||===||====")
-;  (println " " (board 3) "||" (board 4) "||" (board 5))
-;  (println "====||===||====")
-;  (println " " (board 6) "||" (board 7) "||" (board 8)))
+(defn is-row-win? [board]
+  (or (= (board 0) (board 1) (board 2))
+      (= (board 3) (board 4) (board 5))
+      (= (board 6) (board 7) (board 8))))
+
+(defn is-col-win? [board]
+  (or (= (board 0) (board 3) (board 6))
+      (= (board 1) (board 4) (board 7))
+      (= (board 2) (board 5) (board 8))))
+
+(defn is-diag-win? [board]
+  (or (= (board 0) (board 4) (board 8))
+      (= (board 2) (board 4) (board 6))))
+
+(defn is-win? [board]
+  (or (is-row-win? board) (is-col-win? board) (is-diag-win? board)))
 
 (defn put-piece-on-board [board box-played game-piece]
   (assoc (dissoc board box-played) box-played game-piece))
