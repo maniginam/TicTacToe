@@ -1,7 +1,6 @@
 (ns ttt.default-game
   (:require [ttt.optimal-play :refer :all]
             [ttt.board :refer :all]
-            [ttt.game-rules :refer :all]
             [ttt.core :refer :all]))
 
 (defmethod validate-player-count :default [console]

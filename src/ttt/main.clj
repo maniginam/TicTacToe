@@ -4,8 +4,7 @@
     [ttt.core :refer :all]
     [ttt.default-game :refer :all]
     [ttt.ui :refer :all]
-    [ttt.board :refer :all]
-    [ttt.game-rules :refer :all]))
+    [ttt.board :refer :all]))
 
 (def game-state
   {:status :waiting :users nil :player nil :winner nil})

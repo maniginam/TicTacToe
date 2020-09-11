@@ -1,6 +1,5 @@
 (ns ttt.optimal-play
   (:require
-    [ttt.game-rules :refer :all]
     [ttt.board :refer :all]))
 
 (defn get-score [winner depth]

@@ -1,7 +1,6 @@
 (ns ttt.ui
   (:require [clojure.java.io :as io]
             [ttt.optimal-play :refer :all]
-            [ttt.game-rules :refer :all]
             [ttt.board :refer :all]
             [ttt.core :refer :all]))
 
