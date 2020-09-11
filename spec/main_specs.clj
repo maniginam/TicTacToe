@@ -1,6 +1,7 @@
 (ns main-specs
   (:require [speclj.core :refer :all]
-            [ttt.main :refer :all]))
+            [ttt.main :refer :all]
+            [ttt.core :refer :all]))
 
 (def player1 {:player 1 :piece "X" :type :default})
 (def player2 {:player 2 :piece "O" :type :default})

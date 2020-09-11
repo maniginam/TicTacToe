@@ -82,9 +82,6 @@
         (= 2 users) :human
         :else (validate-user-position console)))
 
-(defn assign-player2-type [player1]
-  (if (= (:type player1) :human) :computer :human))
-
 (defn draw-board [board]
   (println " " (board 0) "||" (board 1) "||" (board 2))
   (println "====||===||====")

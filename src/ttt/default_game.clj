@@ -3,6 +3,11 @@
             [ttt.board :refer :all]
             [ttt.core :refer :all]))
 
+(defmethod run-gui :default [console] nil)
+
+(defmethod game-started? :default [console]
+  :default)
+
 (defmethod validate-player-count :default [console]
   0)
 
@@ -12,10 +17,6 @@
 (defmethod make-move :default [player board]
   (let [box (play-optimal-box board (:player player))]
     box))
-
-(defn next-player [game player]
-  (if (= player (:player1 game)) (:player2 game) (:player1 game)))
-
 
 (defmethod report :default [console results]
     results)

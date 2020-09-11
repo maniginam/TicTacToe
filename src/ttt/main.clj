@@ -1,10 +1,12 @@
 (ns ttt.main
   (:require
-    ;[quil-gui.gui :refer :all]
+    [quil.core :as q]
     [ttt.core :refer :all]
+    [ttt.board :refer :all]
     [ttt.default-game :refer :all]
     [ttt.ui :refer :all]
-    [ttt.board :refer :all]))
+    [quil-gui.gui-game :refer :all]
+    ))
 
 (def game-state
   {:status :waiting :users nil :player nil :winner nil})
@@ -37,5 +39,11 @@
     (report console (game-results (play-game game)))))
 
 (defn -main []
-    (run-game {:console :default}))
+  (let [state game-state
+        console {:console :default}]
+    (run-gui console)
+    ;(loop [initiate? (game-started? console)]
+    ;  (if (= initiate? false)
+    ;    (recur (game-started? console))
+        (run-game console)))
 
