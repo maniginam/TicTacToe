@@ -1,4 +1,4 @@
-(ns optimal-play-specs
+(ns ttt.optimal-play-specs
   (:require
     [speclj.core :refer :all]
     [ttt.optimal-play :refer :all]

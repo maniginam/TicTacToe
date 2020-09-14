@@ -7,9 +7,11 @@
 (defmulti offer-position :console)
 (defmulti make-move (fn [player _] (:type player)))
 (defmulti validate-player-count :console)
+(defmulti user-message :status)
 
-(defmulti run-gui :console)
-(defmulti game-started? :console)
+(defmulti mouse-clicked (fn [state _] (:status state)))
+(defmulti draw-user-prompt (fn [state & _] (:status state)))
+
 
 
 (defn next-player [game player]

@@ -3,11 +3,6 @@
             [ttt.board :refer :all]
             [ttt.core :refer :all]))
 
-(defmethod run-gui :default [console] nil)
-
-(defmethod game-started? :default [console]
-  :default)
-
 (defmethod validate-player-count :default [console]
   0)
 

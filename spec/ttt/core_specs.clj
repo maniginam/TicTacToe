@@ -1,4 +1,4 @@
-;(ns core-specs
+;(ns ttt.core-specs
 ;  (:require [speclj.core :refer :all]
 ;            [ttt.core :refer :all]
 ;            [ttt.ui :refer :all]))

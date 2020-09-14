@@ -1,4 +1,4 @@
-(ns board-specs
+(ns ttt.board-specs
   (:require
     [speclj.core :refer :all]
     [ttt.board :refer :all]))

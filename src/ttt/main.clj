@@ -5,7 +5,8 @@
     [ttt.board :refer :all]
     [ttt.default-game :refer :all]
     [ttt.ui :refer :all]
-    [quil-gui.gui-game :refer :all]
+    [quil.gui-game :refer :all]
+    [quil.gui :refer :all]
     ))
 
 (def game-state
@@ -41,7 +42,7 @@
 (defn -main []
   (let [state game-state
         console {:console :default}]
-    (run-gui console)
+    ;(run-gui console)
     ;(loop [initiate? (game-started? console)]
     ;  (if (= initiate? false)
     ;    (recur (game-started? console))

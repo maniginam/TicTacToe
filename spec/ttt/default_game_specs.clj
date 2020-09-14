@@ -1,4 +1,4 @@
-(ns default-game-specs
+(ns ttt.default-game-specs
   (:require [speclj.core :refer :all]
             [ttt.default-game :refer :all]
             [ttt.core :refer :all]))

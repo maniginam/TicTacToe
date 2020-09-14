@@ -1,6 +1,6 @@
-(ns quil-gui.game-button
-  (:require [quil-gui.gui :refer :all]
-            [quil-gui.dimensions :as dim]))
+(ns quil.game-button
+  (:require [quil.gui :refer :all]
+            [quil.dimensions :as dim]))
 
 ;(defn mouse-in-button? [mouse-x mouse-y]
 ;  (let [x (first dim/button-top-left-corner)

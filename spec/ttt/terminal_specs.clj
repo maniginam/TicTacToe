@@ -1,4 +1,4 @@
-(ns ui-specs
+(ns ttt.terminal-specs
   (:require [clojure.string :as s]
             [speclj.core :refer :all]
             [ttt.ui :refer :all]
