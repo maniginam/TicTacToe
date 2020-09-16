@@ -4,9 +4,9 @@
     [ttt.core :refer :all]
     [ttt.board :refer :all]
     [ttt.default-game :refer :all]
-    [ttt.ui :refer :all]
+    [ttt.terminal :refer :all]
     [quil.gui-game :refer :all]
-    [quil.gui :refer :all]
+    ;[quil.gui :refer :all]
     ))
 
 (def game-state
@@ -18,33 +18,38 @@
           (= 2 winner) (str (:piece (:player2 game)) " Wins!")
           :else (str "Cat's Game"))))
 
+(defn update-board [game]
+  (let [box (select-box game)
+        board (:board game)
+        piece (:piece ((:current-player game) game))
+        new-board (assoc board box piece)]
+    (assoc game :board new-board)))
+
+
+(defn next-turn [game]
+  (-> game
+      (update-board)
+      (next-player)))
+
 (defn play-game [game]
-  (loop [board (:board game)
-         player (:player1 game)]
-    (cond (is-win? board) (assoc game :winner (:player (next-player game player)))
-          (full-board? board) (assoc game :winner 0)
-          :else (let [box (make-move player board)]
-                  (recur (put-piece-on-board board box (:piece player))
-                         (next-player game player))))))
+  (loop [game game]
+    (cond (is-win? (:board game)) (assoc game :winner (:current-player (next-player game)))
+          (full-board? (:board game)) (assoc game :winner 0)
+          :else (recur (next-turn game)))))
 
 (defn setup-game [console]
   (let [users (validate-player-count console)
-        player1 {:player 1 :piece player1-piece :type (assign-type console users)}
-        player2 {:player 2 :piece player2-piece :type (if (= 1 users) (assign-player2-type player1) (assign-type console users))}
-        board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}
-        game {:console (:console console) :users users :player1 player1 :player2 player2 :board board}]
+        player1 {:player-num 1 :piece player1-piece :type (assign-type console users)}
+        player2 {:player-num 2 :piece player2-piece :type (if (= 1 users) (assign-player2-type player1) (assign-type console users))}
+        board (create-board (set-board-size console))
+        game {:console (:console console) :users users :board board :current-player :player1 :player1 player1 :player2 player2}]
     game))
 
 (defn run-game [console]
-  (let [game (setup-game console)]
-    (report console (game-results (play-game game)))))
+  (let [game (setup-game console)
+        results (game-results (play-game game))]
+    (report console results)))
 
 (defn -main []
-  (let [state game-state
-        console {:console :default}]
-    ;(run-gui console)
-    ;(loop [initiate? (game-started? console)]
-    ;  (if (= initiate? false)
-    ;    (recur (game-started? console))
-        (run-game console)))
+  (run-game {:console :terminal}))
 

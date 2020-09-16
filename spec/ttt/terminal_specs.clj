@@ -1,9 +1,11 @@
 (ns ttt.terminal-specs
   (:require [clojure.string :as s]
             [speclj.core :refer :all]
-            [ttt.ui :refer :all]
+            [ttt.terminal :refer :all]
             [ttt.default-game :refer :all]
-            [ttt.core :refer :all]))
+            [ttt.core :refer :all]
+            [ttt.board :refer :all]
+            [ttt.user-inputs :refer :all]))
 
 (def console {:console :terminal})
 (def standard-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
@@ -14,8 +16,8 @@
     (should= "Welcome to Tic-Tac-Toe!\n" (with-out-str (welcome console))))
 
   (it "tests for valid input type"
-    (should= "leo is not a valid option" (s/trim (with-out-str (valid-user-count-type? "leo"))))
-    (should (valid-user-count-type? "3")))
+    (should= "leo is not a valid option" (s/trim (with-out-str (valid-for-int-type? "leo"))))
+    (should (valid-for-int-type? "3")))
 
   (it "tests for valid input"
     (should (valid-user-count-option? 0))
@@ -41,6 +43,10 @@
     (with-out-str (should= :computer (with-in-str "leo" (validate-user-position console))))
     (with-out-str (should= :computer (with-in-str "" (validate-user-position console)))))
 
+  (it "test user input for board-size"
+    (with-out-str (should= 3 (with-in-str "3" (set-board-size console))))
+    (should= "rex is not a valid option\n" (with-out-str (valid-for-int-type? "rex"))))
+
   (it "Sets players with 0 users"
     (let [console {:console :terminal :users 0}]
       (should= :computer (assign-type console 0))
@@ -58,6 +64,19 @@
   (it "Sets players with 1 user as player 2"
     (let [console {:console :terminal :users 1}]
       (with-out-str (should= :computer (with-in-str "o" (assign-type console 1))))))
+
+  (it "Sets Board in Terminal Game"
+    (should= (str "What size grid do you want to play?\n")
+             (with-out-str (with-in-str "3" (board-size-prompt console))))
+    ;(should= 5 (with-in-str "5" (set-board-size terminal)))
+    (should= "What size grid do you want to play?\nleo is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
+             (with-out-str (with-in-str "leo" (set-board-size console)))))
+
+  ;(it "Draws the Board"
+  ;  (should= "\n" (with-out-str (draw-board (create-board 0))))
+  ;  (should= "0\n" (with-out-str (draw-board (create-board 1))))
+  ;  (should= "0 || 1\n" (draw-board (create-board 2)))
+  ;  )
 
   (it "tests valid human box entry"
     (with-out-str (should (valid-box? "0" standard-board)))

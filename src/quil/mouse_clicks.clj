@@ -10,10 +10,17 @@
     (assoc state :status :user-setup)))
 
 (defmethod mouse-clicked :user-setup [state event]
-  (cond (mouse-hovering-option? 0 (:x event) (:y event)) (assoc state :users 0 :status :player1)
+  (cond (mouse-hovering-option? 0 (:x event) (:y event)) (assoc state :users 0 :status :playing :player :player1 :player1 {:player 1 :piece "X" :type :computer} {:player 2 :piece "O" :type :computer})
         (mouse-hovering-option? 1 (:x event) (:y event)) (assoc state :users 1 :status :player-setup)
-        (mouse-hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :player1)))
+        (mouse-hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :playing :player :player1 :player1 {:player 1 :piece "X" :type :human} :player2 {:player 2 :piece "O" :type :human})))
 
 (defmethod mouse-clicked :player-setup [state event]
-  (cond (mouse-hovering-piece-option? 1 (:x event) (:y event)) (assoc state :player1 {:player 1 :piece "x" :type :human} :status :player1)
-        (mouse-hovering-piece-option? 2 (:x event) (:y event)) (assoc state :player2 {:player 2 :piece "o" :type :human} :status :player1)))
+  (cond (mouse-hovering-piece-option? 1 (:x event) (:y event)) (assoc state :status :playing :player :player1 :player1 {:player 1 :piece "X" :type :human} :player2 {:player 2 :piece "O" :type :computer})
+        (mouse-hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :playing :player :player1 :player1 {:player 1 :piece "X" :type :computer} :player2 {:player 2 :piece "O" :type :human})))
+
+(defmethod mouse-clicked :playing [state event]
+  ;(if (mouse-in-box? (:x event) (:y event))
+  (let [box-clicked 0]
+    (assoc state :box-clicked box-clicked :board (assoc (:board state) box-clicked "X") :player :player2)
+  box-clicked)
+  )

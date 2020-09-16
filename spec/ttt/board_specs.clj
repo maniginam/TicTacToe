@@ -15,7 +15,13 @@
 (def game-is-won-board {0 "X" 1 1 2 2 3 3 4 "X" 5 5 6 6 7 7 8 "X"})
 (def one-box-open-cats-game-6 {0 "X" 1 "O" 2 "X" 3 "O" 4 "O" 5 "X" 6 6 7 "X" 8 "O"})
 
-(describe "Board Tests"
+(describe "BOARD:"
+
+  (it "Makes the Board"
+    (should= {} (create-board 0))
+    (should= {0 0} (create-board 1))
+    (should= {0 0 1 1 2 2 3 3} (create-board 2))
+    (should= {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8} (create-board 3)))
 
   (it "checks rows for win"
     (should-not (is-row-win? {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}))

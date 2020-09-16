@@ -1,20 +1,15 @@
-(ns ttt.ui
-  (:require [clojure.java.io :as io]
-            [ttt.optimal-play :refer :all]
+(ns ttt.user-inputs
+  (:require [ttt.core :refer :all]
             [ttt.board :refer :all]
-            [ttt.core :refer :all]))
+            [ttt.console-messages :as message]))
 
-
-(defmethod welcome :terminal [console]
-  (println "Welcome to Tic-Tac-Toe!"))
-
-(defn bad-users-type [input]
+(defn bad-type [input]
   (println (str input " is not a valid option"))
   false)
 
-(defn valid-user-count-type? [input]
+(defn valid-for-int-type? [input]
   (int? (try (Integer/parseInt input)
-             (catch Exception e (bad-users-type input)))))
+             (catch Exception e (bad-type input)))))
 
 (defn valid-user-count-option? [input]
   (and (>= input 0) (<= input 2)))
@@ -24,7 +19,7 @@
   false)
 
 (defn valid-user-count? [input]
-  (if (true? (valid-user-count-type? input))
+  (if (true? (valid-for-int-type? input))
     (if (valid-user-count-option? (Integer/parseInt input))
       true
       (bad-user-count input))))
@@ -39,13 +34,6 @@
 (defn too-many-players-tries []
   (println "Nevermind, I'll play on my own.")
   0)
-
-(defmethod validate-player-count :terminal [console]
-  (loop [input (ask-num-of-players)
-         tries 0]
-    (cond (>= tries 3) (too-many-players-tries)
-          (valid-user-count? input) (Integer/parseInt input)
-          :else (recur (if (>= (inc tries) 3) nil (ask-num-of-players)) (inc tries)))))
 
 (defmethod offer-position :terminal [console]
   (println "X goes first.  Do you want to be X or O")
@@ -70,24 +58,13 @@
   (println "Nevermind, I'll go first.")
   :computer)
 
-(defn validate-user-position [console]
-  (loop [input (offer-position console)
-         tries 0]
-    (cond (>= tries 3) (too-many-tries)
-          (valid-position? input) (set-position input)
-          :else (recur (if (= (inc tries) 3) nil (offer-position console)) (inc tries)))))
+(defn std-board-msg []
+  (println "Nevermind, let's play a standard 3x3 board")
+  3)
 
-(defmethod assign-type :terminal [console users]
-  (cond (zero? users) :computer
-        (= 2 users) :human
-        :else (validate-user-position console)))
-
-(defn draw-board [board]
-  (println " " (board 0) "||" (board 1) "||" (board 2))
-  (println "====||===||====")
-  (println " " (board 3) "||" (board 4) "||" (board 5))
-  (println "====||===||====")
-  (println " " (board 6) "||" (board 7) "||" (board 8)))
+(defmethod board-size-prompt :terminal [console]
+  (println message/board-size-prompt-message)
+  (read-line))
 
 (defn ask-for-box []
   (println "Select a box 0-8")
@@ -113,28 +90,4 @@
       (if (valid-box-option? input board)
         (box-open? input board)
         false))))
-
-(defn validate-box-input [board]
-  (loop [input (ask-for-box)]
-    (if (valid-box? input board)
-      (Integer/parseInt input)
-      (recur (ask-for-box)))))
-
-(defmethod make-move :human [player board]
-  (draw-board board)
-  (println (str (:piece player) "'s Turn"))
-  (let [box (validate-box-input board)
-        new-board (put-piece-on-board board box (:piece player))]
-    box))
-
-(defmethod make-move :computer [player board]
-  (let [box (play-optimal-box board (:player player))
-        new-board (put-piece-on-board board box (:piece player))]
-    (draw-board new-board)
-    (println (str "Computer plays box " box))
-    box))
-
-(defmethod report :terminal [console results]
-    (println results))
-
 

@@ -1,6 +1,6 @@
 (ns quil.human-prompts
   (:require [ttt.core :refer :all]
-            [ttt.user-messages :refer :all]
+            [ttt.console-messages :refer :all]
             [quil.core :as q]
             [quil.dimensions :as dim]
             [quil.mouse-location :refer :all]))

@@ -1,8 +1,15 @@
-(ns ttt.board)
+(ns ttt.board
+  (:require [ttt.core :refer :all]
+            [ttt.console-messages :as message]))
 
 (def player1-piece "X")
 (def player2-piece "O")
 (def game-pieces {:player1-piece "X" :player2-piece "O"})
+
+(defn create-board [size]
+  (let [grid-size (* size size)
+        board (if (= 1 grid-size) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range grid-size))))]
+    board))
 
 (defn is-row-win? [board]
   (or (= (board 0) (board 1) (board 2))
