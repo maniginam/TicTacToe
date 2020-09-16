@@ -20,6 +20,33 @@
 (defmethod report :default [console results]
     results)
 
-;(defn run-game [console]
-;  (let [game (setup-game console)]
-;    (report (play-game game))))
+
+(defn game-results [game]
+  (let [winner (:winner game)]
+    (cond (= 1 winner) (str (:piece (:player1 game)) " Wins!")
+          (= 2 winner) (str (:piece (:player2 game)) " Wins!")
+          :else (str "Cat's Game"))))
+
+(defn next-player [game]
+  (if (= (:current-player game) :player1)
+    (assoc game :current-player :player2)
+    (assoc game :current-player :player1)))
+
+(defn update-board [game]
+  (let [box (select-box game)
+        board (:board game)
+        piece (:piece ((:current-player game) game))
+        new-board (assoc board box piece)]
+    (assoc game :board new-board)))
+
+(defn next-turn [game]
+  (-> game
+      (update-board)
+      (next-player)))
+
+(defn play-game [game]
+  (loop [game game]
+    (cond (is-win? (:board game)) (assoc game :winner (:current-player (next-player game)))
+          (full-board? (:board game)) (assoc game :winner 0)
+          :else (recur (next-turn game)))))
+
