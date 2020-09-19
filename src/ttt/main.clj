@@ -3,11 +3,10 @@
     [quil.core :as q]
     [ttt.core :refer :all]
     [ttt.board :refer :all]
-    [ttt.setup-game :refer :all]
+    [ttt.game-setup :refer :all]
     [ttt.default-game :refer :all]
     [ttt.terminal :refer :all]
-    [quil.gui-game :refer :all]
-    ;[quil.gui :refer :all]
+    [quil.gui :as gui]
     ))
 
 (def game-state
@@ -19,5 +18,6 @@
     (report console results)))
 
 (defn -main []
-  (run-game {:console :terminal}))
+  (run-game {:console :terminal})
+  )
 

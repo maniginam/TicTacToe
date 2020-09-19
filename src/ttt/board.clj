@@ -4,12 +4,30 @@
 
 (def player1-piece "X")
 (def player2-piece "O")
+(def pieces {:player1 "X" :player2 "O"})
+(def player-nums {:player1 1 :player2 2})
 (def game-pieces {:player1-piece "X" :player2-piece "O"})
 
 (defn create-board [size]
   (let [grid-size (* size size)
         board (if (= 1 grid-size) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range grid-size))))]
     board))
+
+(defmethod draw-board :default [game board] nil)
+(defmethod draw-board :terminal [game board]
+  ;(let [row-size (Math/sqrt (count board))
+  ;      board-vec (range (count board))]
+  ;  (loop [board board-vec
+  ;         row (take row-size board)
+  ;         board-str []]
+  ;    (if (empty? board)
+  ;      (println (apply str (interpose (str (repeat (dec row-size) "\n===||==\n")) board-str)))
+  ;      (recur (drop row-size board) (take row-size (drop row-size board)) (conj board-str (apply str (interpose " || " row))))))))
+  (println " " (board 0) "||" (board 1) "||" (board 2))
+  (println "====||===||====")
+  (println " " (board 3) "||" (board 4) "||" (board 5))
+  (println "====||===||====")
+  (println " " (board 6) "||" (board 7) "||" (board 8)))
 
 (defn is-row-win? [board]
   (or (= (board 0) (board 1) (board 2))

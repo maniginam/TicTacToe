@@ -1,21 +1,29 @@
 (ns ttt.core)
 
+(def game {:status :waiting :console nil
+           :users nil :board-size 3
+           :current-player nil
+           :player1 {:player-num 1 :piece :player1-piece}
+           :player2 {:player-num 2 :piece :player2-piece}
+           :board nil :played-boxes []
+           :game-over nil :winner nil})
+
+(defn update-game [game]
+  game)
+
 
 (defmulti report :console)
 (defmulti welcome :console)
-(defmulti assign-type (fn [console _] (:console console)))
 (defmulti offer-position :console)
-(defmulti select-box :console)
-(defmulti make-move (fn [player _] (:type player)))
+(defmulti draw-board :console)
+(defmulti print-turn (fn [console _ _] (:console console)))
+(defmulti print-type (fn [player _] (:type player)))
+(defmulti select-box (fn [player _] (:type player)))
+(defmulti get-selection (fn [console _] (:console console)))
 (defmulti validate-player-count :console)
 (defmulti board-size-prompt :console)
 (defmulti set-board-size :console)
 (defmulti get-box-input :console)
-
-(defmulti user-message :status)
-(defmulti mouse-clicked (fn [state _] (:status state)))
-(defmulti draw-user-prompt (fn [state & _] (:status state)))
-(defmulti draw-piece (fn [state _ _] (:player state)))
 
 (defn set-state [state]
   state)

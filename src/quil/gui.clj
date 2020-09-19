@@ -2,11 +2,17 @@
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil.dimensions :as dim]
+            [quil.board :refer :all]
+            [quil.gui-game :refer :all]
             [ttt.core :refer :all]
+            [ttt.board :refer :all]
             [ttt.console-messages :refer :all]
+            [quil.gui-messages :refer :all]
+            [ttt.default-game :refer :all]
             [quil.mouse-clicks :refer :all]
             [quil.mouse-location :refer :all]
             [quil.human-prompts :refer :all]
+            [quil.boxes :refer :all]
             [quil.game-pieces :as piece]))
 
 
@@ -15,28 +21,37 @@
   (q/set-state! :status :waiting
                 :console :gui
                 :users nil
-                :player-setup nil
-                :player nil
-                :player1 nil
-                :player2 nil
+                :board-size (int 3)
+                :key-stroke nil
+                :enter-key? false
+                :current-player :player1
+                :player1 {:player-num 1 :piece "X"}
+                :player2 {:player-num 2 :piece "O"}
                 :board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}
-                :open-boxes [0 1 2 3 4 5 6 7 8]
-                :box-clicked nil
-                :winner nil
-                :message (:waiting messages)))
+                :boxes nil
+                :turn nil
+                :played-boxes []
+                :game-over false
+                :winner nil))
 
 (defn update-state [state]
-  {:status       (:status state)
-   :console      (:console state)
-   :users        (:users state)
-   :player-setup (:player-setup state)
-   :player       (:player state)
-   :player1      (:player1 state)
-   :player2      (:player2 state)
-   :board        (:board state)
-   :open-boxes   (:open-boxes state)
-   :box-clicked  (:box-clicked state)
-   :winner       (if (= (:status state) :playing) (play-game state))})
+  {:status         (if (:game-over state) (cond (= (:winner state) 0) :catsgame (= (:winner state) 1) :x-won :else :o-won) (:status state))
+   :console        (:console state)
+   :users          (:users state)
+   :board-size     (int 3)
+   :key-stroke     (:key-stroke state)
+   :enter-key      (:enter-key state)
+   :playing        (if (= :playing (:status state)) (if (zero? (:users state)) (play-turn state (play-box state))))
+   :current-player (:current-player state)
+   :current-type   (:type ((:current-player state) state))
+   :player1        (:player1 state)
+   :player2        (:player2 state)
+   :board          (:board state)
+   :played-boxes   (filter #(not (int? ((:board state) %))) (keys (:board state)))
+   :turn           (:turn state)
+   :box-played     (:box-played state)
+   :game-over      (game-over? state)
+   :winner         (if (:game-over state) (:winner (get-winner state)))})
 
 (defn draw-console [width height]
   (q/background 255)
@@ -59,7 +74,7 @@
 (defn draw-game-button [state x y]
   (let [width (first dim/button-size)
         height (second dim/button-size)
-        msg (if (= (:status state) :playing) ((:player state) messages) ((:status state) messages))]
+        msg (if (= (:status state) :playing) ((:current-player state) messages) ((:status state) messages))]
     (q/stroke-weight 3)
     (q/fill 0 0 200)
     (q/rect x y width height)
@@ -71,34 +86,33 @@
       (q/fill 255 255 255))
     (q/text msg (+ x (/ width 2)) (+ y (/ height 2) 10))))
 
-;(defn draw-x [x-position y-position]
-;  (q/line (- x-position 50) (- y-position 50) (+ x-position 50) (+ y-position 50))
-;  (q/line (- x-position 50) (+ y-position 50) (+ x-position 50) (- y-position 50)))
-;
-;(defn draw-floating-piece [state]
-;  (if (= :x-turn (:game-status state))
-;    (draw-x (:x-position state) (:y-position state))))
-
-
 (defn draw-state [state]
   (draw-console 700 800)
   (draw-gui-board 600 600)
   (draw-game-button state 120 715)
 
-  (cond (or (= (:status state) :user-setup) (= (:status state) :player-setup)) (draw-user-prompt state dim/prompt-x dim/prompt-y)
-        (or (= (:player state) :player1) (= (:player state) :player2)) (draw-piece state (q/mouse-x) (q/mouse-y))
-        ))
+  (doseq [box (:played-boxes state)]
+    (draw-box box state))
+
+  (if (or (= (:status state) :user-setup) (= (:status state) :player-setup) (= (:status state) :board-setup))
+    (draw-user-prompt state dim/prompt-x dim/prompt-y))
+
+
+
+  (if (= (:status state) :playing) (draw-piece state (q/mouse-x) (q/mouse-y)))
+
+  )
 
 
 (q/defsketch quil.gui
              :title "Tic Tac Toe"
              :resizable true
-             :host "ttt.main"
              :size [700 800]
              :setup setup-gui
              :update update-state
              :draw draw-state
              :mouse-clicked mouse-clicked
+             :key-typed key-typed
              :features [:keep-on-top]
              :middleware [m/fun-mode])
 

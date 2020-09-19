@@ -15,10 +15,10 @@
     )
 
   (it "Sets Board in Terminal Game"
-    (should= (str "What size grid do you want to play?\n")
+    (should= (str "What size grid do you want to play on?\n")
              (with-out-str (with-in-str "3" (board-size-prompt terminal))))
     ;(should= 5 (with-in-str "5" (set-board-size terminal)))
-    (should= "What size grid do you want to play?\nleo is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
+    (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
              (with-out-str (with-in-str "leo" (set-board-size terminal)))))
 
 

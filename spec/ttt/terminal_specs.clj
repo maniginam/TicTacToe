@@ -1,6 +1,7 @@
 (ns ttt.terminal-specs
   (:require [clojure.string :as s]
             [speclj.core :refer :all]
+            [ttt.game-setup :refer :all]
             [ttt.terminal :refer :all]
             [ttt.default-game :refer :all]
             [ttt.core :refer :all]
@@ -35,13 +36,13 @@
     (with-out-str (should= 0 (with-in-str "rex" (validate-player-count console)))))
 
   (it "tests for valid user piece"
-    (with-out-str (should= :human (with-in-str "x" (validate-user-position console))))
-    (with-out-str (should= :human (with-in-str "X" (validate-user-position console))))
-    (with-out-str (should= :computer (with-in-str "o" (validate-user-position console))))
-    (with-out-str (should= :computer (with-in-str "O" (validate-user-position console))))
-    (with-out-str (should= :computer (with-in-str "3" (validate-user-position console))))
-    (with-out-str (should= :computer (with-in-str "leo" (validate-user-position console))))
-    (with-out-str (should= :computer (with-in-str "" (validate-user-position console)))))
+    (with-out-str (should= :human (with-in-str "x" (assign-type (assoc console :users 1) 1))))
+    (with-out-str (should= :human (with-in-str "X" (assign-player1-type console))))
+    (with-out-str (should= :computer (with-in-str "o" (assign-player1-type console))))
+    (with-out-str (should= :computer (with-in-str "O" (assign-player1-type console))))
+    (with-out-str (should= :computer (with-in-str "3" (assign-player1-type console))))
+    (with-out-str (should= :computer (with-in-str "leo" (assign-player1-type console))))
+    (with-out-str (should= :computer (with-in-str "" (assign-player1-type console)))))
 
   (it "test user input for board-size"
     (with-out-str (should= 3 (with-in-str "3" (set-board-size console))))
@@ -66,10 +67,10 @@
       (with-out-str (should= :computer (with-in-str "o" (assign-type console 1))))))
 
   (it "Sets Board in Terminal Game"
-    (should= (str "What size grid do you want to play?\n")
+    (should= (str "What size grid do you want to play on?\n")
              (with-out-str (with-in-str "3" (board-size-prompt console))))
     ;(should= 5 (with-in-str "5" (set-board-size terminal)))
-    (should= "What size grid do you want to play?\nleo is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nWhat size grid do you want to play?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
+    (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
              (with-out-str (with-in-str "leo" (set-board-size console)))))
 
   ;(it "Draws the Board"
@@ -85,15 +86,11 @@
     (should= "9 is not a box option" (s/trim (with-out-str (valid-box? "9" standard-board))))
     (should= "box 0 is already taken" (s/trim (with-out-str (valid-box? "0" (assoc standard-board 0 "X"))))))
 
-  (it "tests human move"
-    (let [player1 {:player 1 :type :human :piece "X"}]
-      (should= "  0 || 1 || 2\n====||===||====\n  3 || 4 || 5\n====||===||====\n  6 || 7 || 8\nX's Turn\nSelect a box 0-8\n"
-               (with-out-str (with-in-str "0" (make-move player1 standard-board))))))
-
   (it "tests computer move"
-    (let [player1 {:player 1 :type :computer :piece "X"}]
+    (let [player1 {:player 1 :type :computer :piece "X"}
+          game {:console :terminal :current-player :player1 :player1 player1 :board {0 "X" 1 "O" 2 2 3 "O" 4 4 5 5 6 6 7 7 8 "X"}}]
       (should= "  X || O || 2\n====||===||====\n  O || X || 5\n====||===||====\n  6 || 7 || X\nComputer plays box 4\n"
-               (with-out-str (make-move player1 {0 "X" 1 "O" 2 2 3 "O" 4 4 5 5 6 6 7 7 8 "X"})))))
+               (with-out-str (make-move game (select-box player1 game))))))
 
   (it "prints results of game"
     (should= "Cat's Game" (s/trim (with-out-str (report {:console :terminal} (str "Cat's Game")))))

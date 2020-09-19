@@ -91,3 +91,8 @@
         (box-open? input board)
         false))))
 
+(defn validate-box-input [board]
+  (loop [input (ask-for-box)]
+    (if (valid-box? input board)
+      (Integer/parseInt input)
+      (recur (ask-for-box)))))
