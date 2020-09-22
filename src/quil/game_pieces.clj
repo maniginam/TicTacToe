@@ -4,15 +4,16 @@
             [quil.gui-game :refer :all]
             [quil.dimensions :as dim]))
 
-(defn draw-X [center-x center-y]
+(defn draw-X [center-x center-y & colors]
   (let [half-height (/ dim/board-size 14)]
     (q/stroke-weight 20)
     (q/line (- center-x half-height) (- center-y half-height) (+ center-x half-height) (+ center-y half-height))
     (q/line (+ center-x half-height) (- center-y half-height) (- center-x half-height) (+ center-y half-height))))
 
-(defn draw-O [center-x center-y]
+(defn draw-O [center-x center-y & colors]
   (let [radius (/ dim/board-size 14)
         weight 15]
+    (if (nil? colors) (q/stroke 0 0 0) (q/stroke 0 255 0))
     (q/stroke-weight weight)
     (q/no-fill)
     (q/ellipse-mode :center)
@@ -22,7 +23,9 @@
   (draw-X x y))
 
 (defmethod draw-piece :player2 [state x y]
-  (draw-O x y))
+ (draw-O x y))
+
+
 
 
 

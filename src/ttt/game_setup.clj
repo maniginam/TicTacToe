@@ -4,6 +4,7 @@
             [ttt.user-inputs :refer :all]))
 
 
+
 (defn assign-player2-type [player1]
   (if (= (:type player1) :human) :computer :human))
 

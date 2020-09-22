@@ -36,3 +36,4 @@ thing
 (1 :thing)
 (map #(int? (% %)) (keys (:thing superthing)))
 (map #(int? ((:thing superthing) %)) (keys (:thing superthing)))
+(first [])

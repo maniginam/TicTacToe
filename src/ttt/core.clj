@@ -1,16 +1,25 @@
 (ns ttt.core)
 
-(def game {:status :waiting :console nil
-           :users nil :board-size 3
-           :current-player nil
-           :player1 {:player-num 1 :piece :player1-piece}
-           :player2 {:player-num 2 :piece :player2-piece}
-           :board nil :played-boxes []
-           :game-over nil :winner nil})
+;(def game {:status :waiting
+;           :console nil
+;           :users nil
+;           :board-size 3
+;           :current-player nil
+;           :player1 {:player-num 1 :piece :player1-piece}
+;           :player2 {:player-num 2 :piece :player2-piece}
+;           :board nil
+;           :played-boxes []
+;           :game-over nil
+;           :winner nil})
 
-(defn update-game [game]
-  game)
+(def types {0 :computer 1 nil 2 :human})
 
+(defprotocol Game "Map for Game"
+  (setup-newgame [this] "sets up game"))
+
+(defrecord NewGame [game-map]
+  Game
+  (setup-newgame [this] (:game-map this)))
 
 (defmulti report :console)
 (defmulti welcome :console)
@@ -24,6 +33,7 @@
 (defmulti board-size-prompt :console)
 (defmulti set-board-size :console)
 (defmulti get-box-input :console)
+(defmulti play-again :console)
 
 (defn set-state [state]
   state)

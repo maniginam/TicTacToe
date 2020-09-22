@@ -29,10 +29,26 @@
   (println "====||===||====")
   (println " " (board 6) "||" (board 7) "||" (board 8)))
 
+(defn get-rows [board]
+  (let [size (count board)
+        grid-size (int (Math/sqrt size))
+        rows (for [row (range 0 grid-size)]
+               (if (< (board row) grid-size)
+                 (map #(board %) (range (* row grid-size) (* (inc row) grid-size)))))]
+    rows))
+
 (defn is-row-win? [board]
-  (or (= (board 0) (board 1) (board 2))
-      (= (board 3) (board 4) (board 5))
-      (= (board 6) (board 7) (board 8))))
+  ;(let [rows (get-rows board)
+  ;      size (count board)
+  ;      grid-size (int (Math/sqrt size))
+  ;      x-per-row (for [row rows] (filter #(= "X" %) row))
+  ;      o-per-row (for [row rows] (filter #(= "O" %) row))
+  ;      x-win (filter #(= grid-size (count %)) x-per-row)
+  ;      o-win (filter #(= grid-size (count %)) o-per-row)]
+  ;      x-win))
+(or (= (board 0) (board 1) (board 2))
+    (= (board 3) (board 4) (board 5))
+    (= (board 6) (board 7) (board 8))))
 
 (defn is-col-win? [board]
   (or (= (board 0) (board 3) (board 6))
@@ -67,4 +83,4 @@
     (= [played-box] (filter #(= played-box %) open-boxes))))
 
 (defn is-good-box? [board box]
-    (and (does-box-exist? box) (is-box-selection-open? board box)))
+  (and (does-box-exist? box) (is-box-selection-open? board box)))

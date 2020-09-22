@@ -21,7 +21,7 @@
   (it "plays 0 user, 3x3 board game"
     (let [game {:users 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
       (should= game (setup-game test-console))
-      (should= (assoc (dissoc game :board) :winner 0 :current-player :player2) (dissoc (play-game game) :board))))
+      (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board))))
 
   (it "Default: Sets up num-of-players"
     (should= 0 (:users (setup-game {}))))
@@ -54,6 +54,6 @@
     (should= "O Wins!" (game-results {:winner 2 :player2 {:piece "O"}})))
 
   (it "guides/leads the game from start to end"
-    (should= "Cat's Game" (run-game test-console)))
+    (should= "Cat's Game" (run (setup-game test-console))))
 
   )

@@ -23,7 +23,13 @@
     (should= {0 0 1 1 2 2 3 3} (create-board 2))
     (should= {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8} (create-board 3)))
 
+  (it "creates rows of board"
+    (should= [[0 1] [2 3]] (get-rows {0 0 1 1 2 2 3 3}))
+    (should= [[0 1 2] [3 4 5] [6 7 8]] (get-rows {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})))
+
   (it "checks rows for win"
+    ;(println (is-row-win? {0 "X" 1 "X" 2 "X" 3 3 4 4 5 5 6 "O" 7 "O" 8 "O"}))
+    ;(should= [["X" "X" "X"] [] []] (is-row-win? {0 "X" 1 "X" 2 "X" 3 3 4 4 5 5 6 "O" 7 "O" 8 "O"}))
     (should-not (is-row-win? {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}))
     (should (is-row-win? {0 "X" 1 "X" 2 "X" 3 3 4 4 5 5 6 6 7 7 8 8}))
     (should-not (is-row-win? {0 "X" 1 "O" 2 "X" 3 3 4 4 5 5 6 6 7 7 8 8}))

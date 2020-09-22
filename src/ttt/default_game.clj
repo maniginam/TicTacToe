@@ -2,8 +2,7 @@
   (:require [ttt.optimal-play :refer :all]
             [ttt.board :refer :all]
             [ttt.core :refer :all]
-            [ttt.ai :refer :all]
-            [ttt.human :refer :all]))
+            [ttt.ai :refer :all]))
 
 (defmethod validate-player-count :default [console] 0)
 
@@ -13,6 +12,10 @@
 
 (defmethod report :default [console results]
   results)
+
+(defn game-over? [game]
+  (let [board (:board game)]
+    (or (is-win? board) (full-board? board))))
 
 (defn game-results [game]
   (let [winner (:winner game)]
@@ -29,23 +32,27 @@
 ;    box))
 
 (defn make-move [game box]
-  (let [player ((:current-player game) game)
-        board (:board game)
-        piece (:piece player)
-        new-board (assoc board box piece)]
-    (draw-board game new-board)
-    (print-turn game player box)
-    new-board))
-
-(defn play-turn [game box]
-  (let [new-board (make-move game box)
-        next-player (next-player game)]
-        (assoc game :board new-board :current-player next-player)))
+  (if (nil? box)
+    (:board game)
+    (let [player ((:current-player game) game)
+          board (:board game)
+          piece (:piece player)
+          new-board (assoc board box piece)]
+      (draw-board game new-board)
+      (print-turn game player box)
+      new-board)))
 
 (defn play-box [game]
-  (let [player ((:current-player game) game)
-        box (select-box player game)]
-    box))
+  (if (full-board? (:board game))
+    nil
+    (let [player ((:current-player game) game)
+          box (select-box player game)]
+      box)))
+
+(defn play-turn [game box]
+    (let [new-board (make-move game box)
+          next-player (next-player game)]
+      (assoc game :board new-board :current-player next-player)))
 
 (defn get-winner [game]
   (let [board (:board game)]
@@ -53,12 +60,8 @@
           (full-board? board) (assoc game :winner 0)
           :else nil)))
 
-(defn game-over? [game]
-  (let [board (:board game)]
-    (or (is-win? board) (full-board? board))))
-
 (defn play-game [game]
-  (loop [game game]
-    (cond (game-over? game) (get-winner game)
-          :else (recur (play-turn game (play-box game))))))
+  (if (game-over? game)
+    (get-winner game)
+    (play-turn game (play-box game))))
 

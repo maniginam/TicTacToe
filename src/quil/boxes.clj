@@ -26,15 +26,6 @@
         bottom (nth perimeter 3)]
     (and (>= mouse-x left) (< mouse-x right) (>= mouse-y top) (< mouse-y bottom))))
 
-;(defn draw-box [box state left-x top-y]
-;  (let [player1-piece (:piece (:player1 state))
-;        player2-piece (:piece (:player1 state))
-;        player (cond (= player1-piece ((:board state) box)) :player1
-;                     (= player2-piece ((:board state) box)) :player2)
-;        center-x (+ left-x (/ box-size 2))
-;        center-y (+ top-y (/ box-size 2))]
-;    (draw-piece {:current-player player} left-x top-y)))
-
 (defn draw-box [box state]
   (let [perimeter (box-perimeter box state)
         left (first perimeter)

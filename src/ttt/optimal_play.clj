@@ -26,18 +26,20 @@
 
 (defn play-optimal-box [board player-num]
   (if (empty-board? board)
-    (let [corners [0 2 6 8]]
-      (nth corners (rand-int 4)))
+    (let [corners [0 2 6 8]
+          box (nth corners (rand-int 4))]
+      box)
     (let [depth 0
           box-scores (get-box-scores board player-num depth)
           open-boxes (open-boxes board)
           min (apply min box-scores)
-          max (apply max box-scores)]
-      (loop [index 0]
-        (if (= player-num 1)
-          (if (= max (nth box-scores index))
-            (nth open-boxes index)
-            (recur (inc index)))
-          (if (= min (nth box-scores index))
-            (nth open-boxes index)
-            (recur (inc index))))))))
+          max (apply max box-scores)
+          box (loop [index 0]
+                (if (= player-num 1)
+                  (if (= max (nth box-scores index))
+                    (nth open-boxes index)
+                    (recur (inc index)))
+                  (if (= min (nth box-scores index))
+                    (nth open-boxes index)
+                    (recur (inc index)))))]
+      box)))
