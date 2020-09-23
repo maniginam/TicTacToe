@@ -3,8 +3,7 @@
             [ttt.optimal-play :refer :all]
             [ttt.board :refer :all]
             [ttt.core :refer :all]
-            [ttt.user-inputs :refer :all]
-            [ttt.game-setup :as setup])
+            [ttt.user-inputs :refer :all])
   (:import (ttt.core NewGame)))
 
 (defmethod validate-player-count :terminal [console]

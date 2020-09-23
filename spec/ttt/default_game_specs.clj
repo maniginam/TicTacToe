@@ -5,8 +5,8 @@
 
 (def player1 {:player-num 1 :type :computer :piece "X"})
 (def player2 {:player-num 2 :type :computer :piece "O"})
-(def standard-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-(def player1-wins-board {0 "X" 1 "X" 2 2 3 "O" 4 "O" 5 5 6 6 7 7 8 8})
+(def standard-board [0 1 2 3 4 5 6 7 8])
+(def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
 (def test-game {:users 0 :current-player player1 :player1 player1 :player2 player2 :board standard-board})
 (def test-game-player1-wins {:users 0 :current-player :player1 :player1 player1 :player2 player2 :board player1-wins-board})
 (def test-console {})
@@ -21,8 +21,8 @@
   (it "makes computer move"
     (let [box (select-box player1 {:current-player :player1 :board standard-board})]
       (should= 1 (count (filter #(= % box) [0 2 6 8]))))
-    (with-out-str (should= 2 (select-box player1 {:current-player :player1 :board {0 "O" 1 "O" 2 2}})))
-    (with-out-str (should= 1 (select-box player1 {:current-player :player1 :board {0 "X" 1 1 2 "X"}}))))
+    (with-out-str (should= 2 (select-box player1 {:current-player :player1 :board ["O" "O" 2 3 4 5 6 7 8]})))
+    (with-out-str (should= 1 (select-box player1 {:current-player :player1 :board ["X" 1 "X" 3 4 5 6 7 8]}))))
 
   (it "reports results"
     (should= "Cat's Game" (report {:console :default} (str "Cat's Game")))

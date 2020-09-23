@@ -1,9 +1,8 @@
 (ns ttt.game-setup
   (:require [ttt.core :refer :all]
             [ttt.board :refer :all]
-            [ttt.user-inputs :refer :all]))
-
-
+            [ttt.user-inputs :refer :all]
+            [ttt.terminal :refer :all]))
 
 (defn assign-player2-type [player1]
   (if (= (:type player1) :human) :computer :human))
@@ -34,4 +33,4 @@
         player1 (assign-player (assoc console :users users) :player1)
         player2 (assign-player (assoc console :users users :player1 player1) :player2)
         board (create-board (set-board-size console))]
-      (assoc console :current-player :player1 :box-played nil :users users :player1 player1 :player2 player2 :board board)))
+    (assoc console :current-player :player1 :box-played nil :users users :player1 player1 :player2 player2 :board board)))

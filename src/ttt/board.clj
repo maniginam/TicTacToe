@@ -9,71 +9,71 @@
 (def game-pieces {:player1-piece "X" :player2-piece "O"})
 
 (defn create-board [size]
-  (let [grid-size (* size size)
-        board (if (= 1 grid-size) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range grid-size))))]
+  (let [box-count (* size size)
+        board-map (if (= 1 box-count) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range box-count))))
+        board (vec (range box-count))]
     board))
-
-(defmethod draw-board :default [game board] nil)
-(defmethod draw-board :terminal [game board]
-  ;(let [row-size (Math/sqrt (count board))
-  ;      board-vec (range (count board))]
-  ;  (loop [board board-vec
-  ;         row (take row-size board)
-  ;         board-str []]
-  ;    (if (empty? board)
-  ;      (println (apply str (interpose (str (repeat (dec row-size) "\n===||==\n")) board-str)))
-  ;      (recur (drop row-size board) (take row-size (drop row-size board)) (conj board-str (apply str (interpose " || " row))))))))
-  (println " " (board 0) "||" (board 1) "||" (board 2))
-  (println "====||===||====")
-  (println " " (board 3) "||" (board 4) "||" (board 5))
-  (println "====||===||====")
-  (println " " (board 6) "||" (board 7) "||" (board 8)))
 
 (defn get-rows [board]
   (let [size (count board)
         grid-size (int (Math/sqrt size))
         rows (for [row (range 0 grid-size)]
-               (if (< (board row) grid-size)
-                 (map #(board %) (range (* row grid-size) (* (inc row) grid-size)))))]
+               (map #(nth board %) (range (* row grid-size) (* (inc row) grid-size))))]
     rows))
 
-(defn is-row-win? [board]
-  ;(let [rows (get-rows board)
-  ;      size (count board)
-  ;      grid-size (int (Math/sqrt size))
-  ;      x-per-row (for [row rows] (filter #(= "X" %) row))
-  ;      o-per-row (for [row rows] (filter #(= "O" %) row))
-  ;      x-win (filter #(= grid-size (count %)) x-per-row)
-  ;      o-win (filter #(= grid-size (count %)) o-per-row)]
-  ;      x-win))
-(or (= (board 0) (board 1) (board 2))
-    (= (board 3) (board 4) (board 5))
-    (= (board 6) (board 7) (board 8))))
+(defn did-row-win? [board]
+  (let [rows (get-rows board)
+        wins-by-row (for [row rows] (every? #(= (first row) %) (rest row)))]
+    (not (empty? (filter true? wins-by-row)))))
 
-(defn is-col-win? [board]
-  (or (= (board 0) (board 3) (board 6))
-      (= (board 1) (board 4) (board 7))
-      (= (board 2) (board 5) (board 8))))
+(defn get-columns [board]
+  (let [size (count board)
+        grid-size (int (Math/sqrt size))
+        columns (for [column (range 0 grid-size)]
+                  (map #(nth board %)
+                       (take grid-size (iterate (partial + grid-size) column))))]
+    columns))
+
+(defn did-col-win? [board]
+  (let [columns (get-columns board)
+        wins-by-col (for [column columns] (every? #(= (first column) %) (rest column)))]
+    (not (empty? (filter true? wins-by-col)))))
+
+(defn get-diagonals [board]
+  (let [size (count board)
+        grid-size (int (Math/sqrt size))
+        diagonal1 (map #(nth board %) (take grid-size (iterate (partial + (inc grid-size)) 0)))
+        diagonal2 (map #(nth board %) (take grid-size (iterate (partial + (dec grid-size)) (dec grid-size))))]
+    [diagonal1 diagonal2]))
 
 (defn is-diag-win? [board]
-  (or (= (board 0) (board 4) (board 8))
-      (= (board 2) (board 4) (board 6))))
+  (or (= (nth board 0) (nth board 4) (nth board 8))
+      (= (nth board 2) (nth board 4) (nth board 6))))
 
 (defn is-win? [board]
-  (or (is-row-win? board) (is-col-win? board) (is-diag-win? board)))
+  (if (or (did-row-win? board) (did-col-win? board))
+    true
+    (let [diagonals (get-diagonals board)
+          diagonal1 (first diagonals)
+          diagonal2 (second diagonals)
+          diag1-win? (every? #(= (first diagonal1) %) diagonal1)
+          diag2-win? (every? #(= (first diagonal2) %) diagonal2)]
+      (or diag1-win? diag2-win?))))
 
 (defn put-piece-on-board [board box-played game-piece]
-  (assoc (dissoc board box-played) box-played game-piece))
+  (replace {box-played game-piece} board))
+;(assoc (dissoc board box-played) box-played game-piece))
 
 (defn open-boxes [board]
-  (let [open-boxes (remove #(or (= "X" (second %)) (= "O" (second %))) board)]
-    (sort (keys open-boxes))))
+  (filter #(int? %) board))
+;(let [open-boxes (remove #(or (= "X" (second %)) (= "O" (second %))) board)]
+;  (sort (keys open-boxes))))
 
 (defn full-board? [board]
-  (= [] (open-boxes board)))
+  (empty? (open-boxes board)))
 
 (defn empty-board? [board]
-  (= 9 (count (open-boxes board))))
+  (= 9 (count (filter #(int? %) board))))
 
 (defn does-box-exist? [box]
   (and (>= box 0) (< box 9)))
@@ -84,3 +84,21 @@
 
 (defn is-good-box? [board box]
   (and (does-box-exist? box) (is-box-selection-open? board box)))
+
+(defmethod draw-board :default [game board] nil)
+
+(defmethod draw-board :terminal [game board]
+  (let [row-size (int (Math/sqrt (count board)))
+        rows (get-rows board)
+        break-line (if (< row-size 3) (str "===||=== ") (str "====" (repeat (- row-size 2) (str "||===")) "==== "))]
+    (doseq [row rows]
+      (println (apply str " " (interpose " || " row)))
+      (if (not (= (last rows) row))
+        (println break-line)))))
+
+
+  ;(println " " (nth board 0) "||" (nth board 1) "||" (nth board 2))
+  ;(println "====||===||====")
+  ;(println " " (nth board 3) "||" (nth board 4) "||" (nth board 5))
+  ;(println "====||===||====")
+  ;(println " " (nth board 6) "||" (nth board 7) "||" (nth board 8)))

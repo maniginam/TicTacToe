@@ -15,7 +15,8 @@
 
 (defn get-box-scores [board player-num depth]
   (for [box (open-boxes board)]
-    (let [test-board (assoc (dissoc board (board box)) (board box) (get-player-piece player-num))
+    (let [piece (get-player-piece player-num)
+          test-board (replace {box piece} board)
           box-score (cond (is-win? test-board) (get-score player-num depth)
                           (full-board? test-board) (get-score 0 depth)
                           :else

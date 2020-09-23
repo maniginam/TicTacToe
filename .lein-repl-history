@@ -37,3 +37,13 @@ thing
 (map #(int? (% %)) (keys (:thing superthing)))
 (map #(int? ((:thing superthing) %)) (keys (:thing superthing)))
 (first [])
+(apply min [0 10 3 4 5])
+(let [box 3 piece "X"]
+(replace [box piece] [0 1 2 3 4 5 6 7 8]))
+(def box 3)
+(def piece "X")
+(def board [0 1 2 3 4 5 6 7 8])
+(replace [piece] (nth board box))
+(replace [piece] board)
+(replace [1 2 piece 4 5 6] board)
+(replace {box piece} board)

@@ -15,8 +15,10 @@
       (report game (game-results game))
       (recur (play-game game)))))
 
-(defn -main [& console]
-  (let [game (setup-game {:console (keyword console)})]
+(defn -main [console]
+  (let [console-type (keyword console)
+        console {:console console-type}
+        game (setup-game console)]
     (run game)))
 
 

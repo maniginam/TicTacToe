@@ -7,13 +7,13 @@
 
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def standard-board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
-(def player1-wins-board {0 "X" 1 "X" 2 2 3 "O" 4 "O" 5 5 6 6 7 7 8 8})
+(def standard-board [0 1 2 3 4 5 6 7 8])
+(def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
 (def test-game {:users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board})
 (def test-game-player1-wins {:users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
 (def test-console {})
 
-(def boards {:three-by-three {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}})
+(def boards {:three-by-three [0 1 2 3 4 5 6 7 8]})
 (def players {:player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}})
 
 (describe "MAIN - "
@@ -44,7 +44,7 @@
   (it "Terminal: Set Up game map with 1 user as player 2"
     (let [player1 {:player-num 1 :type :computer :piece "X"}
           player2 {:player-num 2 :type :human :piece "O"}
-          board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}
+          board [0 1 2 3 4 5 6 7 8]
           game {:console :terminal :users 1 :box-played nil :current-player :player1 :player1 player1 :player2 player2 :board board}]
       (with-out-str (should= game (with-in-str "1" (setup-game {:console :terminal}))))))
 
