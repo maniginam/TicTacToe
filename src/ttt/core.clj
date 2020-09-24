@@ -14,12 +14,12 @@
 
 (def types {0 :computer 1 nil 2 :human})
 
-(defprotocol Game "Map for Game"
-  (setup-newgame [this] "sets up game"))
-
-(defrecord NewGame [game-map]
-  Game
-  (setup-newgame [this] (:game-map this)))
+;(defprotocol Game "Map for Game"
+;  (setup-newgame [this] "sets up game"))
+;
+;(defrecord NewGame [game-map]
+;  Game
+;  (setup-newgame [this] (:game-map this)))
 
 (defmulti report :console)
 (defmulti welcome :console)

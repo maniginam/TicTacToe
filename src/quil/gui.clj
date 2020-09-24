@@ -13,20 +13,19 @@
             [quil.boxes :refer :all]
             [quil.game-pieces :as piece]))
 
-
 (defn setup-gui []
   (q/frame-rate 50)
   (q/set-state! :status :waiting
                 :message-key :waiting
                 :console :gui
                 :users nil
-                :board-size (int 3)
+                :board-size 3
                 :key-stroke nil
                 :enter-key? false
                 :current-player :player1
                 :player1 {:player-num 1 :piece "X"}
                 :player2 {:player-num 2 :piece "O"}
-                :board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8}
+                :board [0 1 2 3 4 5 6 7 8]
                 :ai-turn false
                 :boxes nil
                 :turn nil
@@ -49,13 +48,13 @@
    :player2          (:player2 state)
    :console          (:console state)
    :users            (:users state)
-   :board-size       (int 3)
+   :board-size       3
    :box-count        (int (Math/pow (:board-size state) 2))
    :key-stroke       (:key-stroke state)
    :enter-key        (:enter-key state)
    :board            (if ai-turn? (make-move state (play-box state)) (:board state))
    :box-played       (:box-played state)
-   :played-boxes     (filter #(not (int? ((:board state) %))) (keys (:board state)))
+   :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
    :turns-played     (count (:played-boxes state))
    :current-player   (if ai-turn? (next-player state) (:current-player state))
    :current-type     (:type ((:current-player state) state))
@@ -65,33 +64,9 @@
    :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
    :message-key      (get-message-key state)}))
 
-;(-> state
-;    (assoc :game-over (game-over? state))
-;    (assoc :winner (if (:game-over state) (:winner (get-winner state))))
-;    (assoc :current-player (if (:ai-turn state) (next-player state) (:current-player state)))
-;    (assoc :current-type (:type ((:current-player state) state)))
-;    (assoc :current-plyr-num (:player-num ((:current-player state) state)))
-;    (assoc :ai-turn (and (= :playing (:status state)) (= (:current-type state) :computer)))
-;    (assoc :player1 (:player1 state))
-;    (assoc :player2 (:player2 state))
-;    (assoc :console (:console state))
-;    (assoc :users (:users state))
-;    (assoc :board-size (int 3))
-;    (assoc :box-count (int (Math/pow (:board-size state) 2)))
-;    (assoc :key-stroke (:key-stroke state))
-;    (assoc :enter-key (:enter-key state))
-;    (assoc :board (if (:ai-turn state) (make-move state (play-box state)) (:board state)))
-;    (assoc :box-played (:box-played state))
-;    (assoc :played-boxes (filter #(not (int? ((:board state) %))) (keys (:board state))))
-;    (assoc :turns-played (count (:played-boxes state)))
-;    (assoc :status (if (:game-over state) :game-over (:status state)))
-;    (assoc :message-key (get-message-key state))
-;    (assoc :print (println state))
-;    ))
-
 (defn draw-state [state]
-  (draw-console 700 800)
-  (draw-gui-board 600 600)
+  (draw-console)
+  (draw-gui-board (:board-size state))
   (draw-game-button state 120 715)
 
   (if (or (= (:status state) :user-setup) (= (:status state) :player-setup) (= (:status state) :board-setup))
@@ -107,7 +82,8 @@
   )
 
 
-(q/defsketch quil.gui
+(defn -main []
+  (q/defsketch gui
              :title "Tic Tac Toe"
              :resizable true
              :size [700 800]
@@ -118,6 +94,7 @@
              :key-typed key-typed
              :features [:keep-on-top]
              :middleware [m/fun-mode])
+)
 
 
 

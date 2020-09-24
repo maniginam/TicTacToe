@@ -26,11 +26,6 @@
 (defn next-player [game]
   (if (= (:current-player game) :player1) :player2 :player1))
 
-;(defmethod select-box :default [player game]
-;  (let [board (:board game)
-;        box (play-optimal-box board (:player-num player))]
-;    box))
-
 (defn make-move [game box]
   (if (nil? box)
     (:board game)
@@ -50,13 +45,14 @@
       box)))
 
 (defn play-turn [game box]
-    (let [new-board (make-move game box)
-          next-player (next-player game)]
-      (assoc game :board new-board :current-player next-player)))
+  (let [new-board (make-move game box)
+        next-player (next-player game)]
+    (assoc game :board new-board :current-player next-player)))
 
 (defn get-winner [game]
   (let [board (:board game)]
-    (cond (is-win? board) (assoc game :winner (:player-num ((next-player game) game)))
+    (cond (= 1 (count (:board game))) (assoc game :winner 1)
+          (is-win? board) (assoc game :winner (:player-num ((next-player game) game)))
           (full-board? board) (assoc game :winner 0)
           :else nil)))
 

@@ -46,59 +46,46 @@
         diagonal2 (map #(nth board %) (take grid-size (iterate (partial + (dec grid-size)) (dec grid-size))))]
     [diagonal1 diagonal2]))
 
-(defn is-diag-win? [board]
-  (or (= (nth board 0) (nth board 4) (nth board 8))
-      (= (nth board 2) (nth board 4) (nth board 6))))
+(defn did-diagonal-win? [board]
+  (let [diagonals (get-diagonals board)
+        diagonal1 (first diagonals)
+        diagonal2 (second diagonals)
+        diag1-win? (every? #(= (first diagonal1) %) diagonal1)
+        diag2-win? (every? #(= (first diagonal2) %) diagonal2)]
+    (or diag1-win? diag2-win?)))
 
 (defn is-win? [board]
-  (if (or (did-row-win? board) (did-col-win? board))
-    true
-    (let [diagonals (get-diagonals board)
-          diagonal1 (first diagonals)
-          diagonal2 (second diagonals)
-          diag1-win? (every? #(= (first diagonal1) %) diagonal1)
-          diag2-win? (every? #(= (first diagonal2) %) diagonal2)]
-      (or diag1-win? diag2-win?))))
+  (or (did-row-win? board) (did-col-win? board) (did-diagonal-win? board)))
 
 (defn put-piece-on-board [board box-played game-piece]
   (replace {box-played game-piece} board))
-;(assoc (dissoc board box-played) box-played game-piece))
 
 (defn open-boxes [board]
   (filter #(int? %) board))
-;(let [open-boxes (remove #(or (= "X" (second %)) (= "O" (second %))) board)]
-;  (sort (keys open-boxes))))
 
 (defn full-board? [board]
   (empty? (open-boxes board)))
 
 (defn empty-board? [board]
-  (= 9 (count (filter #(int? %) board))))
+  (every? int? board))
 
-(defn does-box-exist? [box]
-  (and (>= box 0) (< box 9)))
+(defn does-box-exist? [box board]
+  (and (>= box 0) (< box (count board))))
 
 (defn is-box-selection-open? [board played-box]
   (let [open-boxes (open-boxes board)]
     (= [played-box] (filter #(= played-box %) open-boxes))))
 
 (defn is-good-box? [board box]
-  (and (does-box-exist? box) (is-box-selection-open? board box)))
+  (and (does-box-exist? box board) (is-box-selection-open? board box)))
 
 (defmethod draw-board :default [game board] nil)
 
 (defmethod draw-board :terminal [game board]
   (let [row-size (int (Math/sqrt (count board)))
         rows (get-rows board)
-        break-line (if (< row-size 3) (str "===||=== ") (str "====" (repeat (- row-size 2) (str "||===")) "==== "))]
+        break-line (str "=====" (apply str (repeat (- row-size 1) "||=====")))]
     (doseq [row rows]
-      (println (apply str " " (interpose " || " row)))
+      (println (apply str "  " (interpose "  ||  " row)))
       (if (not (= (last rows) row))
         (println break-line)))))
-
-
-  ;(println " " (nth board 0) "||" (nth board 1) "||" (nth board 2))
-  ;(println "====||===||====")
-  ;(println " " (nth board 3) "||" (nth board 4) "||" (nth board 5))
-  ;(println "====||===||====")
-  ;(println " " (nth board 6) "||" (nth board 7) "||" (nth board 8)))

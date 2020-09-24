@@ -85,32 +85,20 @@ public class TicTacToeGUI extends PApplet {
         switch (state) {
             case WAITING:
                 switch (event) {
-                    case GAME_STARTED:
-                        state = GameState.PLAYING;
-                        break;
-                    case WON:
-                        System.out.println("game hasn't started yet...");
-                        break;
+                    case GAME_STARTED -> state = GameState.PLAYING;
+                    case WON -> System.out.println("game hasn't started yet...");
                 }
                 break;
             case PLAYING:
                 switch (event) {
-                    case GAME_STARTED:
-                        System.out.println("Game already in progress");
-                        break;
-                    case WON:
-                        state = GameState.OVER;
-                        break;
+                    case GAME_STARTED -> System.out.println("Game already in progress");
+                    case WON -> state = GameState.OVER;
                 }
                 break;
             case OVER:
                 switch (event) {
-                    case GAME_STARTED:
-                        System.out.println("Game Over");
-                        break;
-                    case WON:
-                        System.out.println("game already over...");
-                        break;
+                    case GAME_STARTED -> System.out.println("Game Over");
+                    case WON -> System.out.println("game already over...");
                 }
         }
     }

@@ -13,15 +13,10 @@
 (def test-game-player1-wins {:users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
 (def test-console {})
 
-(def boards {:three-by-three [0 1 2 3 4 5 6 7 8]})
+(def boards {:three-by-three [0 1 2 3 4 5 6 7 8] :four-by-four [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]})
 (def players {:player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}})
 
 (describe "MAIN - "
-
-  (it "plays 0 user, 3x3 board game"
-    (let [game {:users 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
-      (should= game (setup-game test-console))
-      (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board))))
 
   (it "Default: Sets up num-of-players"
     (should= 0 (:users (setup-game {}))))
@@ -39,7 +34,7 @@
     (should= standard-board (:board (setup-game test-game))))
 
   (it "Default: Set Up game map"
-      (should= test-game (setup-game test-console)))
+    (should= test-game (setup-game test-console)))
 
   (it "Terminal: Set Up game map with 1 user as player 2"
     (let [player1 {:player-num 1 :type :computer :piece "X"}
@@ -47,6 +42,11 @@
           board [0 1 2 3 4 5 6 7 8]
           game {:console :terminal :users 1 :box-played nil :current-player :player1 :player1 player1 :player2 player2 :board board}]
       (with-out-str (should= game (with-in-str "1" (setup-game {:console :terminal}))))))
+
+  (it "plays 0 user, 3x3 board game"
+    (let [game {:users 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
+      (should= game (setup-game test-console))
+      (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board))))
 
   (it "gets game results"
     (should= "Cat's Game" (game-results {:winner 0}))
@@ -56,4 +56,7 @@
   (it "guides/leads the game from start to end"
     (should= "Cat's Game" (run (setup-game test-console))))
 
+  (it "plays a 4x4 0 player game"
+    (let [game {:console :default :current-player :player1 :users 0 :player1 player1 :player2 player2 :board (:four-by-four boards)}]
+      (should= "Cat's Game" (play-game game))))
   )

@@ -67,7 +67,7 @@
   (read-line))
 
 (defn ask-for-box []
-  (println "Select a box 0-8")
+  (println "Select a box")
   (read-line))
 
 (defn valid-box-type? [input]

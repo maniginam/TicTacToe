@@ -27,7 +27,9 @@
 
 (defn play-optimal-box [board player-num]
   (if (empty-board? board)
-    (let [corners [0 2 6 8]
+    (let [box-count (count board)
+          row-size (int (Math/sqrt (count board)))
+          corners [0 (dec row-size) (- box-count row-size) (dec box-count)]
           box (nth corners (rand-int 4))]
       box)
     (let [depth 0

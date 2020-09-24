@@ -36,7 +36,7 @@
 
 (defmethod mouse-clicked :playing [state event]
   (let [board (:board state)
-        box (first (filter #(mouse-in-box? % state (:x event) (:y event)) (keys board)))]
+        box (first (filter #(mouse-in-box? % state (:x event) (:y event)) board))]
     (cond (nil? box) state
           (not (box-open? box board)) (do (draw-piece state (q/mouse-x) (q/mouse-y)) state)
           :else (play-turn state box))))

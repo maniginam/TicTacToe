@@ -69,15 +69,8 @@
   (it "Sets Board in Terminal Game"
     (should= (str "What size grid do you want to play on?\n")
              (with-out-str (with-in-str "3" (board-size-prompt console))))
-    ;(should= 5 (with-in-str "5" (set-board-size terminal)))
     (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
              (with-out-str (with-in-str "leo" (set-board-size console)))))
-
-  ;(it "Draws the Board"
-  ;  (should= "\n" (with-out-str (draw-board (create-board 0))))
-  ;  (should= "0\n" (with-out-str (draw-board (create-board 1))))
-  ;  (should= "0 || 1\n" (draw-board (create-board 2)))
-  ;  )
 
   (it "tests valid human box entry"
     (with-out-str (should (valid-box? "0" standard-board)))
@@ -86,11 +79,11 @@
     (should= "9 is not a box option" (s/trim (with-out-str (valid-box? "9" standard-board))))
     (should= "box 0 is already taken" (s/trim (with-out-str (valid-box? "0" (replace {0 "X"} standard-board))))))
 
-  ;(it "tests computer move"
-  ;  (let [player1 {:player 1 :type :computer :piece "X"}
-  ;        game {:console :terminal :current-player :player1 :player1 player1 :board {0 "X" 1 "O" 2 2 3 "O" 4 4 5 5 6 6 7 7 8 "X"}}]
-  ;    (should= "  X || O || 2\n====||===||====\n  O || X || 5\n====||===||====\n  6 || 7 || X\nComputer plays box 4\n"
-  ;             (with-out-str (make-move game (select-box player1 game))))))
+  (it "tests computer move"
+    (let [player1 {:player 1 :type :computer :piece "X"}
+          game {:console :default :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
+      (should= ["X" "O" 2 "O" "X" 5 6 7 "X"]
+               (make-move game (select-box player1 game)))))
 
   (it "prints results of game"
     (should= "Cat's Game" (s/trim (with-out-str (report {:console :terminal} (str "Cat's Game")))))

@@ -5,15 +5,13 @@
             [quil.dimensions :as dim]
             [quil.game-pieces :refer :all]))
 
-(def box-size (/ (- dim/board-size 100) 3))
-
 (defn box-perimeter [box state]
   (let [left-x (/ dim/board-size 14)
         top-y (/ dim/board-size 14)
-        board (:board state)
-        board-size (:board-size state)
-        remainder (rem box board-size)
-        divisor (/ (- box remainder) board-size)
+        boxes-per-row (:board-size state)
+        box-size (/ (- dim/board-size 100) boxes-per-row)
+        remainder (rem box boxes-per-row)
+        divisor (/ (- box remainder) boxes-per-row)
         left (+ left-x (* remainder box-size))
         top (+ top-y (* divisor box-size))]
     [left top (+ left box-size) (+ top box-size)]))
@@ -28,6 +26,8 @@
 
 (defn draw-box [box state]
   (let [perimeter (box-perimeter box state)
+        boxes-per-row (:board-size state)
+        box-size (/ (- dim/board-size 100) boxes-per-row)
         left (first perimeter)
         top (second perimeter)
         center-x (+ left (/ box-size 2))

@@ -2,8 +2,8 @@
 
 (def console-size [700 800])
 (def board-size 700)
-(def button-top-left-corner [120 715])
-(def button-size [460 70])
+(def button-top-left-corner [100 (+ board-size 15)])
+(def button-size [(- (first console-size) 200) (- (second console-size) (first console-size) 30)])
 (def prompt-x (* (/ board-size 2) 0.4))
 (def prompt-y 235)
 (def prompt-size [(* board-size 0.6) (/ board-size 3)])

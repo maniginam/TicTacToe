@@ -3,7 +3,7 @@
     [ttt.core :refer :all]
     [ttt.game-setup :refer :all]
     [ttt.default-game :refer :all]
-    ;[quil.gui :as gui]
+    [quil.gui :as gui]
     ))
 
 (def game-state
