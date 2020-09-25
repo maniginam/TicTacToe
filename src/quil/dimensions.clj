@@ -2,7 +2,8 @@
 
 (def console-size [700 800])
 (def board-size 700)
-(def button-top-left-corner [100 (+ board-size 15)])
+(def button-left 100)
+(def button-top (+ board-size 15))
 (def button-size [(- (first console-size) 200) (- (second console-size) (first console-size) 30)])
 (def prompt-x (* (/ board-size 2) 0.4))
 (def prompt-y 235)
@@ -21,6 +22,6 @@
    :height 100})
 
 (def board-size-entry
-  {:left (- (+ prompt-x (/ (first prompt-size) 2)) 25)
-   :top (- (+ prompt-y (/ (second prompt-size) 2)) 25)
+  {:left (+ prompt-x (/ (first prompt-size) 2))
+   :top (+ prompt-y (/ (second prompt-size) 2) 30)
    :width 100})

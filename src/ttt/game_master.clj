@@ -1,4 +1,4 @@
-(ns ttt.default-game
+(ns ttt.game-master
   (:require [ttt.optimal-play :refer :all]
             [ttt.board :refer :all]
             [ttt.core :refer :all]

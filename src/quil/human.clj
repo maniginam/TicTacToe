@@ -1,6 +1,6 @@
 (ns quil.human
   (:require [ttt.core :refer :all]
-            [quil.gui-game :refer :all]
+            [quil.gui-core :refer :all]
             [quil.boxes :refer :all]
             [ttt.human :refer :all]))
 

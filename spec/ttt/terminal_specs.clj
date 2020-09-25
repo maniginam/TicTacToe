@@ -3,7 +3,7 @@
             [speclj.core :refer :all]
             [ttt.game-setup :refer :all]
             [ttt.terminal :refer :all]
-            [ttt.default-game :refer :all]
+            [ttt.game-master :refer :all]
             [ttt.core :refer :all]
             [ttt.board :refer :all]
             [ttt.user-inputs :refer :all]))

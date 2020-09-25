@@ -25,24 +25,31 @@
                             (apply max (get-box-scores test-board (get-next-player player-num) (inc depth)))))]
       box-score)))
 
+(defn check-for-win [board player-num]
+  (for [box (open-boxes board) piece ["X" "O"]]
+    (let [piece (get-player-piece player-num)
+          test-board (replace {box piece} board)]
+      (if (is-win? test-board) box))))
+
 (defn play-optimal-box [board player-num]
-  (if (empty-board? board)
-    (let [box-count (count board)
-          row-size (int (Math/sqrt (count board)))
-          corners [0 (dec row-size) (- box-count row-size) (dec box-count)]
-          box (nth corners (rand-int 4))]
-      box)
-    (let [depth 0
-          box-scores (get-box-scores board player-num depth)
-          open-boxes (open-boxes board)
-          min (apply min box-scores)
-          max (apply max box-scores)
-          box (loop [index 0]
-                (if (= player-num 1)
-                  (if (= max (nth box-scores index))
-                    (nth open-boxes index)
-                    (recur (inc index)))
-                  (if (= min (nth box-scores index))
-                    (nth open-boxes index)
-                    (recur (inc index)))))]
-      box)))
+  (cond (empty-board? board)
+        (let [box-count (count board)
+              row-size (int (Math/sqrt (count board)))
+              corners [0 (dec row-size) (- box-count row-size) (dec box-count)]
+              box (nth corners (rand-int 4))]
+          box)
+        (> (count (open-boxes board)) 9) (let [box (first (check-for-win board player-num))] (if (nil? box) (nth board (rand-int (count (open-boxes board)))) box))
+        :else (let [depth 0
+                    box-scores (get-box-scores board player-num depth)
+                    open-boxes (open-boxes board)
+                    min (apply min box-scores)
+                    max (apply max box-scores)
+                    box (loop [index 0]
+                          (if (= player-num 1)
+                            (if (= max (nth box-scores index))
+                              (nth open-boxes index)
+                              (recur (inc index)))
+                            (if (= min (nth box-scores index))
+                              (nth open-boxes index)
+                              (recur (inc index)))))]
+                box)))

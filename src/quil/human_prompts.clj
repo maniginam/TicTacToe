@@ -3,7 +3,7 @@
             [ttt.console-messages :refer :all]
             [quil.gui-messages :refer :all]
             [quil.core :as q]
-            [quil.gui-game :refer :all]
+            [quil.gui-core :refer :all]
             [quil.dimensions :as dim]
             [quil.mouse-location :refer :all]))
 
@@ -69,37 +69,20 @@
   (draw-prompt-box state)
   (doseq [piece [1 2]] (draw-piece-option piece)))
 
+
 (defmethod draw-user-prompt :board-setup [state]
   (draw-prompt-box state)
 
   (let [dimensions dim/board-size-entry
         left (:left dimensions)
         top (:top dimensions)]
+    (q/fill 255 255 255)
+    (q/rect (- left 40) (- top 60) 80 90)
+
+    (if (int? (:key-stroke state)) (q/fill 0 255 0) (q/fill 255 0 0))
     (q/text-size 50)
     (q/text-align :center)
     (q/text (str (:key-stroke state)) left top)))
 
-;(defn draw-play-again-options [option]
-;  (let [dimensions (dim/option-dimensions option)
-;        left (:left dimensions)
-;        top (:top dimensions)
-;        width (:width dimensions)
-;        height (:height dimensions)
-;        msg (nth msg/yes-no option)]
-;
-;    (q/stroke-weight 0)
-;    (q/fill 200 200 200)
-;    (q/rect left top width height)
-;
-;    (q/text-size 15)
-;    (q/text-align :center)
-;    (if (hovering-option? option (q/mouse-x) (q/mouse-y))
-;      (q/fill 0 255 0)
-;      (q/fill 0 0 0))
-;    (q/text msg (+ left (/ width 2)) (+ top 20))))
-;
-;(defmethod draw-user-prompt :game-over [state]
-;  (draw-prompt-box state)
-;  (doseq [option [0 1]] (draw-play-again-options option)))
 
 

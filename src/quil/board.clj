@@ -20,7 +20,7 @@
     (q/stroke 0 0 0)
     (q/stroke-weight 3)
     (q/rect 0 0 board-length board-length)
-    (q/line [(+ 50 box-size) 50] [(+ 50 box-size) (+ line-height 50)])
-    (q/line [(+ (* 2 box-size) 50) 50] [(+ (* 2 box-size) 50) (+ line-height 50)])
-    (q/line [50 (+ 50 box-size)] [(+ line-width 50) (+ 50 box-size)])
-    (q/line [50 (+ (* 2 box-size) 50)] [(+ line-width 50) (+ (* 2 box-size) 50)])))
+
+    (doseq [box (range 1 boxes-per-row)]
+      (q/line [(+ (* box box-size) 50) 50] [(+ (* box box-size) 50) (+ line-height 50)])
+      (q/line [50 (+ (* box box-size) 50)] [(+ line-width 50) (+ (* box box-size) 50)]))))

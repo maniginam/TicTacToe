@@ -1,7 +1,7 @@
 (ns quil.boxes
   (:require [ttt.core :refer :all]
             [quil.core :as q]
-            [quil.gui-game :refer :all]
+            [quil.gui-core :refer :all]
             [quil.dimensions :as dim]
             [quil.game-pieces :refer :all]))
 

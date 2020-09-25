@@ -1,5 +1,5 @@
 (ns quil.gui-messages
-  (:require [quil.gui-game :refer :all]))
+  (:require [quil.gui-core :refer :all]))
 
 (def messages {:waiting "Click Here to Begin Game" :user-setup "Who's Playing?" :player1 "X's Turn" :player2 "O's Turn"
                :player-setup "Choose" :board-setup "board size?"

@@ -1,7 +1,7 @@
 (ns quil.mouse-location
-  (:require [quil.core :refer :all]
+  (:require [quil.core :as q]
             [quil.dimensions :as dim]
-            [quil.core :as q]))
+            [quil.gui-core :refer :all]))
 
 (defn hovering-option? [option mouse-x mouse-y]
   (let [dimensions (dim/option-dimensions option)
@@ -20,8 +20,8 @@
     (and (> mouse-x left) (> mouse-y top) (< mouse-x (+ left width)) (< mouse-y (+ top height)))))
 
 (defn in-button? [mouse-x mouse-y]
-  (let [x (first dim/button-top-left-corner)
-        y (second dim/button-top-left-corner)
+  (let [x dim/button-left
+        y dim/button-top
         width (first dim/button-size)
         height (second dim/button-size)]
     (and (> mouse-x x) (< mouse-x (+ x width)) (> mouse-y y) (< mouse-y (+ y height)))))

@@ -4,8 +4,10 @@
             [quil.gui-messages :as msg]
             [quil.mouse-location :as mouse]))
 
-(defn draw-game-button [state x y]
-  (let [width (first dim/button-size)
+(defn draw-game-button [state]
+  (let [x dim/button-left
+        y dim/button-top
+        width (first dim/button-size)
         height (second dim/button-size)
         msg ((:message-key state) msg/messages)]
     (q/stroke-weight 3)

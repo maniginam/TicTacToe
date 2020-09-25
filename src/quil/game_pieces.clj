@@ -1,7 +1,7 @@
 (ns quil.game-pieces
   (:require [ttt.core :refer :all]
             [quil.core :as q]
-            [quil.gui-game :refer :all]
+            [quil.gui-core :refer :all]
             [quil.dimensions :as dim]))
 
 (defn draw-X [center-x center-y & colors]

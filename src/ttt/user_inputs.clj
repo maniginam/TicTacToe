@@ -1,6 +1,6 @@
 (ns ttt.user-inputs
   (:require [ttt.core :refer :all]
-            [ttt.board :refer :all]
+            [ttt.board :as board]
             [ttt.console-messages :as msg]))
 
 (defn bad-type [input]
@@ -79,7 +79,7 @@
              (catch Exception e (println (str input " is not a valid option")) false))))
 
 (defn box-open? [input board]
-  (if (is-box-open? board input)
+  (if (board/is-box-open? board input)
     true
     (do (println (str "box " input " is already taken")) false)))
 

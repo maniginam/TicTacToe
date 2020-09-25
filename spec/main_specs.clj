@@ -3,7 +3,7 @@
             [ttt.main :refer :all]
             [ttt.core :refer :all]
             [ttt.game-setup :refer :all]
-            [ttt.default-game :refer :all]))
+            [ttt.game-master :refer :all]))
 
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
@@ -58,5 +58,5 @@
 
   (it "plays a 4x4 0 player game"
     (let [game {:console :default :current-player :player1 :users 0 :player1 player1 :player2 player2 :board (:four-by-four boards)}]
-      (should= "Cat's Game" (play-game game))))
+      (should= "Cat's Game" (run game))))
   )

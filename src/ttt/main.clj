@@ -2,7 +2,7 @@
   (:require
     [ttt.core :refer :all]
     [ttt.game-setup :refer :all]
-    [ttt.default-game :refer :all]
+    [ttt.game-master :refer :all]
     [quil.gui :as gui]
     ))
 

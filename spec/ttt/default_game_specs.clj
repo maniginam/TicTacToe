@@ -1,6 +1,6 @@
 (ns ttt.default-game-specs
   (:require [speclj.core :refer :all]
-            [ttt.default-game :refer :all]
+            [ttt.game-master :refer :all]
             [ttt.core :refer :all]))
 
 (def player1 {:player-num 1 :type :computer :piece "X"})

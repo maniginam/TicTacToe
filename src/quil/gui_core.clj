@@ -1,19 +1,18 @@
-(ns quil.gui-game
+(ns quil.gui-core
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [ttt.core :refer :all]
             [ttt.board :refer :all]
             [ttt.ai :refer :all]
-            [ttt.default-game :refer :all]))
+            [ttt.game-master :refer :all]))
 
 
 (defmethod play-again :gui [state]
   (-> state
-      (assoc :status :user-setup)
-      (assoc :message-key :user-setup)
+      (assoc :status :board-setup)
+      (assoc :message-key :board-setup)
       (assoc :console :gui)
       (assoc :users nil)
-      (assoc :board-size (int 3))
       (assoc :key-stroke nil)
       (assoc :enter-key? false)
       (assoc :current-player :player1)
