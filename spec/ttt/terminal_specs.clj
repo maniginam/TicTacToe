@@ -90,4 +90,10 @@
     (should= "X Wins!" (s/trim (with-out-str (report {:console :terminal} (str "X Wins!")))))
     (should= "O Wins!" (s/trim (with-out-str (report {:console :terminal} (str "O Wins!"))))))
 
+  (it "plays again"
+    (should= "Do you want to play again?  Y or N\n" (with-out-str (with-in-str "y" (play-again? {:console :terminal})))))
+
+  (it "says good-bye"
+    (should= "Ok.  Well, Let's Play Again Soon!  Bye!\n" (with-out-str (end-game {:console :terminal}))))
+
   )

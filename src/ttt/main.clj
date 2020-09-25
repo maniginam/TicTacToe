@@ -15,10 +15,12 @@
       (report game (game-results game))
       (recur (play-game game)))))
 
-(defn -main [console]
-  (let [console-type (keyword console)
-        console {:console console-type}
-        game (setup-game console)]
-    (run game)))
+(defn -main []
+  (let [console {:console :terminal}]
+    (loop [game (setup-game console)]
+      (run game)
+      (if (true? (play-again? console))
+        (recur (setup-game console))
+        (end-game console)))))
 
 

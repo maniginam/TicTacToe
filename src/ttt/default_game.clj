@@ -13,6 +13,8 @@
 (defmethod report :default [console results]
   results)
 
+(defmethod play-again :default [console] false)
+
 (defn game-over? [game]
   (let [board (:board game)]
     (or (is-win? board) (full-board? board))))
@@ -32,7 +34,7 @@
     (let [player ((:current-player game) game)
           board (:board game)
           piece (:piece player)
-          new-board (assoc board box piece)]
+          new-board (replace {box piece} board)]
       (draw-board game new-board)
       (print-turn game player box)
       new-board)))

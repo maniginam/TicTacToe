@@ -35,8 +35,9 @@
   (if (in-button? (:x event) (:y event)) (play-again state)))
 
 (defmethod mouse-clicked :playing [state event]
-  (let [board (:board state)
-        box (first (filter #(mouse-in-box? % state (:x event) (:y event)) board))]
+  (let [boxes (:empty-board state)
+        board (:board state)
+        box (first (filter #(mouse-in-box? % state (:x event) (:y event)) boxes))]
     (cond (nil? box) state
-          (not (box-open? box board)) (do (draw-piece state (q/mouse-x) (q/mouse-y)) state)
+          (not (is-box-open? board box)) (do (draw-piece state (q/mouse-x) (q/mouse-y)) state)
           :else (play-turn state box))))

@@ -34,6 +34,9 @@
 (defmulti set-board-size :console)
 (defmulti get-box-input :console)
 (defmulti play-again :console)
+(defmulti play-again? :console)
+(defmulti too-many-tries :input)
+(defmulti end-game :console)
 
 (defn set-state [state]
   state)

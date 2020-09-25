@@ -10,7 +10,7 @@
 (defn assign-player1-type [game]
   (loop [input (offer-position game)
          tries 0]
-    (cond (>= tries 3) (too-many-tries)
+    (cond (>= tries 3) (too-many-tries {:input :position})
           (valid-position? input) (set-position input)
           :else (recur (if (= (inc tries) 3) nil (offer-position game)) (inc tries)))))
 

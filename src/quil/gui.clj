@@ -52,6 +52,7 @@
    :box-count        (int (Math/pow (:board-size state) 2))
    :key-stroke       (:key-stroke state)
    :enter-key        (:enter-key state)
+   :empty-board       [0 1 2 3 4 5 6 7 8]
    :board            (if ai-turn? (make-move state (play-box state)) (:board state))
    :box-played       (:box-played state)
    :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))

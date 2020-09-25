@@ -58,3 +58,5 @@ thing
 (map #(if (int? %1) %2) board blank)
 (map #(if (not (int? %1)) %2) board blank)
 (remove nil? (map #(if (not (int? %1)) %2) board blank))
+(def board [0 1 2 3])
+(filter even? board)

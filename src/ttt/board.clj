@@ -72,12 +72,12 @@
 (defn does-box-exist? [box board]
   (and (>= box 0) (< box (count board))))
 
-(defn is-box-selection-open? [board played-box]
+(defn is-box-open? [board played-box]
   (let [open-boxes (open-boxes board)]
     (= [played-box] (filter #(= played-box %) open-boxes))))
 
 (defn is-good-box? [board box]
-  (and (does-box-exist? box board) (is-box-selection-open? board box)))
+  (and (does-box-exist? box board) (is-box-open? board box)))
 
 (defmethod draw-board :default [game board] nil)
 

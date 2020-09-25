@@ -1,7 +1,7 @@
 (ns ttt.user-inputs
   (:require [ttt.core :refer :all]
             [ttt.board :refer :all]
-            [ttt.console-messages :as message]))
+            [ttt.console-messages :as msg]))
 
 (defn bad-type [input]
   (println (str input " is not a valid option"))
@@ -39,14 +39,14 @@
   (println "X goes first.  Do you want to be X or O")
   (read-line))
 
-(defn valid-position-type? [input]
+(defn valid-type-string? [input]
   (if (= "" input)
     (do (println "You didn't enter anything") false)
     (not (false? (try (.toUpperCase input)
                       (catch Exception e (println (str input " not valid option")) false))))))
 
 (defn valid-position? [input]
-  (if (valid-position-type? input)
+  (if (valid-type-string? input)
     (if (or (= "X" (.toUpperCase input)) (= "O" (.toUpperCase input)))
       true
       (do (println (str input " is not an option.")) false))))
@@ -54,16 +54,20 @@
 (defn set-position [input]
   (if (= "X" (.toUpperCase input)) :human :computer))
 
-(defn too-many-tries []
+(defmethod too-many-tries :position [input]
   (println "Nevermind, I'll go first.")
   :computer)
+
+(defmethod too-many-tries :play-again [input]
+  (println "I'll take that as a No.  Let's play again soon!")
+  false)
 
 (defn std-board-msg []
   (println "Nevermind, let's play a standard 3x3 board")
   3)
 
 (defmethod board-size-prompt :terminal [console]
-  (println message/board-size-prompt-message)
+  (println msg/board-size-prompt-message)
   (read-line))
 
 (defn ask-for-box []
@@ -75,7 +79,7 @@
              (catch Exception e (println (str input " is not a valid option")) false))))
 
 (defn box-open? [input board]
-  (if (is-box-selection-open? board input)
+  (if (is-box-open? board input)
     true
     (do (println (str "box " input " is already taken")) false)))
 
@@ -96,3 +100,15 @@
     (if (valid-box? input board)
       (Integer/parseInt input)
       (recur (ask-for-box)))))
+
+
+(defn valid-play-again-input? [input]
+  (if (valid-type-string? input)
+    (if (or (= "Y" (.toUpperCase input)) (= "N" (.toUpperCase input)))
+      true
+      (do (println (str input " is not an option.")) false))))
+
+(defn get-play-again-input []
+  (println msg/ask-to-play-again)
+  (read-line))
+

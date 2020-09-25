@@ -120,8 +120,8 @@
     (should-not (does-box-exist? 9 [0 1 2 3 4 5 6 7 8])))
 
   (it "checks that played box is open"
-    (should (is-box-selection-open? empty-board 8))
-    (should-not (is-box-selection-open? full-board-cats-game 8)))
+    (should (is-box-open? empty-board 8))
+    (should-not (is-box-open? full-board-cats-game 8)))
 
   (it "checks for existing & available box"
     (should (is-good-box? empty-board 8))

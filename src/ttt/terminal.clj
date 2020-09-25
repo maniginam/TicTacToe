@@ -21,3 +21,18 @@
 
 (defmethod report :terminal [console results]
   (println results))
+
+(defn start-new-game? [input]
+  (cond (= "Y" (.toUpperCase input)) true
+        (= "N" (.toUpperCase input)) false
+        :else (do (println (str input " is not a valid option.  Enter Y or N")) false)))
+
+(defmethod play-again? :terminal [console]
+  (loop [input (get-play-again-input)
+         tries 0]
+    (cond (>= tries 3) (too-many-tries {:input :play-again})
+          (valid-play-again-input? input) (start-new-game? input)
+          :else (recur (if (= (inc tries) 3) nil (get-play-again-input)) (inc tries)))))
+
+(defmethod end-game :terminal [console]
+  (println "Ok.  Well, Let's Play Again Soon!  Bye!"))

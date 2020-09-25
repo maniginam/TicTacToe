@@ -19,7 +19,7 @@
       (assoc :current-player :player1)
       (assoc :player1 {:player-num 1 :piece "X"})
       (assoc :player2 {:player-num 2 :piece "O"})
-      (assoc :board {0 0 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8})
+      (assoc :board [0 1 2 3 4 5 6 7 8])
       (assoc :ai-turn false)
       (assoc :boxes nil)
       (assoc :turn nil)
