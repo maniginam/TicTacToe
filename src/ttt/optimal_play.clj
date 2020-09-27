@@ -38,7 +38,7 @@
               corners [0 (dec row-size) (- box-count row-size) (dec box-count)]
               box (nth corners (rand-int 4))]
           box)
-        (> (count (open-boxes board)) 9) (let [box (first (check-for-win board player-num))] (if (nil? box) (nth board (rand-int (count (open-boxes board)))) box))
+        (>= (count (open-boxes board)) 9) (let [box (first (check-for-win board player-num))] (if (nil? box) (nth (open-boxes board) (rand-int (count (open-boxes board)))) box))
         :else (let [depth 0
                     box-scores (get-box-scores board player-num depth)
                     open-boxes (open-boxes board)

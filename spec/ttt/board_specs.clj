@@ -133,4 +133,10 @@
     (should= (str "  0  ||  1  ||  2\n=====||=====||=====\n  3  ||  4  ||  5\n=====||=====||=====\n  6  ||  7  ||  8\n") (with-out-str (draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8])))
     (should= (str "  0  ||  1  ||  2  ||  3\n=====||=====||=====||=====\n  4  ||  5  ||  6  ||  7\n=====||=====||=====||=====\n  8  ||  9  ||  10  ||  11\n=====||=====||=====||=====\n  12  ||  13  ||  14  ||  15\n")
              (with-out-str (draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]))))
+
+  (it "tests if each row, col, or diagonal is a win"
+    (should (is-winning-move? ["X" "X" "X"]))
+    (should (is-vector-win? ["X" "X" "X" "X"]))
+    (should (is-winning-move? ["X" 1 2 "X" 4 5 "X" 7 8])))
+
   )

@@ -31,7 +31,7 @@
 (defmulti mouse-clicked (fn [state _] (:status state)))
 (defmulti key-typed (fn [state _] (:status state)))
 (defmulti draw-user-prompt (fn [state & _] (:status state)))
-(defmulti draw-piece (fn [state _ _] (:current-player state)))
+(defmulti draw-piece (fn [state _ _ & _] (:current-player state)))
 
 
 

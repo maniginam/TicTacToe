@@ -2,7 +2,8 @@
   (:require [quil.core :as q]
             [quil.middleware :as m]
             [quil.dimensions :as dim]
-            [quil.board :as board]
+            [quil.board :as gui-board]
+            [ttt.board :as board]
             [quil.button :as button]
             [quil.gui-core :refer :all]
             [ttt.core :refer :all]
@@ -28,6 +29,9 @@
                 :current-type nil
                 :current-plyr-num 1
                 :board [0 1 2 3 4 5 6 7 8]
+                :rows []
+                :cols []
+                :diags []
                 :ai-turn false
                 :boxes nil
                 :turn nil
@@ -59,7 +63,7 @@
    :board-set?       (:board-set? state)
    :box-count        (get-box-count state)
    :key-stroke       (:key-stroke state)
-   :empty-board       [0 1 2 3 4 5 6 7 8]
+   :empty-board      (board/create-board (:board-size state))
    :board            (if (ai-turn? state) (make-move state (play-box state)) (:board state))
    :box-played       (:box-played state)
    :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
@@ -72,8 +76,8 @@
    :message-key      (get-message-key state)})
 
 (defn draw-state [state]
-  (board/draw-console)
-  (board/draw-gui-board (:board-size state))
+  (gui-board/draw-console)
+  (gui-board/draw-gui-board (:board-size state))
   (button/draw-game-button state)
 
   (if (or (= (:status state) :user-setup) (= (:status state) :player-setup) (= (:status state) :board-setup))
@@ -89,17 +93,17 @@
 
 (defn -main []
   (q/defsketch gui
-             :title "Tic Tac Toe"
-             :resizable true
-             :size [700 800]
-             :setup setup-gui
-             :update update-state
-             :draw draw-state
-             :mouse-clicked mouse-clicked
-             :key-typed key-typed
-             :features [:keep-on-top]
-             :middleware [m/fun-mode])
-)
+               :title "Tic Tac Toe"
+               :resizable true
+               :size [700 800]
+               :setup setup-gui
+               :update update-state
+               :draw draw-state
+               :mouse-clicked mouse-clicked
+               :key-typed key-typed
+               :features [:keep-on-top]
+               :middleware [m/fun-mode])
+  )
 
 
 

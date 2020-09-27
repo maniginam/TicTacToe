@@ -18,7 +18,7 @@
   (let [size (count board)
         grid-size (int (Math/sqrt size))
         rows (for [row (range 0 grid-size)]
-               (map #(nth board %) (range (* row grid-size) (* (inc row) grid-size))))]
+               (subvec board (* row grid-size) (* (inc row) grid-size)))]
     rows))
 
 (defn did-row-win? [board]
@@ -56,6 +56,15 @@
 
 (defn is-win? [board]
   (or (did-row-win? board) (did-col-win? board) (did-diagonal-win? board)))
+
+(defn is-vector-win? [row]
+  (every? #(= (first row) %) (rest row)))
+
+(defn is-winning-move? [board]
+  (let [rows (get-rows board)
+        columns (get-columns board)
+        diagonals (get-diagonals board)]
+    (map #(filter (is-vector-win? %1) %2) [rows columns diagonals])))
 
 (defn put-piece-on-board [board box-played game-piece]
   (replace {box-played game-piece} board))
