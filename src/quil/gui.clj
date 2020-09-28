@@ -75,6 +75,14 @@
    :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
    :message-key      (get-message-key state)})
 
+(defn is-box-in-win? [box state]
+  (let [board (:board state)
+        owning-lines (get-box-lines box (:empty-board state))
+        played-boxes-vectors (for [line owning-lines box line] (nth board box))
+        line-wins? (map #(board/is-vector-win? %) played-boxes-vectors)
+        win? (not (empty? (filter true? line-wins?)))]
+    played-boxes-vectors))
+
 (defn draw-state [state]
   (gui-board/draw-console)
   (gui-board/draw-gui-board (:board-size state))
@@ -84,9 +92,13 @@
     (draw-user-prompt state))
 
   (doseq [box (:played-boxes state)]
-    (draw-box box state))
+    (let [board (:board state)]
+          ;winning-line-index (board/winning-line-index board)
+          ;winning-line (nth (board/get-all-lines board) winning-line-index)
+          ;win? (box-in-line? box winning-line)]
+    (draw-box box state false)))
 
-  (if (= (:status state) :playing) (draw-piece state (q/mouse-x) (q/mouse-y)))
+  (if (= (:status state) :playing) (draw-piece state (size-boxes state) (q/mouse-x) (q/mouse-y)))
 
   )
 

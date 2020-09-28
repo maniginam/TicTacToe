@@ -27,7 +27,16 @@
         bottom (nth perimeter 3)]
     (and (>= mouse-x left) (< mouse-x right) (>= mouse-y top) (< mouse-y bottom))))
 
-(defn draw-box [box state]
+(defn box-in-line? [box line]
+  (not (empty? (filter true? (map #(if (= box %) true false) line)))))
+
+(defn get-box-lines [box board]
+  (let [lines (board/get-all-lines board)]
+    (remove nil? (for [line lines]
+                   (if (box-in-line? box line)
+                     line)))))
+
+(defn draw-box [box state win?]
   (let [perimeter (box-perimeter box state)
         box-size (size-boxes state)
         left (first perimeter)
@@ -38,7 +47,4 @@
         player2-piece (:piece (:player2 state))
         player (cond (= player1-piece ((:board state) box)) :player1
                      (= player2-piece ((:board state) box)) :player2)]
-    (draw-piece {:current-player player} center-x center-y)))
-
-
-
+    (draw-piece {:current-player player} box-size center-x center-y win?)))

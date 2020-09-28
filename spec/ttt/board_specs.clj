@@ -50,6 +50,9 @@
     (should= [[0 4 8] [2 4 6]] (get-diagonals [0 1 2 3 4 5 6 7 8]))
     (should= [[0 5 10 15] [3 6 9 12]] (get-diagonals [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15])))
 
+  (it "combines all rows, cols, & diags"
+    (should= [[0 1] [2 3] [0 2] [1 3] [0 3] [1 2]] (get-all-lines [0 1 2 3])))
+
   (it "checks rows for win"
     (should-not (did-row-win? [0 1 2 3 4 5 6 7 8]))
     (should (did-row-win? ["X" "X" "X" 3 4 5 6 7 8]))

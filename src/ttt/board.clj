@@ -46,6 +46,12 @@
         diagonal2 (map #(nth board %) (take grid-size (iterate (partial + (dec grid-size)) (dec grid-size))))]
     [diagonal1 diagonal2]))
 
+(defn get-all-lines [board]
+  (let [rows (get-rows board)
+        cols (get-columns board)
+        diags (get-diagonals board)]
+    (concat rows cols diags)))
+
 (defn did-diagonal-win? [board]
   (let [diagonals (get-diagonals board)
         diagonal1 (first diagonals)
@@ -56,6 +62,14 @@
 
 (defn is-win? [board]
   (or (did-row-win? board) (did-col-win? board) (did-diagonal-win? board)))
+
+(defn winning-line-index [board]
+  (let [lines (get-all-lines board)
+        indexes (range 0 (count lines))]
+    (first (remove nil? (for [line lines index indexes]
+      (if (is-win? line)
+        index
+        nil))))))
 
 (defn is-vector-win? [row]
   (every? #(= (first row) %) (rest row)))
