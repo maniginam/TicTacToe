@@ -4,6 +4,8 @@
             [ttt.user-inputs :refer :all]
             [ttt.terminal :refer :all]))
 
+(def depths {:hard 0 :medium 1 :easy 2 :none 0})
+
 (defn assign-player2-type [player1]
   (if (= (:type player1) :human) :computer :human))
 
@@ -32,5 +34,6 @@
   (let [users (validate-player-count console)
         player1 (assign-player (assoc console :users users) :player1)
         player2 (assign-player (assoc console :users users :player1 player1) :player2)
-        board (create-board (set-board-size console))]
-    (assoc console :current-player :player1 :box-played nil :users users :player1 player1 :player2 player2 :board board)))
+        board (create-board (set-board-size console))
+        level (if (< users 2) (set-level console) :none)]
+    (assoc console :level level :depth (level depths) :current-player :player1 :box-played nil :users users :player1 player1 :player2 player2 :board board)))

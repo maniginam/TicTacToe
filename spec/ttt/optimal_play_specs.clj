@@ -37,36 +37,36 @@
 
   (it "one box [6] open: cats game"
       (should= [0] (get-box-scores one-box-open-cats-game-6 player1 0))
-      (should= 6 (play-optimal-box one-box-open-cats-game-6 player1)))
+      (should= 6 (play-optimal-box one-box-open-cats-game-6 player1 0)))
 
   (it "one box [8] open: player 1 win"
       (should= [10] (get-box-scores one-box-open-player1-wins-8 player1 0))
-      (should= 8 (play-optimal-box one-box-open-player1-wins-8 player1)))
+      (should= 8 (play-optimal-box one-box-open-player1-wins-8 player1 0)))
 
   (it "two boxes [7 8] open: player2: 7: player 2 wins; 8: cats game"
       (should= [-10 0] (get-box-scores two-boxes-open-78 player2 0))
-      (should= 7 (play-optimal-box two-boxes-open-78 player2)))
+      (should= 7 (play-optimal-box two-boxes-open-78 player2 0)))
 
   (it "two boxes [6 8] open: player2: 6: player 1 wins; 8: cats game"
       (should= [9 0] (get-box-scores two-boxes-open-68 player2 0))
-      (should= 8 (play-optimal-box two-boxes-open-68 player2)))
+      (should= 8 (play-optimal-box two-boxes-open-68 player2 0)))
 
   (it "three boxes [6 7 8] open: player1: 6: player 1 wins; 8: cats game"
       (should= [-9 0 10] (get-box-scores three-boxes-open-678 player1 0))
-      (should= 8 (play-optimal-box three-boxes-open-678 player1)))
+      (should= 8 (play-optimal-box three-boxes-open-678 player1 0)))
 
   (it "four boxes [4 6 7 8] open: player2: 6: player 1 wins; 8: cats game"
       (should= [9 9 9 0] (get-box-scores four-boxes-open-4678 player2 0))
-      (should= 8 (play-optimal-box four-boxes-open-4678 player2)))
+      (should= 8 (play-optimal-box four-boxes-open-4678 player2 0)))
 
   (it "one box played: player2"
       (should= [5 5 5 0 5 5 5 5] (get-box-scores one-box-played-0 player2 0))
-      (should= 4 (play-optimal-box one-box-played-0 player2)))
+      (should= 4 (play-optimal-box one-box-played-0 player2 0)))
 
   (it "empty board: player 1 plays random corner"
       (loop [results [] i 0]
             (if (< i 20)
-              (recur (conj results (play-optimal-box empty-board player1)) (inc i))
+              (recur (conj results (play-optimal-box empty-board player1 0)) (inc i))
               (should= [] (filter #(and (odd? %) (not (= 4 %))) results)))))
 
   (it "gets box scores for 4x4 board"

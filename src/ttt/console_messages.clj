@@ -10,6 +10,12 @@
 
 (def board-size-prompt-message (str "What size grid do you want to play on?"))
 
+(defn level-prompt []
+  (str "Select a Level:
+  E - Easy
+  M - Medium
+  H - Hard"))
+
 (defn box-taken [box] (str "box " box " is already taken"))
 
 (def ask-to-play-again (str "Do you want to play again?  Y or N"))

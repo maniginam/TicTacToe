@@ -54,6 +54,12 @@
 (defn set-position [input]
   (if (= "X" (.toUpperCase input)) :human :computer))
 
+(defn valid-level? [input]
+  (if (valid-type-string? input)
+    (if (or (= "H" (.toUpperCase input)) (= "M" (.toUpperCase input)) (= "E" (.toUpperCase input)))
+      true
+      (do (println (str input " is not an option.")) false))))
+
 (defmethod too-many-tries :position [input]
   (println "Nevermind, I'll go first.")
   :computer)
@@ -61,6 +67,10 @@
 (defmethod too-many-tries :play-again [input]
   (println "I'll take that as a No.  Let's play again soon!")
   false)
+
+(defmethod too-many-tries :level [input]
+  (println "I'll pick for you...  Hard!")
+  :hard)
 
 (defn std-board-msg []
   (println "Nevermind, let's play a standard 3x3 board")

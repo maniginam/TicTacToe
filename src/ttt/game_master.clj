@@ -4,16 +4,6 @@
             [ttt.core :refer :all]
             [ttt.ai :refer :all]))
 
-(defmethod validate-player-count :default [console] 0)
-
-(defmethod board-size-prompt :default [console] nil)
-
-(defmethod set-board-size :default [console] 3)
-
-(defmethod report :default [console results]
-  results)
-
-(defmethod play-again :default [console] false)
 
 (defn game-over? [game]
   (let [board (:board game)]
@@ -35,8 +25,6 @@
           board (:board game)
           piece (:piece player)
           new-board (replace {box piece} board)]
-      (draw-board game new-board)
-      (print-turn game player box)
       new-board)))
 
 (defn play-box [game]
@@ -49,6 +37,9 @@
 (defn play-turn [game box]
   (let [new-board (make-move game box)
         next-player (next-player game)]
+    (if (= :terminal (:console game))
+      (do (draw-board game new-board)
+          (print-turn game ((:current-player game) game) box)))
     (assoc game :board new-board :current-player next-player)))
 
 (defn get-winner [game]

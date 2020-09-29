@@ -26,13 +26,18 @@
       (assoc state :board (board/create-board board-size) :empty-board (board/create-board board-size) :board-set true :board-size board-size :status :user-setup))))
 
 (defmethod mouse-clicked :user-setup [state event]
-  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (assoc state :users 0 :status :playing :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :computer))
+  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (assoc state :users 0 :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :computer))
         (mouse/hovering-option? 1 (:x event) (:y event)) (assoc state :users 1 :status :player-setup)
-        (mouse/hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :playing :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))))
+        (mouse/hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))))
 
 (defmethod mouse-clicked :player-setup [state event]
-  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc state :status :playing :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :computer))
-        (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :playing :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :human))))
+  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc state :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :computer))
+        (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :human))))
+
+(defmethod mouse-clicked :level-setup [state event]
+  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (assoc state :status :playing :level :easy :depth 2)
+        (mouse/hovering-option? 1 (:x event) (:y event)) (assoc state :status :playing :level :medium :depth 1)
+        (mouse/hovering-option? 2 (:x event) (:y event)) (assoc state :status :playing :level :hard :depth 0)))
 
 (defmethod mouse-clicked :play-again [state event]
   (if (mouse/in-button? (:x event) (:y event)) (play-again state)))

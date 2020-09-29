@@ -102,13 +102,4 @@
 (defn is-good-box? [board box]
   (and (does-box-exist? box board) (is-box-open? board box)))
 
-(defmethod draw-board :default [game board] nil)
 
-(defmethod draw-board :terminal [game board]
-  (let [row-size (int (Math/sqrt (count board)))
-        rows (get-rows board)
-        break-line (str "=====" (apply str (repeat (- row-size 1) "||=====")))]
-    (doseq [row rows]
-      (println (apply str "  " (interpose "  ||  " row)))
-      (if (not (= (last rows) row))
-        (println break-line)))))

@@ -1,13 +1,13 @@
-;(ns quil.gui-game-specs
-;  (:require [speclj.core :refer :all]
-;            [ttt.core :refer :all]
-;            [quil.gui-core :refer :all]
-;            [quil.core :as q]
-;            [quil.boxes :as boxes]
-;            [quil.middleware :as m]
-;            [quil.gui :refer :all]
-;            [ttt.board :as board]))
-;
+(ns quil.gui-core-specs
+  (:require [speclj.core :refer :all]
+            [ttt.core :refer :all]
+            [quil.gui-core :refer :all]
+            [quil.core :as q]
+            [quil.boxes :as boxes]
+            [quil.middleware :as m]
+            [quil.gui :refer :all]
+            [ttt.board :as board]))
+
 ;
 ;(describe "GUI:"
 ;

@@ -24,8 +24,8 @@
                 :board-set? false
                 :key-stroke nil
                 :current-player :player1
-                :player1 {:player-num 1 :piece "X"}
-                :player2 {:player-num 2 :piece "O"}
+                :player1 {:player-num 1 :piece "X" :type nil}
+                :player2 {:player-num 2 :piece "O" :type nil}
                 :current-type nil
                 :current-plyr-num 1
                 :board [0 1 2 3 4 5 6 7 8]
@@ -34,6 +34,8 @@
                 :diags []
                 :ai-turn false
                 :boxes nil
+                :level :hard
+                :depth 3
                 :turn nil
                 :played-boxes []
                 :game-over false
@@ -45,7 +47,7 @@
         (= (:status state) :game-over) (cond (= (:winner state) 0) :catsgame (= (:winner state) 1) :x-won :else :o-won)
         :else (:status state)))
 
-(defn ai-turn? [state] (= :computer (:type ((:current-player state) state))))
+(defn ai-turn? [state] (and (= :playing (:status state)) (= :computer (:type ((:current-player state) state)))))
 
 (defn get-box-count [state]
   (if (:board-set? state) (int (Math/pow (:board-size state) 2)) 3))
@@ -63,8 +65,10 @@
    :board-set?       (:board-set? state)
    :box-count        (get-box-count state)
    :key-stroke       (:key-stroke state)
-   :empty-board      (board/create-board (:board-size state))
+   :empty-board      (if (:board-set? state) (board/create-board (:board-size state)) [0 1 2 3 4 5 6 7 8])
    :board            (if (ai-turn? state) (make-move state (play-box state)) (:board state))
+   :depth            (:depth state)
+   :level            (:level state)
    :box-played       (:box-played state)
    :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
    :turns-played     (count (:played-boxes state))
@@ -88,15 +92,15 @@
   (gui-board/draw-gui-board (:board-size state))
   (button/draw-game-button state)
 
-  (if (or (= (:status state) :user-setup) (= (:status state) :player-setup) (= (:status state) :board-setup))
+  (if (or (= (:status state) :user-setup) (= (:status state) :player-setup) (= (:status state) :board-setup) (= (:status state) :level-setup))
     (draw-user-prompt state))
 
   (doseq [box (:played-boxes state)]
-    (let [board (:board state)]
-          ;winning-line-index (board/winning-line-index board)
-          ;winning-line (nth (board/get-all-lines board) winning-line-index)
-          ;win? (box-in-line? box winning-line)]
-    (draw-box box state false)))
+    ;(let [board (:board state)]
+      ;winning-line-index (board/winning-line-index board)
+      ;winning-line (nth (board/get-all-lines board) winning-line-index)
+      ;win? (box-in-line? box winning-line)]
+      (draw-box box state false))
 
   (if (= (:status state) :playing) (draw-piece state (size-boxes state) (q/mouse-x) (q/mouse-y)))
 

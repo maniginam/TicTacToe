@@ -3,7 +3,8 @@
             [ttt.optimal-play :refer :all]
             [ttt.board :refer :all]
             [ttt.core :refer :all]
-            [ttt.user-inputs :refer :all]))
+            [ttt.user-inputs :refer :all]
+            [ttt.console-messages :as msg]))
 
 (defmethod validate-player-count :terminal [console]
   (loop [input (ask-num-of-players)
@@ -18,6 +19,21 @@
     (cond (>= tries 3) (std-board-msg)
           (valid-for-int-type? input) (Integer/parseInt input)
           :else (recur (if (>= (inc tries) 3) nil (board-size-prompt console)) (inc tries)))))
+
+(defn get-level [input]
+  (cond (= "H" (.toUpperCase input)) :hard
+        (= "M" (.toUpperCase input)) :medium
+        (= "E" (.toUpperCase input)) :easy))
+
+(defmethod set-level :terminal [console]
+  (println (msg/level-prompt))
+  (loop [input (read-line)
+         tries 0]
+    (cond (>= tries 3) (too-many-tries {:input :level})
+          (valid-level? input) (get-level input)
+          (= tries 2) (recur nil 3)
+          :else (do (println (msg/level-prompt))
+                    (recur (read-line) (inc tries))))))
 
 (defmethod report :terminal [console results]
   (println results))
@@ -36,3 +52,12 @@
 
 (defmethod end-game :terminal [console]
   (println "Ok.  Well, Let's Play Again Soon!  Bye!"))
+
+(defmethod draw-board :terminal [game board]
+  (let [row-size (int (Math/sqrt (count board)))
+        rows (get-rows board)
+        break-line (str "=====" (apply str (repeat (- row-size 1) "||=====")))]
+    (doseq [row rows]
+      (println (apply str "  " (interpose "  ||  " row)))
+      (if (not (= (last rows) row))
+        (println break-line)))))

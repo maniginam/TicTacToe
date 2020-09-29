@@ -32,6 +32,7 @@
 (defmulti validate-player-count :console)
 (defmulti board-size-prompt :console)
 (defmulti set-board-size :console)
+(defmulti set-level :console)
 (defmulti get-box-input :console)
 (defmulti play-again :console)
 (defmulti play-again? :console)

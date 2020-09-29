@@ -84,5 +84,27 @@
     (q/text-align :center)
     (q/text (str (:key-stroke state)) left top)))
 
+(defn draw-level-options [option]
+  (let [dimensions (dim/option-dimensions option)
+        left (:left dimensions)
+        top (:top dimensions)
+        width (:width dimensions)
+        height (:height dimensions)
+        msg (nth ["Easy" "Medium" "Hard"] option)]
+
+    (q/stroke-weight 0)
+    (q/fill 200 200 200)
+    (q/rect left top width height)
+
+    (q/text-size 15)
+    (q/text-align :center)
+    (if (hovering-option? option (q/mouse-x) (q/mouse-y))
+      (q/fill 0 255 0)
+      (q/fill 0 0 0))
+    (q/text msg (+ left (/ width 2)) (+ top 20))))
+
+(defmethod draw-user-prompt :level-setup [state]
+  (draw-prompt-box state)
+  (doseq [option [0 1 2]] (draw-level-options option)))
 
 

@@ -14,7 +14,7 @@
 
 (defmethod select-box :computer [player game]
   (let [board (:board game)
-        box (play-optimal-box board (:player-num player))
+        box (play-optimal-box board (:player-num player) (:depth game))
         new-board (put-piece-on-board board box (:piece player))]
     box))
 

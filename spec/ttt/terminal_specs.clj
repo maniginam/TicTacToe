@@ -72,6 +72,9 @@
     (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
              (with-out-str (with-in-str "leo" (set-board-size console)))))
 
+  (it "Sets Level"
+    (should= "Select a Level:\n  E - Easy\n  M - Medium\n  H - Hard\n" (with-out-str (with-in-str "h" (set-level {:console :terminal})))))
+
   (it "tests valid human box entry"
     (with-out-str (should (valid-box? "0" standard-board)))
     (with-out-str (should (valid-box? "8" standard-board)))
@@ -81,7 +84,7 @@
 
   (it "tests computer move"
     (let [player1 {:player 1 :type :computer :piece "X"}
-          game {:console :default :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
+          game {:console :default :level :hard :depth 0 :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
       (should= ["X" "O" 2 "O" "X" 5 6 7 "X"]
                (make-move game (select-box player1 game)))))
 
