@@ -28,7 +28,7 @@
 (defmethod mouse-clicked :user-setup [state event]
   (cond (mouse/hovering-option? 0 (:x event) (:y event)) (assoc state :users 0 :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :computer))
         (mouse/hovering-option? 1 (:x event) (:y event)) (assoc state :users 1 :status :player-setup)
-        (mouse/hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))))
+        (mouse/hovering-option? 2 (:x event) (:y event)) (assoc state :users 2 :status :playing :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))))
 
 (defmethod mouse-clicked :player-setup [state event]
   (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc state :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :computer))

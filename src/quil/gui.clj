@@ -35,7 +35,7 @@
                 :ai-turn false
                 :boxes nil
                 :level :hard
-                :depth 3
+                :depth 0
                 :turn nil
                 :played-boxes []
                 :game-over false
@@ -54,6 +54,14 @@
 
 (defn get-player-num [state] (:player-num ((:current-player state) state)))
 
+;(defn ai-turn [state]
+;  (if (ai-turn? state)
+;  (let [box (play-box state)
+;        new-state (play-turn state box)]
+;    (if (game-over? new-state)
+;      (assoc new-state :game-over true)
+;      new-state))))
+
 (defn update-state [state]
   {:game-over        (game-over? state)
    :winner           (if (game-over? state) (:winner (get-winner state)))
@@ -66,13 +74,13 @@
    :box-count        (get-box-count state)
    :key-stroke       (:key-stroke state)
    :empty-board      (if (:board-set? state) (board/create-board (:board-size state)) [0 1 2 3 4 5 6 7 8])
-   :board            (if (ai-turn? state) (make-move state (play-box state)) (:board state))
+   :board            (if (and (not (game-over? state)) (ai-turn? state)) (make-move state (play-box state)) (:board state))
    :depth            (:depth state)
    :level            (:level state)
    :box-played       (:box-played state)
    :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
    :turns-played     (count (:played-boxes state))
-   :current-player   (if (ai-turn? state) (next-player state) (:current-player state))
+   :current-player   (if (and (not (game-over? state)) (ai-turn? state)) (next-player state) (:current-player state))
    :current-type     (:type ((:current-player state) state))
    ;:current-plyr-num (:player-num ((:current-player state) state))
    :play-again-pause (if (:game-over state) (if (< (:play-again-pause state) 100) (inc (:play-again-pause state)) 100) 0)
