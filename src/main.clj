@@ -1,9 +1,10 @@
-(ns ttt.main
+(ns main
   (:require
     [ttt.core :refer :all]
     [ttt.game-setup :refer :all]
     [ttt.game-master :refer :all]
     [quil.gui :as gui]
+    [games.saved-games :as saved]
     ))
 
 (def game-state
@@ -16,8 +17,10 @@
       (recur (play-game game)))))
 
 (defn -main []
-  (let [console {:console :terminal}]
-    (loop [game (setup-game console)]
+  (let [console {:console :terminal}
+        restart? true
+        recent (if restart? (str "/Users/maniginam/TicTacToe/saved-games/recent-game.txt") nil)]
+    (loop [game (if restart? (saved/pull-game recent) (setup-game console))]
       (run game)
       (if (true? (play-again? console))
         (recur (setup-game console))
