@@ -68,6 +68,10 @@
   (println "I'll take that as a No.  Let's play again soon!")
   false)
 
+(defmethod too-many-tries :restart? [input]
+  (println "Let's just start you with a new game")
+  false)
+
 (defmethod too-many-tries :level [input]
   (println "I'll pick for you...  Hard!")
   :hard)
@@ -111,8 +115,7 @@
       (Integer/parseInt input)
       (recur (ask-for-box)))))
 
-
-(defn valid-play-again-input? [input]
+(defn valid-yes-or-no-input? [input]
   (if (valid-type-string? input)
     (if (or (= "Y" (.toUpperCase input)) (= "N" (.toUpperCase input)))
       true
@@ -122,3 +125,6 @@
   (println msg/ask-to-play-again)
   (read-line))
 
+(defmethod get-restart-input :terminal [console]
+  (println msg/ask-restart)
+  (read-line))

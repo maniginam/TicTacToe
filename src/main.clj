@@ -12,18 +12,17 @@
 
 (defn run [game]
   (loop [game game]
+    (saved/save-game game)
     (if (not (nil? (:winner game)))
       (report game (game-results game))
       (recur (play-game game)))))
 
 (defn -main []
-  (let [console {:console :terminal}
-        restart? true
-        recent (if restart? (str "/Users/maniginam/TicTacToe/saved-games/recent-game.txt") nil)]
-    (loop [game (if restart? (saved/pull-game recent) (setup-game console))]
+  (let [console {:console :terminal :game-count 0}]
+    (loop [game (setup-game console)]
       (run game)
       (if (true? (play-again? console))
-        (recur (setup-game console))
+        (recur (setup-game (assoc console :game-count (inc (:game-count game)))))
         (end-game console)))))
 
 

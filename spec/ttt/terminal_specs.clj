@@ -96,6 +96,9 @@
   (it "plays again"
     (should= "Do you want to play again?  Y or N\n" (with-out-str (with-in-str "y" (play-again? {:console :terminal})))))
 
+  (it "ask to restart past game"
+    (should= "Do you want to start up where you left last game? Y or N\n" (with-out-str (with-in-str "y" (restart? {:console :terminal :board ["X" 0 1 2 3 4 5 6 7 8]})))))
+
   (it "says good-bye"
     (should= "Ok.  Well, Let's Play Again Soon!  Bye!\n" (with-out-str (end-game {:console :terminal}))))
 

@@ -4,7 +4,8 @@
             [ttt.core :refer :all]
             [ttt.board :refer :all]
             [ttt.ai :refer :all]
-            [ttt.game-master :refer :all]))
+            [ttt.game-master :refer :all]
+            [ttt.game-setup :as setup]))
 
 
 (defmethod play-again :gui [state]
@@ -27,11 +28,28 @@
       (assoc :winner nil)
       (assoc :pause 0)))
 
+(defmethod restart :gui [state]
+  (let [filed-game (setup/get-last-game)
+        last-game (assoc filed-game :old-console (:console filed-game) :console (:console state))]
+  (-> state
+      (assoc :status (:status last-game))
+      (assoc :board-size (:board-size last-game))
+      (assoc :users (:users last-game))
+      (assoc :current-player (:current-player last-game))
+      (assoc :player1 (:player1 last-game))
+      (assoc :player2 (:player2 last-game))
+      (assoc :board (:board last-game))
+      (assoc :played-boxes (:played-boxes last-game))
+      (assoc :message-key :nil)
+      (assoc :game-count (:game-count last-game)))))
+
+
+
 (defmulti user-message :status)
 (defmulti mouse-clicked (fn [state _] (:status state)))
 (defmulti key-typed (fn [state _] (:status state)))
 (defmulti draw-user-prompt (fn [state & _] (:status state)))
-(defmulti draw-piece (fn [state _ _ & _] (:current-player state)))
+(defmulti draw-piece (fn [state _ _] (:current-player state)))
 
 
 

@@ -69,6 +69,30 @@
   (draw-prompt-box state)
   (doseq [piece [1 2]] (draw-piece-option piece)))
 
+(defn draw-yes-no [answer]
+  (let [dimensions (dim/piece-option-dimensions answer)
+        left (:left dimensions)
+        top (:top dimensions)
+        width (:width dimensions)
+        height (:height dimensions)
+        weight 15]
+
+    (q/stroke-weight weight)
+    (q/fill 200 200 200)
+    (if (hovering-piece-option? answer (q/mouse-x) (q/mouse-y))
+      (q/stroke 0 255 0)
+      (q/stroke 0 0 0))
+    (if (= 1 answer)
+      (do (q/line left top (+ left (* width 0.5)) (+ top (/ height 2)))
+          (q/line (+ left width) top (+ left (* width 0.5)) (+ top (/ height 2)))
+          (q/line (+ left (* width 0.5)) (+ top (* height 0.5)) (+ left (* width 0.5)) (+ top height)))
+      (do (q/line left top left (+ top height))
+          (q/line left top (+ left (* 0.8 width)) (+ top height))
+          (q/line (+ left (* 0.8 width)) top (+ left (* 0.8 width)) (+ top height))))))
+
+(defmethod draw-user-prompt :restart? [state]
+  (draw-prompt-box state)
+  (doseq [piece [1 2]] (draw-yes-no piece)))
 
 (defmethod draw-user-prompt :board-setup [state]
   (draw-prompt-box state)

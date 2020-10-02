@@ -1,6 +1,5 @@
 (ns ttt.board
-  (:require [ttt.core :refer :all]
-            [ttt.console-messages :as message]))
+  (:require [ttt.core :refer :all]))
 
 (def player1-piece "X")
 (def player2-piece "O")

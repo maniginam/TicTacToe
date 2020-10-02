@@ -1,6 +1,6 @@
 (ns main-specs
   (:require [speclj.core :refer :all]
-            [ttt.main :refer :all]
+            [main :refer :all]
             [ttt.core :refer :all]
             [ttt.game-setup :refer :all]
             [ttt.game-master :refer :all]))
@@ -23,17 +23,17 @@
 (defmethod play-again :default [console] false)
 (defmethod draw-board :default [game board] nil)
 (defmethod set-level :default [console] :hard)
-
-
+(defmethod restart? :default [console] false)
+(defmethod get-restart-input :default [console] "N")
 
 (describe "TIC-TAC-TOE:"
   (it "plays standard game"
-    (let [game (setup-game {})]
+    (let [game (dissoc (setup-game {}) :game-count)]
       (should= test-game game)
       (should= "Cat's Game" (run game))))
 
   (it "sets up easy game"
-    (let [game (assoc (setup-game {}) :level :easy :depth 2)]
+    (let [game (dissoc (assoc (setup-game {}) :level :easy :depth 2) :game-count)]
       (should= (assoc test-game :level :easy :depth 2) game)))
   )
 
@@ -56,18 +56,18 @@
     (should= standard-board (:board (setup-game test-game))))
 
   (it "Default: Set Up game map"
-    (should= test-game (setup-game test-console)))
+    (should= test-game (dissoc (setup-game test-console) :game-count)))
 
   (it "Terminal: Set Up game map with 1 user as player 2"
     (let [player1 {:player-num 1 :type :computer :piece "X"}
           player2 {:player-num 2 :type :human :piece "O"}
           board [0 1 2 3 4 5 6 7 8]
           game {:console :terminal :level :hard :depth 0 :users 1 :box-played nil :current-player :player1 :player1 player1 :player2 player2 :board board}]
-      (with-out-str (should= game (with-in-str "1" (setup-game {:console :terminal}))))))
+      (with-out-str (should= game (with-in-str "1" (dissoc (setup-game {:console :terminal}) :game-count))))))
 
   (it "plays 0 user, 3x3 board game"
     (let [game {:users 0 :level :hard :depth 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
-      (should= game (setup-game test-console))
+      (should= game (dissoc (setup-game test-console) :game-count))
       (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board))))
 
   (it "gets game results"
@@ -81,4 +81,5 @@
   ;(it "plays a 4x4 0 player game"
   ;  (let [game {:console :default :level :hard :depth 0 :current-player :player1 :users 0 :player1 player1 :player2 player2 :board (:four-by-four boards)}]
   ;    (should= "Cat's Game" (run game))))
+
   )

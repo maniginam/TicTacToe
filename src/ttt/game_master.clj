@@ -4,7 +4,6 @@
             [ttt.core :refer :all]
             [ttt.ai :refer :all]))
 
-
 (defn game-over? [game]
   (let [board (:board game)]
     (or (is-win? board) (full-board? board))))

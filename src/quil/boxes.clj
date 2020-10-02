@@ -47,4 +47,4 @@
         player2-piece (:piece (:player2 state))
         player (cond (= player1-piece ((:board state) box)) :player1
                      (= player2-piece ((:board state) box)) :player2)]
-    (draw-piece {:current-player player} box-size center-x center-y win?)))
+    (draw-piece {:current-player player} box-size [center-x center-y])))

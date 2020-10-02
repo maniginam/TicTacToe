@@ -4,7 +4,8 @@
             [ttt.board :refer :all]
             [ttt.core :refer :all]
             [ttt.user-inputs :refer :all]
-            [ttt.console-messages :as msg]))
+            [ttt.console-messages :as msg]
+            [ttt.game-master :as master]))
 
 (defmethod validate-player-count :terminal [console]
   (loop [input (ask-num-of-players)
@@ -38,7 +39,7 @@
 (defmethod report :terminal [console results]
   (println results))
 
-(defn start-new-game? [input]
+(defn affirmative? [input]
   (cond (= "Y" (.toUpperCase input)) true
         (= "N" (.toUpperCase input)) false
         :else (do (println (str input " is not a valid option.  Enter Y or N")) false)))
@@ -47,11 +48,21 @@
   (loop [input (get-play-again-input)
          tries 0]
     (cond (>= tries 3) (too-many-tries {:input :play-again})
-          (valid-play-again-input? input) (start-new-game? input)
+          (valid-yes-or-no-input? input) (affirmative? input)
           :else (recur (if (= (inc tries) 3) nil (get-play-again-input)) (inc tries)))))
 
 (defmethod end-game :terminal [console]
   (println "Ok.  Well, Let's Play Again Soon!  Bye!"))
+
+(defmethod restart? :terminal [last-game]
+  (if (master/game-over? last-game)
+    false
+    (loop [input (get-restart-input last-game)
+           tries 0]
+      (cond (>= tries 3) (too-many-tries {:input :restart?})
+            (valid-yes-or-no-input? input) (affirmative? input)
+            :else (recur (if (= (inc tries) 3) nil (get-restart-input last-game)) (inc tries))))))
+
 
 (defmethod draw-board :terminal [game board]
   (let [row-size (int (Math/sqrt (count board)))

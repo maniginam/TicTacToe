@@ -17,7 +17,6 @@
                   :current-player :player1
                   :player1 {:player-num 1 :piece "X" :type nil}
                   :player2 {:player-num 2 :piece "O" :type nil}
-                  :current-type nil
                   :current-plyr-num 1
                   :board [0 1 2 3 4 5 6 7 8]
                   :rows [] :cols [] :diags []

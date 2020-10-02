@@ -17,6 +17,6 @@
       (should= game (pull-game "/Users/maniginam/TicTacToe/saved-games/recent-game.txt"))))
 
   (it "ends a game in the middle"
-    (let [game {:console :terminal :users 1 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board ["X" 1 "O" 3 4 5 6 7 8]}]
+    (let [game {:console :terminal :game-count 2 :users 1 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board ["X" 1 "O" 3 4 5 6 7 8]}]
       (save-game game)))
   )

@@ -38,6 +38,9 @@
 (defmulti play-again? :console)
 (defmulti too-many-tries :input)
 (defmulti end-game :console)
+(defmulti restart? :console)
+(defmulti get-restart-input :console)
+(defmulti restart :console)
 
 (defn set-state [state]
   state)
