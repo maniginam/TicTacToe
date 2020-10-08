@@ -9,9 +9,9 @@
 (def player2 {:player-num 2 :piece "O" :type :computer})
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
-(def test-game {:users 0 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board})
+(def test-game {:table "TEST" :users 0 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board})
 (def test-game-player1-wins {:users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
-(def test-console {})
+(def test-console {:table "TEST"})
 
 (def boards {:three-by-three [0 1 2 3 4 5 6 7 8] :four-by-four [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]})
 (def players {:player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}})
@@ -28,12 +28,12 @@
 
 (describe "TIC-TAC-TOE:"
   (it "plays standard game"
-    (let [game (dissoc (setup-game {}) :game-count)]
+    (let [game (dissoc (setup-game {:table "TEST"}) :game-count)]
       (should= test-game game)
       (should= "Cat's Game" (run game))))
 
   (it "sets up easy game"
-    (let [game (dissoc (assoc (setup-game {}) :level :easy :depth 2) :game-count)]
+    (let [game (dissoc (assoc (setup-game {:table "TEST"}) :level :easy :depth 2) :game-count)]
       (should= (assoc test-game :level :easy :depth 2) game)))
   )
 
@@ -41,16 +41,16 @@
 (describe "MAIN - "
 
   (it "Default: Sets up num-of-players"
-    (should= 0 (:users (setup-game {}))))
+    (should= 0 (:users (setup-game {:table "TEST"}))))
 
   (it "Default: Sets up player1"
     (let [player1 {:player-num 1 :type :computer :piece "X"}]
-      (should= player1 (:player1 (setup-game {})))
-      (should= player1 (assign-player {:console :default :users 0} :player1))))
+      (should= player1 (:player1 (setup-game {:table "TEST"})))
+      (should= player1 (assign-player {:table "TEST" :console :default :users 0} :player1))))
 
   (it "Default: Sets up player2"
     (let [player2 {:player-num 2 :piece "O" :type :computer}]
-      (should= player2 (:player2 (setup-game {})))))
+      (should= player2 (:player2 (setup-game {:table "TEST"})))))
 
   (it "Default: Sets up board"
     (should= standard-board (:board (setup-game test-game))))
@@ -59,14 +59,11 @@
     (should= test-game (dissoc (setup-game test-console) :game-count)))
 
   (it "Terminal: Set Up game map with 1 user as player 2"
-    (let [player1 {:player-num 1 :type :computer :piece "X"}
-          player2 {:player-num 2 :type :human :piece "O"}
-          board [0 1 2 3 4 5 6 7 8]
-          game {:console :terminal :level :hard :depth 0 :users 1 :box-played nil :current-player :player1 :player1 player1 :player2 player2 :board board}]
-      (with-out-str (should= game (with-in-str "1" (dissoc (setup-game {:console :terminal}) :game-count))))))
+    (let [player2 {:player-num 2 :piece "O" :type :human}]
+      (with-out-str (should= player2 (:player2 (with-in-str "1" (dissoc (setup-game {:table "TEST" :console :terminal}) :game-count)))))))
 
   (it "plays 0 user, 3x3 board game"
-    (let [game {:users 0 :level :hard :depth 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
+    (let [game {:table "TEST" :users 0 :level :hard :depth 0 :board (:three-by-three boards) :box-played nil :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
       (should= game (dissoc (setup-game test-console) :game-count))
       (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board))))
 

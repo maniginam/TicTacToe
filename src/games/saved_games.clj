@@ -2,6 +2,8 @@
   (:import (java.text SimpleDateFormat)
            (java.util Date)))
 
+(def last-game-file-name (str "/Users/maniginam/TicTacToe/saved-games/recent-game.txt"))
+
 (defn save-game [game]
   (let [date (.format (SimpleDateFormat. "yyyyMMdd") (new Date))
         time (.getHours (Date.))
@@ -12,9 +14,8 @@
     (spit file (str game))
     file))
 
-(defn pull-game [file]
-  (read-string (slurp file)))
-
+(defn pull-game []
+  (read-string (slurp last-game-file-name)))
 
 
 

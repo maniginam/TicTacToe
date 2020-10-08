@@ -4,7 +4,8 @@
             [ttt.user-inputs :refer :all]
             [ttt.terminal :refer :all]
             [ttt.game-master :as master]
-            [games.saved-games :as saved]))
+            [games.saved-games :as saved]
+            [games.mysql-games :as sql]))
 
 (def depths {:hard 0 :medium 1 :easy 2 :none 0})
 
@@ -32,16 +33,14 @@
         type (assign-type game player-num)]
     {:player-num player-num :piece piece :type type}))
 
-(defn get-last-game []
-  (let [file (str "/Users/maniginam/TicTacToe/saved-games/recent-game.txt")]
-    (saved/pull-game file)))
-
 (defn setup-game [game]
-  (let [filed-game (get-last-game)
-        last-game (assoc filed-game :old-console (:console filed-game) :console (:console game))
-        last-count (get last-game :game-count 0)]
-    (if (restart? last-game)
-      last-game
+  (let [last-db-game (sql/get-last-db-game (:table game))
+        last-filed-game (saved/pull-game)
+        updated-db-game (assoc last-db-game :old-console (:console last-db-game) :console (:console game))
+        updated-filed-game (assoc last-filed-game :old-console (:console last-filed-game) :console (:console game))
+        last-count (get updated-filed-game :game-count 0)]
+    (if (restart? updated-db-game)
+      updated-db-game
       (let [users (validate-player-count game)
             player1 (assign-player (assoc game :users users) :player1)
             player2 (assign-player (assoc game :users users :player1 player1) :player2)

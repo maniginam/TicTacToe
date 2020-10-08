@@ -1,0 +1,1 @@
+{:game-count 1, :player2 {:player-num 2, :piece "O", :type :computer}, :level :easy, :box-played nil, :database :mysql, :depth 2, :console :terminal, :player1 {:player-num 1, :piece "X", :type :human}, :board ["X" 1 "O" 3 4 5 6 7 8], :users 1, :current-player :player1}

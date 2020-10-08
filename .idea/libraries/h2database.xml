@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="h2database">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database/h2/src/java10/src" />
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database/h2/src/java9/src" />
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database/h2/src/main" />
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database/h2/src/test" />
+      <root url="file://$PROJECT_DIR$/../mySQL/h2database/h2/src/tools" />
+    </SOURCES>
+  </library>
+</component>

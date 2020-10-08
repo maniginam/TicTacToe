@@ -24,8 +24,10 @@
                   :boxes nil
                   :level :hard :depth 0
                   :turn nil :played-boxes []
-                  :game-over false :play-again-pause 0 :winner nil})
-(def console {:console :gui})
+                  :game-over false :play-again-pause 0 :winner nil
+                  :table "TEST"})
+
+(def console {:console :gui :table "TEST"})
 
 (describe "GUI State Tests:"
 

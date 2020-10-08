@@ -9,14 +9,14 @@
 (describe "Saves the Game:"
 
   (it "saves a file"
-    (let [game {:status :spitting}]
+    (let [game {:status :spitting :database :file}]
       (should= (str game) (slurp (save-game game)))))
 
   (it "pulls recent or called for game"
-    (let [game {:status :spitting}]
-      (should= game (pull-game "/Users/maniginam/TicTacToe/saved-games/recent-game.txt"))))
+    (let [game {:status :spitting :database :file}]
+      (should= game (pull-game))))
 
   (it "ends a game in the middle"
-    (let [game {:console :terminal :game-count 2 :users 1 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board ["X" 1 "O" 3 4 5 6 7 8]}]
+    (let [game {:database :file :console :terminal :game-count 2 :users 1 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board ["X" 1 "O" 3 4 5 6 7 8]}]
       (save-game game)))
   )

@@ -9,12 +9,15 @@
             [quil.dimensions :as dim]
             [quil.mouse-location :as mouse]
             [quil.boxes :as box]
-            [games.saved-games :as saved]))
+            [games.saved-games :as saved]
+            [games.mysql-games :as sql]))
 
 (defmethod mouse-clicked :waiting [state event]
   (if (mouse/in-button? (:x event) (:y event))
-    (let [filed-game (setup/get-last-game)
-          last-game (assoc filed-game :old-console (:console filed-game) :console (:console state))]
+    (let [filed-game (saved/pull-game)
+          last-filed-game (assoc filed-game :old-console (:console filed-game) :console (:console state))
+          db-game (sql/get-last-db-game (:table state))
+          last-game (assoc db-game :old-console (:console db-game) :console (:console state))]
       (if (:game-over last-game)
         (assoc state :status :board-setup)
         (assoc state :status :restart?)))
@@ -65,4 +68,5 @@
               (not (board/is-box-open? board box)) (do (draw-piece state (box/size-boxes state) [(q/mouse-x) (q/mouse-y) [255 0 0]]) state)
               :else (let [play (game/play-turn state box)]
                       (saved/save-game play)
+                      (sql/save-to-sql play (:table state))
                       play))))

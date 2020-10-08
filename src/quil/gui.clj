@@ -14,7 +14,8 @@
             [quil.human-prompts :refer :all]
             [quil.boxes :refer :all]
             [quil.game-pieces :as piece]
-            [games.saved-games :as saved]))
+            [games.saved-games :as saved]
+            [games.mysql-games :as sql]))
 
 
 (defn setup-gui []
@@ -23,6 +24,7 @@
                 :game-count 0
                 :message-key :waiting
                 :console :gui
+                :database :mysql
                 :users nil
                 :board-size 3
                 :board-set? false
@@ -43,7 +45,8 @@
                 :played-boxes []
                 :game-over false
                 :play-again-pause 0
-                :winner nil))
+                :winner nil
+                :table "TTT"))
 
 (defn get-message-key [state]
   (cond (= (:status state) :playing) (if (= :player1 (:current-player state)) :player1 :player2)
@@ -72,6 +75,7 @@
    :player1          (:player1 state)
    :player2          (:player2 state)
    :console          (:console state)
+   :database         (:database state)
    :users            (:users state)
    :board-size       (:board-size state)
    :board-set?       (:board-set? state)
@@ -85,11 +89,12 @@
    :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
    :turns-played     (count (:played-boxes state))
    :current-player   (if (and (not (game-over? state)) (ai-turn? state)) (next-player state) (:current-player state))
-   ;:current-plyr-num (:player-num ((:current-player state) state))
    :play-again-pause (if (:game-over state) (if (< (:play-again-pause state) 100) (inc (:play-again-pause state)) 100) 0)
    :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
    :message-key      (get-message-key state)
-   :save             (if (or (ai-turn? state) (:game-over state)) (saved/save-game state))})
+   :table            (:table state)
+   :save             (if (or (ai-turn? state) (:game-over state)) (saved/save-game state))
+   :save-to-db       (if (or (ai-turn? state) (:game-over state)) (sql/save-to-sql state (:table state)))})
 
 (defn is-box-in-win? [box state]
   (let [board (:board state)
