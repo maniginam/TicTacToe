@@ -35,7 +35,7 @@
 (defn save-to-sql [game table]
   (let [small-table (.toLowerCase table)
         game-map {:console       (str (:console game))
-                  :status        (str (:status game))
+                  :status        (if (nil? (:status game)) ":playing" (str (:status game)))
                   :users         (:users game)
                   :currentplayer (str (:current-player game))
                   :player1       (str (:player1 game))

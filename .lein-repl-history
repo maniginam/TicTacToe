@@ -1,27 +1,3 @@
-   :dbname "mydb"
-   :user "myaccount"
-   :password "secret"})
-(jdbc/query db-spec ["SELECT 3*5 AS result"])
-  (:require [next.jdbc :as jdbc]))
-(require '[next.jdbc :as jdbc])
-(require '[next.jdbc :as gina])
-(def db {:dbtype "h2" :dbname "example"})
-(def ds (gina/get-datasource db))
-(gina/get-connection db)
-(def mysql-db {:dbtype "mysql"
-               :dbname "clojure_test"
-               :user "clojure_test"
-               :password "clojure_test"})
-(j/insert-multi! mysql-db :fruit
-  [{:name "Apple" :appearance "rosy" :cost 24}
-(gina/insert-multi! mysql-db :fruit [{:name "Apple" :appearance "rosy" :cost 24} {:name "Orange" :appearance "round" :cost 49}])
-)
-(gina/insert-multi! mysql-db :fruit [{:name "Apple" :appearance "rosy" :cost 24} {:name "Orange" :appearance "round" :cost 49}])
-(require '[next.jdbc :as j])
-(j/insert-multi! mysql-db :fruit [{:name "Apple" :appearance "rosy" :cost 24} {:name "Orange" :appearance "round" :cost 49}])
-run
-ttt.run
-ttt/run
 ttt.main run
 ttt/main run
 /main run
@@ -498,3 +474,27 @@ add table varchar(32))"])
 (sql/execute! ds ["
 alter table ttt
 add Table varchar(32))"])
+(def db {:dbtype "h2" :dbname "ttt" :ResultSetMetaDataOptions "1"})
+(def ds (jdbc/get-datasource db))
+(def db {:dbtype "h2" :dbname "ttt" :ResultSetMetaDataOptions "1"})
+(def ds (jdbc/get-datasource db))
+(require '[next.jdbc :as jdbc])
+(require '[next.jdbc.sql :as sql])
+(def db {:dbtype "h2" :dbname "ttt" :ResultSetMetaDataOptions "1"})
+(def ds (jdbc/get-datasource db))
+(def table "TTT")
+(sql/find-by-keys ds (keyword table) :all)
+(require '[next.jdbc.sql :as s])
+(s/find-by-keys ds (keyword table) :all)
+id-keyword (keyword (apply str table "/ID"))
+        last-game-id (id-keyword (last (sql/find-by-keys ds (keyword table) :all)))
+(def id-keyword (keyword (apply str table "/ID")))
+(def last-game-id (id-keyword (last (sql/find-by-keys ds (keyword table) :all)))
+)
+(def last-game-id (id-keyword (last (s/find-by-keys ds (keyword table) :all)))
+)
+(jdbc/execute-one! ds [(str "select * from " table " where id = ?") last-game-id]
+                       {:builder-fn rs/as-unqualified-lower-maps})
+(require '[next.jdbc.result-set :as rs])
+(jdbc/execute-one! ds [(str "select * from " table " where id = ?") last-game-id]
+                       {:builder-fn rs/as-unqualified-lower-maps})

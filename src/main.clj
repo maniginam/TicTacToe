@@ -13,7 +13,7 @@
 (defn run [game]
   (loop [game game]
     (saved/save-game game)
-    (sql/save-to-sql game (:table game))
+    (sql/save-to-sql game (.toLowerCase (:table game)))
     (if (not (nil? (:winner game)))
       (report game (game-results game))
       (recur (play-game game)))))

@@ -5,7 +5,6 @@
             [quil.mouse-location :as mouse]))
 
 (defn draw-game-button [state]
-  (println (:message-key state))
   (let [x dim/button-left
         y dim/button-top
         width (first dim/button-size)

@@ -44,11 +44,12 @@
       (assoc :player1 (:player1 last-game))
       (assoc :player2 (:player2 last-game))
       (assoc :board (:board last-game))
-      (assoc :empty-board (vec (range (count (:board state)))))
+      (assoc :empty-board (vec (range (count (:board last-game)))))
       (assoc :played-boxes (:played-boxes last-game))
       (assoc :depth (:depth last-game))
       (assoc :level (:level last-game))
       (assoc :message-key :nil)
+      (assoc :winner nil)
       (assoc :game-count (:game-count last-game)))))
 
 

@@ -40,7 +40,7 @@
         updated-filed-game (assoc last-filed-game :old-console (:console last-filed-game) :console (:console game))
         last-count (get updated-filed-game :game-count 0)]
     (if (restart? updated-db-game)
-      updated-db-game
+      (restart game updated-db-game)
       (let [users (validate-player-count game)
             player1 (assign-player (assoc game :users users) :player1)
             player2 (assign-player (assoc game :users users :player1 player1) :player2)

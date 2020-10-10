@@ -6137,3 +6137,18 @@ INSERT INTO ttt (boardsize, player2, gamecount, messagekey, currentplayer, level
 2020-10-08 16:24:03 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "EMPTYBOARD VARCHAR(255)": "'[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 4... (915)"; SQL statement:
 INSERT INTO ttt (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-10-09 15:56:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PLAYEDBOXES VARCHAR(255)": "'aced00057372001d636c6f6a7572652e6c616e672e50657273697374656e74566563746f72926bb181a556ad33020005490003636e7449000573686966744c0... (810)"; SQL statement:
+INSERT INTO test (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-10-09 15:56:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PLAYEDBOXES VARCHAR(255)": "'aced00057372001d636c6f6a7572652e6c616e672e50657273697374656e74566563746f72926bb181a556ad33020005490003636e7449000573686966744c0... (810)"; SQL statement:
+INSERT INTO test (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-10-09 15:56:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PLAYEDBOXES VARCHAR(255)": "'aced00057372001d636c6f6a7572652e6c616e672e50657273697374656e74566563746f72926bb181a556ad33020005490003636e7449000573686966744c0... (810)"; SQL statement:
+INSERT INTO test (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-10-09 15:56:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PLAYEDBOXES VARCHAR(255)": "'aced00057372001d636c6f6a7572652e6c616e672e50657273697374656e74566563746f72926bb181a556ad33020005490003636e7449000573686966744c0... (810)"; SQL statement:
+INSERT INTO test (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]
+2020-10-09 15:56:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PLAYEDBOXES VARCHAR(255)": "'aced000573720014636c6f6a7572652e6c616e672e4c617a795365716adc2e138bda9fa00200034c0002666e7400124c636c6f6a7572652f6c616e672f49466... (1118)"; SQL statement:
+INSERT INTO ttt (boardsize, player2, gamecount, messagekey, currentplayer, level, emptyboard, status, database, depth, console, playedboxes, player1, board, users) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) [22001-200]

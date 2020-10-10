@@ -20,7 +20,7 @@
           last-game (assoc db-game :old-console (:console db-game) :console (:console state))]
       (if (:game-over last-game)
         (assoc state :status :board-setup)
-        (assoc state :status :restart?)))
+        (assoc state :status :restart? :last-game last-game)))
     state))
 
     (defmethod mouse-clicked :restart? [state event]
