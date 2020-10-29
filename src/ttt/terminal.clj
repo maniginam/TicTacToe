@@ -63,23 +63,24 @@
             (valid-yes-or-no-input? input) (affirmative? input)
             :else (recur (if (= (inc tries) 3) nil (get-restart-input last-game)) (inc tries))))))
 
-(defmethod restart :terminal [game last-game]
-  (-> game
-      (assoc :status (:status last-game))
-      (assoc :console (:console game))
-      (assoc :board-size (int (Math/sqrt (count (:board last-game)))))
-      (assoc :users (:users last-game))
-      (assoc :current-player (:current-player last-game))
-      (assoc :player1 (:player1 last-game))
-      (assoc :player2 (:player2 last-game))
-      (assoc :board (:board last-game))
-      (assoc :empty-board (vec (range (count (:board last-game)))))
-      (assoc :played-boxes (:played-boxes last-game))
-      (assoc :depth (:depth last-game))
-      (assoc :level (:level last-game))
-      (assoc :message-key :nil)
-      (assoc :winner nil)
-      (assoc :game-count (:game-count last-game))))
+(defmethod restart :terminal [game]
+  (let [last-game (:last-game game)]
+    (-> game
+        (assoc :status (:status last-game))
+        (assoc :console (:console game))
+        (assoc :board-size (int (Math/sqrt (count (:board last-game)))))
+        (assoc :users (:users last-game))
+        (assoc :current-player (:current-player last-game))
+        (assoc :player1 (:player1 last-game))
+        (assoc :player2 (:player2 last-game))
+        (assoc :board (:board last-game))
+        (assoc :empty-board (vec (range (count (:board last-game)))))
+        (assoc :played-boxes (:played-boxes last-game))
+        (assoc :depth (:depth last-game))
+        (assoc :level (:level last-game))
+        (assoc :message-key :nil)
+        (assoc :winner nil)
+        (assoc :game-count (:game-count last-game)))))
 
 (defmethod draw-board :terminal [game board]
   (let [row-size (int (Math/sqrt (count board)))

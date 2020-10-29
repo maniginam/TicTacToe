@@ -9,13 +9,14 @@
             [ttt.core :refer :all]
             [ttt.game-setup :as setup]
             [quil.gui-messages :as msg]
-            [ttt.game-master :refer :all]
+            [ttt.game-master :as gm :refer :all]
             [quil.mouse-clicks :refer :all]
             [quil.human-prompts :refer :all]
             [quil.boxes :refer :all]
             [quil.game-pieces :as piece]
             [games.saved-games :as saved]
-            [games.mysql-games :as sql]))
+            [games.h2 :as h2]
+            [games.mysql :as sql]))
 
 
 (defn setup-gui []
@@ -46,17 +47,21 @@
                 :game-over false
                 :play-again-pause 0
                 :winner nil
-                :table "TTT"))
+                :table "TTT"
+                :db "ttt"))
 
 (defn get-message-key [state]
   (cond (= (:status state) :playing) (if (= :player1 (:current-player state)) :player1 :player2)
         (= (:status state) :game-over) (cond (= (:winner state) 0) :catsgame (= (:winner state) 1) :x-won :else :o-won)
         :else (:status state)))
 
-(defn ai-turn? [state] (and (= :playing (:status state)) (= :computer (:type ((:current-player state) state)))))
+(defn ai-turn? [state]
+  (let [current-player-key (:current-player state)
+        current-player (get state current-player-key)]
+    (and (= :playing (:status state)) (not= :human (:type current-player)))))
 
-(defn get-box-count [state]
-  (if (:board-set? state) (int (Math/pow (:board-size state) 2)) 3))
+;(defn get-box-count [state]
+;  (if (:board-set? state) (int (Math/pow (:board-size state) 2)) 3))
 
 (defn get-player-num [state] (:player-num ((:current-player state) state)))
 
@@ -69,32 +74,42 @@
 ;      new-state))))
 
 (defn update-state [state]
-  {:game-over        (game-over? state)
-   :game-count       (:game-count state)
-   :winner           (if (game-over? state) (:winner (get-winner state)))
-   :player1          (:player1 state)
-   :player2          (:player2 state)
-   :console          (:console state)
-   :database         (:database state)
-   :users            (:users state)
-   :board-size       (:board-size state)
-   :board-set?       (:board-set? state)
-   :box-count        (get-box-count state)
-   :key-stroke       (:key-stroke state)
-   :empty-board      (board/create-board (:board-size state))
-   :board            (if (and (not (game-over? state)) (ai-turn? state)) (make-move state (play-box state)) (:board state))
-   :depth            (:depth state)
-   :level            (:level state)
-   :box-played       (:box-played state)
-   :played-boxes     (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
-   :turns-played     (count (:played-boxes state))
-   :current-player   (if (and (not (game-over? state)) (ai-turn? state)) (next-player state) (:current-player state))
-   :play-again-pause (if (:game-over state) (if (< (:play-again-pause state) 100) (inc (:play-again-pause state)) 100) 0)
-   :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
-   :message-key      (get-message-key state)
-   :table            (:table state)
-   :save             (if (or (ai-turn? state) (:game-over state)) (saved/save-game state))
-   :save-to-db       (if (or (ai-turn? state) (:game-over state)) (sql/save-to-sql state (:table state)))})
+  (let [db (:db state)
+        board (if (and (not (game-over? state)) (ai-turn? state)) (gm/update-board-with-move state (gm/get-move-from-player state)) (:board state))
+        played-boxes (remove nil? (map #(if (not (int? %1)) %2) (:board state) (vec (range 0 (count (:board state))))))
+        winner (if (game-over? state) (:winner (get-winner state)))
+        current-player (if (and (not (game-over? state)) (ai-turn? state)) (next-player state) (:current-player state))
+        updated-game (assoc state :board board :played-boxes played-boxes)]
+    (when (ai-turn? state)
+      (sql/save-turn db updated-game))
+    {:game-over        (gm/game-over? state)
+     :db               (:db state)
+     :game-count       (:game-count state)
+     :winner           winner
+     :player1          (:player1 state)
+     :player2          (:player2 state)
+     :console          (:console state)
+     :database         (:database state)
+     :users            (:users state)
+     :board-size       (:board-size state)
+     ;:board-set?       (:board-set? state)
+     ;:box-count        (get-box-count state)
+     :key-stroke       (:key-stroke state)
+     :empty-board      (board/create-board (:board-size state))
+     :board            board
+     :depth            (:depth state)
+     :level            (:level state)
+     :box-played       (:box-played state)
+     :played-boxes     played-boxes ;; TODO - GLM : CALCULATE ME DON'T Save me
+     :current-player   current-player
+     :play-again-pause (if (:game-over state) (if (< (:play-again-pause state) 100) (inc (:play-again-pause state)) 100) 0)
+     :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
+     :message-key      (get-message-key state) ;; TODO - GLM : test me
+     :table            (:table state)
+     :save             (if (or (ai-turn? state) (:game-over state)) (saved/save-game state))
+     :save-to-h2       (if (or (ai-turn? state) (:game-over state)) (h2/save-to-sql state (:table state)))
+     ;:save-to-mysql    (if (ai-turn? state) (sql/save-turn (:db state) state))
+     }))
 
 (defn is-box-in-win? [box state]
   (let [board (:board state)

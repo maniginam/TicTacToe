@@ -1,1 +1,0 @@
-([clojure-complete/clojure-complete "0.2.5" :exclusions ([org.clojure/clojure])] [nrepl/nrepl "0.6.0" :exclusions ([org.clojure/clojure])] [org.clojure/clojure "1.10.1"] [org.clojure/clojurescript "1.10.520"] [org.clojure/math.combinatorics "0.1.6"] [quil/quil "3.1.0"] [speclj/speclj "3.3.2" :scope "test"])

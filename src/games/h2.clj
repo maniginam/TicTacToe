@@ -1,4 +1,4 @@
-(ns games.mysql-games
+(ns games.h2
   (:require [next.jdbc :as jdbc]
             [next.jdbc.sql :as sql]
             [next.jdbc.plan :as plan]

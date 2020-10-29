@@ -17,7 +17,7 @@
 (defn next-player [game]
   (if (= (:current-player game) :player1) :player2 :player1))
 
-(defn make-move [game box]
+(defn update-board-with-move [game box]
   (if (nil? box)
     (:board game)
     (let [player ((:current-player game) game)
@@ -26,20 +26,20 @@
           new-board (replace {box piece} board)]
       new-board)))
 
-(defn play-box [game]
+(defn get-move-from-player [game]
   (if (full-board? (:board game))
     nil
-    (let [player ((:current-player game) game)
+    (let [player (get game (:current-player game))
           box (select-box player game)]
       box)))
 
-(defn play-turn [game box]
-  (let [new-board (make-move game box)
+(defn update-game-with-move [game box]
+  (let [new-board (update-board-with-move game box)
         next-player (next-player game)]
-    (if (= :terminal (:console game))
+    (if (= :terminal (:console game)) ;; TODO - GLM : OCP violation
       (do (draw-board game new-board)
           (print-turn game ((:current-player game) game) box)))
-    (assoc game :board new-board :current-player next-player)))
+    (assoc game :box-played box :board new-board :current-player next-player)))
 
 (defn get-winner [game]
   (let [board (:board game)]
@@ -51,5 +51,5 @@
 (defn play-game [game]
   (if (game-over? game)
     (get-winner game)
-    (play-turn game (play-box game))))
+    (update-game-with-move game (get-move-from-player game))))
 

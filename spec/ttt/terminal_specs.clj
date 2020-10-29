@@ -86,7 +86,7 @@
     (let [player1 {:player 1 :type :computer :piece "X"}
           game {:console :default :level :hard :depth 0 :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
       (should= ["X" "O" 2 "O" "X" 5 6 7 "X"]
-               (make-move game (select-box player1 game)))))
+               (update-board-with-move game (select-box player1 game)))))
 
   (it "prints results of game"
     (should= "Cat's Game" (s/trim (with-out-str (report {:console :terminal} (str "Cat's Game")))))

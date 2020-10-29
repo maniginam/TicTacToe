@@ -1,1 +1,0 @@
-{:game-count 3, :winner 0, :player2 {:player-num 2, :piece "O", :type :computer}, :level :hard, :box-played nil, :depth 0, :player1 {:player-num 1, :piece "X", :type :computer}, :board ["X" "O" "X" "O" "O" "X" "X" "X" "O"], :users 0, :current-player :player2}

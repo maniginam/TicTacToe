@@ -5,7 +5,8 @@
             [ttt.terminal :refer :all]
             [ttt.game-master :as master]
             [games.saved-games :as saved]
-            [games.mysql-games :as sql]))
+            [games.h2 :as h2]
+            [games.mysql :as sql]))
 
 (def depths {:hard 0 :medium 1 :easy 2 :none 0})
 
@@ -34,18 +35,22 @@
     {:player-num player-num :piece piece :type type}))
 
 (defn setup-game [game]
-  (let [last-db-game (sql/get-last-db-game (:table game))
+  (let [last-sql-game (sql/load-game (:db game) game)
+        last-h2-game (h2/get-last-db-game (:table game))
         last-filed-game (saved/pull-game)
-        updated-db-game (assoc last-db-game :old-console (:console last-db-game) :console (:console game))
+        updated-sql-game (assoc last-sql-game :old-console (:console last-sql-game) :console (:console game))
+        updated-h2-game (assoc last-h2-game :old-console (:console last-h2-game) :console (:console game))
         updated-filed-game (assoc last-filed-game :old-console (:console last-filed-game) :console (:console game))
         last-count (get updated-filed-game :game-count 0)]
-    (if (restart? updated-db-game)
-      (restart game updated-db-game)
+    (if (restart? updated-sql-game)
+      (restart (assoc game :last-game updated-sql-game))
       (let [users (validate-player-count game)
             player1 (assign-player (assoc game :users users) :player1)
             player2 (assign-player (assoc game :users users :player1 player1) :player2)
-            board (create-board (set-board-size game))
-            level (if (< users 2) (set-level game) :none)]
-        (assoc game :game-count (inc last-count) :level level :depth (level depths)
-                    :current-player :player1 :box-played nil :users users
-                    :player1 player1 :player2 player2 :board board)))))
+            board-size (set-board-size game)
+            level (if (< users 2) (set-level game) :none)
+            fresh-game (assoc game :game-count (inc last-count) :level level :depth (level depths)
+                                   :current-player :player1 :box-played nil :users users
+                                   :player1 player1 :player2 player2 :board-size board-size :board (create-board board-size))]
+        (sql/save-game (:db game) fresh-game)
+        fresh-game))))

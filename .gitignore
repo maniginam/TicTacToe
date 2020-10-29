@@ -5,5 +5,8 @@
 *jar
 pom.*
 out
-saved-games.*
-
+saved-games
+*.db
+target
+.nrepl-port
+.lein*

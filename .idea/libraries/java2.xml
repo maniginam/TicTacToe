@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="java2">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/build/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/demo/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/generated/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/legacy/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/main/core-api/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/main/core-impl/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/main/protocol-impl/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/main/user-api/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/main/user-impl/java" />
+      <root url="file://$PROJECT_DIR$/../mySQL/mysql-connector-j/src/test/java" />
+    </SOURCES>
+  </library>
+</component>
