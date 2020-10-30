@@ -36,10 +36,10 @@
 
 (defn setup-game [game]
   (let [last-sql-game (sql/load-game (:db game) game)
-        last-h2-game (h2/get-last-db-game (:table game))
+        ;last-h2-game (h2/get-last-db-game (:table game))
         last-filed-game (saved/pull-game)
         updated-sql-game (assoc last-sql-game :old-console (:console last-sql-game) :console (:console game))
-        updated-h2-game (assoc last-h2-game :old-console (:console last-h2-game) :console (:console game))
+        ;updated-h2-game (assoc last-h2-game :old-console (:console last-h2-game) :console (:console game))
         updated-filed-game (assoc last-filed-game :old-console (:console last-filed-game) :console (:console game))
         last-count (get updated-filed-game :game-count 0)]
     (if (restart? updated-sql-game)

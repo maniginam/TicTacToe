@@ -10,13 +10,13 @@
 (def player2 {:player-num 2 :piece "O" :type :computer})
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
-(def test-game {:db "test" :table "TEST" :users 0 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board :board-size 3})
-(def test-game-player1-wins {:db "test" :users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
-(def test-console {:table "TEST" :db "test"})
-(def empty-game {:db "test" :table "TEST"})
+(def test-game {:db "test" :table "TEST" :persistence :mysql :users 0 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board :board-size 3})
+(def test-game-player1-wins {:db "test" :persistence :mysql :users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
+(def test-console {:table "TEST" :db "test" :persistence :mysql})
+(def empty-game {:db "test" :table "TEST" :persistence :mysql})
 
 (defn save-an-ended-game []
-  (let [game {:db "test" :box-played 0 :depth 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
+  (let [game {:persistence :mysql :db "test" :box-played 0 :depth 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
     (sql/save-game "test" game)
     (sql/save-turn "test" game)))
 
@@ -33,6 +33,7 @@
 (defmethod set-level :default [console] :hard)
 (defmethod restart? :default [console] false)
 (defmethod get-restart-input :default [console] "N")
+(defmethod show-move :default [game box] nil)
 
 (describe "TIC-TAC-TOE:"
 
@@ -60,7 +61,7 @@
     (let [player1 {:player-num 1 :type :computer :piece "X"}]
       (should= player1 (:player1 (setup-game empty-game)))
       (save-an-ended-game)
-      (should= player1 (assign-player {:db "ttt" :table "TEST" :console :default :users 0} :player1)))
+      (should= player1 (assign-player {:persistence :mysql :db "ttt" :table "TEST" :console :default :users 0} :player1)))
     (save-an-ended-game))
 
   (it "Default: Sets up player2"
@@ -78,11 +79,11 @@
 
   (it "Terminal: Set Up game map with 1 user as player 2"
     (let [player2 {:player-num 2 :piece "O" :type :human}]
-      (with-out-str (should= player2 (:player2 (with-in-str "1" (setup-game {:db "test" :table "TEST" :console :terminal :board [0 1 2 3 4 5 6 7 8] :board-size 3 :player1 {:player-num 1 :piece "X" :type :computer} :depth 0}))))))
+      (with-out-str (should= player2 (:player2 (with-in-str "1" (setup-game {:persistence :mysql :db "test" :table "TEST" :console :terminal :board [0 1 2 3 4 5 6 7 8] :board-size 3 :player1 {:player-num 1 :piece "X" :type :computer} :depth 0}))))))
     (save-an-ended-game))
 
   (it "plays 0 user, 3x3 board game"
-    (let [game {:db "test" :table "TEST" :users 0 :level :hard :depth 0 :board-size 3 :board (:three-by-three boards) :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
+    (let [game {:persistence :mysql :db "test" :table "TEST" :users 0 :level :hard :depth 0 :board-size 3 :board (:three-by-three boards) :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
       (should= game (dissoc (setup-game test-console) :game-count :box-played))
       (save-an-ended-game)
       (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board :box-played)))

@@ -12,6 +12,7 @@
 (defmethod tcore/select-box :mock [_ game] @mock-move)
 
 (def default-state {:status           :waiting
+                    :persistence      :mysql
                     :message-key      :waiting
                     :console          :gui
                     :users            1
@@ -28,7 +29,7 @@
                     :boxes            nil
                     :level            :hard                 ;; TODO - GLM : multimethod off of level and eliminate depth
                     :depth            0
-                    :turn             nil :played-boxes []
+                    :turn             nil
                     :game-over        false :play-again-pause 0 :winner nil
                     :table            "TEST"
                     :db               "test"})
@@ -82,9 +83,6 @@
       (let [not-over-game (update-state (assoc default-state :board ["X" "O" "X" 3 4 5 6 7 8] :current-player :player2))]
         (should-be-nil (:winner not-over-game)))))
 
-  (it "makes empty board"
-    (should= [0 1 2 3] (:empty-board (update-state (assoc default-state :board-size 2)))))
-
   (context "board"
     (it "stays constant during human turn"
       (let [empty (update-state default-state)]
@@ -124,7 +122,6 @@
   ;       [:box-count (assoc state-setup :board-set? true :board-size 2) 4]
   ;       [:empty-board (assoc state-setup :board-set? true :board-size 2) [0 1 2 3]]
   ;       [:board (assoc state-setup :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2 :player2 {:player-num 2 :piece "O" :type :computer}) ["X" 1 2 3 "O" 5 6 7 8]]
-  ;       [:played-boxes (assoc state-setup :board ["X" "O" 2]) [0 1]]
   ;       [:current-player (assoc state-setup :status :playing :current-player :player1 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :human}) :player2]
   ;       [:play-again-pause (assoc state-setup :game-over true :board ["X" "X" "X" 3 4 5 6 7 8] :play-again-pause 81) 82]
   ;       [:play-again-pause (assoc state-setup :game-over true :board ["X" "X" "X" 3 4 5 6 7 8] :play-again-pause 100) 100]

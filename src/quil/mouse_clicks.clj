@@ -41,8 +41,8 @@
 
 (defmethod mouse-clicked :board-setup [state event]
   (let [board-size (:key-stroke state)]
-    (if (int? board-size)
-      (assoc state :board (board/create-board board-size) :empty-board (board/create-board board-size) :board-set true :board-size board-size :status :user-setup))))
+    (when (int? board-size)
+      (assoc state :board (board/create-board board-size) :board-set true :board-size board-size :status :user-setup))))
 
 (defmethod mouse-clicked :user-setup [state event]
   (cond (mouse/hovering-option? 0 (:x event) (:y event)) (let [new-state (assoc state :users 0 :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :computer))] (sql/save-game (:db state) new-state) new-state)
@@ -65,7 +65,7 @@
   (play-again state))
 
 (defmethod mouse-clicked :playing [state event]
-  (let [boxes (:empty-board state)
+  (let [boxes (board/create-board (:board-size state))
         board (:board state)
         box (first (filter #(box/mouse-in-box? % state (:x event) (:y event)) boxes))]
     (cond (nil? box) state

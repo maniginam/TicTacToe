@@ -43,7 +43,6 @@
                   :board         (str (:board game))
                   :boardsize     (:board-size game)
                   :emptyboard    (str (:empty-board game))
-                  :playedboxes   (str (:played-boxes game))
                   :messagekey    (str (:message-key game))
                   :gamecount     (:game-count game)
                   :database      (str (:database game))
@@ -70,8 +69,6 @@
             :player1 (edn/read-string (:player1 game))
             :player2 (edn/read-string (:player2 game))
             :board (edn/read-string (:board game))
-            :empty-board (edn/read-string (:emptyboard game))
-            :played-boxes (:playedboxes game)
             :depth (:depth game)
             :level (edn/read-string (:level game))
             :message-key :nil

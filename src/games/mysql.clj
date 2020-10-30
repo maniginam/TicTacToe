@@ -1,7 +1,10 @@
 (ns games.mysql
-  (:require [next.jdbc :as jdbc]
-            [next.jdbc.sql :as sql]
-            [next.jdbc.result-set :as rs]))
+  (:require
+    [next.jdbc :as jdbc]
+    [next.jdbc.sql :as sql]
+    [next.jdbc.result-set :as rs]
+    [ttt.core :as tcore]
+    ))
 
 (def database {:dbtype "mysql" :host "127.0.0.1" :user "root" :password "topsecret" :serverTimezone "UTC"})
 
@@ -50,34 +53,39 @@
     [(first game-table) (remove #(nil? (:box %)) turns-table) players-table]))
 
 (defn sync-game [game [game-table turns [player1 player2 & players]]]
-  (let [ds (connect (:dbname game))
-        game-id (get-last-game-id ds)]
-    (-> game
-        (assoc :game-id game-id)
-        (assoc :board-size (:boardsize game-table))
-        (assoc :current-player (if (even? (:id (last turns))) :player1 :player2))
-        (assoc :player1 {:player-num 1 :piece (:piece player1) :type (read-string (:type player1))})
-        (assoc :player2 {:player-num 2 :piece (:piece player2) :type (read-string (:type player2))})
-        (assoc :board (loop [boxes (map #(vector (:box %) (:player %)) turns)
-                             board (vec (range (int (Math/pow (:boardsize game-table) 2))))]
-                        (if (empty? boxes)
-                          board
-                          (let [[box player] (first boxes)
-                                piece (if (= 2 player) (:piece player1) (:piece player2))]
-                            (recur (rest boxes) (replace {box piece} board))))))
-        (assoc :empty-board (vec (range (int (Math/pow (:boardsize game-table) 2)))))
-        ;(assoc :played-boxes (:played-boxes last-game))
-        (assoc :depth (:depth game-table))
-        ;(assoc :message-key :nil)
-        ;(assoc :winner nil)
-        ;(assoc :game-count (:game-count last-game))
-        (assoc :users (count (filter #(= :human (:type %)) players)))
-        (assoc :status :playing)
-        ))
-  )
+  (if (seq turns)
+    (let [ds (connect (:dbname game))
+          game-id (get-last-game-id ds)]
+      (-> game
+          (assoc :game-id game-id)
+          (assoc :board-size (:boardsize game-table))
+          (assoc :current-player (if (even? (:id (last turns))) :player1 :player2))
+          (assoc :player1 {:player-num 1 :piece (:piece player1) :type (read-string (:type player1))})
+          (assoc :player2 {:player-num 2 :piece (:piece player2) :type (read-string (:type player2))})
+          (assoc :board (loop [boxes (map #(vector (:box %) (:player %)) turns)
+                               board (vec (range (int (Math/pow (:boardsize game-table) 2))))]
+                          (if (empty? boxes)
+                            board
+                            (let [[box player] (first boxes)
+                                  piece (if (= 2 player) (:piece player1) (:piece player2))]
+                              (recur (rest boxes) (replace {box piece} board))))))
+          (assoc :depth (:depth game-table))
+          ;(assoc :message-key :nil)
+          ;(assoc :winner nil)
+          ;(assoc :game-count (:game-count last-game))
+          (assoc :users (count (filter #(= :human (:type %)) players)))
+          (assoc :status :playing)
+          ))
+    game))
 
 (defn load-game [dbname game]
   (let [ds (connect dbname)
         last-game-id (get-last-game-id ds)
         tables (pull-game-tables ds last-game-id)]
     (sync-game (assoc game :dbname dbname) tables)))
+
+(defmethod tcore/save-game :mysql [game])
+(defmethod tcore/save-turn :mysql [game])
+(defmethod tcore/load-game :mysql [game])
+
+

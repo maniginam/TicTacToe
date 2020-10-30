@@ -85,6 +85,9 @@
 (defn open-boxes [board]
   (filter #(int? %) board))
 
+(defn played-boxes [board]
+  (remove nil? (map #(if (not (int? %1)) %2) board (vec (range 0 (count board))))))
+
 (defn full-board? [board]
   (empty? (open-boxes board)))
 

@@ -104,6 +104,11 @@
     (should= [6] (open-boxes one-box-open-cats-game-6))
     (should= [] (open-boxes full-board-cats-game)))
 
+  (it "returns all closed, played boxes in game"
+    (should= [] (played-boxes empty-board))
+    (should= [0 1 2 3 4 5 7 8] (played-boxes one-box-open-cats-game-6))
+    (should= [0 1 2 3 4 5 6 7 8] (played-boxes full-board-cats-game)))
+
   (it "tests for full board"
     (should (full-board? full-board-cats-game))
     (should-not (full-board? empty-board)))

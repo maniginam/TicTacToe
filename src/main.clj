@@ -9,6 +9,7 @@
 
 (def table "TTT")
 (def db "ttt")
+(def persistence :mysql)
 
 (defn run [game] ;; TODO - GLM : this belong in terminal
   (loop [game game]
@@ -19,7 +20,7 @@
       (recur (play-game game)))))
 
 (defn -main [] ;; TODO - GLM : This should be the ONLY main.  Dispatch to appropriate UI to run.
-  (let [console {:table table :db db :console :terminal :database :mysql :game-count 0}]
+  (let [console {:table table :db db :console :terminal :database :mysql :game-count 0 :persistence persistence}]
     (loop [game (setup-game console)]
       (run game)
       (if (true? (play-again? console))
