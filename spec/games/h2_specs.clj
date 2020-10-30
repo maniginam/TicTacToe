@@ -1,4 +1,4 @@
-(ns games-specs.h2-specs
+(ns games.h2-specs
   (:require [speclj.core :refer :all]
             [games.core :refer :all]
             [games.h2 :refer :all]

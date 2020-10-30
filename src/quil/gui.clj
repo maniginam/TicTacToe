@@ -10,8 +10,10 @@
             [quil.mouse-clicks :refer :all]
             [quil.human-prompts :refer :all]
             [quil.boxes :refer :all]))
+;; TODO - GLM : No more :refer :all.  Kill them all!
 
 
+;; TODO - GLM : Use a model game, kept in tcore and mofigy as needed?
 (defn setup-gui []
   (q/frame-rate 50)
   (q/set-state! :status :waiting
@@ -29,9 +31,6 @@
                 :player2 {:player-num 2 :piece "O" :type nil}
                 :current-plyr-num 1
                 :board [0 1 2 3 4 5 6 7 8]
-                :rows []
-                :cols []
-                :diags []
                 :ai-turn false
                 :boxes nil
                 :level :hard
@@ -41,7 +40,11 @@
                 :play-again-pause 0
                 :winner nil
                 :table "TTT"
-                :db "ttt"))
+                :db "ttt"
+                ;; TODO - GLM : Maybe like this
+                ;:persistence {:db :mysql :table "TTT" :db "ttt"}
+                ;; TODO - GLM : Maybe one key for all ui stuff
+                ))
 
 (defn get-message-key [state]
   (cond (= (:status state) :playing) (if (= :player1 (:current-player state)) :player1 :player2)
@@ -53,54 +56,7 @@
         current-player (get state current-player-key)]
     (and (= :playing (:status state)) (not= :human (:type current-player)))))
 
-;(defn get-box-count [state]
-;  (if (:board-set? state) (int (Math/pow (:board-size state) 2)) 3))
-
 (defn get-player-num [state] (:player-num ((:current-player state) state)))
-
-;(defn ai-turn [state]
-;  (if (ai-turn? state)
-;  (let [box (play-box state)
-;        new-state (play-turn state box)]
-;    (if (game-over? new-state)
-;      (assoc new-state :game-over true)
-;      new-state))))
-
-;(defn update-state [state]
-;  (let [db (:db state)
-;        board (if (and (not (game-over? state)) (ai-turn? state)) (gm/update-board-with-move state (gm/get-move-from-player state)) (:board state))
-;        winner (if (game-over? state) (:winner (get-winner state)))
-;        current-player (if (and (not (game-over? state)) (ai-turn? state)) (next-player state) (:current-player state))
-;        updated-game (assoc state :board board)]
-;    (when (ai-turn? state)
-;      (sql/save-turn db updated-game))
-;    {:game-over        (gm/game-over? state)
-;     :db               (:db state)
-;     :game-count       (:game-count state)
-;     :winner           winner
-;     :player1          (:player1 state)
-;     :player2          (:player2 state)
-;     :console          (:console state)
-;     :database         (:database state)
-;     :users            (:users state)
-;     :board-size       (:board-size state)
-;     ;:board-set?       (:board-set? state)
-;     ;:box-count        (get-box-count state)
-;     :key-stroke       (:key-stroke state)
-;     :empty-board      (board/create-board (:board-size state))
-;     :board            board
-;     :depth            (:depth state)
-;     :level            (:level state)
-;     :box-played       (:box-played state)
-;     :current-player   current-player
-;     :play-again-pause (if (:game-over state) (if (< (:play-again-pause state) 100) (inc (:play-again-pause state)) 100) 0)
-;     :status           (if (game-over? state) (if (= 100 (:play-again-pause state)) :play-again :game-over) (:status state))
-;     :message-key      (get-message-key state) ;; TODO - GLM : test me
-;     :table            (:table state)
-;     :save             (if (or (ai-turn? state) (:game-over state)) (saved/save-game state))
-;     :save-to-h2       (if (or (ai-turn? state) (:game-over state)) (h2/save-to-sql state (:table state)))
-;     ;:save-to-mysql    (if (ai-turn? state) (sql/save-turn (:db state) state))
-;     }))
 
 (defn maybe-make-computer-move [state]
   (if (and (not (game-over? state)) (ai-turn? state))
@@ -125,6 +81,7 @@
       gm/get-winner
       ))
 
+;; TODO - GLM : Smelly.  If there a better way?
 (defmethod show-move :gui [game box] nil)
 
 (defn draw-state [state]

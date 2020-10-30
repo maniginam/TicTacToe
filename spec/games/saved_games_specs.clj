@@ -1,4 +1,4 @@
-(ns games-specs.saved-games-specs
+(ns games.saved-games-specs
   (:require [speclj.core :refer :all]
             [games.saved-games :refer :all]))
 

@@ -1,4 +1,4 @@
-(ns games-specs.mysql-specs
+(ns games.mysql-specs
   (:require [speclj.core :refer :all]
             [ttt.core :refer :all]
             [games.mysql :as mysql]

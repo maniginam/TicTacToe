@@ -123,6 +123,7 @@
         type (assign-type game player-num)]
     {:player-num player-num :piece piece :type type}))
 
+;; TODO - GLM : Maybe you can make this work like the GUI where there's a status that tells you what to do next.
 (defn setup-game [game]
   (let [last-sql-game (tcore/load-game game)
         ;last-h2-game (h2/get-last-db-game (:table game))
