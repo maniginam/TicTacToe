@@ -5,7 +5,6 @@
             [ttt.board :refer :all]
             [ttt.ai :refer :all]
             [ttt.game-master :refer :all]
-            [ttt.game-setup :as setup]
             [games.saved-games :as saved]
             [games.h2 :as h2]
             [games.mysql :as sql]))

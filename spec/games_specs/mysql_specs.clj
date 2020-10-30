@@ -4,7 +4,7 @@
             [games.mysql :as mysql]
             [ttt.game-master :refer :all]
             [quil.gui :refer :all]
-            [main-specs]                                    ;; for show-move
+            [ttt.terminal-specs] ;; TODO - GLM : sloppy, only used for show-move
             ))
 
 (def test-db {:dbtype "mysql" :host :none :user "root" :password "topsecret"})

@@ -1,22 +1,15 @@
 (ns quil.gui
   (:require [quil.core :as q]
             [quil.middleware :as m]
-            [quil.dimensions :as dim]
             [quil.board :as gui-board]
             [ttt.board :as board]
             [quil.button :as button]
             [quil.gui-core :refer :all]
             [ttt.core :refer :all]
-            [ttt.game-setup :as setup]
-            [quil.gui-messages :as msg]
             [ttt.game-master :as gm :refer :all]
             [quil.mouse-clicks :refer :all]
             [quil.human-prompts :refer :all]
-            [quil.boxes :refer :all]
-            [quil.game-pieces :as piece]
-            [games.saved-games :as saved]
-            [games.h2 :as h2]
-            [games.mysql :as sql]))
+            [quil.boxes :refer :all]))
 
 
 (defn setup-gui []
@@ -119,8 +112,14 @@
     (assoc state :game-over true)
     state))
 
+(defn maybe-start-game [state]
+  (if (= :ready-to-play (:status state))
+    (gm/start-game! state)
+    state))
+
 (defn update-state [state]
   (-> state
+      maybe-start-game
       maybe-make-computer-move
       maybe-game-over
       gm/get-winner

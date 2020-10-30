@@ -1,21 +1,19 @@
 (ns quil.mouse-clicks
   (:require [quil.core :as q]
             [ttt.core :refer :all]
-            [ttt.user-inputs :as input]
             [ttt.board :as board]
             [ttt.game-master :as game]
-            [ttt.game-setup :as setup]
             [quil.gui-core :refer :all]
-            [quil.dimensions :as dim]
             [quil.mouse-location :as mouse]
             [quil.boxes :as box]
             [games.saved-games :as saved]
             [games.h2 :as h2]
-            [games.mysql :as sql]))
+            [games.mysql :as sql]
+            [ttt.core :as tcore]))
 
 (defmethod mouse-clicked :waiting [state event]
   (if (mouse/in-button? (:x event) (:y event))
-    (let [sql-game (sql/load-game (:db state) state)
+    (let [sql-game (tcore/load-game state)
           last-sql-game (assoc sql-game :old-console (:console sql-game) :console (:console state))
           filed-game (saved/pull-game)
           last-filed-game (assoc filed-game :old-console (:console filed-game) :console (:console state))
@@ -36,7 +34,7 @@
     ;(if (:enter-key? event)
     ;  (if (int? (:key-stroke state))
     ;    (assoc state :board (board/create-board key-stroke) :board-set true :board-size key-stroke :user-setup))
-      (assoc state :key-stroke (- (int key-stroke) 48))))
+    (assoc state :key-stroke (- (int key-stroke) 48))))
 ;)
 
 (defmethod mouse-clicked :board-setup [state event]
@@ -56,7 +54,7 @@
         :else state))
 
 (defmethod mouse-clicked :level-setup [state event]
-  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (let [state (assoc state :status :playing :level :easy :depth 2)] (sql/save-game (:db state) state) state)
+  (cond (mouse/hovering-option? 0 (:x event) (:y event)) #_(gm/set-level state :easy) (let [state (assoc state :status :playing :level :easy :depth 2)] (sql/save-game (:db state) state) state)
         (mouse/hovering-option? 1 (:x event) (:y event)) (let [state (assoc state :status :playing :level :medium :depth 1)] (sql/save-game (:db state) state) state)
         (mouse/hovering-option? 2 (:x event) (:y event)) (let [state (assoc state :status :playing :level :hard :depth 0)] (sql/save-game (:db state) state) state)
         :else state))

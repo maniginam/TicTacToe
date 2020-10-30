@@ -12,7 +12,8 @@
   ;(before (println "This runs before specs"))
   ;(after (println "This runs after specs"))
   (around [it] (with-redefs [tcore/show-move (stub :show-move)
-                             tcore/save-turn (stub :save-turn)]
+                             tcore/save-turn (stub :save-turn)
+                             tcore/save-game (stub :save-game)]
                  (it)))
 
   (context "update-game-with-move"
@@ -27,14 +28,28 @@
             game (sut/update-game-with-move game 4)]
         (should-have-invoked :save-turn {:with [game]})))
 
-
-    ;; TODO - GLM : save game - use core multimethod
-    ;; TODO - GLM : load game - use core multimethod
-    ;; TODO - GLM : implements mysql fns
-    ;; TODO - GLM : Refactors specs to reference ONE base game map
-    ;; TODO - GLM : imeplement mock/testable persistence
-
-
     )
+
+  (context "setup"
+
+    (it "sets game level"
+      (let [result (sut/set-level helper/test-game :easy)]
+        (should= :easy (:level result))
+        (should= 2 (:depth result))
+        (should= :ready-to-play (:status result))))
+
+    (it "starts game"
+      (let [game (assoc helper/test-game :status :ready-to-play)
+            started-game (sut/start-game! game)]
+        (should= :playing (:status started-game))
+        (should-have-invoked :save-game {:with [started-game]})))
+    )
+
+
+  ;; TODO - GLM : save game - use core multimethod
+  ;; TODO - GLM : load game - use core multimethod
+  ;; TODO - GLM : implements mysql fns
+  ;; TODO - GLM : Refactors specs to reference ONE base game map
+  ;; TODO - GLM : imeplement mock/testable persistence
 
   )
