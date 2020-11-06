@@ -34,7 +34,6 @@
                 :ai-turn false
                 :boxes nil
                 :level :hard
-                :depth 0
                 :turn nil
                 :game-over false
                 :play-again-pause 0

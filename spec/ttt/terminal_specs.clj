@@ -18,13 +18,13 @@
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
 ;; TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in spec-helper and modify that for each spec
-(def test-game {:db "test" :table "TEST" :persistence :mock :users 0 :level :hard :depth 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board :board-size 3})
+(def test-game {:db "test" :table "TEST" :persistence :mock :users 0 :level :hard :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board :board-size 3})
 (def test-game-player1-wins {:db "test" :persistence :mock :users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
 (def test-console {:table "TEST" :db "test" :persistence :mock})
 (def empty-game {:db "test" :table "TEST" :persistence :mock})
 
 (defn save-an-ended-game []
-  (let [game {:persistence :mock :db "test" :box-played 0 :depth 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
+  (let [game {:persistence :mock :db "test" :box-played 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
     (sql/save-game "test" game)
     (sql/save-turn "test" game)))
 
@@ -118,7 +118,7 @@
 
   (it "tests computer move"
     (let [player1 {:player 1 :type :computer :piece "X"}
-          game {:console :default :level :hard :depth 0 :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
+          game {:console :default :level :hard :current-player :player1 :player1 player1 :board ["X" "O" 2 "O" 4 5 6 7 "X"]}]
       (should= ["X" "O" 2 "O" "X" 5 6 7 "X"]
                (update-board-with-move game (select-box player1 game)))))
 
@@ -149,8 +149,8 @@
       (save-an-ended-game))
 
     (it "sets up easy game"
-      (let [game (dissoc (assoc (terminal/setup-game empty-game) :level :easy :depth 2) :game-count)]
-        (should= (assoc test-game :level :easy :depth 2) game))
+      (let [game (dissoc (assoc (terminal/setup-game empty-game) :level :easy) :game-count)]
+        (should= (assoc test-game :level :easy) game))
       (save-an-ended-game))
     )
 
@@ -199,11 +199,11 @@
 
     (it "Terminal: Set Up game map with 1 user as player 2"
       (let [player2 {:player-num 2 :piece "O" :type :human}]
-        (with-out-str (should= player2 (:player2 (with-in-str "1" (terminal/setup-game {:persistence :mock :db "test" :table "TEST" :console :terminal :board [0 1 2 3 4 5 6 7 8] :board-size 3 :player1 {:player-num 1 :piece "X" :type :computer} :depth 0}))))))
+        (with-out-str (should= player2 (:player2 (with-in-str "1" (terminal/setup-game {:persistence :mock :db "test" :table "TEST" :console :terminal :board [0 1 2 3 4 5 6 7 8] :board-size 3 :player1 {:player-num 1 :piece "X" :type :computer}}))))))
       (save-an-ended-game))
 
     (it "plays 0 user, 3x3 board game"
-      (let [game {:persistence :mock :db "test" :table "TEST" :users 0 :level :hard :depth 0 :board-size 3 :board (:three-by-three boards) :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
+      (let [game {:persistence :mock :db "test" :table "TEST" :users 0 :level :hard :board-size 3 :board (:three-by-three boards) :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
         (should= game (dissoc (terminal/setup-game test-console) :game-count :box-played))
         (save-an-ended-game)
         (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (play-game game) :board :box-played)))
@@ -219,7 +219,7 @@
       (save-an-ended-game))
 
     ;(it "plays a 4x4 0 player game"
-    ;  (let [game {:console :default :level :hard :depth 0 :current-player :player1 :users 0 :player1 player1 :player2 player2 :board (:four-by-four boards)}]
+    ;  (let [game {:console :default :level :hard :current-player :player1 :users 0 :player1 player1 :player2 player2 :board (:four-by-four boards)}]
     ;    (should= "Cat's Game" (run game))))
 
     )

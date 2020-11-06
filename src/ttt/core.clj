@@ -1,16 +1,5 @@
 (ns ttt.core)
 
-;(def game {:status :waiting
-;           :console nil
-;           :users nil
-;           :board-size 3
-;           :current-player nil
-;           :player1 {:player-num 1 :piece :player1-piece}
-;           :player2 {:player-num 2 :piece :player2-piece}
-;           :board nil
-;           :game-over nil
-;           :winner nil})
-
 (def types {0 :computer 1 nil 2 :human})
 
 ;(defprotocol Game "Map for Game"

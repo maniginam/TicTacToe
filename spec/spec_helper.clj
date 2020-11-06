@@ -13,7 +13,6 @@
                 :table "TEST"
                 :users 0
                 :level :hard
-                :depth 0
                 :current-player :player1
                 :box-played nil
                 :player1 player1

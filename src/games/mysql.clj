@@ -39,7 +39,7 @@
 
 (defn save-game [dbname game]
   (let [ds (connect dbname)
-        game-table-map {:console (str (:console game)) :depth (:depth game) :boardsize (:board-size game)}]
+        game-table-map {:console (str (:console game)) :level (:level game) :boardsize (:board-size game)}]
     (sql/insert! ds :game game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
     (save-players dbname game)))
 
@@ -69,7 +69,6 @@
                             (let [[box player] (first boxes)
                                   piece (if (= 2 player) (:piece player1) (:piece player2))]
                               (recur (rest boxes) (replace {box piece} board))))))
-          (assoc :depth (:depth game-table))
           ;(assoc :message-key :nil)
           ;(assoc :winner nil)
           ;(assoc :game-count (:game-count last-game))

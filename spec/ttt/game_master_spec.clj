@@ -35,7 +35,6 @@
     (it "sets game level"
       (let [result (sut/set-level helper/test-game :easy)]
         (should= :easy (:level result))
-        (should= 2 (:depth result))
         (should= :ready-to-play (:status result))))
 
     (it "starts game"

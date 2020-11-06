@@ -12,7 +12,7 @@
 (def test-ds (mysql/connect db-test-name))
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def test-game {:db "test" :persistence :mysql :status :playing :console :gui :users 1 :depth 0 :current-player :player1 :board-size 3 :board ["X" 1 2 3 "O" 5 6 7 8] :player1 player1 :player2 player2 :box-played 4})
+(def test-game {:db "test" :persistence :mysql :status :playing :console :gui :users 1 :current-player :player1 :board-size 3 :board ["X" 1 2 3 "O" 5 6 7 8] :player1 player1 :player2 player2 :box-played 4})
 
 (defn play-test-game [game played-boxes]
   (mysql/save-game db-test-name game)
@@ -82,16 +82,13 @@
                                 :player1        player1
                                 :player2        player2
                                 :board-size     3
-                                :depth          0
                                 :current-player :player1} [0 1 2])
           loaded-game (mysql/load-game db-test-name game)]
-      (println "(:board game): " (:board game))
       (should= 3 (:board-size loaded-game))
       (should= :player2 (:current-player loaded-game))
       (should= player1 (:player1 loaded-game))
       (should= player2 (:player2 loaded-game))
       (should= ["X" "O" "X" 3 4 5 6 7 8] (:board loaded-game))
-      (should= 0 (:depth loaded-game))
       (should= 0 (:users loaded-game))
       (should= :playing (:status loaded-game))))
 

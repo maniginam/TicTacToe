@@ -79,7 +79,6 @@
         (assoc :player1 (:player1 last-game))
         (assoc :player2 (:player2 last-game))
         (assoc :board (:board last-game))
-        (assoc :depth (:depth last-game))
         (assoc :level (:level last-game))
         (assoc :message-key :nil)
         (assoc :winner nil)
@@ -140,9 +139,14 @@
             player2 (assign-player (assoc game :users users :player1 player1) :player2)
             board-size (set-board-size game)
             level (if (< users 2) (prompt-for-level game) :none)
-            fresh-game (assoc game :level level :depth (level depths)
-                                   :current-player :player1 :box-played nil :users users
-                                   :player1 player1 :player2 player2 :board-size board-size :board (create-board board-size))]
+            fresh-game (assoc game :level level
+                                   :current-player :player1
+                                   :box-played nil
+                                   :users users
+                                   :player1 player1
+                                   :player2 player2
+                                   :board-size board-size
+                                   :board (create-board board-size))]
         ;(sql/save-game (:db game) fresh-game)
         (gm/start-game! game)
         fresh-game))))

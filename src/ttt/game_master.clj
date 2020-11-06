@@ -55,11 +55,8 @@
     (get-winner game)
     (game-with-next-move game)))
 
-(def levels->depths {:easy 2 :medium 1 :hard 0})
-
 (defn set-level [game level]
-  (let [depth (get levels->depths level 0)]
-    (assoc game :level level :depth depth :status :ready-to-play)))
+  (assoc game :level level :status :ready-to-play))
 
 (defn start-game! [game]
   (let [game (assoc game :status :playing)]

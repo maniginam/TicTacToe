@@ -28,7 +28,6 @@
      messagekey varchar(32),
      gamecount int(255),
      database varchar(32),
-     depth tinyint(32),
      level varchar(32))")]
     (jdbc/execute! ds [table])))
 
@@ -46,7 +45,6 @@
                   :messagekey    (str (:message-key game))
                   :gamecount     (:game-count game)
                   :database      (str (:database game))
-                  :depth         (:depth game)
                   :level         (str (:level game))}]
     (sql/insert! ds (keyword small-table) game-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})))
 
@@ -69,7 +67,6 @@
             :player1 (edn/read-string (:player1 game))
             :player2 (edn/read-string (:player2 game))
             :board (edn/read-string (:board game))
-            :depth (:depth game)
             :level (edn/read-string (:level game))
             :message-key :nil
             :game-count (:gamecount game))

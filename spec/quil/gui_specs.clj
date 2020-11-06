@@ -27,7 +27,6 @@
                     :ai-turn          false
                     :boxes            nil
                     :level            :hard                 ;; TODO - GLM : multimethod off of level and eliminate depth
-                    :depth            0
                     :turn             nil
                     :game-over        false :play-again-pause 0 :winner nil
                     :table            "TEST"
@@ -56,7 +55,6 @@
       ;(should-not (:board-set? result))
       (should-be-nil (:key-stroke result))
       (should= :hard (:level result))
-      (should= 0 (:depth result))
       (should= "TEST" (:table result))
       (should= "test" (:db result))
       ))

@@ -19,10 +19,10 @@
     )
 
   (it "makes computer move"
-    (let [box (select-box player1 {:current-player :depth 0 :player1 :board standard-board})]
+    (let [box (select-box player1 {:current-player :player1 :board standard-board})]
       (should= 1 (count (filter #(= % box) [0 2 6 8]))))
-    (with-out-str (should= 2 (select-box player1 {:current-player :player1 :depth 0 :board ["O" "O" 2 3 4 5 6 7 8]})))
-    (with-out-str (should= 1 (select-box player1 {:current-player :player1 :depth 0 :board ["X" 1 "X" 3 4 5 6 7 8]}))))
+    (with-out-str (should= 2 (select-box player1 {:current-player :player1 :board ["O" "O" 2 3 4 5 6 7 8]})))
+    (with-out-str (should= 1 (select-box player1 {:current-player :player1 :board ["X" 1 "X" 3 4 5 6 7 8]}))))
 
   (it "reports results"
     (should= "Cat's Game" (report {:console :default} (str "Cat's Game")))
