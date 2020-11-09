@@ -139,7 +139,6 @@
             level (if (< users 2) (tcore/prompt-for-level game) :none)
             fresh-game (assoc game :level level
                                    :current-player :player1
-                                   :box-played nil
                                    :users users
                                    :player1 player1
                                    :player2 player2

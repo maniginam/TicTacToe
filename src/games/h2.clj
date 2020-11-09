@@ -31,7 +31,7 @@
     (jdbc/execute! ds [table])))
 
 (defmethod tcore/save-game :h2 [game]
-  (let [small-table (.toLowerCase (:table game))
+  (let [small-table (.toLowerCase (:table (:persistence game)))
         game-map {:console       (str (:console game))
                   :status        (if (nil? (:status game)) ":playing" (str (:status game)))
                   :users         (:users game)
@@ -61,13 +61,13 @@
           (assoc
             :status (edn/read-string (:status game))
             :console (edn/read-string (:console game))
-            :board-size (:boardsize game)
+            :board-size (Integer/parseInt (:boardsize game))
             :current-player (edn/read-string (:currentplayer game))
             :player1 (edn/read-string (:player1 game))
             :player2 (edn/read-string (:player2 game))
             :board (edn/read-string (:board game))
             :level (edn/read-string (:level game))
-            :message-key :nil
-            :game-count (:gamecount game))
+            :game-count (:gamecount game)
+            :message-key (edn/read-string (:messagekey game)))
           (dissoc
-            :boardsize :currentplayer :emptyboard :playedboxes :messagekey :gamecount)))))
+            :database :boardsize :currentplayer :emptyboard :playedboxes :messagekey :gamecount :boxes)))))

@@ -12,21 +12,18 @@
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
 (def standard-board [0 1 2 3 4 5 6 7 8])
-(def player1-wins-board ["X" "X" 2 "O" "O" 5 6 7 8])
-;; TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in spec-helper and modify that for each spec
-(def test-game {:dbname "test" :table "TEST" :persistence :mock :users 0 :level :hard :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board standard-board :board-size 3})
-(def test-game-player1-wins {:db "test" :persistence :mock :users 0 :current-player :player1 :box-played nil :player1 player1 :player2 player2 :board player1-wins-board})
-(def test-console {:table "TEST" :dbname "test" :persistence :mock})
-(def empty-game {:dbname "test" :table "TEST" :persistence :mock})
+;; COMPLETE - TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in spec-helper and modify that for each spec
+(def empty-game (assoc tcore/game-model :persistence {:db :mock :dbname "test" :table "TEST"}))
+(def test-game (assoc empty-game :users 0
+                                 :player1 player1 :player2 player2))
 
 (defn save-an-ended-game []
-  (let [game {:persistence :mock :db "test" :box-played 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
+  (let [game {:persistence {:db :mock :dbname "test" :table "TEST"} :db "test" :box-played 0 :board ["X"] :board-size 1 :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human} :users 2 :console :default}]
     (tcore/save-game game)
     (tcore/save-turn game)))
 
 (def boards {:three-by-three [0 1 2 3 4 5 6 7 8] :four-by-four [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]})
 (def players {:player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}})
-;(def ended-game (save-an-ended-game))
 
 ;; TODO - GLM : Most, maybe all, of these should be deleted because they're only used by terminal.
 (defmethod tcore/validate-player-count :default [console] 0)
@@ -190,17 +187,17 @@
       (save-an-ended-game))
 
     (it "Default: Set Up game map"
-      (should= test-game (dissoc (terminal/setup-game test-console) :game-count))
+      (should= test-game (terminal/setup-game empty-game))
       (save-an-ended-game))
 
     (it "Terminal: Set Up game map with 1 user as player 2"
       (let [player2 {:player-num 2 :piece "O" :type :human}]
-        (with-out-str (should= player2 (:player2 (with-in-str "1" (terminal/setup-game {:persistence :mock :db "test" :table "TEST" :console :terminal :board [0 1 2 3 4 5 6 7 8] :board-size 3 :player1 {:player-num 1 :piece "X" :type :computer}}))))))
+        (with-out-str (should= player2 (:player2 (with-in-str "1" (terminal/setup-game (assoc empty-game :users 1 :console :terminal)))))))
       (save-an-ended-game))
 
     (it "plays 0 user, 3x3 board game"
-      (let [game {:persistence :mock :dbname "test" :table "TEST" :users 0 :level :hard :board-size 3 :board (:three-by-three boards) :current-player :player1 :player1 (:player1 players) :player2 (:player2 players)}]
-        (should= game (dissoc (terminal/setup-game test-console) :game-count :box-played))
+      (let [game test-game]
+        (should= game (terminal/setup-game empty-game))
         (save-an-ended-game)
         (should= (assoc (dissoc game :board) :current-player :player2) (dissoc (gm/play-game game) :board :box-played)))
       (save-an-ended-game))
@@ -211,7 +208,7 @@
       (should= "O Wins!" (gm/game-results {:winner 2 :player2 {:piece "O"}})))
 
     (it "guides/leads the game from start to end"
-      (should= "Cat's Game" (terminal/run (terminal/setup-game test-console)))
+      (should= "Cat's Game" (terminal/run (terminal/setup-game empty-game)))
       (save-an-ended-game))
 
     ;(it "plays a 4x4 0 player game"

@@ -25,11 +25,11 @@
       (assoc :pause 0)))
 
 (defmethod tcore/restart :gui [state]
-  (let [sql-game (sql/load-game (:db state) state)
+  (let [sql-game (tcore/load-game state)
         last-sql-game (assoc sql-game :old-console (:console sql-game) :console (:console state))
         filed-game (saved/pull-game)
         last-filed-game (assoc filed-game :old-console (:console filed-game) :console (:console state))
-        h2-game (h2/get-last-db-game (:table state))
+        h2-game (h2/get-last-db-game (:table (:persistence state)))
         last-h2-game (assoc h2-game :old-console (:console h2-game) :console (:console state))]
     ;(-> state
     ;    (assoc :status (:status last-game))

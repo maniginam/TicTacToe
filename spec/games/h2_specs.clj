@@ -7,16 +7,34 @@
 
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def standard-board [0 1 2 3 4 5 6 7 8])
-(def test-game {:persistence :h2 :game-count nil :message-key :nil :player2 {:player-num 2 :piece "O" :type :computer} :board-size nil :level :hard :status :playing :database ":mysql" :console :terminal :player1 {:player-num 1 :piece "X" :type :computer} :board standard-board :users 1 :current-player :player1})
-(def db-game-map {:persistence :h2 :boardsize nil, :player2 "{:player-num 2, :piece \"O\", :type :computer}", :gamecount nil, :messagekey ":nil", :currentplayer ":player1", :level ":hard", :status ":playing", :database ":mysql", :console ":terminal" :player1 "{:player-num 1, :piece \"X\", :type :computer}", :board "[0 1 2 3 4 5 6 7 8]", :users 1})
+(def test-game (assoc (dissoc tcore/game-model :database :ai-turn :board-set? :current-plyr-num :boxes :game-count :key-stroke :turn :game-over :play-again-pause :winner :table :dbname)
+                 :persistence {:db :h2 :dbname "test" :table "TEST"}
+                 :message-key :nil
+                 :status :playing
+                 :console :terminal
+                 :current-player :player1
+                 :player1 {:player-num 1 :piece "X" :type :computer}
+                 :player2 player2
+                 :game-count 0
+                 :users 1))
+(def db-game-map {:player2       "{:player-num 2, :piece \"O\", :type :computer}"
+                  :boardsize     "3"
+                  :messagekey    ":nil"
+                  :currentplayer ":player1"
+                  :gamecount     0
+                  :level         ":hard"
+                  :status        ":playing"
+                  :console       ":terminal"
+                  :player1       "{:player-num 1, :piece \"X\", :type :computer}"
+                  :board         "[0 1 2 3 4 5 6 7 8]"
+                  :users         1})
 
 (describe "H2 Database"
   (it "Saves Game to SQL db"
     (should= {:id (inc (:TEST/ID (last (sql/find-by-keys ds :TEST :all))))} (tcore/save-game (assoc test-game :table "TEST"))))
 
   (it "Loads a Saved Game"
-    (should= db-game-map (assoc (dissoc (load-game "TEST") :id :playedboxes :emptyboard) :messagekey ":nil" :database ":mysql" :console ":terminal" :board "[0 1 2 3 4 5 6 7 8]" :users 1 :persistence :h2)))
+    (should= db-game-map (assoc (dissoc (load-game "TEST") :id :playedboxes :database :emptyboard) :messagekey ":nil" :console ":terminal" :board "[0 1 2 3 4 5 6 7 8]" :users 1)))
 
   (it "Sets the Loaded Game"
     (should= (dissoc test-game :persistence) (dissoc (get-last-db-game "TEST") :id))))

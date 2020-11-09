@@ -9,36 +9,13 @@
             [ttt.core :as tcore]
             [ttt.game-master :as gm]
             [quil.board :as gui-board]))
-;; TODO - GLM : No more :refer :all.  Kill them all!
+;; COMPLETE TODO - GLM : No more :refer :all.  Kill them all!
 
 
-;; TODO - GLM : Use a model game, kept in tcore and mofigy as needed?
+;; TODO - GLM : Use a model game, kept in tcore and modify as needed?
 (defn setup-gui []
   (q/frame-rate 50)
-  (q/set-state! :status :waiting
-                :persistence :mysql
-                :game-count 0
-                :message-key :waiting
-                :console :gui
-                :database :mysql
-                :users nil
-                :board-size 3
-                :board-set? false
-                :key-stroke nil
-                :current-player :player1
-                :player1 {:player-num 1 :piece "X" :type nil}
-                :player2 {:player-num 2 :piece "O" :type nil}
-                :current-plyr-num 1
-                :board [0 1 2 3 4 5 6 7 8]
-                :ai-turn false
-                :boxes nil
-                :level :hard
-                :turn nil
-                :game-over false
-                :play-again-pause 0
-                :winner nil
-                :table "TTT"
-                :dbname "ttt"
+  (q/set-state! tcore/game-model
                 ;; TODO - GLM : Maybe like this
                 ;:persistence {:db :mysql :table "TTT" :db "ttt"}
                 ;; TODO - GLM : Maybe one key for all ui stuff

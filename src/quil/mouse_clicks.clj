@@ -17,7 +17,7 @@
           last-sql-game (assoc sql-game :old-console (:console sql-game) :console (:console state))
           filed-game (saved/pull-game)
           last-filed-game (assoc filed-game :old-console (:console filed-game) :console (:console state))
-          db-game (h2/get-last-db-game (:table state))
+          db-game (h2/get-last-db-game (:table (:persistence state)))
           last-game (assoc db-game :old-console (:console db-game) :console (:console state))]
       (if (:game-over last-sql-game)
         (assoc state :status :board-setup)

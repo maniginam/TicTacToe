@@ -10,7 +10,7 @@
 (def test-ds (mysql/connect db-test-name))
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def test-game {:db "test" :dbname "test " :persistence :mysql :status :playing :console :gui :users 1 :current-player :player1 :board-size 3 :board ["X" 1 2 3 "O" 5 6 7 8] :player1 player1 :player2 player2 :box-played 4})
+(def test-game {:db "test" :dbname "test " :persistence {:db :mysql :dbname "test" :table "TEST"} :status :playing :console :gui :users 1 :current-player :player1 :board-size 3 :board ["X" 1 2 3 "O" 5 6 7 8] :player1 player1 :player2 player2 :box-played 4})
 
 (defn play-test-game [game played-boxes]
   (tcore/save-game game)
@@ -48,18 +48,12 @@
   (it "Loading of Game"
     (let [player1 {:player-num 1 :piece "X" :type :computer}
           player2 {:player-num 2 :piece "O" :type :computer}
-          game (play-test-game {:console        :default
-                                :persistence    :mysql
-                                :dbname         "test"
-                                :db             "test"
-                                :board          [0 1 2 3 4 5 6 7 8]
-                                :level          :hard
-                                :users          0
-                                :player1        player1
-                                :player2        player2
-                                :board-size     3
-                                :current-player :player1} [0 1 2])
-          loaded-game (mysql/load-game db-test-name game)]
+          game (assoc tcore/game-model :persistence    {:db :mysql :dbname "test" :table "TEST"}
+                                       :users          0
+                                       :player1        player1
+                                       :player2        player2)
+          played-game (play-test-game game [0 1 2])
+          loaded-game (tcore/load-game played-game)]
       (should= 3 (:board-size loaded-game))
       (should= :player2 (:current-player loaded-game))
       (should= player1 (:player1 loaded-game))
@@ -71,12 +65,12 @@
 
   (it "tests a failing board"
     (with-out-str (let [game (play-test-game {:console        :terminal :db "test" :dbname "test" :users 2
-                                              :persistence    :mysql
+                                              :persistence    {:db :mysql :dbname "test" :table "TEST"}
                                               :player1        {:player-num 1 :piece "X" :type :human}
                                               :player2        {:player-num 2 :piece "O" :type :human}
                                               :current-player :player2 :board-size 3 :board [0 1 2 3 4 5 6 7 8]}
                                              [0 2])]
                     (should= ["X" 1 "O" 3 4 5 6 7 8]
-                             (:board (mysql/load-game "test" game))))))
+                             (:board (tcore/load-game game))))))
 
   )

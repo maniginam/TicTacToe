@@ -27,7 +27,7 @@
 
 (defmethod tcore/save-turn :mysql [game]
   (when (:box-played game)
-    (let [dbname (:dbname game)
+    (let [dbname (:dbname (:persistence game))
           ds (connect dbname)
           game-table-ID (get-last-game-id ds)
           turn-count (count (filter string? (:board game)))
@@ -37,7 +37,7 @@
       (sql/insert! ds :turns turns-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))))
 
 (defmethod tcore/save-game :mysql [game]
-  (let [dbname (:dbname game)
+  (let [dbname (:dbname (:persistence game))
         ds (connect dbname)
         game-table-map {:console (str (:console game)) :level (str (:level game)) :boardsize (:board-size game)}]
     (sql/insert! ds :game game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
@@ -74,12 +74,12 @@
           ))
     game))
 
-(defn load-game [dbname game]
-  (let [ds (connect dbname)
+(defmethod tcore/load-game :mysql [game]
+  (let [dbname (:dbname (:persistence game))
+        ds (connect dbname)
         last-game-id (get-last-game-id ds)
         tables (pull-game-tables ds last-game-id)]
     (sync-game (assoc game :dbname dbname) tables)))
 
-(defmethod tcore/load-game :mysql [game])
 
 
