@@ -1,7 +1,7 @@
 (ns ttt.user-inputs
-  (:require [ttt.core :refer :all]
-            [ttt.board :as board]
-            [ttt.console-messages :as msg]))
+  (:require [ttt.board :as board]
+            [ttt.console-messages :as msg]
+            [ttt.core :as tcore]))
 
 (defn bad-type [input]
   (println (str input " is not a valid option"))
@@ -35,7 +35,7 @@
   (println "Nevermind, I'll play on my own.")
   0)
 
-(defmethod offer-position :terminal [console]
+(defmethod tcore/offer-position :terminal [console]
   (println "X goes first.  Do you want to be X or O")
   (read-line))
 
@@ -60,19 +60,19 @@
       true
       (do (println (str input " is not an option.")) false))))
 
-(defmethod too-many-tries :position [input]
+(defmethod tcore/too-many-tries :position [input]
   (println "Nevermind, I'll go first.")
   :computer)
 
-(defmethod too-many-tries :play-again [input]
+(defmethod tcore/too-many-tries :play-again [input]
   (println "I'll take that as a No.  Let's play again soon!")
   false)
 
-(defmethod too-many-tries :restart? [input]
+(defmethod tcore/too-many-tries :restart? [input]
   (println "Let's just start you with a new game")
   false)
 
-(defmethod too-many-tries :level [input]
+(defmethod tcore/too-many-tries :level [input]
   (println "I'll pick for you...  Hard!")
   :hard)
 
@@ -80,7 +80,7 @@
   (println "Nevermind, let's play a standard 3x3 board")
   3)
 
-(defmethod board-size-prompt :terminal [console]
+(defmethod tcore/board-size-prompt :terminal [console]
   (println msg/board-size-prompt-message)
   (read-line))
 
@@ -125,6 +125,6 @@
   (println msg/ask-to-play-again)
   (read-line))
 
-(defmethod get-restart-input :terminal [console]
+(defmethod tcore/get-restart-input :terminal [console]
   (println msg/ask-restart)
   (read-line))

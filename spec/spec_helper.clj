@@ -10,6 +10,8 @@
 (def player2 {:player-num 2 :piece "O" :type :mock})
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def test-game {:db "test"
+                :dbname "test"
+                :persistence :mysql
                 :table "TEST"
                 :users 0
                 :level :hard

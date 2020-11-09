@@ -1,15 +1,14 @@
 (ns quil.gui
-  (:require [quil.core :as q]
-            [quil.middleware :as m]
-            [quil.board :as gui-board]
-            [ttt.board :as board]
+  (:require [quil.boxes :as box]
+            [quil.boxes :as box]
             [quil.button :as button]
-            [quil.gui-core :refer :all]
-            [ttt.core :refer :all]
-            [ttt.game-master :as gm :refer :all]
-            [quil.mouse-clicks :refer :all]
-            [quil.human-prompts :refer :all]
-            [quil.boxes :refer :all]))
+            [quil.core :as q]
+            [quil.gui-core :as gcore]
+            [quil.middleware :as m]
+            [ttt.board :as board]
+            [ttt.core :as tcore]
+            [ttt.game-master :as gm]
+            [quil.board :as gui-board]))
 ;; TODO - GLM : No more :refer :all.  Kill them all!
 
 
@@ -39,7 +38,7 @@
                 :play-again-pause 0
                 :winner nil
                 :table "TTT"
-                :db "ttt"
+                :dbname "ttt"
                 ;; TODO - GLM : Maybe like this
                 ;:persistence {:db :mysql :table "TTT" :db "ttt"}
                 ;; TODO - GLM : Maybe one key for all ui stuff
@@ -58,7 +57,7 @@
 (defn get-player-num [state] (:player-num ((:current-player state) state)))
 
 (defn maybe-make-computer-move [state]
-  (if (and (not (game-over? state)) (ai-turn? state))
+  (if (and (not (gm/game-over? state)) (ai-turn? state))
     (gm/game-with-next-move state)
     state))
 
@@ -81,7 +80,7 @@
       ))
 
 ;; TODO - GLM : Smelly.  If there a better way?
-(defmethod show-move :gui [game box] nil)
+(defmethod tcore/show-move :gui [game box] nil)
 
 (defn draw-state [state]
   (gui-board/draw-console)
@@ -91,12 +90,12 @@
   (if (or (= (:status state) :user-setup) (= (:status state) :player-setup)
           (= (:status state) :board-setup) (= (:status state) :level-setup)
           (= (:status state) :restart?))
-    (draw-user-prompt state))
+    (gcore/draw-user-prompt state))
 
   (doseq [box (board/played-boxes (:board state))]
-    (draw-box box state false))
+    (box/draw-box box state false))
 
-  (if (= (:status state) :playing) (draw-piece state (size-boxes state) [(q/mouse-x) (q/mouse-y)]))
+  (if (= (:status state) :playing) (gcore/draw-piece state (box/size-boxes state) [(q/mouse-x) (q/mouse-y)]))
 
   )
 
@@ -109,8 +108,8 @@
                :setup setup-gui
                :update update-state
                :draw draw-state
-               :mouse-clicked mouse-clicked
-               :key-typed key-typed
+               :mouse-clicked gcore/mouse-clicked
+               :key-typed gcore/key-typed
                :features [:keep-on-top]
                :middleware [m/fun-mode])
   )

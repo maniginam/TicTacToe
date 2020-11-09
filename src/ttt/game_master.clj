@@ -1,12 +1,12 @@
 (ns ttt.game-master
-  (:require [ttt.optimal-play :refer :all]
-            [ttt.board :refer :all]
+  (:require [ttt.ai :as ai]
             [ttt.core :as tcore]
-            [ttt.ai :refer :all]))
+            [ttt.human :as human]
+            [ttt.board :as board]))
 
 (defn game-over? [game]
   (let [board (:board game)]
-    (or (is-win? board) (full-board? board))))
+    (or (board/is-win? board) (board/full-board? board))))
 
 (defn game-results [game]
   (let [winner (:winner game)]
@@ -27,7 +27,7 @@
       new-board)))
 
 (defn get-move-from-player [game]
-  (if (full-board? (:board game))
+  (if (board/full-board? (:board game))
     nil
     (let [player (get game (:current-player game))
           box (tcore/select-box player game)]
@@ -44,8 +44,8 @@
 (defn get-winner [game]
   (let [board (:board game)]
     (cond (= 1 (count (:board game))) (assoc game :winner 1)
-          (is-win? board) (assoc game :winner (:player-num ((next-player game) game)))
-          (full-board? board) (assoc game :winner 0)
+          (board/is-win? board) (assoc game :winner (:player-num ((next-player game) game)))
+          (board/full-board? board) (assoc game :winner 0)
           :else game)))
 
 (defn game-with-next-move [game] (update-game-with-move game (get-move-from-player game)))

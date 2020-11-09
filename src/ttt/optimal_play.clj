@@ -1,6 +1,5 @@
 (ns ttt.optimal-play
-  (:require
-    [ttt.board :refer :all]))
+  (:require [ttt.board :as board]))
 
 (defn get-score [winner depth]
   (cond (= winner 1) (- 10 depth)
@@ -14,11 +13,11 @@
   (if (= player 1) "X" "O"))
 
 (defn get-box-scores [board player-num depth]
-  (for [box (open-boxes board)]
+  (for [box (board/open-boxes board)]
     (let [piece (get-player-piece player-num)
           test-board (replace {box piece} board)
-          box-score (cond (is-win? test-board) (get-score player-num depth)
-                          (full-board? test-board) (get-score 0 depth)
+          box-score (cond (board/is-win? test-board) (get-score player-num depth)
+                          (board/full-board? test-board) (get-score 0 depth)
                           (and (<= (count board) 9) (>= depth 5)) (get-score 0 depth)
                           (and (> (count board) 9) (> depth 3)) (get-score 0 depth)
                           :else
@@ -28,14 +27,14 @@
       box-score)))
 
 (defn play-optimal-box [board player-num depth]
-  (cond (empty-board? board)
+  (cond (board/empty-board? board)
         (let [box-count (count board)
               row-size (int (Math/sqrt box-count))
               corners [0 (dec row-size) (- box-count row-size) (dec box-count)]
               box (nth corners (rand-int 4))]
           box)
         :else (let [box-scores (get-box-scores board player-num depth)
-                    open-boxes (open-boxes board)
+                    open-boxes (board/open-boxes board)
                     same? (every? #(= (first box-scores) %) (rest box-scores))
                     min (apply min box-scores)
                     max (apply max box-scores)

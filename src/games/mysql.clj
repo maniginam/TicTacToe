@@ -1,10 +1,8 @@
 (ns games.mysql
-  (:require
-    [next.jdbc :as jdbc]
-    [next.jdbc.sql :as sql]
-    [next.jdbc.result-set :as rs]
-    [ttt.core :as tcore]
-    ))
+  (:require [next.jdbc :as jdbc]
+            [next.jdbc.result-set :as rs]
+            [next.jdbc.sql :as sql]
+            [ttt.core :as tcore]))
 
 (def database {:dbtype "mysql" :host "127.0.0.1" :user "root" :password "topsecret" :serverTimezone "UTC"})
 
@@ -27,9 +25,10 @@
     (sql/insert! ds :players player1-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
     (sql/insert! ds :players player2-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})))
 
-(defn save-turn [dbname game]
+(defmethod tcore/save-turn :mysql [game]
   (when (:box-played game)
-    (let [ds (connect dbname)
+    (let [dbname (:dbname game)
+          ds (connect dbname)
           game-table-ID (get-last-game-id ds)
           turn-count (count (filter string? (:board game)))
           box (:box-played game)
@@ -37,9 +36,10 @@
 
       (sql/insert! ds :turns turns-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))))
 
-(defn save-game [dbname game]
-  (let [ds (connect dbname)
-        game-table-map {:console (str (:console game)) :level (:level game) :boardsize (:board-size game)}]
+(defmethod tcore/save-game :mysql [game]
+  (let [dbname (:dbname game)
+        ds (connect dbname)
+        game-table-map {:console (str (:console game)) :level (str (:level game)) :boardsize (:board-size game)}]
     (sql/insert! ds :game game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
     (save-players dbname game)))
 
@@ -69,9 +69,6 @@
                             (let [[box player] (first boxes)
                                   piece (if (= 2 player) (:piece player1) (:piece player2))]
                               (recur (rest boxes) (replace {box piece} board))))))
-          ;(assoc :message-key :nil)
-          ;(assoc :winner nil)
-          ;(assoc :game-count (:game-count last-game))
           (assoc :users (count (filter #(= :human (:type %)) players)))
           (assoc :status :playing)
           ))
@@ -83,8 +80,6 @@
         tables (pull-game-tables ds last-game-id)]
     (sync-game (assoc game :dbname dbname) tables)))
 
-(defmethod tcore/save-game :mysql [game])
-(defmethod tcore/save-turn :mysql [game])
 (defmethod tcore/load-game :mysql [game])
 
 

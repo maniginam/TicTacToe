@@ -1,5 +1,4 @@
-(ns ttt.board
-  (:require [ttt.core :refer :all]))
+(ns ttt.board)
 
 (def player1-piece "X")
 (def player2-piece "O")

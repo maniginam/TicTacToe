@@ -1,11 +1,9 @@
 (ns quil.human-prompts
-  (:require [ttt.core :refer :all]
-            [ttt.console-messages :refer :all]
-            [quil.gui-messages :refer :all]
-            [quil.core :as q]
-            [quil.gui-core :refer :all]
+  (:require [quil.core :as q]
             [quil.dimensions :as dim]
-            [quil.mouse-location :refer :all]))
+            [quil.gui-core :as gcore]
+            [quil.mouse-location :as mouse]
+            [ttt.console-messages :as cmsg]))
 
 (defn draw-prompt-box [state]
   (let [x dim/prompt-x
@@ -13,7 +11,7 @@
         width (first dim/prompt-size)
         height (second dim/prompt-size)
         txt-x (+ dim/prompt-x (/ width 2))
-        msg (user-message state)]
+        msg (gcore/user-message state)]
     (q/stroke-weight 3)
     (q/fill 200 200 200)
     (q/rect x y width height)
@@ -29,7 +27,7 @@
         top (:top dimensions)
         width (:width dimensions)
         height (:height dimensions)
-        msg (nth game-type-message option)]
+        msg (nth cmsg/game-type-message option)]
 
     (q/stroke-weight 0)
     (q/fill 200 200 200)
@@ -37,12 +35,12 @@
 
     (q/text-size 15)
     (q/text-align :center)
-    (if (hovering-option? option (q/mouse-x) (q/mouse-y))
+    (if (mouse/hovering-option? option (q/mouse-x) (q/mouse-y))
       (q/fill 0 255 0)
       (q/fill 0 0 0))
     (q/text msg (+ left (/ width 2)) (+ top 20))))
 
-(defmethod draw-user-prompt :user-setup [state]
+(defmethod gcore/draw-user-prompt :user-setup [state]
   (draw-prompt-box state)
   (doseq [option [0 1 2]] (draw-user-options option)))
 
@@ -56,7 +54,7 @@
 
     (q/stroke-weight weight)
     (q/fill 200 200 200)
-    (if (hovering-piece-option? piece (q/mouse-x) (q/mouse-y))
+    (if (mouse/hovering-piece-option? piece (q/mouse-x) (q/mouse-y))
       (q/stroke 0 255 0)
       (q/stroke 0 0 0))
     (if (= 1 piece)
@@ -65,7 +63,7 @@
       (do (q/ellipse-mode :corner)
           (q/ellipse left top width height)))))
 
-(defmethod draw-user-prompt :player-setup [state]
+(defmethod gcore/draw-user-prompt :player-setup [state]
   (draw-prompt-box state)
   (doseq [piece [1 2]] (draw-piece-option piece)))
 
@@ -79,7 +77,7 @@
 
     (q/stroke-weight weight)
     (q/fill 200 200 200)
-    (if (hovering-piece-option? answer (q/mouse-x) (q/mouse-y))
+    (if (mouse/hovering-piece-option? answer (q/mouse-x) (q/mouse-y))
       (q/stroke 0 255 0)
       (q/stroke 0 0 0))
     (if (= 1 answer)
@@ -90,11 +88,11 @@
           (q/line left top (+ left (* 0.8 width)) (+ top height))
           (q/line (+ left (* 0.8 width)) top (+ left (* 0.8 width)) (+ top height))))))
 
-(defmethod draw-user-prompt :restart? [state]
+(defmethod gcore/draw-user-prompt :restart? [state]
   (draw-prompt-box state)
   (doseq [piece [1 2]] (draw-yes-no piece)))
 
-(defmethod draw-user-prompt :board-setup [state]
+(defmethod gcore/draw-user-prompt :board-setup [state]
   (draw-prompt-box state)
 
   (let [dimensions dim/board-size-entry
@@ -122,12 +120,12 @@
 
     (q/text-size 15)
     (q/text-align :center)
-    (if (hovering-option? option (q/mouse-x) (q/mouse-y))
+    (if (mouse/hovering-option? option (q/mouse-x) (q/mouse-y))
       (q/fill 0 255 0)
       (q/fill 0 0 0))
     (q/text msg (+ left (/ width 2)) (+ top 20))))
 
-(defmethod draw-user-prompt :level-setup [state]
+(defmethod gcore/draw-user-prompt :level-setup [state]
   (draw-prompt-box state)
   (doseq [option [0 1 2]] (draw-level-options option)))
 

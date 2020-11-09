@@ -30,7 +30,7 @@
                     :turn             nil
                     :game-over        false :play-again-pause 0 :winner nil
                     :table            "TEST"
-                    :db               "test"})
+                    :dbname               "test"})
 
 (def console {:console :gui :table "TEST"})
 
@@ -56,7 +56,7 @@
       (should-be-nil (:key-stroke result))
       (should= :hard (:level result))
       (should= "TEST" (:table result))
-      (should= "test" (:db result))
+      (should= "test" (:dbname result))
       ))
 
   (context "game-over?"

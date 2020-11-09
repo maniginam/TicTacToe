@@ -1,7 +1,7 @@
 (ns ttt.console-messages
-  (:require [ttt.core :refer :all]))
+  (:require [ttt.core :as tcore]))
 
-(defmethod welcome :terminal [console]
+(defmethod tcore/welcome :terminal [console]
   (println "Welcome to Tic-Tac-Toe!"))
 
 (def game-type-message ["Computer-v-Computer"

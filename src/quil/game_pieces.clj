@@ -1,8 +1,6 @@
 (ns quil.game-pieces
-  (:require [ttt.core :refer :all]
-            [quil.core :as q]
-            [quil.gui-core :refer :all]
-            [quil.dimensions :as dim]))
+  (:require [quil.core :as q]
+            [quil.gui-core :as gcore]))
 
 (defn draw-X [box-size [center-x center-y & specs]]
   (let [half-height (* box-size 0.3)
@@ -28,10 +26,10 @@
     (q/ellipse-mode :center)
     (q/ellipse center-x center-y (+ (* 2 weight) (* radius 2)) (+ (* 2 weight) (* radius 2)))))
 
-(defmethod draw-piece :player1 [state box-size [x y & specs]]
+(defmethod gcore/draw-piece :player1 [state box-size [x y & specs]]
   (draw-X box-size [x y specs]))
 
-(defmethod draw-piece :player2 [state box-size [x y & specs]]
+(defmethod gcore/draw-piece :player2 [state box-size [x y & specs]]
  (draw-O box-size [x y specs]))
 
 

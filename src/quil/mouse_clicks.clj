@@ -1,18 +1,17 @@
 (ns quil.mouse-clicks
-  (:require [quil.core :as q]
-            [ttt.core :refer :all]
-            [ttt.board :as board]
-            [ttt.game-master :as game]
-            [quil.gui-core :refer :all]
-            [quil.mouse-location :as mouse]
-            [quil.boxes :as box]
+  (:require [games.h2 :as h2]
             [games.saved-games :as saved]
-            [games.h2 :as h2]
-            [games.mysql :as sql]
+            [quil.boxes :as box]
+            [quil.gui-core :as gcore]
+            [quil.mouse-location :as mouse]
+            [ttt.board :as board]
             [ttt.core :as tcore]
-            [ttt.game-master :as gm]))
+            [ttt.core :as tcore]
+            [ttt.game-master :as game]
+            [ttt.game-master :as gm]
+            [quil.core :as q]))
 
-(defmethod mouse-clicked :waiting [state event]
+(defmethod gcore/mouse-clicked :waiting [state event]
   (if (mouse/in-button? (:x event) (:y event))
     (let [sql-game (tcore/load-game state)
           last-sql-game (assoc sql-game :old-console (:console sql-game) :console (:console state))
@@ -25,56 +24,52 @@
         (assoc state :status :restart? :last-game last-game)))
     state))
 
-(defmethod mouse-clicked :restart? [state event]
-  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (restart state)
+(defmethod gcore/mouse-clicked :restart? [state event]
+  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (tcore/restart state)
         (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :board-setup)
         :else state))
 
-(defmethod key-typed :board-setup [state event]
+(defmethod gcore/key-typed :board-setup [state event]
   (let [key-stroke (:raw-key event)]
-    ;(if (:enter-key? event)
-    ;  (if (int? (:key-stroke state))
-    ;    (assoc state :board (board/create-board key-stroke) :board-set true :board-size key-stroke :user-setup))
     (assoc state :key-stroke (- (int key-stroke) 48))))
-;)
 
-(defmethod mouse-clicked :board-setup [state event]
+(defmethod gcore/mouse-clicked :board-setup [state event]
   (let [board-size (:key-stroke state)]
     (when (int? board-size)
       (assoc state :board (board/create-board board-size) :board-set true :board-size board-size :status :user-setup))))
 
 ;; TODO - GLM : Don't save in here
-(defmethod mouse-clicked :user-setup [state event]
+(defmethod gcore/mouse-clicked :user-setup [state event]
   (cond (mouse/hovering-option? 0 (:x event) (:y event))
         (let [new-state (assoc state :users 0 :status :level-setup :current-player :player1 :player1
                                      (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :computer))]
-          (sql/save-game (:db state) new-state) new-state)
+          (tcore/save-game (:db state) new-state) new-state)
         (mouse/hovering-option? 1 (:x event) (:y event)) (assoc state :users 1 :status :player-setup)
-        (mouse/hovering-option? 2 (:x event) (:y event)) (let [new-state (assoc state :users 2 :status :playing :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))] (sql/save-game (:db state) new-state) new-state)
+        (mouse/hovering-option? 2 (:x event) (:y event)) (let [new-state (assoc state :users 2 :status :playing :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :human))] (tcore/save-game (:db state) new-state) new-state)
         :else state))
 
-(defmethod mouse-clicked :player-setup [state event]
+(defmethod gcore/mouse-clicked :player-setup [state event]
   (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc state :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :human) :player2 (assoc (:player2 state) :type :computer))
         (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :level-setup :current-player :player1 :player1 (assoc (:player1 state) :type :computer) :player2 (assoc (:player2 state) :type :human))
         :else state))
 
-(defmethod mouse-clicked :level-setup [state event]
+(defmethod gcore/mouse-clicked :level-setup [state event]
   (cond (mouse/hovering-option? 0 (:x event) (:y event)) (gm/set-level state :easy)
         (mouse/hovering-option? 1 (:x event) (:y event)) (gm/set-level state :medium)
         (mouse/hovering-option? 2 (:x event) (:y event)) (gm/set-level state :hard)
         :else state))
 
-(defmethod mouse-clicked :play-again [state event]
-  (play-again state))
+(defmethod gcore/mouse-clicked :play-again [state event]
+  (tcore/play-again state))
 
-(defmethod mouse-clicked :playing [state event]
+(defmethod gcore/mouse-clicked :playing [state event]
   (let [boxes (board/create-board (:board-size state))
         board (:board state)
         box (first (filter #(box/mouse-in-box? % state (:x event) (:y event)) boxes))]
     (cond (nil? box) state
-          (not (board/is-box-open? board box)) (do (draw-piece state (box/size-boxes state) [(q/mouse-x) (q/mouse-y) [255 0 0]]) state)
+          (not (board/is-box-open? board box)) (do (gcore/draw-piece state (box/size-boxes state) [(q/mouse-x) (q/mouse-y) [255 0 0]]) state)
           :else (let [play (game/update-game-with-move state box)]
-                  (sql/save-turn (:db state) (assoc state :box-played box))
+                  (tcore/save-turn (:db state) (assoc state :box-played box))
                   (saved/save-game play)
-                  (h2/save-to-sql play (:table state))
+                  (tcore/save-game play (:table state))
                   play))))

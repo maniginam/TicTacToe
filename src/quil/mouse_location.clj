@@ -1,7 +1,5 @@
 (ns quil.mouse-location
-  (:require [quil.core :as q]
-            [quil.dimensions :as dim]
-            [quil.gui-core :refer :all]))
+  (:require [quil.dimensions :as dim]))
 
 (defn hovering-option? [option mouse-x mouse-y]
   (let [dimensions (dim/option-dimensions option)

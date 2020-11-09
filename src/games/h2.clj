@@ -1,10 +1,9 @@
 (ns games.h2
-  (:require [next.jdbc :as jdbc]
-            [next.jdbc.sql :as sql]
-            [next.jdbc.plan :as plan]
-            [next.jdbc.quoted :as quote]
+  (:require [clojure.edn :as edn]
             [next.jdbc.result-set :as rs]
-            [clojure.edn :as edn]))
+            [next.jdbc.sql :as sql]
+            [ttt.core :as tcore]
+            [next.jdbc :as jdbc]))
 
 (def db {:dbtype "h2" :dbname "ttt" :ResultSetMetaDataOptions "1"})
 (def ds (jdbc/get-datasource db))
@@ -31,8 +30,8 @@
      level varchar(32))")]
     (jdbc/execute! ds [table])))
 
-(defn save-to-sql [game table]
-  (let [small-table (.toLowerCase table)
+(defmethod tcore/save-game :h2 [game]
+  (let [small-table (.toLowerCase (:table game))
         game-map {:console       (str (:console game))
                   :status        (if (nil? (:status game)) ":playing" (str (:status game)))
                   :users         (:users game)
