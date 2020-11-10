@@ -16,7 +16,7 @@
 (defn setup-gui []
   (q/frame-rate 50)
   (q/set-state! tcore/game-model
-                ;; TODO - GLM : Maybe like this
+                ;; COMPLETE TODO - GLM : Maybe like this
                 ;:persistence {:db :mysql :table "TTT" :db "ttt"}
                 ;; TODO - GLM : Maybe one key for all ui stuff
                 ))

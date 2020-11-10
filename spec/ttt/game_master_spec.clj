@@ -45,10 +45,10 @@
     )
 
 
-  ;; TODO - GLM : save game - use core multimethod
-  ;; TODO - GLM : load game - use core multimethod
+  ;; COMPLETE TODO - GLM : save game - use core multimethod
+  ;; COMPLETE TODO - GLM : load game - use core multimethod
   ;; TODO - GLM : implements mysql fns
   ;; TODO - GLM : Refactors specs to reference ONE base game map
-  ;; TODO - GLM : imeplement mock/testable persistence
+  ;; DID WE DO THIS LAST WEEK? TODO - GLM : imeplement mock/testable persistence
 
   )

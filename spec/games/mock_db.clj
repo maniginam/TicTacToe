@@ -6,7 +6,8 @@
 (def games (atom {}))
 
 (defmethod tcore/save-game :mock [game]
-  (let [id (or (:id game) (rand-int 999))
+  (let [id 2222
+        ;(or (:id game) (rand-int 999)))
         game (assoc game :id id)]
     (swap! games (fn [game-map] (assoc game-map id game)))
     game))

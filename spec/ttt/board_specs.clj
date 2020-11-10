@@ -2,11 +2,11 @@
   (:require
     [speclj.core :refer :all]
     [ttt.board :refer :all]
-    [ttt.core :refer :all]))
+    [ttt.core :refer :all]
+    [spec-helper :as helper]))
 
 (def this-is-a-test true)
 (def human-is-player1 1)
-(def human-is-player2 2)
 (def computer-is-player1 1)
 (def computer-is-player2 2)
 (def computer-wins 2)
@@ -15,6 +15,7 @@
 (def full-board-cats-game ["X" "X" "O" "O" "O" "X" "X" "O" "X"])
 (def game-is-won-board [0 "X" 1 2 3 "X" 5 6 7 "X"])
 (def one-box-open-cats-game-6 ["X" "O" "X" "O" "O" "X" 6 "X" "O"])
+(def empty-game helper/empty-game)
 
 (describe "BOARD:"
 
@@ -25,17 +26,7 @@
     (should= [0 1 2 3 4 5 6 7 8] (create-board 3)))
 
   (it "Sets Board in Default Game"
-    (let [default {:console :default}]
-      (should-be-nil (board-size-prompt default))
-      (should= 3 (set-board-size default))))
-
-  (it "Sets Board in Terminal Game"
-    (let [terminal {:console :terminal}]
-      (should= (str "What size grid do you want to play on?\n")
-               (with-out-str (with-in-str "3" (board-size-prompt terminal))))
-      ;(should= 5 (with-in-str "5" (set-board-size terminal)))
-      (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
-               (with-out-str (with-in-str "leo" (set-board-size terminal))))))
+      (should= 3 (set-board-size empty-game)))
 
   (it "gets rows of board"
     (should= [[0 1] [2 3]] (get-rows [0 1 2 3]))

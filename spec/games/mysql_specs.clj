@@ -3,19 +3,19 @@
             [ttt.core :as tcore]
             [ttt.game-master :as gm]
             [ttt.terminal-specs]                            ;; TODO - GLM : sloppy, only used for show-move
-            [speclj.core :refer :all]))
+            [speclj.core :refer :all]
+            [spec-helper :as helper]))
 
 (def test-db {:dbtype "mysql" :host :none :user "root" :password "topsecret"})
 (def db-test-name "test")
 (def test-ds (mysql/connect db-test-name))
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def test-game {:db "test" :dbname "test " :persistence {:db :mysql :dbname "test" :table "TEST"} :status :playing :console :gui :users 1 :current-player :player1 :board-size 3 :board ["X" 1 2 3 "O" 5 6 7 8] :player1 player1 :player2 player2 :box-played 4})
+(def test-game {:db :mock :dbname :mock :persistence {:db :mock :dbname :mock :table "TEST"} :status :playing :console :mock :users 0 :current-player :player1 :board-size 3 :board helper/standard-board :player1 player1 :player2 player2 :box-played 4})
 
 (defn play-test-game [game played-boxes]
   (tcore/save-game game)
   (loop [game game boxes played-boxes]
-    (tcore/save-turn game)
     (if (empty? boxes)
       game
       (let [box (first boxes)]
@@ -34,25 +34,24 @@
     (should (int? (mysql/get-last-game-id (mysql/connect db-test-name)))))
 
   (it "Saves Last Turn"
-    (should= nil (tcore/save-turn test-game))
-    (should= nil (tcore/save-turn test-game))
-    (should= nil (tcore/save-turn test-game)))
+    (should (int? (:id (tcore/save-turn test-game)))))
 
   (it "Saves Players"
     (should= nil (mysql/save-players db-test-name test-game))
     (should= nil (mysql/save-players db-test-name test-game)))
 
   (it "Saves a Game"
-    (should= nil (tcore/save-game test-game)))
+    (should (int? (:id (tcore/save-game test-game)))))
 
   (it "Loading of Game"
     (let [player1 {:player-num 1 :piece "X" :type :computer}
           player2 {:player-num 2 :piece "O" :type :computer}
-          game (assoc tcore/game-model :persistence    {:db :mysql :dbname "test" :table "TEST"}
-                                       :users          0
-                                       :player1        player1
-                                       :player2        player2)
-          played-game (play-test-game game [0 1 2])
+          game (assoc test-game
+                 :board helper/standard-board
+                 :player1 player1
+                 :player2 player2
+                 :board-size 3)
+          played-game (assoc (play-test-game game [0 1 2]) :id 2222)
           loaded-game (tcore/load-game played-game)]
       (should= 3 (:board-size loaded-game))
       (should= :player2 (:current-player loaded-game))
@@ -64,11 +63,12 @@
 
 
   (it "tests a failing board"
-    (with-out-str (let [game (play-test-game {:console        :terminal :db "test" :dbname "test" :users 2
-                                              :persistence    {:db :mysql :dbname "test" :table "TEST"}
-                                              :player1        {:player-num 1 :piece "X" :type :human}
-                                              :player2        {:player-num 2 :piece "O" :type :human}
-                                              :current-player :player2 :board-size 3 :board [0 1 2 3 4 5 6 7 8]}
+    (with-out-str (let [game (play-test-game (assoc test-game
+                                               :id 2222
+                                               :board-size 3
+                                               :player1 {:player-num 1 :piece "X" :type :human}
+                                               :player2 {:player-num 2 :piece "O" :type :human}
+                                               :current-player :player1)
                                              [0 2])]
                     (should= ["X" 1 "O" 3 4 5 6 7 8]
                              (:board (tcore/load-game game))))))

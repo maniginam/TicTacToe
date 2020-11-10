@@ -8,7 +8,7 @@
             [ttt.game-master :as master]
             [ttt.user-inputs :as input]))
 
-(def depths {:hard 0 :medium 1 :easy 2 :none 0})            ;; TODO - GLM : duplicated in game master?
+      ;; COMPLETE - TODO - GLM : duplicated in game master?
 
 (defmethod tcore/validate-player-count :terminal [console]
   (loop [input (input/ask-num-of-players)
@@ -68,19 +68,20 @@
 
 (defmethod tcore/restart :terminal [game]
   (let [last-game (:last-game game)]
-    (-> game
-        (assoc :status (:status last-game))
-        (assoc :console (:console game))
-        (assoc :board-size (int (Math/sqrt (count (:board last-game)))))
-        (assoc :users (:users last-game))
-        (assoc :current-player (:current-player last-game))
-        (assoc :player1 (:player1 last-game))
-        (assoc :player2 (:player2 last-game))
-        (assoc :board (:board last-game))
-        (assoc :level (:level last-game))
-        (assoc :message-key :nil)
-        (assoc :winner nil)
-        (assoc :game-count (:game-count last-game)))))
+    ;(-> game
+    ;    (assoc :status (:status last-game))
+    ;    (assoc :console (:console game))
+    ;    (assoc :board-size (int (Math/sqrt (count (:board last-game)))))
+    ;    (assoc :users (:users last-game))
+    ;    (assoc :current-player (:current-player last-game))
+    ;    (assoc :player1 (:player1 last-game))
+    ;    (assoc :player2 (:player2 last-game))
+    ;    (assoc :board (:board last-game))
+    ;    (assoc :level (:level last-game))
+    ;    (assoc :message-key :nil)
+    ;    (assoc :winner nil)
+    ;    (assoc :game-count (:game-count last-game)))
+     (assoc last-game :console (:console game))))
 
 (defmethod tcore/draw-board :terminal [game board]
   (let [row-size (int (Math/sqrt (count board)))
