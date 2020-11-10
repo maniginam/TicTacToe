@@ -1,11 +1,11 @@
 (ns quil.gui-specs
-  (:require [speclj.core :refer :all]
-            [quil.gui :as sut :refer :all]
-            [quil.gui-core :as gcore :refer :all]
-            [quil.mouse-clicks :refer :all]
-            [ttt.core :as tcore :refer :all]
+  (:require [quil.gui-core :as gcore]
+            [quil.mouse-clicks :as click]
+            [quil.mouse-location :as mouse]
+            [speclj.core :refer :all]
+            [ttt.core :as tcore]
             [ttt.game-master :as gm]
-            [quil.mouse-location :as mouse]))
+            [quil.gui :as sut]))
 
 (def mock-move (atom 0))
 (defmethod tcore/select-box :mock [_ game] @mock-move)
@@ -24,14 +24,14 @@
   (with-stubs)
 
   (it "checks for ai-turn"
-    (should (ai-turn? {:status :playing :current-player :player1 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :human}}))
-    (should-not (ai-turn? {:status :playing :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human}}))
-    (should (ai-turn? {:status :playing :current-player :player2 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}}))
-    (should-not (ai-turn? {:status :playing :current-player :player2 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :human}}))
+    (should (sut/ai-turn? {:status :playing :current-player :player1 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :human}}))
+    (should-not (sut/ai-turn? {:status :playing :current-player :player1 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human}}))
+    (should (sut/ai-turn? {:status :playing :current-player :player2 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}}))
+    (should-not (sut/ai-turn? {:status :playing :current-player :player2 :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :human}}))
     )
 
   (it "constants"
-    (let [result (update-state default-state)]
+    (let [result (sut/update-state default-state)]
       (should= {:player-num 1 :piece "X" :type :human} (:player1 result))
       (should= {:player-num 2 :piece "O" :type :mock} (:player2 result))
       (should= :gui (:console result))
@@ -46,45 +46,45 @@
 
   (context "game-over?"
     (it "not over"
-      (let [not-over-game (update-state default-state)]
+      (let [not-over-game (sut/update-state default-state)]
         (should-not (:game-over not-over-game))))
 
     (it "over"
-      (let [winning-game (update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8]))]
+      (let [winning-game (sut/update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8]))]
         (should (:game-over winning-game))))
     )
 
   (context "who's the winner?"
     (it "no winner"
-      (let [cats-game (update-state (assoc default-state :board ["X" "O" "X" "X" "O" "O" "O" "X" "X"] :current-player :player2))]
+      (let [cats-game (sut/update-state (assoc default-state :board ["X" "O" "X" "X" "O" "O" "O" "X" "X"] :current-player :player2))]
         (should= 0 (:winner cats-game))))
 
     (it "X wins"
-      (let [winning-game (update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8] :current-player :player2))]
+      (let [winning-game (sut/update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8] :current-player :player2))]
         (should= 1 (:winner winning-game))))
 
     (it "game not over"
-      (let [not-over-game (update-state (assoc default-state :board ["X" "O" "X" 3 4 5 6 7 8] :current-player :player2))]
+      (let [not-over-game (sut/update-state (assoc default-state :board ["X" "O" "X" 3 4 5 6 7 8] :current-player :player2))]
         (should-be-nil (:winner not-over-game)))))
 
   (context "board"
     (it "stays constant during human turn"
-      (let [empty (update-state default-state)]
+      (let [empty (sut/update-state default-state)]
         (should= [0 1 2 3 4 5 6 7 8] (:board empty))))
 
     (it "updates with ai turn"
       (reset! mock-move 4)
       (let [playing-state (assoc default-state :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2)
-            updated-with-computer-turn (update-state playing-state)]
+            updated-with-computer-turn (sut/update-state playing-state)]
         (should= ["X" 1 2 3 "O" 5 6 7 8] (:board updated-with-computer-turn)))))
 
   (context "swap current player when"
     (it "has made move"
       (let [computer-played-box-4 (assoc default-state :board ["X" 1 2 3 "O" 5 6 7 8] :status :playing :current-player :player2)]
-        (should= :player1 (:current-player (update-state computer-played-box-4)))))
+        (should= :player1 (:current-player (sut/update-state computer-played-box-4)))))
 
     (it "but not without move"
-      (should= :player1 (:current-player (update-state default-state))))
+      (should= :player1 (:current-player (sut/update-state default-state))))
 
     )
 

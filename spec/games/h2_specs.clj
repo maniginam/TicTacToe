@@ -1,9 +1,8 @@
 (ns games.h2-specs
-  (:require [speclj.core :refer :all]
-            [games.core :refer :all]
-            [games.h2 :refer :all]
+  (:require [games.h2 :as h2]
             [next.jdbc.sql :as sql]
-            [ttt.core :as tcore]))
+            [ttt.core :as tcore]
+            [speclj.core :refer :all]))
 
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
@@ -31,10 +30,10 @@
 
 (describe "H2 Database"
   (it "Saves Game to SQL db"
-    (should= {:id (inc (:TEST/ID (last (sql/find-by-keys ds :TEST :all))))} (tcore/save-game (assoc test-game :table "TEST"))))
+    (should= {:id (inc (:TEST/ID (last (sql/find-by-keys h2/ds :TEST :all))))} (tcore/save-game (assoc test-game :table "TEST"))))
 
   (it "Loads a Saved Game"
-    (should= db-game-map (assoc (dissoc (load-game "TEST") :id :playedboxes :database :emptyboard) :messagekey ":nil" :console ":terminal" :board "[0 1 2 3 4 5 6 7 8]" :users 1)))
+    (should= db-game-map (assoc (dissoc (h2/load-game "TEST") :id :playedboxes :database :emptyboard) :messagekey ":nil" :console ":terminal" :board "[0 1 2 3 4 5 6 7 8]" :users 1)))
 
   (it "Sets the Loaded Game"
-    (should= (dissoc test-game :persistence) (dissoc (get-last-db-game "TEST") :id))))
+    (should= (dissoc test-game :persistence) (dissoc (h2/get-last-db-game "TEST") :id))))

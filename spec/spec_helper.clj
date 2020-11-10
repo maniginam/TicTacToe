@@ -1,7 +1,6 @@
 (ns spec-helper
   (:require [speclj.core :refer :all]
-            [ttt.core :as tcore]
-            [ttt.user-inputs :as input]))
+            [ttt.core :as tcore]))
 
 (def player1 {:player-num 1 :piece "X" :type :mock})
 (def player2 {:player-num 2 :piece "O" :type :mock})

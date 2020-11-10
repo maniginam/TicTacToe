@@ -1,10 +1,10 @@
 (ns games.mysql-specs
-  (:require [games.mysql :as mysql]
+  (:require [spec-helper :as helper]
+            [speclj.core :refer :all]
             [ttt.core :as tcore]
             [ttt.game-master :as gm]
-            [ttt.terminal-specs]                            ;; TODO - GLM : sloppy, only used for show-move
-            [speclj.core :refer :all]
-            [spec-helper :as helper]))
+    ;; COMPLETE - TODO - GLM : sloppy, only used for show-move (not entirely sure how i fixed this)
+            [games.mysql :as mysql]))
 
 (def test-db {:dbtype "mysql" :host :none :user "root" :password "topsecret"})
 (def db-test-name "test")

@@ -1,11 +1,11 @@
 (ns ttt.terminal-specs
-  (:require [clojure.string :as s]
+  (:require [spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.core :as tcore]
             [ttt.game-master :as gm]
             [ttt.terminal :as terminal]
             [ttt.user-inputs :as input]
-            [spec-helper :as helper]))
+            [clojure.string :as s]))
 
 
 ;; COMPLETE - TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in spec-helper and modify that for each spec
@@ -20,17 +20,7 @@
 (def boards {:three-by-three [0 1 2 3 4 5 6 7 8] :four-by-four [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]})
 (def players {:player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}})
 
-;; TODO - GLM : Most, maybe all, of these should be deleted because they're only used by terminal.
-;(defmethod tcore/validate-player-count :default [console] 0)
-;(defmethod tcore/board-size-prompt :default [console] nil)
-;(defmethod tcore/set-board-size :default [console] 3)
-;(defmethod tcore/report :default [console results] results)
-;(defmethod tcore/play-again :default [console] false)
-;(defmethod tcore/draw-board :default [game board] nil)
-;(defmethod tcore/prompt-for-level :default [console] :hard)
-;(defmethod tcore/restart? :default [console] false)
-;(defmethod tcore/get-restart-input :default [console] "N")
-;(defmethod tcore/show-move :default [game box] nil)
+;; COMPLETE - TODO - GLM : Most, maybe all, of these should be deleted because they're only used by terminal.
 
 (describe "TicTacToe"
   (with-stubs)
@@ -97,6 +87,7 @@
     (should= "X Wins!" (gm/game-results {:winner 1 :player1 {:piece "X"}}))
     (should= "O Wins!" (gm/game-results {:winner 2 :player2 {:piece "O"}})))
   )
+
 (describe "Terminal UI:"
 
   (it "welcomes"
@@ -190,33 +181,37 @@
   (it "says good-bye"
     (should= "Ok.  Well, Let's Play Again Soon!  Bye!\n" (with-out-str (tcore/end-game {:console :terminal}))))
 
-
-
-
-  (describe "TIC-TAC-TOE:"
-
-    (it "plays standard game"
-      (let [game (terminal/setup-game empty-game)
-            test-game (dissoc (assoc test-game
-                          :player1 {:player-num 1 :piece "X" :type :computer}
-                          :player2 {:player-num 2, :piece "O", :type :computer}) :box-played)]
-        (should= test-game game)
-        (save-an-ended-game)))
-
-    (it "sets up easy game"
-      (let [game (dissoc (assoc (terminal/setup-game empty-game) :level :easy) :game-count)]
-        (should= (dissoc (assoc test-game :level :easy
-                                  :player1 {:player-num 1 :piece "X" :type :computer}
-                                  :player2 {:player-num 2, :piece "O", :type :computer}) :box-played) game))
-      (save-an-ended-game))
-
-    (it "Sets Board in Terminal Game"
-      (let [terminal {:console :terminal}]
-        (should= (str "What size grid do you want to play on?\n")
-                 (with-out-str (with-in-str "3" (tcore/board-size-prompt terminal))))
-        ;(should= 5 (with-in-str "5" (set-board-size terminal)))
-        (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
-                 (with-out-str (with-in-str "leo" (tcore/set-board-size terminal))))))
-    )
+  (it "checks displayed board"
+    (should= (str "  0  ||  1\n=====||=====\n  2  ||  3\n") (with-out-str (tcore/draw-board {:console :terminal} [0 1 2 3])))
+    (should= (str "  0  ||  1  ||  2\n=====||=====||=====\n  3  ||  4  ||  5\n=====||=====||=====\n  6  ||  7  ||  8\n") (with-out-str (tcore/draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8])))
+    (should= (str "  0  ||  1  ||  2  ||  3\n=====||=====||=====||=====\n  4  ||  5  ||  6  ||  7\n=====||=====||=====||=====\n  8  ||  9  ||  10  ||  11\n=====||=====||=====||=====\n  12  ||  13  ||  14  ||  15\n")
+             (with-out-str (tcore/draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]))))
   )
+
+(describe "TIC-TAC-TOE:"
+
+  (it "plays standard game"
+    (let [game (terminal/setup-game empty-game)
+          test-game (dissoc (assoc test-game
+                              :player1 {:player-num 1 :piece "X" :type :computer}
+                              :player2 {:player-num 2, :piece "O", :type :computer}) :box-played)]
+      (should= test-game game)
+      (save-an-ended-game)))
+
+  (it "sets up easy game"
+    (let [game (dissoc (assoc (terminal/setup-game empty-game) :level :easy) :game-count)]
+      (should= (dissoc (assoc test-game :level :easy
+                                        :player1 {:player-num 1 :piece "X" :type :computer}
+                                        :player2 {:player-num 2, :piece "O", :type :computer}) :box-played) game))
+    (save-an-ended-game))
+
+  (it "Sets Board in Terminal Game"
+    (let [terminal {:console :terminal}]
+      (should= (str "What size grid do you want to play on?\n")
+               (with-out-str (with-in-str "3" (tcore/board-size-prompt terminal))))
+      ;(should= 5 (with-in-str "5" (set-board-size terminal)))
+      (should= "What size grid do you want to play on?\nleo is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nWhat size grid do you want to play on?\n is not a valid option\nNevermind, let's play a standard 3x3 board\n"
+               (with-out-str (with-in-str "leo" (tcore/set-board-size terminal))))))
+  )
+
 

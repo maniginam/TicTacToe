@@ -1,9 +1,8 @@
 (ns ttt.board-specs
-  (:require
-    [speclj.core :refer :all]
-    [ttt.board :refer :all]
-    [ttt.core :refer :all]
-    [spec-helper :as helper]))
+  (:require [spec-helper :as helper]
+            [speclj.core :refer :all]
+            [ttt.board :as board]
+            [ttt.core :as tcore]))
 
 (def this-is-a-test true)
 (def human-is-player1 1)
@@ -13,59 +12,58 @@
 
 (def empty-board [0 1 2 3 4 5 6 7 8])
 (def full-board-cats-game ["X" "X" "O" "O" "O" "X" "X" "O" "X"])
-(def game-is-won-board [0 "X" 1 2 3 "X" 5 6 7 "X"])
 (def one-box-open-cats-game-6 ["X" "O" "X" "O" "O" "X" 6 "X" "O"])
 (def empty-game helper/empty-game)
 
 (describe "BOARD:"
 
   (it "Makes the Board"
-    (should= [] (create-board 0))
-    (should= [0] (create-board 1))
-    (should= [0 1 2 3] (create-board 2))
-    (should= [0 1 2 3 4 5 6 7 8] (create-board 3)))
+    (should= [] (board/create-board 0))
+    (should= [0] (board/create-board 1))
+    (should= [0 1 2 3] (board/create-board 2))
+    (should= [0 1 2 3 4 5 6 7 8] (board/create-board 3)))
 
   (it "Sets Board in Default Game"
-      (should= 3 (set-board-size empty-game)))
+    (should= 3 (tcore/set-board-size empty-game)))
 
   (it "gets rows of board"
-    (should= [[0 1] [2 3]] (get-rows [0 1 2 3]))
-    (should= [[0 1 2] [3 4 5] [6 7 8]] (get-rows [0 1 2 3 4 5 6 7 8])))
+    (should= [[0 1] [2 3]] (board/get-rows [0 1 2 3]))
+    (should= [[0 1 2] [3 4 5] [6 7 8]] (board/get-rows [0 1 2 3 4 5 6 7 8])))
 
   (it "gets columns of board"
-    (should= [[0 2] [1 3]] (get-columns [0 1 2 3]))
-    (should= [[0 3 6] [1 4 7] [2 5 8]] (get-columns [0 1 2 3 4 5 6 7 8])))
+    (should= [[0 2] [1 3]] (board/get-columns [0 1 2 3]))
+    (should= [[0 3 6] [1 4 7] [2 5 8]] (board/get-columns [0 1 2 3 4 5 6 7 8])))
 
   (it "gets diagonals of board"
-    (should= [[0 3] [1 2]] (get-diagonals [0 1 2 3]))
-    (should= [[0 4 8] [2 4 6]] (get-diagonals [0 1 2 3 4 5 6 7 8]))
-    (should= [[0 5 10 15] [3 6 9 12]] (get-diagonals [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15])))
+    (should= [[0 3] [1 2]] (board/get-diagonals [0 1 2 3]))
+    (should= [[0 4 8] [2 4 6]] (board/get-diagonals [0 1 2 3 4 5 6 7 8]))
+    (should= [[0 5 10 15] [3 6 9 12]] (board/get-diagonals [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15])))
 
   (it "combines all rows, cols, & diags"
-    (should= [[0 1] [2 3] [0 2] [1 3] [0 3] [1 2]] (get-all-lines [0 1 2 3])))
+    (should= [[0 1] [2 3] [0 2] [1 3] [0 3] [1 2]] (board/get-all-lines [0 1 2 3])))
 
   (it "checks rows for win"
-    (should-not (did-row-win? [0 1 2 3 4 5 6 7 8]))
-    (should (did-row-win? ["X" "X" "X" 3 4 5 6 7 8]))
-    (should-not (did-row-win? ["X" "O" "X" 3 4 5 6 7 8]))
-    (should (did-row-win? [0 1 2 "X" "X" "X" 6 7 8]))
-    (should (did-row-win? [0 1 2 3 4 5 "X" "X" "X"]))
-    (should (did-row-win? [0 1 2 3 4 5 "O" "O" "O"]))
-    (should-not (did-row-win? [0 1 2 3 4 5 "O" "X" "O"]))
-    (should-not (did-row-win? ["X" "O" "X" 3 4 5 6 7 8])))
+    (should-not (board/did-row-win? [0 1 2 3 4 5 6 7 8]))
+    (should (board/did-row-win? ["X" "X" "X" 3 4 5 6 7 8]))
+    (should-not (board/did-row-win? ["X" "O" "X" 3 4 5 6 7 8]))
+    (should (board/did-row-win? [0 1 2 "X" "X" "X" 6 7 8]))
+    (should (board/did-row-win? [0 1 2 3 4 5 "X" "X" "X"]))
+    (should (board/did-row-win? [0 1 2 3 4 5 "O" "O" "O"]))
+    (should-not (board/did-row-win? [0 1 2 3 4 5 "O" "X" "O"]))
+    (should-not (board/did-row-win? ["X" "O" "X" 3 4 5 6 7 8])))
 
   (it "checks cols for win"
-    (should (did-col-win? ["X" "O" "O" "X" 4 5 "X" 7 8]))
-    (should (did-col-win? [0 "X" 2 3 "X" 5 6 "X" 8]))
-    (should (did-col-win? [0 1 "O" 3 4 "O" 6 7 "O"]))
-    (should-not (did-col-win? [0 1 "O" 3 4 "X" 6 7 "O"]))
-    (should-not (did-col-win? ["X" "O" "X" 3 4 5 6 7 8])))
+    (should (board/did-col-win? ["X" "O" "O" "X" 4 5 "X" 7 8]))
+    (should (board/did-col-win? [0 "X" 2 3 "X" 5 6 "X" 8]))
+    (should (board/did-col-win? [0 1 "O" 3 4 "O" 6 7 "O"]))
+    (should-not (board/did-col-win? [0 1 "O" 3 4 "X" 6 7 "O"]))
+    (should-not (board/did-col-win? ["X" "O" "X" 3 4 5 6 7 8])))
 
   (it "checks diagonals for win"
-    (should (did-diagonal-win? ["X" 1 2 3 "X" 5 6 7 "X"]))
-    (should (did-diagonal-win? [0 1 "O" 3 "O" 5 "O" 7 "X"]))
-    (should-not (did-diagonal-win? [0 1 "O" 3 "X" 5 "O" 7 "X"]))
-    (should-not (did-diagonal-win? ["X" "O" "X" 3 4 5 6 7 8])))
+    (should (board/did-diagonal-win? ["X" 1 2 3 "X" 5 6 7 "X"]))
+    (should (board/did-diagonal-win? [0 1 "O" 3 "O" 5 "O" 7 "X"]))
+    (should-not (board/did-diagonal-win? [0 1 "O" 3 "X" 5 "O" 7 "X"]))
+    (should-not (board/did-diagonal-win? ["X" "O" "X" 3 4 5 6 7 8])))
 
   (for [[board results]
 
@@ -88,54 +86,48 @@
 
          ]]
     (it (str "CHECKS " board " for " (if (true? results) "win" "no-win") " on board-size " (int (Math/sqrt (count board))))
-      (should= results (is-win? board))))
+      (should= results (board/is-win? board))))
 
   (it "returns all open, unplayed boxes in game"
-    (should= [0 1 2 3 4 5 6 7 8] (open-boxes empty-board))
-    (should= [6] (open-boxes one-box-open-cats-game-6))
-    (should= [] (open-boxes full-board-cats-game)))
+    (should= [0 1 2 3 4 5 6 7 8] (board/open-boxes empty-board))
+    (should= [6] (board/open-boxes one-box-open-cats-game-6))
+    (should= [] (board/open-boxes full-board-cats-game)))
 
   (it "returns all closed, played boxes in game"
-    (should= [] (played-boxes empty-board))
-    (should= [0 1 2 3 4 5 7 8] (played-boxes one-box-open-cats-game-6))
-    (should= [0 1 2 3 4 5 6 7 8] (played-boxes full-board-cats-game)))
+    (should= [] (board/played-boxes empty-board))
+    (should= [0 1 2 3 4 5 7 8] (board/played-boxes one-box-open-cats-game-6))
+    (should= [0 1 2 3 4 5 6 7 8] (board/played-boxes full-board-cats-game)))
 
   (it "tests for full board"
-    (should (full-board? full-board-cats-game))
-    (should-not (full-board? empty-board)))
+    (should (board/full-board? full-board-cats-game))
+    (should-not (board/full-board? empty-board)))
 
   (it "test 4x4 for full board"
-    (should (full-board? ["X" "X" "O" "O" "X" "X" "O" "O" "X" "X" "O" "O" "X" "X" "O" "O"]))
-    (should-not (full-board? [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15])))
+    (should (board/full-board? ["X" "X" "O" "O" "X" "X" "O" "O" "X" "X" "O" "O" "X" "X" "O" "O"]))
+    (should-not (board/full-board? [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15])))
 
   (it "tests for empty board"
-    (should (empty-board? empty-board))
-    (should-not (empty-board? full-board-cats-game)))
+    (should (board/empty-board? empty-board))
+    (should-not (board/empty-board? full-board-cats-game)))
 
   (it "check for box existence"
-    (should (does-box-exist? 0 [0 1 2 3 4 5 6 7 8]))
-    (should (does-box-exist? 8 [0 1 2 3 4 5 6 7 8]))
-    (should-not (does-box-exist? -1 [0 1 2 3 4 5 6 7 8]))
-    (should-not (does-box-exist? 9 [0 1 2 3 4 5 6 7 8])))
+    (should (board/does-box-exist? 0 [0 1 2 3 4 5 6 7 8]))
+    (should (board/does-box-exist? 8 [0 1 2 3 4 5 6 7 8]))
+    (should-not (board/does-box-exist? -1 [0 1 2 3 4 5 6 7 8]))
+    (should-not (board/does-box-exist? 9 [0 1 2 3 4 5 6 7 8])))
 
   (it "checks that played box is open"
-    (should (is-box-open? empty-board 8))
-    (should-not (is-box-open? full-board-cats-game 8)))
+    (should (board/is-box-open? empty-board 8))
+    (should-not (board/is-box-open? full-board-cats-game 8)))
 
   (it "checks for existing & available box"
-    (should (is-good-box? empty-board 8))
-    (should-not (is-good-box? empty-board 11))
-    (should-not (is-good-box? full-board-cats-game 8)))
-
-  (it "checks displayed board"
-    (should= (str "  0  ||  1\n=====||=====\n  2  ||  3\n") (with-out-str (draw-board {:console :terminal} [0 1 2 3])))
-    (should= (str "  0  ||  1  ||  2\n=====||=====||=====\n  3  ||  4  ||  5\n=====||=====||=====\n  6  ||  7  ||  8\n") (with-out-str (draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8])))
-    (should= (str "  0  ||  1  ||  2  ||  3\n=====||=====||=====||=====\n  4  ||  5  ||  6  ||  7\n=====||=====||=====||=====\n  8  ||  9  ||  10  ||  11\n=====||=====||=====||=====\n  12  ||  13  ||  14  ||  15\n")
-             (with-out-str (draw-board {:console :terminal} [0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15]))))
+    (should (board/is-good-box? empty-board 8))
+    (should-not (board/is-good-box? empty-board 11))
+    (should-not (board/is-good-box? full-board-cats-game 8)))
 
   (it "tests if each row, col, or diagonal is a win"
-    (should (is-winning-move? ["X" "X" "X"]))
-    (should (is-vector-win? ["X" "X" "X" "X"]))
-    (should (is-winning-move? ["X" 1 2 "X" 4 5 "X" 7 8])))
+    (should (board/is-winning-move? ["X" "X" "X"]))
+    (should (board/is-vector-win? ["X" "X" "X" "X"]))
+    (should (board/is-winning-move? ["X" 1 2 "X" 4 5 "X" 7 8])))
 
   )
