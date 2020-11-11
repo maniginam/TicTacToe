@@ -55,7 +55,7 @@
 
 (defn get-last-db-game [table]
   (if (empty? (sql/find-by-keys ds (keyword table) :all))
-    {:game-over true :board ["X" "X" "X" "X"]}
+    {:game-over? true :board ["X" "X" "X" "X"]}
     (let [game (load-game table)]
       (-> game
           (assoc

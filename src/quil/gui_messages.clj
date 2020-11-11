@@ -8,8 +8,6 @@
 
 (def winner-types [:catsgame :x-won :o-won])
 
-(def yes-no [:yes :no])
-
 (defmethod gcore/user-message :restart? [state]
   (str "Do you want to begin where you left off?"))
 
@@ -26,5 +24,5 @@
 (defmethod gcore/user-message :level-setup [state]
   (str "Think you can beat me?  Choose your level!"))
 
-(defmethod gcore/user-message :game-over [state]
+(defmethod gcore/user-message :game-over? [state]
   (str "Do you want to play again?"))

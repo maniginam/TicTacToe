@@ -20,7 +20,7 @@
 
 (defn get-message-key [state]
   (cond (= (:status state) :playing) (if (= :player1 (:current-player state)) :player1 :player2)
-        (= (:status state) :game-over) (cond (= (:winner state) 0) :catsgame (= (:winner state) 1) :x-won :else :o-won)
+        (= (:status state) :game-over?) (cond (= (:winner state) 0) :catsgame (= (:winner state) 1) :x-won :else :o-won)
         :else (:status state)))
 
 (defn get-player-num [state] (:player-num ((:current-player state) state)))
@@ -54,7 +54,7 @@
   (maybe-draw-piece state))
 
 
-(defmethod tcore/run :gui [console]
+(defmethod tcore/run-game :gui [console]
   (q/defsketch gui
                :title "Tic Tac Toe"
                :resizable true

@@ -5,6 +5,7 @@
 (def player1 {:player-num 1 :piece "X" :type :mock})
 (def player2 {:player-num 2 :piece "O" :type :mock})
 (def standard-board [0 1 2 3 4 5 6 7 8])
+(def console (atom :mock))
 
 (def empty-game (assoc tcore/game-model
                   :persistence {:db :mock :dbname "test" :table "TEST"}
@@ -41,5 +42,4 @@
 (defmethod tcore/prompt-for-level :mock [game] @mock-level)
 
 (defmethod tcore/draw-state :mock [game box] nil)
-(defmethod tcore/report :mock [game results] nil)
 

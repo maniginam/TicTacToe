@@ -62,7 +62,7 @@
 
 (defmethod tcore/too-many-tries :position [input]
   (println "Nevermind, I'll go first.")
-  :computer)
+  "O")
 
 (defmethod tcore/too-many-tries :play-again [input]
   (println "I'll take that as a No.  Let's play again soon!")

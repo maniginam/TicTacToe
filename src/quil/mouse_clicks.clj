@@ -13,11 +13,9 @@
 
 (defmethod gcore/mouse-clicked :waiting [state event]
   (if (mouse/in-button? (:x event) (:y event))
-    (let [loaded-game (tcore/load-game state)
-          last-game (assoc loaded-game :old-console (:console loaded-game) :console (:console state))]
-      (if (:game-over last-game)
+      (if (:game-over? (:last-game state))
         (assoc state :status :board-setup)
-        (assoc state :status :restart? :last-game last-game)))
+        (assoc state :status :restart?))
     state))
 
 (defmethod gcore/mouse-clicked :restart? [state event]

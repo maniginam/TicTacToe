@@ -8,12 +8,6 @@
   (let [board (:board game)]
     (or (board/is-win? board) (board/full-board? board))))
 
-(defn game-results [game]
-  (let [winner (:winner game)]
-    (cond (= 1 winner) (str (:piece (:player1 game)) " Wins!")
-          (= 2 winner) (str (:piece (:player2 game)) " Wins!")
-          :else (str "Cat's Game"))))
-
 (defn next-player [game]
   (if (= (:current-player game) :player1) :player2 :player1))
 
@@ -74,11 +68,18 @@
     game))
 
 (defn set-players [state type]
-  (let [player2type (cond (= type :human) :computer
-                          (= type :computer) :human)]
-    (assoc state :player1 (assoc (:player1 state) :type type)
-                 :player2 (assoc (:player2 state) :type player2type)
-                 :status :level-setup)))
+  (let [users (:users state)]
+    (cond (zero? users) (assoc state :player1 (assoc (:player1 state) :type type)
+                                     :player2 (assoc (:player2 state) :type type)
+                                     :status :level-setup)
+          (= 2 users) (assoc state :player1 (assoc (:player1 state) :type type)
+                                   :player2 (assoc (:player2 state) :type type)
+                                   :status :board-setup)
+          :else (let [player2type (cond (= type :human) :computer
+                                        (= type :computer) :human)]
+                  (assoc state :player1 (assoc (:player1 state) :type type)
+                               :player2 (assoc (:player2 state) :type player2type)
+                               :status :level-setup)))))
 
 (defn maybe-make-computer-move [state]
   (if (and (not (game-over? state)) (ai-turn? state))
@@ -87,7 +88,7 @@
 
 (defn maybe-game-over [state]
   (if (game-over? state)
-    (assoc state :game-over true)
+    (assoc state :game-over? true)
     state))
 
 (defn maybe-start-game [state]

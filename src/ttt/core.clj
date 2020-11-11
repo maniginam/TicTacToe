@@ -1,6 +1,6 @@
 (ns ttt.core)
 
-(def console (atom :terminal))
+(def console (atom :nil))
 (def types {0 :computer 1 nil 2 :human})
 (def dbname "ttt")
 (def game-model {:status           :waiting
@@ -20,13 +20,14 @@
                  :boxes            nil
                  :level            :hard
                  :turn             nil
-                 :game-over        false
+                 :game-over?       false
                  :play-again-pause 0
                  :winner           nil})
 
 (defmulti report :console)
 (defmulti welcome :console)
 (defmulti game-setup :console)
+(defmulti setup :console)
 (defmulti update-game :console)
 (defmulti offer-position :console)
 (defmulti draw-board :console)
@@ -43,11 +44,11 @@
 (defmulti play-again :console)
 (defmulti play-again? :console)
 (defmulti too-many-tries :input)
-(defmulti end-game :console)
+(defmulti quit-game :console)
 (defmulti restart? :console)
 (defmulti get-restart-input :console)
 (defmulti restart :console)
-(defmulti run :console)
+(defmulti run-game :console)
 (defmulti set-parameters :status)
 
 (defmulti save-game (fn [game] (:db (:persistence game))))

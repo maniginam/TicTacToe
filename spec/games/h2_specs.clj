@@ -6,7 +6,7 @@
 
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def test-game (assoc (dissoc tcore/game-model :database :ai-turn :board-set? :current-plyr-num :boxes :game-count :key-stroke :turn :game-over :play-again-pause :winner :table :dbname)
+(def test-game (assoc (dissoc tcore/game-model :database :ai-turn :board-set? :current-plyr-num :boxes :game-count :key-stroke :turn :game-over? :play-again-pause :winner :table :dbname)
                  :persistence {:db :h2 :dbname "test" :table "TEST"}
                  :message-key :nil
                  :status :playing
