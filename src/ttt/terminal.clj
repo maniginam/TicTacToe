@@ -8,7 +8,7 @@
             [ttt.game-master :as master]
             [ttt.user-inputs :as input]))
 
-      ;; COMPLETE - TODO - GLM : duplicated in game master?
+;; COMPLETE - TODO - GLM : duplicated in game master?
 
 (defmethod tcore/validate-player-count :terminal [console]
   (loop [input (input/ask-num-of-players)
@@ -58,13 +58,11 @@
   (println "Ok.  Well, Let's Play Again Soon!  Bye!"))
 
 (defmethod tcore/restart? :terminal [last-game]
-  (if (master/game-over? last-game)
-    false
-    (loop [input (tcore/get-restart-input last-game)
-           tries 0]
-      (cond (>= tries 3) (tcore/too-many-tries {:input :restart?})
-            (input/valid-yes-or-no-input? input) (affirmative? input)
-            :else (recur (if (= (inc tries) 3) nil (tcore/get-restart-input last-game)) (inc tries))))))
+  (loop [input (tcore/get-restart-input last-game)
+         tries 0]
+    (cond (>= tries 3) (tcore/too-many-tries {:input :restart?})
+          (input/valid-yes-or-no-input? input) (affirmative? input)
+          :else (recur (if (= (inc tries) 3) nil (tcore/get-restart-input last-game)) (inc tries)))))
 
 (defmethod tcore/restart :terminal [game]
   (let [last-game (:last-game game)]
@@ -81,7 +79,7 @@
     ;    (assoc :message-key :nil)
     ;    (assoc :winner nil)
     ;    (assoc :game-count (:game-count last-game)))
-     (assoc last-game :console (:console game))))
+    (assoc last-game :console (:console game))))
 
 (defmethod tcore/draw-board :terminal [game board]
   (let [row-size (int (Math/sqrt (count board)))
@@ -92,19 +90,18 @@
       (if (not (= (last rows) row))
         (println break-line)))))
 
-(defmethod tcore/show-move :terminal [game box]
+(defmethod tcore/draw-state :terminal [game box]
   (tcore/draw-board game (:board game))
-  (tcore/print-turn game ((:current-player game) game) box)
-  )
+  (tcore/print-turn game ((:current-player game) game) box))
 
 (defn assign-player2-type [player1]
   (if (= (:type player1) :human) :computer :human))
 
-(defn assign-player1-type [game]
+(defn prompt-for-player-type [game]
   (loop [input (tcore/offer-position game)
          tries 0]
     (cond (>= tries 3) (tcore/too-many-tries {:input :position})
-          (input/valid-position? input) (input/set-position input)
+          (input/valid-position? input) (.toUpperCase input)
           :else (recur (if (= (inc tries) 3) nil (tcore/offer-position game)) (inc tries)))))
 
 (defn assign-type [game player-num]
@@ -112,7 +109,7 @@
     (cond (zero? users) :computer
           (= 2 users) :human
           :else (if (= player-num 1)
-                  (assign-player1-type game)
+                  (prompt-for-player-type game)
                   (assign-player2-type (:player1 game))))))
 
 (defn assign-player [game player]
@@ -149,10 +146,64 @@
         (gm/start-game! game)
         fresh-game))))
 
-(defn run [game]                                            ;; TODO - GLM : this belongs in terminal
+(defmethod tcore/set-parameters :waiting [game]
+  (let [last-game (assoc (tcore/load-game game) :console (:console game))]
+    (assoc game :last-game last-game :status :restart?)))
+
+(defmethod tcore/set-parameters :restart? [game]
+  (let [last-game (:last-game game)
+        merged-game (merge last-game game)]
+    (cond (or (nil? last-game) (gm/game-over? last-game)) (assoc game :status :user-setup)
+          (tcore/restart? last-game) last-game
+          :else (assoc game :status :user-setup))))
+
+(defmethod tcore/set-parameters :user-setup [game]
+  (let [users (tcore/validate-player-count game)
+        status (cond (zero? users) :level-setup
+                     (= 1 users) :player-setup
+                     (= 2 users) :board-setup)]
+    (assoc game :users users :status status)))
+
+(defmethod tcore/set-parameters :player-setup [game]
+  (let [human-piece (prompt-for-player-type game)
+        player1-type (if (= "X" human-piece) :human :computer)]
+    (gm/set-players game player1-type)))
+
+(defmethod tcore/set-parameters :level-setup [game]
+  (let [level (tcore/prompt-for-level game)]
+    (gm/set-level game level)))
+
+(defmethod tcore/set-parameters :board-setup [game]
+  (let [board-size (tcore/board-size-prompt game)
+        board (board/create-board board-size)]
+    (assoc game :board-size board-size
+                :board board
+                :status :ready-to-play)))
+
+(defmethod tcore/game-setup :terminal [game]
   (loop [game game]
-    (tcore/save-game game)
-    (tcore/save-turn game)
+    (if (= (:status game) :ready-to-play)
+      game
+      (recur (tcore/set-parameters game)))))
+
+(defn play [game]
+  (loop [game game]
     (if (not (nil? (:winner game)))
       (tcore/report game (master/game-results game))
       (recur (master/play-game game)))))
+
+(defn set-game [interface]
+  (tcore/game-model))
+
+;; COMPLETE - TODO - GLM : this belongs in terminal
+(defmethod tcore/run :terminal [interface]
+  (tcore/welcome interface)
+  (let [game (set-game interface)]
+    (gm/update-state (tcore/game-setup game)))
+
+
+    ;(loop [game (tcore/game-setup (assoc tcore/game-model :status :waiting))]
+    ;  (play game)
+    ;  (if (not (tcore/play-again? game))
+    ;    (tcore/end-game game)
+    ;    (recur (tcore/game-setup (assoc tcore/game-model :status :user-setup))))))

@@ -1,11 +1,12 @@
 (ns ttt.core)
 
+(def console (atom :terminal))
 (def types {0 :computer 1 nil 2 :human})
 (def dbname "ttt")
 (def game-model {:status           :waiting
                  :persistence      {:db :mysql :dbname dbname :table "ttt"}
                  :message-key      :waiting
-                 :console          :gui ;; TODO - GLM :
+                 :console          @console
                  :users            nil
                  :board-size       3
                  :board-set?       false
@@ -25,9 +26,11 @@
 
 (defmulti report :console)
 (defmulti welcome :console)
+(defmulti game-setup :console)
+(defmulti update-game :console)
 (defmulti offer-position :console)
 (defmulti draw-board :console)
-(defmulti show-move (fn [game box] (:console game)))
+(defmulti draw-state (fn [game box] (:console game)))
 (defmulti print-turn (fn [console _ _] (:console console)))
 (defmulti print-type (fn [player _] (:type player)))
 (defmulti select-box (fn [player _] (:type player)))
@@ -44,6 +47,8 @@
 (defmulti restart? :console)
 (defmulti get-restart-input :console)
 (defmulti restart :console)
+(defmulti run :console)
+(defmulti set-parameters :status)
 
 (defmulti save-game (fn [game] (:db (:persistence game))))
 (defmulti save-turn (fn [game] (:db (:persistence game))))

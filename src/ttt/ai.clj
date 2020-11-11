@@ -7,7 +7,7 @@
 (defmethod tcore/print-type :computer [player box]
   (println (str "Computer plays box " box)))
 
-(defmethod tcore/print-turn :default [game player box] nil) ;; TODO - GLM : get rid of default
+;; COMPLETE - TODO - GLM : get rid of default
 
 (defmethod tcore/print-turn :terminal [game player box]
   (tcore/print-type player box))

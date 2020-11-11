@@ -17,6 +17,11 @@
 (defn next-player [game]
   (if (= (:current-player game) :player1) :player2 :player1))
 
+(defn ai-turn? [state]
+  (let [current-player-key (:current-player state)
+        current-player (get state current-player-key)]
+    (and (= :playing (:status state)) (not= :human (:type current-player)))))
+
 (defn update-board-with-move [game box]
   (if (nil? box)
     (:board game)
@@ -38,7 +43,7 @@
         next-player (next-player game)
         game (assoc game :box-played box :board new-board :current-player next-player)]
     (tcore/save-turn game)
-    (tcore/show-move game box)
+    (tcore/draw-state game box)
     game))
 
 (defn get-winner [game]
@@ -48,18 +53,60 @@
           (board/full-board? board) (assoc game :winner 0)
           :else game)))
 
-(defn game-with-next-move [game] (update-game-with-move game (get-move-from-player game)))
+(defn game-with-next-move [game]
+  (update-game-with-move game (get-move-from-player game)))
+
+(defn play-turn! [game]
+  (tcore/save-turn game)
+  game)
 
 (defn play-game [game]
   (if (game-over? game)
     (get-winner game)
-    (game-with-next-move game)))
+    (play-turn! (game-with-next-move game))))
 
 (defn set-level [game level]
-  (assoc game :level level :status :ready-to-play))
+  (assoc game :level level :status :board-setup))
 
 (defn start-game! [game]
   (let [game (assoc game :status :playing)]
     (tcore/save-game game)
     game))
+
+(defn set-players [state type]
+  (let [player2type (cond (= type :human) :computer
+                          (= type :computer) :human)]
+    (assoc state :player1 (assoc (:player1 state) :type type)
+                 :player2 (assoc (:player2 state) :type player2type)
+                 :status :level-setup)))
+
+(defn maybe-make-computer-move [state]
+  (if (and (not (game-over? state)) (ai-turn? state))
+    (game-with-next-move state)
+    state))
+
+(defn maybe-game-over [state]
+  (if (game-over? state)
+    (assoc state :game-over true)
+    state))
+
+(defn maybe-start-game [state]
+  (if (= :ready-to-play (:status state))
+    (start-game! state)
+    state))
+
+(defn maybe-load-game [state]
+  (assoc state :last-game
+               (when (= (:status state) :waiting)
+                 (let [loaded-game (tcore/load-game state)
+                       last-game (assoc loaded-game :old-console (:console loaded-game) :console (:console state))]
+                   last-game))))
+
+(defn update-state [state]
+  (-> state
+      maybe-load-game
+      maybe-start-game
+      maybe-make-computer-move
+      maybe-game-over
+      get-winner))
 

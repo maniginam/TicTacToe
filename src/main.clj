@@ -5,7 +5,9 @@
 (def db "ttt")
 (def persistence :mysql)
 
-(defn -main [& args] ;; TODO - GLM : This should be the ONLY main.  Dispatch to appropriate UI to run.
+(defn -main [interface & args] ;; TODO - GLM : This should be the ONLY main.  Dispatch to appropriate UI to run.
+  (reset! tcore/console interface)
+  (tcore/run {:console tcore/console})
   (println "a b c d: " args)
   ;(let [console {:table table :db db :console :terminal :database :mysql :game-count 0 :persistence persistence}]
   ;  (loop [game (terminal/setup-game console)]

@@ -1,7 +1,10 @@
 (ns quil.boxes
-  (:require [quil.dimensions :as dim]
+  (:require [quil.core :as q]
+            [quil.dimensions :as dim]
             [quil.gui-core :as gcore]
-            [ttt.board :as board]))
+            [quil.game-pieces :as piece]
+            [ttt.board :as board]
+            [ttt.core :as tcore]))
 
 (defn size-boxes [state] (/ (- dim/board-size 100) (:board-size state)))
 
@@ -42,6 +45,6 @@
         center-y (+ top (/ box-size 2))
         player1-piece (:piece (:player1 state))
         player2-piece (:piece (:player2 state))
-        player (cond (= player1-piece ((:board state) box)) :player1
-                     (= player2-piece ((:board state) box)) :player2)]
+        player (cond (= player1-piece (nth (:board state) box)) :player1
+                     (= player2-piece (nth (:board state) box)) :player2)]
     (gcore/draw-piece {:current-player player} box-size [center-x center-y])))

@@ -11,7 +11,7 @@
 (def test-ds (mysql/connect db-test-name))
 (def player1 {:player-num 1 :piece "X" :type :computer})
 (def player2 {:player-num 2 :piece "O" :type :computer})
-(def test-game {:db :mock :dbname :mock :persistence {:db :mock :dbname :mock :table "TEST"} :status :playing :console :mock :users 0 :current-player :player1 :board-size 3 :board helper/standard-board :player1 player1 :player2 player2 :box-played 4})
+(def test-game (assoc helper/test-game :status :playing :player1 player1 :player2 player2 :box-played 4))
 
 (defn play-test-game [game played-boxes]
   (tcore/save-game game)
@@ -44,14 +44,7 @@
     (should (int? (:id (tcore/save-game test-game)))))
 
   (it "Loading of Game"
-    (let [player1 {:player-num 1 :piece "X" :type :computer}
-          player2 {:player-num 2 :piece "O" :type :computer}
-          game (assoc test-game
-                 :board helper/standard-board
-                 :player1 player1
-                 :player2 player2
-                 :board-size 3)
-          played-game (assoc (play-test-game game [0 1 2]) :id 2222)
+    (let [played-game (assoc (play-test-game test-game [0 1 2]) :id 2222)
           loaded-game (tcore/load-game played-game)]
       (should= 3 (:board-size loaded-game))
       (should= :player2 (:current-player loaded-game))
@@ -63,14 +56,14 @@
 
 
   (it "tests a failing board"
-    (with-out-str (let [game (play-test-game (assoc test-game
-                                               :id 2222
-                                               :board-size 3
-                                               :player1 {:player-num 1 :piece "X" :type :human}
-                                               :player2 {:player-num 2 :piece "O" :type :human}
-                                               :current-player :player1)
-                                             [0 2])]
-                    (should= ["X" 1 "O" 3 4 5 6 7 8]
-                             (:board (tcore/load-game game))))))
+    (let [player1 {:player-num 1 :piece "X" :type :human}
+          player2 {:player-num 2 :piece "O" :type :human}
+          game (assoc test-game
+                 :id 2222
+                 :player1 player1
+                 :player2 player2)
+          played-game (play-test-game game [0 2])]
+      (should= ["X" 1 "O" 3 4 5 6 7 8]
+               (:board (tcore/load-game played-game)))))
 
   )
