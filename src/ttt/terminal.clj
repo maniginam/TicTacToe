@@ -39,7 +39,7 @@
           :else (do (println (msg/level-prompt))
                     (recur (read-line) (inc tries))))))
 
-(defmethod tcore/report :terminal [console results]
+(defmethod tcore/report! :terminal [console results]
   (println results))
 
 (defn game-results [game]
@@ -79,9 +79,10 @@
       (if (not (= (last rows) row))
         (println break-line)))))
 
-(defmethod tcore/draw-state :terminal [game box]
-  (tcore/draw-board game (:board game))
-  (tcore/print-turn game ((:current-player game) game) box))
+(defmethod tcore/draw-state :terminal [game]
+  (let [box (:box-played game)]
+    (tcore/draw-board game (:board game))
+    (tcore/print-turn game ((:current-player game) game) box)))
 
 (defn assign-player2-type [player1]
   (if (= (:type player1) :human) :computer :human))
@@ -121,15 +122,17 @@
     (gm/set-level game level)))
 
 (defmethod tcore/set-parameters :board-setup [game]
-  (let [board-size (tcore/board-size-prompt game)
+  (let [board-size (tcore/set-board-size game)
         board (board/create-board board-size)]
     (assoc game :board-size board-size
                 :board board
                 :status :ready-to-play)))
+(defmethod tcore/set-parameters :playing [game]
+  game)
 
 (defmethod tcore/game-setup :terminal [game]
   (loop [game game]
-    (if (= (:status game) :ready-to-play)
+    (if (or (= (:status game) :ready-to-play) (= (:status game) :playing))
       game
       (recur (tcore/set-parameters game)))))
 
@@ -141,11 +144,14 @@
 ;; COMPLETE - TODO - GLM : this belongs in terminal
 (defmethod tcore/run-game :terminal [interface]
   (tcore/welcome interface)
-  (loop [game (tcore/game-setup (assoc tcore/game-model :status :waiting))]
+  (loop [game (tcore/game-setup (assoc tcore/game-model
+                                  :console @tcore/console))]
     (if (:game-over? game)
-      (do (tcore/report game)
+      (do (tcore/report! game (game-results game))
           (if (tcore/play-again? game)
-            (recur (tcore/game-setup (assoc tcore/game-model :status :user-setup)))
+            (recur (tcore/game-setup (assoc tcore/game-model
+                                       :console @tcore/console
+                                       :status :user-setup)))
             (tcore/quit-game game)))
       (if (not (gm/ai-turn? game))
         (recur (gm/update-state (gm/play-turn! (gm/game-with-next-move game))))

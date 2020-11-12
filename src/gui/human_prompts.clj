@@ -1,8 +1,8 @@
-(ns quil.human-prompts
+(ns gui.human-prompts
   (:require [quil.core :as q]
-            [quil.dimensions :as dim]
-            [quil.gui-core :as gcore]
-            [quil.mouse-location :as mouse]
+            [gui.dimensions :as dim]
+            [gui.gui-core :as gcore]
+            [gui.mouse-location :as mouse]
             [ttt.console-messages :as cmsg]))
 
 (defn draw-prompt-box [state]

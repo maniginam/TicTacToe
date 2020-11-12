@@ -1,10 +1,7 @@
-(ns quil.gui-messages
-  (:require [quil.gui-core :as gcore]))
+(ns gui.gui-messages
+  (:require [gui.gui-core :as gcore]))
 
-(def messages {:waiting "Click Here to Begin Game" :user-setup "Who's Playing?" :player1 "X's Turn" :player2 "O's Turn"
-               :player-setup "Choose" :restart? "Finish what you started?" :board-setup "board size?" :level-setup "Choose Your Level"
-               :x-won "Game Over: X Won" :o-won "Game Over: O Won" :catsgame "Game Over: Cat's Game"
-               :play-again "Click Here to Play Again" :nil ""})
+
 
 (def winner-types [:catsgame :x-won :o-won])
 

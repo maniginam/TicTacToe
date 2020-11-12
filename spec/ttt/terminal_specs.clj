@@ -91,7 +91,7 @@
             (should= :board-setup (:status result)))))
 
       (it "board"
-        (with-redefs [tcore/board-size-prompt (stub :board-prompt {:return 3})]
+        (with-redefs [tcore/set-board-size (stub :board-prompt {:return 3})]
           (let [result (tcore/set-parameters (assoc new-terminal-game :status :board-setup))]
             (should= :ready-to-play (:status result))))))
 
@@ -102,7 +102,7 @@
                     tcore/validate-player-count (stub :player-count {:return 1})
                     terminal/prompt-for-player-type (stub :player-type-prompt {:return "X"})
                     tcore/prompt-for-level (stub :level {:return :hard})
-                    tcore/board-size-prompt (stub :board-size {:return 3})]
+                    tcore/set-board-size (stub :board-size {:return 3})]
         (let [game (tcore/game-setup {:console :terminal :status :waiting})]
           (should= :ready-to-play (:status game)))))
 
@@ -111,7 +111,7 @@
         (with-redefs [tcore/welcome (stub :welcome)
                       tcore/game-setup (stub :setup {:return {:console :terminal :game-over? true}})
                       gm/start-game! (stub :start-game!)
-                      tcore/report (stub :report)
+                      tcore/report! (stub :report)
                       tcore/play-again? (stub :play-again {:return false})]
           (let [end-game (with-out-str (tcore/run-game {:console :terminal}))]
             (should= "Ok.  Well, Let's Play Again Soon!  Bye!\n" end-game)))))))
@@ -149,9 +149,9 @@
     (should= "Select a Level:\n  E - Easy\n  M - Medium\n  H - Hard\n" (with-out-str (with-in-str "h" (tcore/prompt-for-level {:console :terminal})))))
 
   (it "prints results of game"
-    (should= "Cat's Game" (s/trim (with-out-str (tcore/report {:console :terminal} (str "Cat's Game")))))
-    (should= "X Wins!" (s/trim (with-out-str (tcore/report {:console :terminal} (str "X Wins!")))))
-    (should= "O Wins!" (s/trim (with-out-str (tcore/report {:console :terminal} (str "O Wins!"))))))
+    (should= "Cat's Game" (s/trim (with-out-str (tcore/report! {:console :terminal} (str "Cat's Game")))))
+    (should= "X Wins!" (s/trim (with-out-str (tcore/report! {:console :terminal} (str "X Wins!")))))
+    (should= "O Wins!" (s/trim (with-out-str (tcore/report! {:console :terminal} (str "O Wins!"))))))
 
   (it "plays again"
     (should= "Do you want to play again?  Y or N\n" (with-out-str (with-in-str "y" (tcore/play-again? {:console :terminal})))))

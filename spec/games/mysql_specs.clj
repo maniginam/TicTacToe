@@ -19,7 +19,7 @@
     (if (empty? boxes)
       game
       (let [box (first boxes)]
-        (recur (gm/update-game-with-move game box) (rest boxes))))))
+        (recur (gm/update-game-with-move! game box) (rest boxes))))))
 
 (describe "Saving in MySQL"
 

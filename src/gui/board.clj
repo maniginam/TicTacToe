@@ -1,6 +1,6 @@
-(ns quil.board
+(ns gui.board
   (:require [quil.core :as q]
-            [quil.dimensions :as dim]))
+            [gui.dimensions :as dim]))
 
 (defn draw-console []
   (let [width (first dim/console-size)

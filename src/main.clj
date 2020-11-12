@@ -1,14 +1,16 @@
 (ns main
   (:require [ttt.core :as tcore]
-            [ttt.terminal :refer :all]))
+            [ttt.terminal :as terminal]
+            [gui.core :as gui]))
 
 (def table "TTT")
 (def db "ttt")
 (def persistence :mysql)
-(def console @tcore/console)
 
-(defn -main [interface & args] ;; TODO - GLM : This should be the ONLY main.  Dispatch to appropriate UI to run.
-  (tcore/run-game {:console interface})
-  (println "a b c d: " args))
+;; TODO - GLM : This should be the ONLY main.  Dispatch to appropriate UI to run.
+(defn -main [interface]
+  (reset! tcore/console (keyword interface))
+  (let [game (assoc tcore/game-model :console (keyword interface))]
+    (tcore/run-game game)))
 
 

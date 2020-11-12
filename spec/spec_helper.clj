@@ -41,5 +41,5 @@
 (def mock-level (atom :hard))
 (defmethod tcore/prompt-for-level :mock [game] @mock-level)
 
-(defmethod tcore/draw-state :mock [game box] nil)
+(defmethod tcore/draw-state :mock [game] nil)
 

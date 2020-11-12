@@ -1,4 +1,4 @@
-(ns quil.dimensions)
+(ns gui.dimensions)
 
 (def console-size [700 800])
 (def board-size 700)

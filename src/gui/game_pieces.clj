@@ -1,6 +1,6 @@
-(ns quil.game-pieces
+(ns gui.game-pieces
   (:require [quil.core :as q]
-            [quil.gui-core :as gcore]))
+            [gui.gui-core :as gcore]))
 
 (defn draw-X [box-size [center-x center-y]]
   (let [half-height (* box-size 0.3)]

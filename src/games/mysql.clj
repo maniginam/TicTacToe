@@ -2,7 +2,8 @@
   (:require [next.jdbc :as jdbc]
             [next.jdbc.result-set :as rs]
             [next.jdbc.sql :as sql]
-            [ttt.core :as tcore]))
+            [ttt.core :as tcore]
+            [ttt.board :as board]))
 
 (def database {:dbtype "mysql" :host "127.0.0.1" :user "root" :password "topsecret" :serverTimezone "UTC"})
 
@@ -33,7 +34,6 @@
           turn-count (count (filter string? (:board game)))
           box (:box-played game)
           turns-table-map {:gameID game-table-ID :id turn-count :player (if (even? turn-count) 1 2) :box box}]
-
       (sql/insert! ds :turns turns-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))))
 
 (defmethod tcore/save-game :mysql [game]

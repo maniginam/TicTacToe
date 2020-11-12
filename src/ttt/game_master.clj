@@ -32,12 +32,12 @@
           box (tcore/select-box player game)]
       box)))
 
-(defn update-game-with-move [game box]
+(defn update-game-with-move! [game box]
   (let [new-board (update-board-with-move game box)
         next-player (next-player game)
         game (assoc game :box-played box :board new-board :current-player next-player)]
     (tcore/save-turn game)
-    (tcore/draw-state game box)
+    (tcore/draw-state game)
     game))
 
 (defn get-winner [game]
@@ -48,7 +48,7 @@
           :else game)))
 
 (defn game-with-next-move [game]
-  (update-game-with-move game (get-move-from-player game)))
+  (update-game-with-move! game (get-move-from-player game)))
 
 (defn play-turn! [game]
   (tcore/save-turn game)
@@ -88,7 +88,7 @@
 
 (defn maybe-game-over [state]
   (if (game-over? state)
-    (assoc state :game-over? true)
+    (assoc state :game-over? true :status :game-over)
     state))
 
 (defn maybe-start-game [state]
@@ -97,11 +97,28 @@
     state))
 
 (defn maybe-load-game [state]
-  (assoc state :last-game
-               (when (= (:status state) :waiting)
+  (if (nil? (:last-game state))
+    (assoc state :last-game
                  (let [loaded-game (tcore/load-game state)
                        last-game (assoc loaded-game :old-console (:console loaded-game) :console (:console state))]
-                   last-game))))
+                   last-game))
+    state))
+
+(defn maybe-pause-for-restart [state]
+  (let [pause (:play-again-pause state)
+        new-pause (if (:game-over? state)
+                    (cond (nil? pause) 1
+                          (< pause 100) (inc pause)
+                          :else 100)
+                    0)]
+    (assoc state :play-again-pause new-pause)))
+
+(defn maybe-update-status [state]
+  (if (:game-over? state)
+    (if (= 100 (:play-again-pause state))
+      (assoc state :status :play-again)
+      (assoc state :status :game-over))
+    state))
 
 (defn update-state [state]
   (-> state
@@ -109,5 +126,7 @@
       maybe-start-game
       maybe-make-computer-move
       maybe-game-over
-      get-winner))
+      get-winner
+      maybe-pause-for-restart
+      maybe-update-status))
 

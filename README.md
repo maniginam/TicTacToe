@@ -8,7 +8,8 @@ Program
 ---
 1. Run the Program:
     - Requires Leiningen
-        - lein run
+        - lein run terminal
+        - lein run gui
 2. Run the specs:
     -  lein spec
 

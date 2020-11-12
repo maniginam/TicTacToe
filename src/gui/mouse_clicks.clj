@@ -1,9 +1,9 @@
-(ns quil.mouse-clicks
+(ns gui.mouse-clicks
   (:require [games.h2 :as h2]
             [games.saved-games :as saved]
-            [quil.boxes :as box]
-            [quil.gui-core :as gcore]
-            [quil.mouse-location :as mouse]
+            [gui.boxes :as box]
+            [gui.gui-core :as gcore]
+            [gui.mouse-location :as mouse]
             [ttt.board :as board]
             [ttt.core :as tcore]
             [ttt.core :as tcore]
@@ -19,7 +19,7 @@
     state))
 
 (defmethod gcore/mouse-clicked :restart? [state event]
-  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (tcore/restart state)
+  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc (:last-game state) :consol :gui)
         (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :user-setup)
         :else state))
 
@@ -71,4 +71,4 @@
         box (first (filter #(box/mouse-in-box? % state (:x event) (:y event)) boxes))]
     (if (nil? box)
       state
-      (gm/play-turn! (game/update-game-with-move state box)))))
+      (gm/play-turn! (game/update-game-with-move! state box)))))

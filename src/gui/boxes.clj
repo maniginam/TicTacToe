@@ -1,8 +1,8 @@
-(ns quil.boxes
+(ns gui.boxes
   (:require [quil.core :as q]
-            [quil.dimensions :as dim]
-            [quil.gui-core :as gcore]
-            [quil.game-pieces :as piece]
+            [gui.dimensions :as dim]
+            [gui.gui-core :as gcore]
+            [gui.game-pieces :as piece]
             [ttt.board :as board]
             [ttt.core :as tcore]))
 

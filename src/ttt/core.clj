@@ -1,6 +1,6 @@
 (ns ttt.core)
 
-(def console (atom :nil))
+(def console (atom :gui))
 (def types {0 :computer 1 nil 2 :human})
 (def dbname "ttt")
 (def game-model {:status           :waiting
@@ -24,14 +24,14 @@
                  :play-again-pause 0
                  :winner           nil})
 
-(defmulti report :console)
+(defmulti report! :console)
 (defmulti welcome :console)
 (defmulti game-setup :console)
 (defmulti setup :console)
 (defmulti update-game :console)
 (defmulti offer-position :console)
 (defmulti draw-board :console)
-(defmulti draw-state (fn [game box] (:console game)))
+(defmulti draw-state :console)
 (defmulti print-turn (fn [console _ _] (:console console)))
 (defmulti print-type (fn [player _] (:type player)))
 (defmulti select-box (fn [player _] (:type player)))
@@ -63,6 +63,9 @@
 
 (defn get-state [state]
   state)
+
+(defn update-console [interface]
+  (reset! console interface))
 
 
 

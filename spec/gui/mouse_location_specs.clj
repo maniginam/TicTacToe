@@ -1,6 +1,6 @@
-(ns quil.mouse-location-specs
+(ns gui.mouse-location-specs
   (:require [speclj.core :refer :all]
-            [quil.mouse-location :as mouse]))
+            [gui.mouse-location :as mouse]))
 
 
 (describe "Mouse Location:"
