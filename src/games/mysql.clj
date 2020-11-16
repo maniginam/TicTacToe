@@ -30,8 +30,8 @@
   (when (:box-played game)
     (let [dbname (:dbname (:persistence game))
           ds (connect dbname)
-          game-table-ID (get-last-game-id ds)
           turn-count (count (filter string? (:board game)))
+          game-table-ID (if (= 1 turn-count) (inc (get-last-game-id ds)) (get-last-game-id ds))
           box (:box-played game)
           turns-table-map {:gameID game-table-ID :id turn-count :player (if (even? turn-count) 1 2) :box box}]
       (sql/insert! ds :turns turns-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))))

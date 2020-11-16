@@ -155,6 +155,4 @@
                                        :console :terminal
                                        :status :user-setup)))
             (tcore/quit-game game)))
-      (if (not (gm/ai-turn? game))
-        (recur (gm/update-state (gm/play-turn! (gm/game-with-next-move game))))
-        (recur (gm/update-state game))))))
+      (recur (gm/update-state (gm/game-with-next-move game))))))
