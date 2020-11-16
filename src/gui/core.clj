@@ -44,17 +44,25 @@
   (maybe-draw-piece state))
 
 
+;(q/defsketch gui.core
+;             :title "Tic Tac Toe"
+;             :size [700 800]
+;             :setup gcore/setup-gui
+;             :update gm/update-state
+;             :draw tcore/draw-state
+;             :mouse-clicked gcore/mouse-clicked
+;             :key-typed gcore/key-typed
+;             :features [:keep-on-top]
+;             :middleware [m/fun-mode])
+
 (defmethod tcore/run-game :gui [interface]
-  (let [start-gui (q/defsketch gui
-                         :title "Tic Tac Toe"
-                         :size [700 800]
-                         :setup gcore/setup-gui
-                         :update gm/update-state
-                         :draw tcore/draw-state
-                         :mouse-clicked gcore/mouse-clicked
-                         :key-typed gcore/key-typed
-                         :features [:keep-on-top]
-                         :middleware [m/fun-mode])]
-    start-gui
-    (println "got through defsketch")
-    (Thread/sleep 5000)))
+  (q/sketch
+    :title "Tic Tac Toe"
+    :size [700 800]
+    :setup gcore/setup-gui
+    :update gm/update-state
+    :draw tcore/draw-state
+    :mouse-clicked gcore/mouse-clicked
+    :key-typed gcore/key-typed
+    :features [:keep-on-top]
+    :middleware [m/fun-mode]))
