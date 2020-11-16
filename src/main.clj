@@ -1,7 +1,7 @@
 (ns main
   (:require [ttt.core :as tcore]
             [ttt.terminal :as terminal]
-            [gui.core :as gui]))
+            [gui.gui :as gui]))
 
 (def table "TTT")
 (def db "ttt")

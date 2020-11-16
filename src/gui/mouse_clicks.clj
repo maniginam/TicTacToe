@@ -29,7 +29,6 @@
   (let [board-size (:key-stroke state)]
     (when (int? board-size)
       (assoc state :board (board/create-board board-size)
-                   :board-set true
                    :board-size board-size
                    :status :ready-to-play))))
 
@@ -70,3 +69,6 @@
     (if (nil? box)
       state
       (gm/play-turn! (game/update-game-with-move! state box)))))
+
+(defmethod gcore/mouse-clicked :game-over [state event]
+  state)

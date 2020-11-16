@@ -1,4 +1,4 @@
-(ns gui.core
+(ns gui.gui
   (:require [gui.board :as gui-board]
             [gui.boxes :as box]
             [gui.button :as button]

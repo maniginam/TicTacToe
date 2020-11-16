@@ -87,8 +87,8 @@
     state))
 
 (defn maybe-game-over [state]
-  (if (game-over? state)
-    (assoc state :game-over? true :status :game-over)
+  (if (and (game-over? state) (not (nil? (:board state))))
+    (assoc state :status :game-over)
     state))
 
 (defn maybe-start-game [state]
@@ -106,7 +106,7 @@
 
 (defn maybe-pause-for-restart [state]
   (let [pause (:play-again-pause state)
-        new-pause (if (:game-over? state)
+        new-pause (if (game-over? state)
                     (cond (nil? pause) 1
                           (< pause 100) (inc pause)
                           :else 100)
@@ -114,7 +114,7 @@
     (assoc state :play-again-pause new-pause)))
 
 (defn maybe-update-status [state]
-  (if (:game-over? state)
+  (if (and (game-over? state) (not (nil? (:board state))))
     (if (= 100 (:play-again-pause state))
       (assoc state :status :play-again)
       (assoc state :status :game-over))

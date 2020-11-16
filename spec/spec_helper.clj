@@ -14,10 +14,10 @@
                  :persistence {:db :mock :dbname "test" :table "TEST"}
                  :console :mock
                  :users 0
-                 :box-played nil
                  :player1 player1
                  :player2 player2
-                 :board standard-board
+                 :level :hard
+                 :board [0 1 2 3 4 5 6 7 8]
                  :board-size 3))
 
 (def mock-move (atom 0))

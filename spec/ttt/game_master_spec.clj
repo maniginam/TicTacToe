@@ -4,7 +4,8 @@
             [ttt.game-master :as sut]
             [ttt.core :as tcore]))
 
-(def default-state helper/test-game)
+(def default-empty-game helper/empty-game)
+(def default-game helper/test-game)
 (def mock-move helper/mock-move)
 (def console helper/console)
 
@@ -15,7 +16,8 @@
   ;(after (println "This runs after specs"))
   (around [it] (with-redefs [tcore/draw-state (stub :draw-state)
                              tcore/save-turn (stub :save-turn)
-                             tcore/save-game (stub :save-game)]
+                             tcore/save-game (stub :save-game)
+                             tcore/load-game (stub :load-game)]
                  (it)))
 
   (context "update-game-with-move"
@@ -33,7 +35,8 @@
   (context "setup"
 
     (it "maybe loads the last game"
-      (should-be-nil (:last-game (sut/maybe-load-game {:status :user-setup}))))
+      (let [game-to-load (assoc default-empty-game :last-game {:kid1 :rex :kid2 :leo})]
+      (should= {:kid1 :rex :kid2 :leo} (:last-game (sut/maybe-load-game game-to-load)))))
 
     (it "game level"
       (let [result (sut/set-level helper/test-game :easy)]
@@ -68,58 +71,56 @@
 
   (context "update state tests:"
     (it "constants"
-      (let [result (sut/update-state default-state)]
+      (let [result (sut/update-state default-game)]
         (should= {:player-num 1 :piece "X" :type :mock} (:player1 result))
         (should= {:player-num 2 :piece "O" :type :mock} (:player2 result))
         (should= :mock (:console result))
         (should= 0 (:users result))
         (should= 3 (:board-size result))
-        (should-not (:board-set? result))
-        (should-be-nil (:key-stroke result))
         (should= :hard (:level result))
         (should= "TEST" (:table (:persistence result)))
         (should= "test" (:dbname (:persistence result)))))
 
     (context "game-over?"
       (it "not over"
-        (let [not-over-game (sut/update-state default-state)]
+        (let [not-over-game (sut/update-state default-game)]
           (should-not (:game-over? not-over-game))))
 
       (it "over"
-        (let [winning-game (sut/update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8]))]
-          (should (:game-over? winning-game)))))
+        (let [winning-game (sut/update-state (assoc default-game :board ["X" "X" "X" 3 4 5 6 7 8]))]
+          (should (sut/game-over? winning-game)))))
 
     (context "who's the winner?"
       (it "no winner"
-        (let [cats-game (sut/update-state (assoc default-state :board ["X" "O" "X" "X" "O" "O" "O" "X" "X"] :current-player :player2))]
+        (let [cats-game (sut/update-state (assoc default-game :board ["X" "O" "X" "X" "O" "O" "O" "X" "X"] :current-player :player2))]
           (should= 0 (:winner cats-game))))
 
       (it "X wins"
-        (let [winning-game (sut/update-state (assoc default-state :board ["X" "X" "X" 3 4 5 6 7 8] :current-player :player2))]
+        (let [winning-game (sut/update-state (assoc default-game :board ["X" "X" "X" 3 4 5 6 7 8] :current-player :player2))]
           (should= 1 (:winner winning-game))))
 
       (it "game not over"
-        (let [not-over-game (sut/update-state (assoc default-state :board ["X" "O" "X" 3 4 5 6 7 8] :current-player :player2))]
+        (let [not-over-game (sut/update-state (assoc default-game :board ["X" "O" "X" 3 4 5 6 7 8] :current-player :player2))]
           (should-be-nil (:winner not-over-game)))))
 
     (context "board"
       (it "stays constant during human turn"
-        (let [empty (sut/update-state default-state)]
+        (let [empty (sut/update-state default-game)]
           (should= [0 1 2 3 4 5 6 7 8] (:board empty))))
 
       (it "updates with ai turn"
         (reset! mock-move 4)
-        (let [playing-state (assoc default-state :console :mock :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2)
+        (let [playing-state (assoc default-game :console :mock :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2)
               updated-with-computer-turn (sut/update-state playing-state)]
           (should= ["X" 1 2 3 "O" 5 6 7 8] (:board updated-with-computer-turn)))))
 
     (context "swap current player when"
       (it "has made move"
-        (let [computer-played-box-4 (assoc default-state :console :mock :board ["X" 1 2 3 "O" 5 6 7 8] :status :playing :current-player :player2)]
+        (let [computer-played-box-4 (assoc default-game :console :mock :board ["X" 1 2 3 "O" 5 6 7 8] :status :playing :current-player :player2)]
           (should= :player1 (:current-player (sut/update-state computer-played-box-4)))))
 
       (it "but not without move"
-        (should= :player1 (:current-player (sut/update-state default-state)))))
+        (should= :player1 (:current-player (sut/update-state default-game)))))
 
     (context "is ai turn"
       (context "when player1s turn and "
@@ -139,12 +140,12 @@
       (around [it] (with-redefs [sut/start-game! (stub :start-game!)] (it)))
 
       (it "when ready to play"
-        (let [game (assoc default-state :status :ready-to-play)]
+        (let [game (assoc default-game :status :ready-to-play)]
           (sut/update-state game)
           (should-have-invoked :start-game!)))
 
       (it "not when not ready to play"
-        (sut/update-state default-state)
+        (sut/update-state default-game)
         (should-not-have-invoked :start-game!)))))
 
 ;; COMPLETE - TODO - GLM : save game - use core multimethod

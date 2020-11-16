@@ -5,24 +5,11 @@
 (def dbname "ttt")
 (def game-model {:status           :waiting
                  :persistence      {:db :mysql :dbname dbname :table "ttt"}
-                 :message-key      :waiting
-                 :console          @console
                  :users            nil
                  :board-size       3
-                 :board-set?       false
-                 :key-stroke       nil
                  :current-player   :player1
                  :player1          {:player-num 1 :piece "X" :type nil}
-                 :player2          {:player-num 2 :piece "O" :type nil}
-                 :current-plyr-num 1
-                 :board            [0 1 2 3 4 5 6 7 8]
-                 :ai-turn          false
-                 :boxes            nil
-                 :level            :hard
-                 :turn             nil
-                 :game-over?       false
-                 :play-again-pause 0
-                 :winner           nil})
+                 :player2          {:player-num 2 :piece "O" :type nil}})
 
 (defmulti report! :console)
 (defmulti welcome :console)

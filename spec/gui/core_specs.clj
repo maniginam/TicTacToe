@@ -4,7 +4,7 @@
             [speclj.core :refer :all]
             [ttt.core :as tcore]
             [spec-helper :as helper]
-            [gui.core :as gui]
+            [gui.gui :as gui]
             [ttt.game-master :as gm]
             [gui.button :as button]))
 
@@ -20,7 +20,6 @@
             result (gm/update-state playing-state)]
         (should= ["X" "X" "X" 3 4 5 6 7 8] (:board result))
         (should (gm/game-over? result))
-        (should (:game-over? result))
         (should= 1 (:winner result))
         (should= :game-over (:status result)))))
 
@@ -33,7 +32,7 @@
         (should= :game-over (:status result))))
 
     (it "ends at 100"
-      (let [over-game (assoc test-game :console :mock :status :game-over :game-over? true :play-again-pause 100)
+      (let [over-game (assoc test-game :console :mock :status :game-over :board ["X"] :play-again-pause 100)
             result (gm/update-state over-game)]
         (should= 100 (:play-again-pause result))
         (should= :play-again (:status result)))))

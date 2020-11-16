@@ -101,9 +101,11 @@
 
 (defmethod tcore/set-parameters :restart? [game]
   (let [last-game (:last-game game)]
-    (cond (or (nil? last-game) (gm/game-over? last-game)) (assoc game :status :user-setup)
-          (tcore/restart? last-game) last-game
-          :else (assoc game :status :user-setup))))
+    (if (gm/game-over? last-game)
+      (assoc game :status :user-setup)
+      (if (tcore/restart? last-game)
+        last-game
+      (assoc game :status :user-setup)))))
 
 (defmethod tcore/set-parameters :user-setup [game]
   (let [users (tcore/validate-player-count game)]
@@ -145,12 +147,12 @@
 (defmethod tcore/run-game :terminal [interface]
   (tcore/welcome interface)
   (loop [game (tcore/game-setup (assoc tcore/game-model
-                                  :console @tcore/console))]
-    (if (:game-over? game)
+                                  :console :terminal))]
+    (if (gm/game-over? game)
       (do (tcore/report! game (game-results game))
           (if (tcore/play-again? game)
             (recur (tcore/game-setup (assoc tcore/game-model
-                                       :console @tcore/console
+                                       :console :terminal
                                        :status :user-setup)))
             (tcore/quit-game game)))
       (if (not (gm/ai-turn? game))
