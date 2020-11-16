@@ -1,7 +1,5 @@
 (ns gui.mouse-clicks
-  (:require [games.h2 :as h2]
-            [games.saved-games :as saved]
-            [gui.boxes :as box]
+  (:require [gui.boxes :as box]
             [gui.gui-core :as gcore]
             [gui.mouse-location :as mouse]
             [ttt.board :as board]

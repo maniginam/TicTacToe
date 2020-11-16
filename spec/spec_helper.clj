@@ -28,9 +28,6 @@
 
 (def mock-restart? (atom false))
 (defmethod tcore/restart? :mock [game] @mock-restart?)
-(defmethod tcore/restart :mock [game]
-  (let [last-game (:last-game game)]
-    (assoc last-game :console (:console game))))
 
 (def mock-player-count (atom 0))
 (defmethod tcore/validate-player-count :mock [game] @mock-player-count)

@@ -47,7 +47,6 @@
 (defmulti quit-game :console)
 (defmulti restart? :console)
 (defmulti get-restart-input :console)
-(defmulti restart :console)
 (defmulti run-game :console)
 (defmulti set-parameters :status)
 
