@@ -1,12 +1,10 @@
 (ns gui.mouse-clicks
   (:require [gui.boxes :as box]
-            [gui.gui-core :as gcore]
+            [gui.multimethods :as gcore]
             [gui.mouse-location :as mouse]
             [ttt.board :as board]
-            [ttt.core :as tcore]
-            [ttt.core :as tcore]
-            [ttt.game-master :as game]
-            [ttt.game-master :as gm]
+            [master.core :as tcore]
+            [master.game-master :as game]
             [quil.core :as q]))
 
 (defmethod gcore/mouse-clicked :waiting [state event]
@@ -17,7 +15,7 @@
     state))
 
 (defmethod gcore/mouse-clicked :restart? [state event]
-  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc (:last-game state) :consol :gui)
+  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (assoc (:last-game state) :console :gui)
         (mouse/hovering-piece-option? 2 (:x event) (:y event)) (assoc state :status :user-setup)
         :else state))
 
@@ -50,14 +48,14 @@
         :else state))
 
 (defmethod gcore/mouse-clicked :player-setup [state event]
-  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (gm/set-players state :human)
-        (mouse/hovering-piece-option? 2 (:x event) (:y event)) (gm/set-players state :computer)
+  (cond (mouse/hovering-piece-option? 1 (:x event) (:y event)) (game/set-players state :human)
+        (mouse/hovering-piece-option? 2 (:x event) (:y event)) (game/set-players state :computer)
         :else state))
 
 (defmethod gcore/mouse-clicked :level-setup [state event]
-  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (gm/set-level state :easy)
-        (mouse/hovering-option? 1 (:x event) (:y event)) (gm/set-level state :medium)
-        (mouse/hovering-option? 2 (:x event) (:y event)) (gm/set-level state :hard)
+  (cond (mouse/hovering-option? 0 (:x event) (:y event)) (game/set-level state :easy)
+        (mouse/hovering-option? 1 (:x event) (:y event)) (game/set-level state :medium)
+        (mouse/hovering-option? 2 (:x event) (:y event)) (game/set-level state :hard)
         :else state))
 
 (defmethod gcore/mouse-clicked :play-again [state event]
@@ -68,7 +66,7 @@
         box (first (filter #(box/mouse-in-box? % state (:x event) (:y event)) boxes))]
     (if (nil? box)
       state
-      (gm/play-turn! (game/update-game-with-move! state box)))))
+      (game/play-turn! (game/update-game-with-move! state box)))))
 
 (defmethod gcore/mouse-clicked :game-over [state event]
   state)

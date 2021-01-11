@@ -1,7 +1,7 @@
 (ns games.mock-db
   (:require
     [speclj.core :refer :all]
-    [ttt.core :as tcore]))
+    [master.core :as tcore]))
 
 (def games (atom {}))
 

@@ -1,7 +1,7 @@
 (ns gui.human-prompts
   (:require [quil.core :as q]
             [gui.dimensions :as dim]
-            [gui.gui-core :as gcore]
+            [gui.multimethods :as gcore]
             [gui.mouse-location :as mouse]
             [ttt.console-messages :as cmsg]))
 
@@ -101,7 +101,7 @@
     (q/fill 255 255 255)
     (q/rect (- left 40) (- top 60) 80 90)
 
-    (if (int? (:key-stroke state)) (q/fill 0 255 0) (q/fill 255 0 0))
+    (if (integer? (:key-stroke state)) (q/fill 0 255 0) (q/fill 255 0 0))
     (q/text-size 50)
     (q/text-align :center)
     (q/text (str (:key-stroke state)) left top)))

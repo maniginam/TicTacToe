@@ -1,7 +1,7 @@
 (ns gui.button
   (:require [quil.core :as q]
             [gui.dimensions :as dim]
-            [gui.gui-messages :as msg]
+            [gui.messages :as msg]
             [gui.mouse-location :as mouse]))
 
 

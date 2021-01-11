@@ -1,8 +1,8 @@
 (ns games.mysql-specs
-  (:require [spec-helper :as helper]
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
-            [ttt.core :as tcore]
-            [ttt.game-master :as gm]
+            [master.core :as tcore]
+            [master.game-master :as gm]
     ;; COMPLETE - TODO - GLM : sloppy, only used for show-move (not entirely sure how i fixed this)
             [games.mysql :as mysql]))
 
@@ -27,11 +27,13 @@
     (should (mysql/connect db-test-name)))
 
   (it "Shows Tables in Database"
-    (should= ["game" "pets" "players" "turns"] (map #(:Tables_in_test %) (mysql/show-tables db-test-name)))
-    (should= ["game" "players" "turns"] (map #(:Tables_in_ttt %) (mysql/show-tables "ttt"))))
+    (mysql/show-tables db-test-name)
+    (mysql/show-tables "ttt")
+    (should-not-be-nil (map #(:Tables_in_test %) (mysql/show-tables db-test-name)))
+    (should= ["games" "players" "turns"] (map #(:Tables_in_ttt %) (mysql/show-tables "ttt"))))
 
   (it "Gets the Last Game's ID"
-    (should (int? (mysql/get-last-game-id (mysql/connect db-test-name)))))
+    (should (int? (mysql/get-last-game-id (mysql/connect "ttt")))))
 
   (it "Saves Last Turn"
     (should (int? (:id (tcore/save-turn test-game)))))

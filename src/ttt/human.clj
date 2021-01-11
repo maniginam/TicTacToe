@@ -1,5 +1,5 @@
 (ns ttt.human
-  (:require [ttt.core :as tcore]
+  (:require [master.core :as tcore]
             [ttt.board :as board]
             [ttt.user-inputs :as input]))
 

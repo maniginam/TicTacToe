@@ -1,11 +1,11 @@
 (ns ttt.terminal
-  (:require [games.mysql :as sql]
+  (:require
+    ;[games.mysql :as sql]
             [ttt.board :as board]
             [ttt.console-messages :as msg]
-            [ttt.core :as tcore]
-            [ttt.core :as tcore]
-            [ttt.game-master :as gm]
-            [ttt.game-master :as master]
+            [master.core :as tcore]
+            [master.core :as tcore]
+            [master.game-master :as gm]
             [ttt.user-inputs :as input]))
 
 ;; COMPLETE - TODO - GLM : duplicated in game master?
@@ -96,7 +96,9 @@
 
 ;; COMPLETE - TODO - GLM : Maybe you can make this work like the GUI where there's a status that tells you what to do next.
 (defmethod tcore/set-parameters :waiting [game]
-  (let [last-game (assoc (tcore/load-game game) :console (:console game))]
+  (let [last-game {:board["X" "X" "X" "X" "X" "X" "X" "X" "X"]}
+        ;(assoc (tcore/load-game game) :console (:console game))
+        ]
     (assoc game :last-game last-game :status :restart?)))
 
 (defmethod tcore/set-parameters :restart? [game]
@@ -129,6 +131,7 @@
     (assoc game :board-size board-size
                 :board board
                 :status :ready-to-play)))
+
 (defmethod tcore/set-parameters :playing [game]
   game)
 

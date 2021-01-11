@@ -1,6 +1,6 @@
 (ns ttt.optimal-play-specs
   (:require [speclj.core :refer :all]
-            [ttt.optimal-play :as optimal]))
+            [master.optimal-play :as optimal]))
 
 (def player1 1)
 (def player2 2)

@@ -1,5 +1,5 @@
 (ns ttt.console-messages
-  (:require [ttt.core :as tcore]))
+  (:require [master.core :as tcore]))
 
 (defmethod tcore/welcome :terminal [console]
   (println "Welcome to Tic-Tac-Toe!"))

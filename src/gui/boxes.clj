@@ -1,10 +1,10 @@
 (ns gui.boxes
   (:require [quil.core :as q]
             [gui.dimensions :as dim]
-            [gui.gui-core :as gcore]
+            [gui.multimethods :as gcore]
             [gui.game-pieces :as piece]
             [ttt.board :as board]
-            [ttt.core :as tcore]))
+            [master.core :as tcore]))
 
 (defn size-boxes [state] (/ (- dim/board-size 100) (:board-size state)))
 

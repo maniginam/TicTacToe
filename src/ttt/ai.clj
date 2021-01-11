@@ -1,6 +1,6 @@
 (ns ttt.ai
-  (:require [ttt.core :as tcore]
-            [ttt.optimal-play :as play]))
+  (:require [master.core :as tcore]
+            [master.optimal-play :as play]))
 
 (def levels->depths {:easy 2 :medium 1 :hard 0})
 

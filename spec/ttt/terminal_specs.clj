@@ -1,14 +1,14 @@
 (ns ttt.terminal-specs
-  (:require [spec-helper :as helper]
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
-            [ttt.core :as tcore]
-            [ttt.game-master :as gm]
+            [master.core :as tcore]
+            [master.game-master :as gm]
             [ttt.terminal :as terminal]
             [ttt.user-inputs :as input]
             [clojure.string :as s]))
 
 
-;; COMPLETE - TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in spec-helper and modify that for each spec
+;; COMPLETE - TODO - GLM : SOOOOOOOOO  Many game/state maps.  Put one base game map in ttt.spec-helper and modify that for each spec
 (def empty-game (assoc helper/empty-game :console :mock))
 (def test-game (assoc helper/test-game :console :mock))
 (def new-terminal-game (assoc empty-game :console :terminal))

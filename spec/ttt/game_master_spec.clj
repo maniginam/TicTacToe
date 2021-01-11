@@ -1,8 +1,8 @@
 (ns ttt.game-master-spec
-  (:require [spec-helper :as helper]
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
-            [ttt.game-master :as sut]
-            [ttt.core :as tcore]))
+            [master.game-master :as sut]
+            [master.core :as tcore]))
 
 (def default-empty-game helper/empty-game)
 (def default-game helper/test-game)

@@ -1,8 +1,8 @@
 (ns ttt.board-specs
-  (:require [spec-helper :as helper]
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.board :as board]
-            [ttt.core :as tcore]))
+            [master.core :as tcore]))
 
 (def this-is-a-test true)
 (def human-is-player1 1)
@@ -16,6 +16,9 @@
 (def empty-game helper/empty-game)
 
 (describe "BOARD:"
+
+  (it "shows winning line"
+    (should= [0 1 2] (board/get-winning-line ["X" "X" "X" 3 4 5 6 7 8])))
 
   (it "Makes the Board"
     (should= [] (board/create-board 0))

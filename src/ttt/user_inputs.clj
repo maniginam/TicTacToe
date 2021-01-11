@@ -1,7 +1,7 @@
 (ns ttt.user-inputs
   (:require [ttt.board :as board]
             [ttt.console-messages :as msg]
-            [ttt.core :as tcore]))
+            [master.core :as tcore]))
 
 (defn bad-type [input]
   (println (str input " is not a valid option"))
