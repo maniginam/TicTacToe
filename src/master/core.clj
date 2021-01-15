@@ -40,6 +40,7 @@
 (defmulti save-game (fn [game] (:db (:persistence game))))
 (defmulti save-turn (fn [game] (:db (:persistence game))))
 (defmulti load-game (fn [game] (:db (:persistence game))))
+(defmulti update-game-with-id (fn [game] (:db (:persistence game))))
 
 (defn set-state [state]
   state)

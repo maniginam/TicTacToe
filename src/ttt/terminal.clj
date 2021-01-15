@@ -1,6 +1,5 @@
 (ns ttt.terminal
-  (:require
-    ;[games.mysql :as sql]
+  (:require [games.mysql :as sql]
             [ttt.board :as board]
             [ttt.console-messages :as msg]
             [master.core :as tcore]
@@ -96,9 +95,7 @@
 
 ;; COMPLETE - TODO - GLM : Maybe you can make this work like the GUI where there's a status that tells you what to do next.
 (defmethod tcore/set-parameters :waiting [game]
-  (let [last-game {:board["X" "X" "X" "X" "X" "X" "X" "X" "X"]}
-        ;(assoc (tcore/load-game game) :console (:console game))
-        ]
+  (let [last-game (assoc (tcore/load-game game) :console (:console game))]
     (assoc game :last-game last-game :status :restart?)))
 
 (defmethod tcore/set-parameters :restart? [game]

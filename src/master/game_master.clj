@@ -67,7 +67,7 @@
 (defn start-game! [game]
 	(let [game (assoc game :status :playing)]
 		(tcore/save-game game)
-		game))
+		(tcore/update-game-with-id game)))
 
 (defn set-players [state type]
 	(let [users (:users state)]

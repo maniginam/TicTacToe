@@ -14,8 +14,7 @@
 (def test-game (assoc helper/test-game :status :playing :player1 player1 :player2 player2 :box-played 4))
 
 (defn play-test-game [game played-boxes]
-  (tcore/save-game game)
-  (loop [game game boxes played-boxes]
+  (loop [game (tcore/save-game game) boxes played-boxes]
     (if (empty? boxes)
       game
       (let [box (first boxes)]
@@ -36,17 +35,17 @@
     (should (int? (mysql/get-last-game-id (mysql/connect "ttt")))))
 
   (it "Saves Last Turn"
-    (should (int? (:id (tcore/save-turn test-game)))))
+    (should (int? (:gameID (tcore/save-turn test-game)))))
 
   (it "Saves Players"
-    (should= nil (mysql/save-players db-test-name test-game))
-    (should= nil (mysql/save-players db-test-name test-game)))
+    (should-be-nil (mysql/save-players db-test-name test-game))
+    (should-be-nil (mysql/save-players db-test-name test-game)))
 
   (it "Saves a Game"
-    (should (int? (:id (tcore/save-game test-game)))))
+    (should (int? (:gameID (tcore/save-game test-game)))))
 
   (it "Loading of Game"
-    (let [played-game (assoc (play-test-game test-game [0 1 2]) :id 2222)
+    (let [played-game (play-test-game test-game [0 1 2])
           loaded-game (tcore/load-game played-game)]
       (should= 3 (:board-size loaded-game))
       (should= :player2 (:current-player loaded-game))
@@ -61,10 +60,10 @@
     (let [player1 {:player-num 1 :piece "X" :type :human}
           player2 {:player-num 2 :piece "O" :type :human}
           game (assoc test-game
-                 :id 2222
                  :player1 player1
                  :player2 player2)
-          played-game (play-test-game game [0 2])]
+          played-game (play-test-game game [0 2])
+          ]
       (should= ["X" 1 "O" 3 4 5 6 7 8]
                (:board (tcore/load-game played-game)))))
 

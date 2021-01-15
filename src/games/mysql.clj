@@ -35,7 +35,7 @@
 
 (defn save-players [dbname game]
 	(let [ds (connect dbname)
-				game-table-ID (get-last-game-id ds)
+				game-table-ID (:gameID game)
 				player1-map {:gameID game-table-ID :id 1 :playerNum 1 :piece (str (:piece (:player1 game))) :type (str (:type (:player1 game)))}
 				player2-map {:gameID game-table-ID :id 2 :playerNum 2 :piece (str (:piece (:player2 game))) :type (str (:type (:player2 game)))}]
 		(sql/insert! ds :players player1-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
@@ -46,19 +46,22 @@
 		(let [dbname (:dbname (:persistence game))
 					ds (connect dbname)
 					turn-count (count (filter string? (:board game)))
-					game-table-ID (cond (nil? (get-last-game-id ds)) 1
-													(= 1 turn-count) (inc (get-last-game-id ds))
-													:else (get-last-game-id ds))
+					game-table-ID (:gameID game)
 					box (:box-played game)
 					turns-table-map {:gameID game-table-ID :id turn-count :player (if (even? turn-count) 1 2) :box box}]
 			(sql/insert! ds :turns turns-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))))
 
+(defmethod tcore/update-game-with-id :mysql [game]
+	(let [dbname (:dbname (:persistence game))
+				ds (connect dbname)]
+		(assoc game :gameID (get-last-game-id ds))))
+
 (defmethod tcore/save-game :mysql [game]
 	(let [dbname (:dbname (:persistence game))
 				ds (connect dbname)
-				game-table-map {:console (str (:console game)) :level (str (:level game)) :boardsize (:board-size game)}]
-		(sql/insert! ds :games game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
-		(save-players dbname game)))
+				game-table-map {:console (str (:console game)) :level (str (:level game)) :boardsize (:board-size game)}
+				table-insert (sql/insert! ds :games game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})]
+		(save-players dbname (assoc game :gameID (:generated_key table-insert)))))
 
 (defn pull-game-tables [ds last-game-id]
 	(let [game-table (jdbc/execute! ds [(str "select * from games where id = ?") last-game-id]
