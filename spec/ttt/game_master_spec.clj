@@ -110,7 +110,7 @@
 
       (it "updates with ai turn"
         (reset! mock-move 4)
-        (let [playing-state (assoc default-game :console :mock :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2)
+        (let [playing-state (assoc default-game :last-game {:status :game-over :board ["X"]} :board [0 1 2 3 4 5 6 7 8] :persistence {:db :mock :dbname "ttt"} :console :mock :status :playing :board ["X" 1 2 3 4 5 6 7 8] :current-player :player2 :player2 {:type :mock :player-num 1 :piece "O"})
               updated-with-computer-turn (sut/update-state playing-state)]
           (should= ["X" 1 2 3 "O" 5 6 7 8] (:board updated-with-computer-turn)))))
 

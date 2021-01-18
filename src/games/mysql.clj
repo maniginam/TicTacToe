@@ -19,16 +19,16 @@
       level varchar(32),
       depth tinyint(20),
       boardsize int(32));"])
-					(jdbc/execute-one! ds ["create table players (id int,
+			(jdbc/execute-one! ds ["create table players (id int,
       gameID int,
       playerNum int(20),
       piece varchar(20),
       type varchar(20));"])
-					(jdbc/execute-one! ds ["create table turns (id int,
+			(jdbc/execute-one! ds ["create table turns (id int,
       gameID int(20),
       player int(20),
       box int(20));"]))
-	(jdbc/execute! ds ["show tables"])))
+		(jdbc/execute! ds ["show tables"])))
 
 (defn get-last-game-id [ds]
 	(:games/id (last (sql/find-by-keys ds :GAMES :all))))
@@ -60,8 +60,21 @@
 	(let [dbname (:dbname (:persistence game))
 				ds (connect dbname)
 				game-table-map {:console (str (:console game)) :level (str (:level game)) :boardsize (:board-size game)}
-				table-insert (sql/insert! ds :games game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})]
-		(save-players dbname (assoc game :gameID (:generated_key table-insert)))))
+				table-insert (sql/insert! ds :games game-table-map {:return-keys true :builder-fn rs/as-unqualified-lower-maps})
+				saved-game (assoc game :gameID (:generated_key table-insert))]
+		(save-players dbname saved-game)
+		saved-game))
+
+(defmethod tcore/save-status :mysql [game]
+	(let [dbname (:dbname (:persistence game))
+				ds (connect dbname)
+				table-insert {:status (:status game)
+											:users (:users game)
+											:humanpiece (cond (= :human (get (:player1 game) :type)) 1
+																	 (= :human (get (:player2 game) :type)) 2
+																	 :else nil)}
+				id (:generated_key (sql/insert! ds :games table-insert {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))]
+		(assoc game :gameID id)))
 
 (defn pull-game-tables [ds last-game-id]
 	(let [game-table (jdbc/execute! ds [(str "select * from games where id = ?") last-game-id]
@@ -75,7 +88,7 @@
 (defn sync-game [game [game-table turns [player1 player2 & players]]]
 	(if (seq turns)
 		(let [ds (connect (:dbname game))
-					game-id (get-last-game-id ds)]
+					game-id (:gameID game)]
 			(-> game
 					(assoc :game-id game-id)
 					(assoc :board-size (:boardsize game-table))
@@ -97,9 +110,9 @@
 (defmethod tcore/load-game :mysql [game]
 	(let [dbname (:dbname (:persistence game))
 				ds (connect dbname)
-				last-game-id (get-last-game-id ds)
-				tables (pull-game-tables ds last-game-id)]
-		(sync-game (assoc game :dbname dbname) tables)))
+				gameID (get-last-game-id ds)
+				tables (pull-game-tables ds gameID)]
+		(sync-game (assoc game :dbname dbname :gameID gameID) tables)))
 
 
 
