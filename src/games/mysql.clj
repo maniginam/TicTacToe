@@ -76,12 +76,12 @@
 				id (:generated_key (sql/insert! ds :games table-insert {:return-keys true :builder-fn rs/as-unqualified-lower-maps}))]
 		(assoc game :gameID id)))
 
-(defn pull-game-tables [ds last-game-id]
-	(let [game-table (jdbc/execute! ds [(str "select * from games where id = ?") last-game-id]
+(defn pull-game-tables [ds gameID]
+	(let [game-table (jdbc/execute! ds [(str "select * from games where id = ?") gameID]
 																	{:builder-fn rs/as-unqualified-lower-maps})
-				turns-table (jdbc/execute! ds [(str "select * from turns where gameID = ?") last-game-id]
+				turns-table (jdbc/execute! ds [(str "select * from turns where gameID = ?") gameID]
 																	 {:builder-fn rs/as-unqualified-lower-maps})
-				players-table (jdbc/execute! ds [(str "select * from players where gameID = ?") last-game-id]
+				players-table (jdbc/execute! ds [(str "select * from players where gameID = ?") gameID]
 																		 {:builder-fn rs/as-unqualified-lower-maps})]
 		[(first game-table) (remove #(nil? (:box %)) turns-table) players-table]))
 
@@ -90,7 +90,7 @@
 		(let [ds (connect (:dbname game))
 					game-id (:gameID game)]
 			(-> game
-					(assoc :game-id game-id)
+					(assoc :gameID game-id)
 					(assoc :board-size (:boardsize game-table))
 					(assoc :current-player (if (even? (:id (last turns))) :player1 :player2))
 					(assoc :player1 {:player-num 1 :piece (:piece player1) :type (read-string (:type player1))})
@@ -110,7 +110,7 @@
 (defmethod tcore/load-game :mysql [game]
 	(let [dbname (:dbname (:persistence game))
 				ds (connect dbname)
-				gameID (get-last-game-id ds)
+				gameID (if (nil? (:gameID game)) (get-last-game-id ds) (:gameID game))
 				tables (pull-game-tables ds gameID)]
 		(sync-game (assoc game :dbname dbname :gameID gameID) tables)))
 
