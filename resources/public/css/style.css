@@ -1,0 +1,26 @@
+body {
+  background-color: rgb(248, 152, 121);
+}
+
+h1 {text-align: center;}
+h2 {text-align: center;}
+h3 {text-align: center;}
+a {margin-left: 40%;}
+
+.welcome {
+margin-top: 40%;}
+
+
+
+form {
+    left: 50%;
+    position: absolute;
+    text-align: justified;
+      -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+button {
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+}

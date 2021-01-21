@@ -1,0 +1,1038 @@
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.311 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.361 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.363 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:12:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: master.game-master/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:12:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: master.game-master/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:12:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: master.game-master/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:12:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: master/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.367 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.298 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:11:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: router/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:11:5).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: router/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:11:4).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: router/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/master/start.clj:10:4).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: No such var: router/start-interface
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7388)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3820)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6436)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$DefExpr$Parser.parse (Compiler.java:596)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler.eval (Compiler.java:7181)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.286 seconds.[0m
+[36m----  Exception    ----[0m
+
+  clojure.lang.ExceptionInfo : [1m[0m
+         java.lang.Exception : [1mCould not write JavaScript nil[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.Exception: Could not write JavaScript nil
+ at cljs.closure$write_js_QMARK_.invokeStatic (closure.clj:2141)
+    cljs.closure$write_js_QMARK_.invoke (closure.clj:2130)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2147)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.186 seconds.[0m
+[36m----  Exception    ----[0m
+
+  [1mAssert failed: file:/Users/maniginam/TicTacToe/src/script/core.cljs does not provide a namespace
+(first provides)[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.AssertionError: Assert failed: file:/Users/maniginam/TicTacToe/src/script/core.cljs does not provide a namespace
+(first provides)
+ at cljs.closure$javascript_file.invokeStatic (closure.clj:509)
+    cljs.closure$javascript_file.invoke (closure.clj:505)
+    cljs.closure$map__GT_javascript_file.invokeStatic (closure.clj:514)
+    cljs.closure$map__GT_javascript_file.invoke (closure.clj:512)
+    cljs.closure$compiled_file.invokeStatic (closure.clj:601)
+    cljs.closure$compiled_file.invoke (closure.clj:593)
+    cljs.closure$compile_file.invokeStatic (closure.clj:663)
+    cljs.closure$compile_file.invoke (closure.clj:641)
+    cljs.closure$fn__5400.invokeStatic (closure.clj:737)
+    cljs.closure/fn (closure.clj:731)
+    cljs.closure$fn__5313$G__5306__5320.invoke (closure.clj:559)
+    cljs.closure$compile_sources$iter__5526__5530$fn__5531.invoke (closure.clj:1107)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$compile_sources.invokeStatic (closure.clj:1103)
+    cljs.closure$compile_sources.invoke (closure.clj:1092)
+    cljs.closure$build.invokeStatic (closure.clj:3132)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:111)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 1.257 seconds.[0m
+[36m----  Could not Analyze  src/script/core.cljs  ----[0m
+
+  [1mNo such namespace: hello-rex.component, could not locate hello_rex/component.cljs, hello_rex/component.cljc, or JavaScript source providing "hello-rex.component" (Please check that namespaces with dashes use underscores in the ClojureScript file name) [0m
+
+[36m----  Analysis Error : Please see src/script/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.599 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.488 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.207 seconds.[0m
+[36m----  Could not Analyze  src/script/core.cljs  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/script/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 1.053 seconds.[0m
+[36m----  Could not Analyze  src/script/core.cljs  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/script/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 1.202 seconds.[0m
+[36m----  Could not Analyze  src/script/core.cljs  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/script/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 3.887 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.437 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.433 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.392 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.385 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.471 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.395 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.195 seconds.[0m
+[36m----  Could not Read  src/script/core.cljs   line:13 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/src/script/core.cljs [line 13, col 38] The map literal starting with :class on line 13 column 18 contains 3 form(s). Map literals must contain an even number of forms.[0m
+
+  [36m12[0m  [36m(defn like-rex-and-leo [data][0m
+  [33m13[0m  [1m	(sab/html [:div {:class = "welcome"}[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/src/script/core.cljs [line 13, col 38] The map literal starting with :class on line 13 column 18 contains 3 form(s). Map literals must contain an even number of forms.[0m
+  [36m14[0m  [36m						 [:h1 "Welcome to Tic Tac Toe!"][0m
+  [36m15[0m  [36m						 [:form {:action "/ttt/setup" :method "get"}[0m
+  [36m16[0m  [36m							[:button {:type "submit" :formAction "/ttt/setup" :formMethod "get"} "Let's Play!"]][0m
+
+[36m----  Reader Error : Please see src/script/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.418 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.39 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.368 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.384 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.441 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.465 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.377 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.383 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.379 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.385 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.461 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main.js" in 0.362 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/script/core.js
+Compiling build :dev to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :dev from ["src"] in 0.218 seconds.[0m
+[36m----  Could not Analyze  src/script/core.cljs  ----[0m
+
+  [1mNo such namespace: master.core, could not locate master/core.cljs, master/core.cljc, or JavaScript source providing "master.core" [0m
+
+[36m----  Analysis Error : Please see src/script/core.cljs  ----[0m
