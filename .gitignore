@@ -10,3 +10,7 @@ saved-games
 target
 .nrepl-port
 .lein*
+*.tif
+.rebel_readline_history
+*.log
+*.json
