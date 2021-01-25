@@ -23,30 +23,38 @@
 						"test-all"       ["do" "clean" "spec" "cljsbuild" "once"]
 						"cljs-auto-test" ["cljsbuild" "auto" "specs"]}
 
-	:clean-targets ^{:protect false} [:target-path "out" "resources/public/cljs"]
+	:clean-targets ^{:protect false} [:target-path "out" "target/public/cljs"]
 	:dev {:dependencies [[speclj "3.3.2"]]}
 
-	:cljsbuild {:test-commands {"specs" ["bin/phantomjs" "bin/speclj.js" "resources/public/cljs/specs/core.js"]}
+	:cljsbuild {:test-commands {"specs" ["bin/phantomjs" "bin/speclj.js" "target/public/cljs/core-spec.js"]}
 							:builds
 							{:specs
 							 {:source-paths ["src/clj" "src/cljs" "spec/cljs"]
-								:notify-command ["bin/phantomjs" "bin/speclj" "resources/public/cljs/out/core.js"]
-								:compiler     {:output-to "resources/public/cljs/out/core.js"
+								:notify-command ["bin/phantomjs" "bin/speclj" "target/public/cljs/core-spec.js"]
+								:compiler     {:asset-path "cljs/specs"
+															 :output-to "target/public/cljs/specs/core-spec.js"
 															 ;:target :bundle
 															 :main web.core}}
 							:production
-							 {:source-paths ["src/cljs"]
+							 {:source-paths ["src/cljs" "src/clj"]
 							 :compiler     {:main       web.core
 															:asset-path "cljs/out"
-															:output-to  "resources/public/cljs/core.js"
-															:output-dir "resources/public/cljs/out"}
-								:figwheel     {:open-urls ["http://localhost:3449/index.html"]}}}}
+															:output-to  "target/public/cljs/core.js"
+															:output-dir "target/public/cljs/out"}
+								:figwheel     {:open-urls ["http://localhost:3449/index.html"]}}
 
+							 ;:ttt
+							 ;{:source-paths ["src/clj"]
+								;:compiler     {:main       master.core
+								;							 :asset-path "cljs/ttt"
+								;							 :output-to  "target/public/cljs/ttt/core.js"
+								;							 :output-dir "target/public/cljs/ttt/"}}
+							 }}
 
-:main clj/master.start
-:aot [clj/master.start]
+:main master.start
+:aot [master.start]
 :figwheel {
-					 :css-dirs ["resources/public/css"]
+					 :css-dirs ["target/public/css"]
 					 }
 )
 

@@ -2083,3 +2083,161 @@ Compiling build :specs to "resources/public/clj/specs/core.js" from ["src/clj" "
 notifying browser that file changed:  resources/public/clj/specs/out/goog/deps.js
 notifying browser that file changed:  resources/public/clj/specs/out/cljs_deps.js
 notifying browser that file changed:  resources/public/clj/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/out/specs.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[31mFailed to compile build :specs from ["src/clj" "src/cljs" "spec/cljs"] in 0.911 seconds.[0m
+[36m----  Could not Analyze  spec/cljs/web/core_spec.cljs  ----[0m
+
+  [1mNo such namespace: speclj.core, could not locate speclj/core.cljs, speclj/core.cljc, or JavaScript source providing "speclj.core" [0m
+
+[36m----  Analysis Error : Please see spec/cljs/web/core_spec.cljs  ----[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 0.98 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 2.333 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/src/clj/master/start.clj:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [:ns-name], :pred clojure.core/simple-symbol?, :val clj/master.start, :via [:clojure.core.specs.alpha/ns-form :clojure.core.specs.alpha/ns-form], :in [0]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0x34f5f3c3 "clojure.spec.alpha$regex_spec_impl$reify__2509@34f5f3c3"], :value (clj/master.start (:gen-class) (:require [master.core :refer :all] [ttt.terminal :refer :all] [gui.gui :refer :all])), :args (clj/master.start (:gen-class) (:require [master.core :refer :all] [ttt.terminal :refer :all] [gui.gui :refer :all]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/src/clj/master/start.clj:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [:ns-name], :pred clojure.core/simple-symbol?, :val clj/master.start, :via [:clojure.core.specs.alpha/ns-form :clojure.core.specs.alpha/ns-form], :in [0]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0x34f5f3c3 "clojure.spec.alpha$regex_spec_impl$reify__2509@34f5f3c3"], :value (clj/master.start (:gen-class) (:require [master.core :refer :all] [ttt.terminal :refer :all] [gui.gui :refer :all])), :args (clj/master.start (:gen-class) (:require [master.core :refer :all] [ttt.terminal :refer :all] [gui.gui :refer :all]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 3.918 seconds.[0m
+Compiling build :production to "resources/public/cljs/core.js" from ["src/cljs" "src/clj"]...
+[32mSuccessfully compiled build :production to "resources/public/cljs/core.js" in 0.413 seconds.[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 4.805 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.584 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+Compiling build :production to "resources/public/cljs/core.js" from ["src/cljs" "src/clj"]...
+[31mFailed to compile build :production from ["src/cljs" "src/clj"] in 0.216 seconds.[0m
+[36m----  Could not Analyze  src/cljs/web/core.cljs  ----[0m
+
+  [1mNo such namespace: master.core, could not locate master/core.cljs, master/core.cljc, or JavaScript source providing "master.core" [0m
+
+[36m----  Analysis Error : Please see src/cljs/web/core.cljs  ----[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[31mFailed to compile build :specs from ["src/clj" "src/cljs" "spec/cljs"] in 1.565 seconds.[0m
+[36m----  Could not Analyze  src/cljs/web/core.cljs  ----[0m
+
+  [1mNo such namespace: master.core, could not locate master/core.cljs, master/core.cljc, or JavaScript source providing "master.core" [0m
+
+[36m----  Analysis Error : Please see src/cljs/web/core.cljs  ----[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.149 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :production to "resources/public/cljs/core.js" from ["src/cljs" "src/clj"]...
+[32mSuccessfully compiled build :production to "resources/public/cljs/core.js" in 0.474 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 2.376 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :production to "resources/public/cljs/core.js" from ["src/cljs" "src/clj"]...
+Compiling build :production to "resources/public/cljs/core.js" from ["src/cljs" "src/clj"]...
+[31mFailed to compile build :production from ["src/cljs" "src/clj"] in 0.163 seconds.[0m
+[36m----  Could not Analyze  src/cljs/web/core.cljs   line:1  column:1  ----[0m
+
+  [1mLibrary name must be specified as a symbol in :require / :require-macros; offending spec: [] at line 1 src/cljs/web/core.cljs[0m
+
+  [33m1[0m  [1m(ns web.core[0m
+  [0m [0m  [33m^--- Library name must be specified as a symbol in :require / :require-macros; offending spec: [] at line 1 src/cljs/web/core.cljs[0m
+  [36m2[0m  [36m	(:require [sablono.core :as sab][0m
+  [36m3[0m  [36m						[]))[0m
+
+[36m----  Analysis Error : Please see src/cljs/web/core.cljs  ----[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[31mFailed to compile build :specs from ["src/clj" "src/cljs" "spec/cljs"] in 0.923 seconds.[0m
+[36m----  Could not Analyze  src/cljs/web/core.cljs   line:1  column:1  ----[0m
+
+  [1mLibrary name must be specified as a symbol in :require / :require-macros; offending spec: [] at line 1 src/cljs/web/core.cljs[0m
+
+  [33m1[0m  [1m(ns web.core[0m
+  [0m [0m  [33m^--- Library name must be specified as a symbol in :require / :require-macros; offending spec: [] at line 1 src/cljs/web/core.cljs[0m
+  [36m2[0m  [36m	(:require [sablono.core :as sab][0m
+  [36m3[0m  [36m						[]))[0m
+
+[36m----  Analysis Error : Please see src/cljs/web/core.cljs  ----[0m
