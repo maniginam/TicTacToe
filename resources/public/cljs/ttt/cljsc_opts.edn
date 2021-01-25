@@ -1,1 +1,0 @@
-{:main master.start, :asset-path "cljs/ttt", :output-to "resources/public/cljs/ttt/core.js", :output-dir "resources/public/cljs/ttt", :optimizations :none}

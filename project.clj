@@ -7,6 +7,7 @@
 								 [seancorfield/next.jdbc "1.1.588"]
 								 [mysql/mysql-connector-java "8.0.22"]
 
+								 [speclj "3.3.2"]
 								 [hiccup "1.0.5"]
 								 [org.clojure/clojurescript "1.10.773"]
 								 [cljsjs/react "17.0.1-0"]
@@ -16,45 +17,43 @@
 	:plugins [[speclj "3.3.2"]
 						[lein-cljsbuild "1.1.8"]
 						[lein-figwheel "0.5.20"]]
-	:source-paths ["src/clj" "src/cljs"]
-	:test-paths ["spec/clj" "spec/cljs"]
+	:source-paths ["src"]
+	:test-paths ["spec"]
 
-	:aliases {"specs"      ["cljsbuild" "spec" "unit-tests"]
-						"test-all"       ["do" "clean" "spec" "cljsbuild" "once"]
-						"cljs-auto-test" ["cljsbuild" "auto" "specs"]}
+	:aliases {"specs"      ["cljsbuild" "dev" "unit-tests"]
+						"test-all"       ["do" "clean" "dev" "cljsbuild" "once"]
+						"cljs-auto-test" ["cljsbuild" "auto" "dev"]}
 
-	:clean-targets ^{:protect false} [:target-path "out" "target/public/cljs"]
-	:dev {:dependencies [[speclj "3.3.2"]]}
+	:clean-targets ^{:protect false} [:resources-path "out" "resources/public/cljs"]
+	:profiles {:dev {:dependencies [[speclj "3.3.2"]]}}
 
-	:cljsbuild {:test-commands {"specs" ["bin/phantomjs" "bin/speclj.js" "target/public/cljs/core-spec.js"]}
+	:cljsbuild {
+							;:test-commands {"specs" ["bin/phantomjs" "bin/speclj" "resources/public/cljs/specs/main.js"]}
 							:builds
-							{:specs
-							 {:source-paths ["src/clj" "src/cljs" "spec/cljs"]
-								:notify-command ["bin/phantomjs" "bin/speclj" "target/public/cljs/core-spec.js"]
-								:compiler     {:asset-path "cljs/specs"
-															 :output-to "target/public/cljs/specs/core-spec.js"
+							{:dev
+							 {:source-paths ["src" "spec"]
+								;:notify-command ["bin/speclj.js" "resources/public/cljs/specs/main_dev.js"]
+								:compiler     {:asset-path "../cljs"
+															 :output-to "resources/public/cljs/main_dev.js"
+															 :output-dir "resources/public/cljs"
 															 ;:target :bundle
-															 :main web.core}}
-							:production
-							 {:source-paths ["src/cljs" "src/clj"]
-							 :compiler     {:main       web.core
-															:asset-path "cljs/out"
-															:output-to  "target/public/cljs/core.js"
-															:output-dir "target/public/cljs/out"}
-								:figwheel     {:open-urls ["http://localhost:3449/index.html"]}}
+															 :main ttt.cljs.web.core-spec}
+								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}}
 
-							 ;:ttt
-							 ;{:source-paths ["src/clj"]
-								;:compiler     {:main       master.core
-								;							 :asset-path "cljs/ttt"
-								;							 :output-to  "target/public/cljs/ttt/core.js"
-								;							 :output-dir "target/public/cljs/ttt/"}}
-							 }}
+							:prod
+							 {:source-paths ["src"]
+							 :compiler     {:main       ttt.cljc.web.core
+															:asset-path "cljs/prod"
+															:output-to  "resources/public/cljs/main.js"
+															:output-dir "resources/public/cljs/prod"}
+								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}
+								}
+}}
 
-:main master.start
-:aot [master.start]
+:main ttt.clj.master.start
+:aot [ttt.clj.master.start]
 :figwheel {
-					 :css-dirs ["target/public/css"]
+					 :css-dirs ["resources/public/css"]
 					 }
 )
 

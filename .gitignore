@@ -14,3 +14,4 @@ target
 .rebel_readline_history
 *.log
 *.json
+resources/*

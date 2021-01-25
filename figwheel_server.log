@@ -2241,3 +2241,1029 @@ Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/
   [36m3[0m  [36m						[]))[0m
 
 [36m----  Analysis Error : Please see src/cljs/web/core.cljs  ----[0m
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.101 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.065 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.077 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+[32mSuccessfully compiled build :specs to "resources/public/cljs/specs/core-spec.js" in 1.888 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/specs/out/web/core.js
+Compiling build :specs to "resources/public/cljs/specs/core-spec.js" from ["src/clj" "src/cljs" "spec/cljs"]...
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 1.827 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0x16014e02 "clojure.spec.alpha$regex_spec_impl$reify__2509@16014e02"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0x16014e02 "clojure.spec.alpha$regex_spec_impl$reify__2509@16014e02"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.582 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error macroexpanding clojure.core/ns at (/Users/maniginam/TicTacToe/spec/ttt/cljc/web/core_spec.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+clojure.lang.ExceptionInfo: Call to clojure.core/ns did not conform to spec.
+#:clojure.spec.alpha{:problems [{:path [], :reason "Extra input", :pred (clojure.spec.alpha/cat :docstring (clojure.spec.alpha/? clojure.core/string?) :attr-map (clojure.spec.alpha/? clojure.core/map?) :ns-clauses :clojure.core.specs.alpha/ns-clauses), :val ((:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :via [:clojure.core.specs.alpha/ns-form], :in [1]}], :spec #object[clojure.spec.alpha$regex_spec_impl$reify__2509 0xf55062b "clojure.spec.alpha$regex_spec_impl$reify__2509@f55062b"], :value (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web])), :args (ttt.cljc.web.core-spec (:require-macros [speclj.core :refer [run-specs describe it should should-not should=]]) (:require [speclj.core] [ttt.cljs.web.core :as web]))}
+ at clojure.spec.alpha$macroexpand_check.invokeStatic (alpha.clj:705)
+    clojure.spec.alpha$macroexpand_check.invoke (alpha.clj:697)
+    clojure.lang.AFn.applyToHelper (AFn.java:156)
+    clojure.lang.AFn.applyTo (AFn.java:144)
+    clojure.lang.Var.applyTo (Var.java:705)
+    clojure.lang.Compiler.checkSpecs (Compiler.java:6970)
+    clojure.lang.Compiler.macroexpand1 (Compiler.java:6988)
+    clojure.lang.Compiler.macroexpand (Compiler.java:7075)
+    clojure.lang.Compiler.eval (Compiler.java:7161)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.614 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 1.553 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 1.612 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.284 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:19 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 19, col 5] Unmatched delimiter ).[0m
+
+  [36m17[0m  [36m		(it "users-setup on click"[0m
+  [36m18[0m  [36m			(let [button (.getElementById js/document "ttt")[0m
+  [33m19[0m  [1m			)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 19, col 5] Unmatched delimiter ).[0m
+  [36m20[0m  [36m[0m
+  [36m21[0m  [36m		)[0m
+  [36m22[0m  [36m	)[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.573 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:34  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= "start!" (get start (:button) :id))))[0m
+  [0m  [0m  [33m                                 ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.713 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.529 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.509 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.716 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:16  column:32  ----[0m
+
+  [1mWrong number of args (0) passed to :button[0m
+
+  [36m12[0m  [36m		(it "welcomes at startup"[0m
+  [36m13[0m  [36m			(let [start (web/welcome 0)[0m
+  [36m14[0m  [36m						status (get @web/game-state :status)][0m
+  [36m15[0m  [36m				(should= :waiting status)[0m
+  [33m16[0m  [1m				(should= :start (get start (:button) :id))))[0m
+  [0m  [0m  [33m                               ^--- Wrong number of args (0) passed to :button[0m
+  [36m17[0m  [36m[0m
+  [36m18[0m  [36m		;(it "users-setup on click"[0m
+  [36m19[0m  [36m		;	(let [button (.getElementById js/document "ttt")[0m
+  [36m20[0m  [36m		;	)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.572 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.282 seconds.[0m
+[36m----  Could not Read  src/ttt/cljs/web/core.cljs   line:30 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/src/ttt/cljs/web/core.cljs [line 30, col 18] No reader function for tag object.[0m
+
+  [33m30[0m  [1m{$$typeof #object[Symbol (react.element)],[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/src/ttt/cljs/web/core.cljs [line 30, col 18] No reader function for tag object.[0m
+  [36m31[0m  [36m :type div, :key nil, :ref nil,[0m
+  [36m32[0m  [36m :props #js{:className welcome,[0m
+  [36m33[0m  [36m						:children  #js [#js {$$typeof #object[Symbol (react.element)], :type h1, :key nil, :ref nil,[0m
+
+[36m----  Reader Error : Please see src/ttt/cljs/web/core.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.241 seconds.[0m
+[36m----  Could not Read  src/ttt/cljs/web/core.cljs   line:30 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/src/ttt/cljs/web/core.cljs [line 30, col 18] No reader function for tag object.[0m
+
+  [33m30[0m  [1m{$$typeof #object[Symbol (react.element)],[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/src/ttt/cljs/web/core.cljs [line 30, col 18] No reader function for tag object.[0m
+  [36m31[0m  [36m :type div, :key nil, :ref nil,[0m
+  [36m32[0m  [36m :props #js{:className welcome,[0m
+  [36m33[0m  [36m						:children  #js [#js {$$typeof #object[Symbol (react.element)], :type h1, :key nil, :ref nil,[0m
+
+[36m----  Reader Error : Please see src/ttt/cljs/web/core.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.416 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:25 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 25, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m23[0m  [36m	)[0m
+  [36m24[0m  [36m[0m
+  [33m25[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 25, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.637 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.295 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[36m----  Compiler Warning on   src/ttt/cljs/web/core.cljs   line:17  column:76  ----[0m
+
+  [1mUse of undeclared Var ttt.cljs.web.core/elements[0m
+
+  [36m13[0m  [36m(defn welcome [data][0m
+  [36m14[0m  [36m	(let [start (sab/html [:div.welcome[0m
+  [36m15[0m  [36m												 [:h1 "Welcome to Tic Tac Toe!"][0m
+  [36m16[0m  [36m												 [:button {:id :start :type "button"} "Let's Play!"]])][0m
+  [33m17[0m  [1m		(println "(get (get (second elements) :props) :id)): " (get (get (second elements) :props) :id))[0m
+  [0m  [0m  [33m                                                                           ^--- Use of undeclared Var ttt.cljs.web.core/elements[0m
+  [36m18[0m  [36m		start))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn render! [][0m
+  [36m21[0m  [36m	(.render js/ReactDOM[0m
+  [36m22[0m  [36m					 (welcome game-state)[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljs/web/core.cljs  ----[0m
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.543 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   src/ttt/cljs/web/core.cljs   line:17  column:76  ----[0m
+
+  [1mUse of undeclared Var ttt.cljs.web.core/elements[0m
+
+  [36m13[0m  [36m(defn welcome [data][0m
+  [36m14[0m  [36m	(let [start (sab/html [:div.welcome[0m
+  [36m15[0m  [36m												 [:h1 "Welcome to Tic Tac Toe!"][0m
+  [36m16[0m  [36m												 [:button {:id :start :type "button"} "Let's Play!"]])][0m
+  [33m17[0m  [1m		(println "(get (get (second elements) :props) :id)): " (get (get (second elements) :props) :id))[0m
+  [0m  [0m  [33m                                                                           ^--- Use of undeclared Var ttt.cljs.web.core/elements[0m
+  [36m18[0m  [36m		start))[0m
+  [36m19[0m  [36m[0m
+  [36m20[0m  [36m(defn render! [][0m
+  [36m21[0m  [36m	(.render js/ReactDOM[0m
+  [36m22[0m  [36m					 (welcome game-state)[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljs/web/core.cljs  ----[0m
+[31mFailed to compile build :dev from ["src" "spec"] in 0.475 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.296 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.4 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.271 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.4 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.251 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 9 and column 1.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.473 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.282 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 11 and column 2.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 11 and column 2.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.246 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:26 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 11 and column 2.[0m
+
+  [36m24[0m  [36m	)[0m
+  [36m25[0m  [36m[0m
+  [33m26[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 26, col 12] Unexpected EOF while reading item 4 of list, starting at line 11 and column 2.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.281 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:27 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 27, col 12] Unexpected EOF while reading item 4 of list, starting at line 12 and column 2.[0m
+
+  [36m25[0m  [36m	)[0m
+  [36m26[0m  [36m[0m
+  [33m27[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 27, col 12] Unexpected EOF while reading item 4 of list, starting at line 12 and column 2.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.263 seconds.[0m
+[36m----  Could not Read  spec/ttt/cljs/web/core_spec.cljs   line:29 ----[0m
+
+  [1m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 29, col 12] Unexpected EOF while reading item 4 of list, starting at line 12 and column 2.[0m
+
+  [36m27[0m  [36m	)[0m
+  [36m28[0m  [36m[0m
+  [33m29[0m  [1m(run-specs)[0m
+  [0m  [0m  [33m/Users/maniginam/TicTacToe/spec/ttt/cljs/web/core_spec.cljs [line 29, col 12] Unexpected EOF while reading item 4 of list, starting at line 12 and column 2.[0m
+
+[36m----  Reader Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.462 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.432 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.483 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.522 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.255 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:24  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m22[0m  [36m				button (.getElementById js/document ":start")][0m
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [33m24[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m25[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m26[0m  [36m		))[0m
+  [36m27[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.271 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:24  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m22[0m  [36m				button (.getElementById js/document ":start")][0m
+  [36m23[0m  [36m		(println "button: " button) [0m
+  [33m24[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m25[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m26[0m  [36m		))[0m
+  [36m27[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.26 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:24  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m22[0m  [36m				button (.getElementById js/document ":start")][0m
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [33m24[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 24 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m25[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m26[0m  [36m		))[0m
+  [36m27[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[36m----  Compiler Warning on   spec/ttt/cljs/web/core_spec.cljs   line:24  column:6  ----[0m
+
+  [1mUse of undeclared Var ttt.cljs.web.core-spec/prinlnt[0m
+
+  [36m20[0m  [36m	(it "users-setup on click"[0m
+  [36m21[0m  [36m		(let [start (web/welcome 0)[0m
+  [36m22[0m  [36m					button (.getElementById js/document ":start")][0m
+  [36m23[0m  [36m			(println "button: " button)[0m
+  [33m24[0m  [1m			(prinlnt "hello")[0m
+  [0m  [0m  [33m    ^--- Use of undeclared Var ttt.cljs.web.core-spec/prinlnt[0m
+  [36m25[0m  [36m			(set! button)[0m
+  [36m26[0m  [36m			(should= :user-setup (get @web/game-state :status))[0m
+  [36m27[0m  [36m			))[0m
+  [36m28[0m  [36m	)[0m
+  [36m29[0m  [36m)[0m
+
+[36m----  Compiler Warning : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+[31mFailed to compile build :dev from ["src" "spec"] in 0.254 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:25  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [36m24[0m  [36m		(prinlnt "hello")[0m
+  [33m25[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m26[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m27[0m  [36m		))[0m
+  [36m28[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.251 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:25  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [36m24[0m  [36m		(println "hello")[0m
+  [33m25[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m26[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m27[0m  [36m		))[0m
+  [36m28[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.249 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:25  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [36m24[0m  [36m		(println "hello")  [0m
+  [33m25[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m26[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m27[0m  [36m		))[0m
+  [36m28[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.253 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:25  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m23[0m  [36m		(println "button: " button)[0m
+  [36m24[0m  [36m		(println "hi!")[0m
+  [33m25[0m  [1m		(set! button)[0m
+  [0m  [0m  [33m  ^--- Can't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m26[0m  [36m		(should= :user-setup (get @web/game-state :status))[0m
+  [36m27[0m  [36m		))[0m
+  [36m28[0m  [36m)[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[31mFailed to compile build :dev from ["src" "spec"] in 0.246 seconds.[0m
+[36m----  Could not Analyze  spec/ttt/cljs/web/core_spec.cljs   line:25  column:5  ----[0m
+
+  [1mCan't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+
+  [36m23[0m  [36m(println "button: " button)[0m
+  [36m24[0m  [36m(println "hi!")[0m
+  [33m25[0m  [1m(set! button)[0m
+  [0m  [0m  [33m^--- Can't set! local var or non-mutable field at line 25 spec/ttt/cljs/web/core_spec.cljs[0m
+  [36m26[0m  [36m(should= 1 (+ 2 2))[0m
+  [36m27[0m  [36m(should= :user-setup (get @web/game-state :status))[0m
+  [36m28[0m  [36m))[0m
+
+[36m----  Analysis Error : Please see spec/ttt/cljs/web/core_spec.cljs  ----[0m
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.461 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.624 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.553 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.509 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.584 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
