@@ -1,26 +1,22 @@
 (ns ttt.cljc.web.core
-	(:require [clojure.set]
-						[sablono.core :as sab]))
+	(:require [ttt.cljc.master.core :as tcore]))
 
-(def file-map {:waiting     "/index.html" :restart? "/continue?.html" :user-setup "/user-setup.html" :player-setup "/player-setup.html" :level-setup "/level-setup.html"
-							 :board-setup "/board-setup.html" :ready-to-play "/ttt.html" :playing "/ttt.html" :game-over "/game-over.html"})
+(def game-atom (atom tcore/game-model))
 
+(defmethod tcore/set-parameters :waiting [game]
+	(println "Hi there!")
+	(let [updated-game (assoc game :status :user-setup)]
+	(swap! game-atom merge updated-game)
+	(println "updated-game: " updated-game)
+	updated-game))
 
-(defonce game-state (atom {:status :waiting}))
+(defmethod tcore/game-setup :web [game]
+	(println "Howdy!!")
+	(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))
+		game
+		(tcore/set-parameters game)))
 
-(println @game-state)
-
-(defn welcome [data]
-	(sab/html [:div.welcome
-						 [:h1 "Welcome to Tic Tac Toe!"]
-						 [:form {:action "/ttt/setup" :method "get"}
-							[:button {:type "submit" :formAction "/ttt/setup" :formMethod "get"} "Let's Play!"]]]))
-
-(defn render! []
-	(.render js/ReactDOM
-					 (welcome game-state)
-					 (.getElementById js/document "ttt")))
-
-(add-watch game-state :on-change (fn [_ _ _ _] (render!)))
-
-(render!)
+(defmethod tcore/run-game :web [game]
+	(println "Hello there!!  Sup?!")
+	(println "game: " game)
+	(tcore/game-setup game))

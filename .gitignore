@@ -14,5 +14,9 @@ target
 .rebel_readline_history
 *.log
 *.json
-resources/*
-resources.*
+*resources/*
+*resources.*
+*.rebel_readline_history
+*.specljs-timestamp
+
+

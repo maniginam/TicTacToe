@@ -7,7 +7,7 @@
 								 [seancorfield/next.jdbc "1.1.588"]
 								 [mysql/mysql-connector-java "8.0.22"]
 
-								 [speclj "3.3.2"]
+								 [reagent "1.0.0"]
 								 [hiccup "1.0.5"]
 								 [org.clojure/clojurescript "1.10.773"]
 								 [cljsjs/react "17.0.1-0"]
@@ -37,16 +37,16 @@
 															 :output-to "resources/public/cljs/main_dev.js"
 															 :output-dir "resources/public/cljs"
 															 ;:target :bundle
-															 :main ttt.cljs.web.core-spec}
+															 :main ttt.cljc.web.core-spec}
 								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}}
 
 							:prod
 							 {:source-paths ["src"]
-							 :compiler     {:main       ttt.cljc.web.core
+							 :compiler     {:main       ttt.cljs.web.core
 															:asset-path "cljs/prod"
 															:output-to  "resources/public/cljs/main.js"
 															:output-dir "resources/public/cljs/prod"}
-								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}
+								:figwheel     {:open-urls ["localhost://3449/index.html"]}
 								}
 }}
 

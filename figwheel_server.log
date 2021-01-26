@@ -3267,3 +3267,1712 @@ notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core.js
 Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
 [32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.584 seconds.[0m
 notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :dev to "resources/public/cljs/main_dev.js" from ["src" "spec"]...
+[32mSuccessfully compiled build :dev to "resources/public/cljs/main_dev.js" in 0.512 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/ttt/cljs/web/core_spec.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.351 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljs/web/core.cljs  ----[0m
+
+  [1mNo such namespace: ttt.clj.master.core, could not locate ttt/clj/master/core.cljs, ttt/clj/master/core.cljc, or JavaScript source providing "ttt.clj.master.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljs/web/core.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.229 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljc/web/core.cljc  ----[0m
+
+  [1mNo such namespace: ttt.clj.master.core, could not locate ttt/clj/master/core.cljs, ttt/clj/master/core.cljc, or JavaScript source providing "ttt.clj.master.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljc/web/core.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.219 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljc/web/core.cljc  ----[0m
+
+  [1mNo such namespace: ttt.clj.master.core, could not locate ttt/clj/master/core.cljs, ttt/clj/master/core.cljc, or JavaScript source providing "ttt.clj.master.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljc/web/core.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.369 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljc/web/core.cljc  ----[0m
+
+  [1mNo such namespace: ttt.clj.master.core, could not locate ttt/clj/master/core.cljs, ttt/clj/master/core.cljc, or JavaScript source providing "ttt.clj.master.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljc/web/core.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.721 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljc/web/core.cljc  ----[0m
+
+  [1mNo such namespace: ttt.clj.master.core, could not locate ttt/clj/master/core.cljs, ttt/clj/master/core.cljc, or JavaScript source providing "ttt.clj.master.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljc/web/core.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:6  column:1  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 2[0m  [36m	(:require #?(:clj [ttt.clj.master.core :as tcore])))[0m
+  [36m 3[0m  [36m[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m[0m
+  [33m 6[0m  [1m(defmethod tcore/game-setup :web [game][0m
+  [0m  [0m  [33m^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:6  column:1  ----[0m
+
+  [1mUse of undeclared Var tcore/game-setup[0m
+
+  [36m 2[0m  [36m	(:require #?(:clj [ttt.clj.master.core :as tcore])))[0m
+  [36m 3[0m  [36m[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m[0m
+  [33m 6[0m  [1m(defmethod tcore/game-setup :web [game][0m
+  [0m  [0m  [33m^--- Use of undeclared Var tcore/game-setup[0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:9  column:5  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 6[0m  [36m(defmethod tcore/game-setup :web [game][0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [33m 9[0m  [1m			(tcore/set-parameters game)))[0m
+  [0m  [0m  [33m    ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:9  column:5  ----[0m
+
+  [1mUse of undeclared Var tcore/set-parameters[0m
+
+  [36m 6[0m  [36m(defmethod tcore/game-setup :web [game][0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [33m 9[0m  [1m			(tcore/set-parameters game)))[0m
+  [0m  [0m  [33m    ^--- Use of undeclared Var tcore/set-parameters[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:11  column:1  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [33m11[0m  [1m(defmethod tcore/run-game :web [game][0m
+  [0m  [0m  [33m^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:11  column:1  ----[0m
+
+  [1mUse of undeclared Var tcore/run-game[0m
+
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [33m11[0m  [1m(defmethod tcore/run-game :web [game][0m
+  [0m  [0m  [33m^--- Use of undeclared Var tcore/run-game[0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:3  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m  ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:3  ----[0m
+
+  [1mUse of undeclared Var tcore/game-setup[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m  ^--- Use of undeclared Var tcore/game-setup[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:27  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m                          ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:27  ----[0m
+
+  [1mUse of undeclared Var tcore/game-model[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m                          ^--- Use of undeclared Var tcore/game-model[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 6.328 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/goog/deps.js
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:6  column:1  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 2[0m  [36m	(:require #?(:clj [ttt.clj.master.core :as tcore])))[0m
+  [36m 3[0m  [36m[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m[0m
+  [33m 6[0m  [1m(defmethod tcore/game-setup :web [game][0m
+  [0m  [0m  [33m^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:6  column:1  ----[0m
+
+  [1mUse of undeclared Var tcore/game-setup[0m
+
+  [36m 2[0m  [36m	(:require #?(:clj [ttt.clj.master.core :as tcore])))[0m
+  [36m 3[0m  [36m[0m
+  [36m 4[0m  [36m[0m
+  [36m 5[0m  [36m[0m
+  [33m 6[0m  [1m(defmethod tcore/game-setup :web [game][0m
+  [0m  [0m  [33m^--- Use of undeclared Var tcore/game-setup[0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:9  column:5  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 6[0m  [36m(defmethod tcore/game-setup :web [game][0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [33m 9[0m  [1m			(tcore/set-parameters game)))[0m
+  [0m  [0m  [33m    ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:9  column:5  ----[0m
+
+  [1mUse of undeclared Var tcore/set-parameters[0m
+
+  [36m 6[0m  [36m(defmethod tcore/game-setup :web [game][0m
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [33m 9[0m  [1m			(tcore/set-parameters game)))[0m
+  [0m  [0m  [33m    ^--- Use of undeclared Var tcore/set-parameters[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:11  column:1  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [33m11[0m  [1m(defmethod tcore/run-game :web [game][0m
+  [0m  [0m  [33m^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:11  column:1  ----[0m
+
+  [1mUse of undeclared Var tcore/run-game[0m
+
+  [36m 7[0m  [36m		(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))[0m
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [33m11[0m  [1m(defmethod tcore/run-game :web [game][0m
+  [0m  [0m  [33m^--- Use of undeclared Var tcore/run-game[0m
+  [36m12[0m  [36m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:3  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m  ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:3  ----[0m
+
+  [1mUse of undeclared Var tcore/game-setup[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m  ^--- Use of undeclared Var tcore/game-setup[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:27  ----[0m
+
+  [1mNo such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m                          ^--- No such namespace: tcore, could not locate tcore.cljs, tcore.cljc, or JavaScript source providing "tcore"[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[36m----  Compiler Warning on   src/ttt/cljc/web/core.cljc   line:12  column:27  ----[0m
+
+  [1mUse of undeclared Var tcore/game-model[0m
+
+  [36m 8[0m  [36m			game[0m
+  [36m 9[0m  [36m			(tcore/set-parameters game)))[0m
+  [36m10[0m  [36m[0m
+  [36m11[0m  [36m(defmethod tcore/run-game :web [game][0m
+  [33m12[0m  [1m	(tcore/game-setup (assoc tcore/game-model :console :web)))[0m
+  [0m  [0m  [33m                          ^--- Use of undeclared Var tcore/game-model[0m
+
+[36m----  Compiler Warning : Please see src/ttt/cljc/web/core.cljc  ----[0m
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 5.773 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/master.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.383 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/master.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.355 seconds.[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.484 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/master.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.368 seconds.[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.446 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/master.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval49589$loading__6721__auto____49590.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval49589.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval49589.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 5.927 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 1.293 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/start.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval55856$loading__6721__auto____55857.invoke (start.cljc:1)
+    ttt.cljc.web.core$eval55856.invokeStatic (start.cljc:1)
+    ttt.cljc.web.core$eval55856.invoke (start.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.886 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.631 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.311 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljs/web/components.cljc  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljs/web/components.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.274 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljs/web/components.cljc  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljs/web/components.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 0.31 seconds.[0m
+[36m----  Could not Analyze  src/ttt/cljs/web/components.cljc  ----[0m
+
+  [1mNo such namespace: hiccup.core, could not locate hiccup/core.cljs, hiccup/core.cljc, or JavaScript source providing "hiccup.core" [0m
+
+[36m----  Analysis Error : Please see src/ttt/cljs/web/components.cljc  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.657 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljs/web/components.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.io.FileNotFoundException: Could not locate ttt/cljs/web/start__init.class, ttt/cljs/web/start.clj or ttt/cljs/web/start.cljc on classpath.
+ at clojure.lang.RT.load (RT.java:462)
+    clojure.lang.RT.load (RT.java:424)
+    clojure.core$load$fn__6839.invoke (core.clj:6126)
+    clojure.core$load.invokeStatic (core.clj:6125)
+    clojure.core$load.doInvoke (core.clj:6109)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojure.core$load_one.invokeStatic (core.clj:5908)
+    clojure.core$load_one.invoke (core.clj:5903)
+    clojure.core$load_lib$fn__6780.invoke (core.clj:5948)
+    clojure.core$load_lib.invokeStatic (core.clj:5947)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:436)
+    ttt.cljs.web.components$eval56406$loading__6721__auto____56407.invoke (components.cljc:1)
+    ttt.cljs.web.components$eval56406.invokeStatic (components.cljc:1)
+    ttt.cljs.web.components$eval56406.invoke (components.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljs/web/components.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.io.FileNotFoundException: Could not locate ttt/cljs/web/start__init.class, ttt/cljs/web/start.clj or ttt/cljs/web/start.cljc on classpath.
+ at clojure.lang.RT.load (RT.java:462)
+    clojure.lang.RT.load (RT.java:424)
+    clojure.core$load$fn__6839.invoke (core.clj:6126)
+    clojure.core$load.invokeStatic (core.clj:6125)
+    clojure.core$load.doInvoke (core.clj:6109)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    clojure.core$load_one.invokeStatic (core.clj:5908)
+    clojure.core$load_one.invoke (core.clj:5903)
+    clojure.core$load_lib$fn__6780.invoke (core.clj:5948)
+    clojure.core$load_lib.invokeStatic (core.clj:5947)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:436)
+    ttt.cljs.web.components$eval56412$loading__6721__auto____56413.invoke (components.cljc:1)
+    ttt.cljs.web.components$eval56412.invokeStatic (components.cljc:1)
+    ttt.cljs.web.components$eval56412.invoke (components.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 8.907 seconds.[0m
+[36m----  Exception    ----[0m
+
+  [1m/Users/maniginam/TicTacToe/resources/public/cljs/prod/cljs/core.cljs (No such file or directory)[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.io.FileNotFoundException: /Users/maniginam/TicTacToe/resources/public/cljs/prod/cljs/core.cljs (No such file or directory)
+ at java.io.FileInputStream.open0 (FileInputStream.java:-2)
+    java.io.FileInputStream.open (FileInputStream.java:211)
+    java.io.FileInputStream.<init> (FileInputStream.java:153)
+    clojure.java.io$fn__11500.invokeStatic (io.clj:238)
+    clojure.java.io/fn (io.clj:235)
+    clojure.java.io$fn__11409$G__11402__11416.invoke (io.clj:69)
+    clojure.java.io$fn__11470.invokeStatic (io.clj:165)
+    clojure.java.io/fn (io.clj:165)
+    clojure.java.io$fn__11422$G__11398__11429.invoke (io.clj:69)
+    clojure.java.io$reader.invokeStatic (io.clj:102)
+    clojure.java.io$reader.doInvoke (io.clj:86)
+    clojure.lang.RestFn.invoke (RestFn.java:410)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$slurp.invokeStatic (core.clj:6942)
+    clojure.core$slurp.doInvoke (core.clj:6942)
+    clojure.lang.RestFn.invoke (RestFn.java:410)
+    cljs.closure$source_on_disk.invokeStatic (closure.clj:2164)
+    cljs.closure$source_on_disk.invoke (closure.clj:2143)
+    cljs.closure$build$fn__6248.invoke (closure.clj:3151)
+    clojure.core$map$fn__5866.invoke (core.clj:2755)
+    clojure.lang.LazySeq.sval (LazySeq.java:42)
+    clojure.lang.LazySeq.seq (LazySeq.java:51)
+    clojure.lang.Cons.next (Cons.java:39)
+    clojure.lang.RT.next (RT.java:713)
+    clojure.core$next__5386.invokeStatic (core.clj:64)
+    clojure.core$dorun.invokeStatic (core.clj:3142)
+    clojure.core$doall.invokeStatic (core.clj:3148)
+    clojure.core$doall.invoke (core.clj:3148)
+    cljs.closure$build.invokeStatic (closure.clj:3151)
+    cljs.closure$build.invoke (closure.clj:3040)
+    cljs.build.api$build.invokeStatic (api.clj:227)
+    cljs.build.api$build.invoke (api.clj:210)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invokeStatic (cljs_autobuild.clj:28)
+    figwheel_sidecar.components.cljs_autobuild$cljs_build.invoke (cljs_autobuild.clj:27)
+    figwheel_sidecar.build_middleware.injection$hook$fn__20186.invoke (injection.clj:100)
+    figwheel_sidecar.components.cljs_autobuild$notify_command_hook$fn__20509.invoke (cljs_autobuild.clj:69)
+    figwheel_sidecar.components.cljs_autobuild$figwheel_start_and_end_messages$fn__20499.invoke (cljs_autobuild.clj:48)
+    figwheel_sidecar.build_middleware.notifications$hook$fn__20367.invoke (notifications.clj:179)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:94)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 1.661 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.535 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.757 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.555 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.515 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.773 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.597 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.556 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.625 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.83 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.549 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.634 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.523 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.572 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.621 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 8.449 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.532 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 2.105 seconds.[0m
+[36m----  Could not Compile  resources/public/cljs/prod/cljs/core/async.cljs  ----[0m
+
+  [1mfailed compiling file:resources/public/cljs/prod/cljs/core/async.cljs[0m
+
+[36m----  Compiler Error : Please see resources/public/cljs/prod/cljs/core/async.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 7.712 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.529 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.524 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.556 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.537 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.55 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.491 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljs/web/components.cljc:15:29).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: Unable to resolve symbol: updated-game in this context
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.Compiler.resolveIn (Compiler.java:7414)
+    clojure.lang.Compiler.resolve (Compiler.java:7358)
+    clojure.lang.Compiler.analyzeSymbol (Compiler.java:7319)
+    clojure.lang.Compiler.analyze (Compiler.java:6768)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3888)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$MapExpr.parse (Compiler.java:3104)
+    clojure.lang.Compiler.analyze (Compiler.java:6797)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$VectorExpr.parse (Compiler.java:3260)
+    clojure.lang.Compiler.analyze (Compiler.java:6791)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$VectorExpr.parse (Compiler.java:3260)
+    clojure.lang.Compiler.analyze (Compiler.java:6791)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$VectorExpr.parse (Compiler.java:3260)
+    clojure.lang.Compiler.analyze (Compiler.java:6791)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$VectorExpr.parse (Compiler.java:3260)
+    clojure.lang.Compiler.analyze (Compiler.java:6791)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$VectorExpr.parse (Compiler.java:3260)
+    clojure.lang.Compiler.analyze (Compiler.java:6791)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$InvokeExpr.parse (Compiler.java:3888)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7109)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.access$300 (Compiler.java:38)
+    clojure.lang.Compiler$LetExpr$Parser.parse (Compiler.java:6384)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7095)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$HostExpr$Parser.parse (Compiler.java:1020)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7107)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.analyze (Compiler.java:6745)
+    clojure.lang.Compiler$BodyExpr$Parser.parse (Compiler.java:6120)
+    clojure.lang.Compiler$FnMethod.parse (Compiler.java:5467)
+    clojure.lang.Compiler$FnExpr.parse (Compiler.java:4029)
+    clojure.lang.Compiler.analyzeSeq (Compiler.java:7105)
+    clojure.lang.Compiler.analyze (Compiler.java:6789)
+    clojure.lang.Compiler.eval (Compiler.java:7174)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.57 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 7.587 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.517 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.527 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 8.527 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.522 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.534 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.519 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.583 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.822 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.51 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.616 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 7.434 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.523 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.903 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.494 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/start.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.633 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljc/web/start.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval96725$loading__6721__auto____96726.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval96725.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval96725.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval96731$loading__6721__auto____96732.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval96731.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval96731.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval96737$loading__6721__auto____96738.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval96737.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval96737.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval96743$loading__6721__auto____96744.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval96743.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval96743.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval96749$loading__6721__auto____96750.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval96749.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval96749.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 8.265 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/cljs_deps.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.584 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.577 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.573 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.573 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.551 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.603 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.595 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.548 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.592 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.531 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.617 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.528 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.522 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.511 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.532 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.528 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.557 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.59 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.536 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.531 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.526 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.547 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.515 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.525 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.5 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.526 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.505 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.527 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.526 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.526 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.548 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.592 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.527 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Notifying browser that CSS file changed: resources/public/css/style.css
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.629 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.528 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.662 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.625 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 1.025 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.519 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.543 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.541 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.584 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.609 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.517 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.56 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.529 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.514 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.559 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.662 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.607 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.607 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104251$loading__6721__auto____104252.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104251.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104251.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 1.026 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.604 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.546 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error reading source at (/Users/maniginam/TicTacToe/src/ttt/cljs/web/components.cljc:18:20).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: Unmatched delimiter: }
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.LispReader$UnmatchedDelimiterReader.invoke (LispReader.java:1373)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$MapReader.invoke (LispReader.java:1355)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.read (LispReader.java:216)
+    clojure.lang.Compiler.load (Compiler.java:7631)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error reading source at (/Users/maniginam/TicTacToe/src/ttt/cljs/web/components.cljc:18:20).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.RuntimeException: Unmatched delimiter: }
+ at clojure.lang.Util.runtimeException (Util.java:221)
+    clojure.lang.LispReader$UnmatchedDelimiterReader.invoke (LispReader.java:1373)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$MapReader.invoke (LispReader.java:1355)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$VectorReader.invoke (LispReader.java:1347)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.readDelimitedList (LispReader.java:1398)
+    clojure.lang.LispReader$ListReader.invoke (LispReader.java:1243)
+    clojure.lang.LispReader.read (LispReader.java:285)
+    clojure.lang.LispReader.read (LispReader.java:216)
+    clojure.lang.Compiler.load (Compiler.java:7631)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.603 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 0.73 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104455$loading__6721__auto____104456.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104455.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104455.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104462$loading__6721__auto____104463.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104462.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104462.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104469$loading__6721__auto____104470.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104469.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104469.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104476$loading__6721__auto____104477.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104476.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104476.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104483$loading__6721__auto____104484.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104483.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104483.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+[36m----  Couldn't load Clojure file    ----[0m
+
+  [1mSyntax error compiling at (/Users/maniginam/TicTacToe/src/ttt/cljc/web/core.cljc:1:1).[0m
+
+[36m----  Exception Stack Trace  ----[0m
+
+java.lang.IllegalStateException: Alias tcore already exists in namespace ttt.cljc.web.core, aliasing ttt.clj.master.core
+ at clojure.lang.Namespace.addAlias (Namespace.java:225)
+    clojure.core$alias.invokeStatic (core.clj:4272)
+    clojure.core$load_lib.invokeStatic (core.clj:5958)
+    clojure.core$load_lib.doInvoke (core.clj:5928)
+    clojure.lang.RestFn.applyTo (RestFn.java:142)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$load_libs.invokeStatic (core.clj:5985)
+    clojure.core$load_libs.doInvoke (core.clj:5969)
+    clojure.lang.RestFn.applyTo (RestFn.java:137)
+    clojure.core$apply.invokeStatic (core.clj:667)
+    clojure.core$require.invokeStatic (core.clj:6007)
+    clojure.core$require.doInvoke (core.clj:6007)
+    clojure.lang.RestFn.invoke (RestFn.java:408)
+    ttt.cljc.web.core$eval104496$loading__6721__auto____104497.invoke (core.cljc:1)
+    ttt.cljc.web.core$eval104496.invokeStatic (core.cljc:1)
+    ttt.cljc.web.core$eval104496.invoke (core.cljc:1)
+    clojure.lang.Compiler.eval (Compiler.java:7177)
+    clojure.lang.Compiler.eval (Compiler.java:7166)
+    clojure.lang.Compiler.load (Compiler.java:7636)
+    clojure.lang.Compiler.loadFile (Compiler.java:7574)
+    clojure.lang.RT$3.invoke (RT.java:327)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invokeStatic (clj_reloading.clj:61)
+    figwheel_sidecar.build_middleware.clj_reloading$handle_clj_source_reloading.invoke (clj_reloading.clj:46)
+    figwheel_sidecar.build_middleware.clj_reloading$hook$fn__20424.invoke (clj_reloading.clj:93)
+    figwheel_sidecar.build_middleware.javascript_reloading$hook$fn__20458.invoke (javascript_reloading.clj:48)
+    figwheel_sidecar.components.cljs_autobuild$color_output$fn__20513.invoke (cljs_autobuild.clj:80)
+    figwheel_sidecar.components.cljs_autobuild$execute_build$fn__20555.invoke (cljs_autobuild.clj:234)
+    figwheel_sidecar.utils$sync_exec$fn__524$fn__525.invoke (utils.clj:13)
+    figwheel_sidecar.utils$sync_exec$fn__524.invoke (utils.clj:12)
+    clojure.core$binding_conveyor_fn$fn__5754.invoke (core.clj:2033)
+    clojure.lang.AFn.applyToHelper (AFn.java:154)
+    clojure.lang.RestFn.applyTo (RestFn.java:132)
+    clojure.lang.Agent$Action.doRun (Agent.java:114)
+    clojure.lang.Agent$Action.run (Agent.java:163)
+    java.util.concurrent.ThreadPoolExecutor.runWorker (ThreadPoolExecutor.java:1130)
+    java.util.concurrent.ThreadPoolExecutor$Worker.run (ThreadPoolExecutor.java:630)
+    java.lang.Thread.run (Thread.java:832)
+
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[31mFailed to compile build :prod from ["src"] in 3.765 seconds.[0m
+[36m----  Could not Compile  resources/public/cljs/prod/cljs/pprint.cljs  ----[0m
+
+  [1mfailed compiling file:resources/public/cljs/prod/cljs/pprint.cljs[0m
+
+[36m----  Compiler Error : Please see resources/public/cljs/prod/cljs/pprint.cljs  ----[0m
+Compiling build :prod to "resources/public/cljs/main.js" from ["src"]...
+[32mSuccessfully compiled build :prod to "resources/public/cljs/main.js" in 8.103 seconds.[0m
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/components.js
+notifying browser that file changed:  resources/public/cljs/prod/ttt/cljs/web/core.js
