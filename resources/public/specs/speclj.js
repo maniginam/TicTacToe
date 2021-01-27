@@ -37,7 +37,7 @@ readTimestamp = function () {
 };
 
 var autoMode = function () {
-  return system.args[1] == "auto" && readTimestamp() != null;
+  return system.args[2] == "auto" && readTimestamp() != null;
 };
 
 // var logList = function (title, list) {

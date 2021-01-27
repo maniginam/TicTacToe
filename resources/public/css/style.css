@@ -37,8 +37,6 @@ form {
   transform: translateX(-50%);
 }
 
-button {
-        margin-left: 40%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+button.v-center {
+
 }

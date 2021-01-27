@@ -22,7 +22,9 @@
 
 	:aliases {"specs"      ["cljsbuild" "dev" "unit-tests"]
 						"test-all"       ["do" "clean" "dev" "cljsbuild" "once"]
-						"cljs-auto-test" ["cljsbuild" "auto" "dev"]}
+						"cljs-auto-test" ["cljsbuild" "auto" "dev"]
+						"auto-prod" ["cljsbuild" "auto" "prod"]
+						"auto-test" ["spec" "resources/public/specs/speclj.js" "-a"]}
 
 	:clean-targets ^{:protect false} [:resources-path "out" "resources/public/cljs"]
 	:profiles {:dev {:dependencies [[speclj "3.3.2"]]}}
@@ -43,7 +45,7 @@
 							:prod
 							 {:source-paths ["src"]
 							 :compiler     {:main       ttt.cljs.web.core
-															:asset-path "cljs/prod"
+															:asset-path "cljs"
 															:output-to  "resources/public/cljs/main.js"
 															:output-dir "resources/public/cljs/prod"}
 								:figwheel     {:open-urls ["localhost://3449/index.html"]}

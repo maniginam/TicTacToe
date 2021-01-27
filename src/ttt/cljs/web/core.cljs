@@ -3,13 +3,11 @@
 
 (defonce game (atom {:status :waiting :console :web}))
 
-(println "@game: " @game)
-
 (defn render! []
 	(.render js/ReactDOM
 					 (component game)
 					 (.getElementById js/document "ttt")))
 
-(add-watch game :on-change (fn [k r o n] (render!)))
+(add-watch game :on-change (fn [k a o n] (render!)))
 
 (render!)
