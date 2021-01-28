@@ -40,3 +40,8 @@ form {
 button.v-center {
 
 }
+
+svg {
+    width: 100%;
+    height: 90%;
+}

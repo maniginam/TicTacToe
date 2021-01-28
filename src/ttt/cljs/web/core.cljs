@@ -1,7 +1,7 @@
 (ns ttt.cljs.web.core
 	(:require [ttt.cljs.web.components :refer [component]]))
 
-(defonce game (atom {:status :waiting :console :web}))
+(defonce game (atom {:status :waiting :console :web :current-player :player1}))
 
 (defn render! []
 	(.render js/ReactDOM

@@ -11,12 +11,9 @@
 ;(describe "Components -- "
 ;	(context "status: "
 ;		(it "waiting"
-;			(let [comp (.entries js/Object (comp/component web-game))
-;						mapped-comp (drop 9 (mapcat #(.entries js/Object %) comp))
-;						comp-map (mapcat #(walk/keywordize-keys (last (.entries js/Object %))) mapped-comp)]
-;(println "(.keys js/Object comp): " (.keys js/Object comp))
-;(println "(nth comp 9): " (walk/keywordize-keys (.entries js/Object (nth (nth comp 4) 1))))
-;				(should (.contains comp-map "Welcome to Tic Tac Toe!")))))
+;			(comp/component web-game)
+;			(should= :user-setup (:status @web-game)))
+;		)
 ;	)
 ;
 ;(run-specs)

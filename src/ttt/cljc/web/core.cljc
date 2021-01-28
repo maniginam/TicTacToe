@@ -7,8 +7,8 @@
 
 (defmethod tcore/set-parameters :waiting [game]
 	(let [updated-game (assoc game :status :user-setup)]
-	(swap! game-atom merge updated-game)
-	updated-game))
+		(swap! game-atom merge updated-game)
+		updated-game))
 
 (defmethod setup/set-players 0 [game]
 	(assoc game :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}))
@@ -46,15 +46,15 @@
 
 (defmethod tcore/set-parameters :board-setup [game]
 	(let [board-size (js/parseInt (:entry game))
-				board (board/create-board board-size)]
-		(println "(assoc game :status :playing :board-size board-size :board board): " (assoc game :status :playing :board-size board-size :board board))
-		(assoc game :status :playing :board-size board-size :board board)))
+				board (board/create-board board-size)
+				game-with-board (assoc game :board-size board-size :board board)]
+		(println "game-with-board: " game-with-board)
+		(assoc game-with-board :status :playing)))
 
-(defmethod tcore/game-setup :web [game]
-	(if (or (= (:status game) :ready-to-play) (= (:status game) :playing))
-		game
-		(tcore/set-parameters game)))
+(defn play! [game]
+  game)
 
 (defmethod tcore/run-game :web [game]
-	(println "game: " game)
-	(tcore/game-setup game))
+	(if (= :playing (:status game))
+		(play! game)
+	(tcore/set-parameters game)))
