@@ -28,7 +28,6 @@
 	(let [box-size (get (:board-specs game) :box-size)
 				boxes-per-row (get (:board-specs game) :boxes-per-row)
 				boxes (for [box (range 0 (count (:board game)))
-										row (range 0 (:board-size game))
 										:let [x (str (* box-size (rem box boxes-per-row)))
 													y (str (*  box-size (int (/ box boxes-per-row))))]]
 								[:rect {:id (str box) :x x :y y :height (str box-size) :width (str box-size) :fill "rgba(100, 50, 255,0.45)" :opacity "30%"}])]
