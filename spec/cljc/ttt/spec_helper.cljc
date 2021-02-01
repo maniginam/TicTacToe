@@ -1,5 +1,7 @@
-(ns spec-helper
-  (:require [ttt.master.core :as tcore]))
+(ns ttt.spec-helper
+  ;cljc
+  (:require
+    [ttt.master.multis :as tcore]))
 
 (def player1 {:player-num 1 :piece "X" :type :mock})
 (def player2 {:player-num 2 :piece "O" :type :mock})
@@ -38,3 +40,4 @@
 (defmethod tcore/prompt-for-level :mock [game] @mock-level)
 
 (defmethod tcore/draw-state :mock [game] nil)
+

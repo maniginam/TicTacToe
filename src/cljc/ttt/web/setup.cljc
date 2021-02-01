@@ -1,7 +1,8 @@
 (ns ttt.web.setup
-	(:require [ttt.master.core :as tcore]
-						[ttt.web.setup-multis :as setup]
-						[ttt.board.board :as board]))
+	(:require [ttt.master.multis :as tcore]
+						[ttt.master.board :as board]
+						#?(:cljs [ttt.web.setup-multis :as setup])
+						#?(:cljs [ttt.web.board :as wboard])))
 
 (def game-atom (atom tcore/game-model))
 

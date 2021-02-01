@@ -1,4 +1,4 @@
-(ns persistence.mock-db
+(ns ttt.persistence.mock-db
   (:require
     [speclj.core :refer :all]
     [ttt.master.core :as tcore]))

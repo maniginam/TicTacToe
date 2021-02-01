@@ -1,5 +1,5 @@
-(ns terminal.terminal-specs
-  (:require [spec-helper :as helper]
+(ns ttt.terminal.terminal-specs
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.master.core :as tcore]
             [ttt.master.game-master :as gm]

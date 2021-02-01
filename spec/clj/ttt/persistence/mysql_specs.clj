@@ -1,5 +1,5 @@
-(ns persistence.mysql-specs
-  (:require [spec-helper :as helper]
+(ns ttt.persistence.mysql-specs
+  (:require [ttt.spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.master.core :as tcore]
             [ttt.master.game-master :as gm]

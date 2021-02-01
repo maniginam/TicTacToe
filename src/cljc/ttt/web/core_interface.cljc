@@ -1,6 +1,6 @@
-(ns ttt.web.core
-	(:require [ttt.master.core :as tcore]
-						[ttt.master.core :as tcore]))
+(ns ttt.web.core-interface
+	(:require [ttt.master.multis :as tcore]
+						))
 
 (defn run-game [game]
 	(tcore/run-game game))

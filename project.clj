@@ -39,12 +39,12 @@
 															 :output-to "resources/public/cljs/main_dev.js"
 															 :output-dir "resources/public/cljs"
 															 ;:target :bundle
-															 :main ttt.cljc.web.core-spec}
+															 :main ttt.web.core-spec}
 								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}}
 
 							:prod
 							 {:source-paths ["src"]
-							 :compiler     {:main       ttt.cljs.web.core
+							 :compiler     {:main       ttt.web.core
 															:asset-path "cljs"
 															:output-to  "resources/public/cljs/main.js"
 															:output-dir "resources/public/cljs/prod"}

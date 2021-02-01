@@ -1,4 +1,4 @@
-(ns gui.mouse-location-specs
+(ns ttt.gui.mouse-location-specs
   (:require [speclj.core :refer :all]
             [ttt.gui.mouse-location :as mouse]))
 

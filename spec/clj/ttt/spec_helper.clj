@@ -1,4 +1,5 @@
-(ns spec-helper
+(ns ttt.spec-helper
+  ;clj
   (:require [speclj.core :refer :all]
             [ttt.master.core :as tcore]))
 
