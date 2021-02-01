@@ -27,9 +27,9 @@
 							:let [id (:id (second box))
 										x (str (* id (/ 300 3)))
 										y (str (* (rem id 3) (/ 300 3)))]]
-					(should= [:rect {:id id :x x :y y :height "100" :width "100" :fill "rgba(100, 50, 255,0.25)" :opacity "60%"}] box))
+					(should= [:rect {:id id :x x :y y :height "100" :width "100" :fill "rgba(100, 50, 255,0.45)" :opacity "30%"}] box))
 					)
-				)))
+				))
 
 	)
 
