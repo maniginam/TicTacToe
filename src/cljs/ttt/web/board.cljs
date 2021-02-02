@@ -1,7 +1,49 @@
 (ns ttt.web.board
-	(:require [ttt.master.multis :as tcore]))
+	(:require [ttt.master.board :as board]
+						[ttt.master.multis :as tcore]
+						[ttt.master.game-master :as game]))
 
 (def svg-size (atom 550))
+
+(defn draw-O [box]
+	(println "box: " box)
+	(let [box-width (js/parseInt (:width box))
+				box-height (js/parseInt (:height box))
+				box-size (min box-width box-height)
+				x (js/parseInt (:x box))
+				y (js/parseInt (:y box))
+				r (/ (* 0.7 box-size) 2)
+				cx (+ x (/ box-size 2))
+				cy (+ y (/ box-size 2))
+		o [[:circle {:cx cx :cy cy :r r :stroke "rgb(248, 152, 121)" :fill "none" :stroke-width "25"}]
+			 [:circle {:cx cx :cy cy :r (+ r (/ 25 2)) :stroke "rgb(80 80 80)" :fill "none" :stroke-width "4"}]
+			 [:circle {:cx cx :cy cy :r (- r (/ 25 2)) :stroke "rgb(80 80 80)" :fill "none" :stroke-width "4"}]]]
+		(println "o: " o)
+		o))
+
+(defn draw-X [box]
+	(println "box: " box)
+	(let [box-width (js/parseInt (:width box))
+				box-height (js/parseInt (:height box))
+				box-size (min box-width box-height)
+				x (js/parseInt (:x box))
+				y (js/parseInt (:y box))
+				lt (+ x (* 0.2 box-size))
+				rt (+ x (* 0.8 box-size))
+				top (+ y (* 0.2 box-size))
+				bottom (+ y (* 0.8 box-size))
+				piece [[:line {:id (str (:id box) "d") :x1 lt :y1 top :x2 rt :y2 bottom :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]
+							 [:line {:id (str (:id box) "u") :x1 lt :y1 bottom :x2 rt :y2 top :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]]]
+		(println "x: " piece)
+		piece))
+
+(defn draw-pieces [game boxes]
+	(let [board (:board game)
+				pieces (remove nil?
+											 (map #(cond
+															 (= "X" (nth board (js/parseInt (:id (second %))))) (draw-X (second %))
+															 (= "O" (nth board (js/parseInt (:id (second %))))) (draw-O (second %))) boxes))]
+		(list pieces)))
 
 (defn draw-horizontal-lines [board-specs]
 	(let [box-size (:box-size board-specs)
@@ -24,31 +66,31 @@
 				v-lines (draw-vertical-lines board-specs)]
 		(list h-lines v-lines)))
 
-(defn draw-boxes [game]
-	(let [box-size (get (:board-specs game) :box-size)
-				boxes-per-row (get (:board-specs game) :boxes-per-row)
-				boxes (for [box (range 0 (count (:board game)))
+(defn draw-boxes [game-atom board-specs]
+	(let [box-size (:box-size board-specs)
+				boxes-per-row (:boxes-per-row board-specs)
+				boxes (for [box (range 0 (* boxes-per-row boxes-per-row))
 										:let [x (str (* box-size (rem box boxes-per-row)))
-													y (str (*  box-size (int (/ box boxes-per-row))))]]
-								[:rect {:id (str box) :x x :y y :height (str box-size) :width (str box-size) :fill "rgba(100, 50, 255,0.45)" :opacity "30%"}])]
+													y (str (* box-size (int (/ box boxes-per-row))))]]
+								[:rect {:id       (str box) :x x :y y
+												:height   (str box-size) :width (str box-size)
+												:fill     "rgba(100, 50, 255,0.75)" :opacity "60%"
+												:on-click #(let [game (swap! game-atom assoc :box-played box)
+																				 updated-game (game/update-state game-atom)]
+																		 (swap! game-atom merge updated-game))}])]
 		boxes))
 
-(defn draw-board [game]
-	(let [board-size (:board-size game)
+(defn draw-board [game-atom]
+	(let [board-size (:board-size @game-atom)
 				;; TODO - GLM : FIX THE SIZE TO COME FROM CSS
 				box-size (/ @svg-size board-size)
-				board-specs {:box-size box-size :boxes-per-row board-size}]
+				board-specs {:box-size box-size :boxes-per-row board-size}
+				boxes (draw-boxes game-atom board-specs)
+				lines (draw-lines board-specs)
+				pieces (draw-pieces @game-atom boxes)]
+		(println "boxes: " boxes)
 		[:div.board
 		 [:svg.board {:id "board"}
-			(draw-boxes (assoc game :board-specs board-specs))
-			(draw-lines board-specs)
-			;[:rect {:id 0 :x "5.0%" :y "5.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 1 :x "35.0%" :y "5.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 2 :x "65.0%" :y "5.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 3 :x "5.0%" :y "35.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 4 :x "35.0%" :y "35.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 5 :x "65.0%" :y "35.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 6 :x "5.0%" :y "65.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 7 :x "35.0%" :y "65.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			;[:rect {:id 8 :x "65.0%" :y "65.0%" :width "30.0%" :height "30.0%" :fill "blue" :opacity "10%"}]
-			]]))
+			boxes
+			lines
+			pieces]]))

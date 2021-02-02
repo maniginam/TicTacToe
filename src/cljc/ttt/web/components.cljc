@@ -91,12 +91,14 @@
 
 (defmethod component :playing [game-atom]
 	(let [player (:current-player @game-atom)
-				piece (if (= :player1 player) "X" "O")]
+				piece (if (= :player1 player) "X" "O")
+				board (board/draw-board game-atom)]
+		(println "board: " board)
 		(sab/html [:div.h-center
 							 [:div.container
 								[:h1 "TicTacToe!"]
 								[:h2 (str piece "'s Turn")]]
-							 (board/draw-board @game-atom)]
+							 (board/draw-board game-atom)]
 							)))
 
 

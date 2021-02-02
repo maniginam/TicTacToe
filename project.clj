@@ -33,7 +33,7 @@
 							;:test-commands {"specs" ["bin/phantomjs" "bin/speclj" "resources/public/cljs/specs/main.js"]}
 							:builds
 							{:dev
-							 {:source-paths ["src" "spec"]
+							 {:source-paths ["src/clj" "src/cljs" "src/cljc" "spec/cljs" "spec/cljc"]
 								;:notify-command ["bin/speclj.js" "resources/public/cljs/specs/main_dev.js"]
 								:compiler     {:asset-path "../cljs"
 															 :output-to "resources/public/cljs/main_dev.js"
@@ -43,7 +43,7 @@
 								:figwheel     {:open-urls ["file:///Users/maniginam/TicTacToe/resources/public/index.html"]}}
 
 							:prod
-							 {:source-paths ["src"]
+							 {:source-paths ["src/clj" "src/cljs" "src/cljc"]
 							 :compiler     {:main       ttt.web.core
 															:asset-path "cljs"
 															:output-to  "resources/public/cljs/main.js"
