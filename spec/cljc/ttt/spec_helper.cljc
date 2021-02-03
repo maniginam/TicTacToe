@@ -1,17 +1,19 @@
 (ns ttt.spec-helper
   ;cljc
   (:require
-    [ttt.master.multis :as tcore]))
+    #?(:clj [ttt.master.core :as tcore])))
 
 (def player1 {:player-num 1 :piece "X" :type :mock})
 (def player2 {:player-num 2 :piece "O" :type :mock})
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def console (atom :mock))
 
-(def empty-game (assoc tcore/game-model
+#?(:clj (def test-game tcore/game-model))
+
+(def empty-game (assoc test-game
                   :persistence {:db :mock :dbname "test" :table "TEST"}
                   :console :mock))
-(def test-game (assoc tcore/game-model
+(def test-game (assoc test-game
                  :persistence {:db :mock :dbname "test" :table "TEST"}
                  :console :mock
                  :users 0
@@ -22,22 +24,22 @@
                  :board-size 3))
 
 (def mock-move (atom 0))
-(defmethod tcore/select-box :mock [_ game] @mock-move)
+#?(:clj (defmethod tcore/select-box :mock [_ game] @mock-move))
 
 (def mock-position (atom "x"))
-(defmethod tcore/offer-position :mock [game] @mock-position)
+#?(:clj (defmethod tcore/offer-position :mock [game] @mock-position))
 
 (def mock-restart? (atom false))
-(defmethod tcore/restart? :mock [game] @mock-restart?)
+#?(:clj (defmethod tcore/restart? :mock [game] @mock-restart?))
 
 (def mock-player-count (atom 0))
-(defmethod tcore/validate-player-count :mock [game] @mock-player-count)
+#?(:clj (defmethod tcore/validate-player-count :mock [game] @mock-player-count))
 
 (def mock-board-size (atom 3))
-(defmethod tcore/set-board-size :mock [game] @mock-board-size)
+#?(:clj (defmethod tcore/set-board-size :mock [game] @mock-board-size))
 
 (def mock-level (atom :hard))
-(defmethod tcore/prompt-for-level :mock [game] @mock-level)
+#?(:clj (defmethod tcore/prompt-for-level :mock [game] @mock-level))
 
-(defmethod tcore/draw-state :mock [game] nil)
+#?(:clj (defmethod tcore/draw-state :mock [game] nil))
 

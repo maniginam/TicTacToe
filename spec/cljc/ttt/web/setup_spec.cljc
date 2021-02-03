@@ -1,10 +1,10 @@
 (ns ttt.web.setup-spec
 	(:require-macros [speclj.core :refer [run-specs before after describe context it should=]])
 	(:require [speclj.core]
-						[ttt.master.multis :as tcore]
-						[ttt.spec-helper :as helper]))
+						[ttt.spec-helper :as helper]
+						[ttt.web.web :as web]))
 
-(def web-game (assoc helper/test-game :console :web))
+(def test-atom (atom (assoc helper/test-game :console :web)))
 
 (describe "TTT Setup"
 
@@ -12,38 +12,38 @@
 
 		(context "waiting"
 			(it "welcomes at startup"
-				(let [status (get web-game :status)]
+				(let [status (get @test-atom :status)]
 					(should= :waiting status)))
 			(it "click start for user-setup"
-				(let [click (tcore/run-game web-game)]
+				(let [click (web/run-game @test-atom)]
 					(should= :user-setup (get click :status)))))
 
 		(context "user-setup"
 			(context "users: "
 				(it "0"
-					(let [click (assoc web-game :status :user-setup :entry 0)
-								game-after-click (tcore/run-game click)]
+					(let [click (assoc @test-atom :status :user-setup :entry 0)
+								game-after-click (web/run-game click)]
 						(should= 0 (:users game-after-click))
 						(should= {:player-num 1 :piece "X" :type :computer} (:player1 game-after-click))
 						(should= {:player-num 2 :piece "O" :type :computer} (:player2 game-after-click))
 						(should= :level-setup (:status game-after-click))))
 				(it "1"
-					(let [click (assoc web-game :status :user-setup :entry 1)
-								game-after-click (tcore/run-game click)]
+					(let [click (assoc @test-atom :status :user-setup :entry 1)
+								game-after-click (web/run-game click)]
 						(should= 1 (:users game-after-click))
 						(should= :player-setup (:status game-after-click))))
 				(it "2"
-					(let [click (assoc web-game :status :user-setup :entry 2)
-								game-after-click (tcore/run-game click)]
+					(let [click (assoc @test-atom :status :user-setup :entry 2)
+								game-after-click (web/run-game click)]
 						(should= 2 (:users game-after-click))
 						(should= {:player-num 1 :piece "X" :type :human} (:player1 game-after-click))
 						(should= {:player-num 2 :piece "O" :type :human} (:player2 game-after-click))
 						(should= :board-setup (:status game-after-click))))))
 
 		(context "level-setup"
-			(let [click-easy (tcore/run-game (assoc web-game :status :level-setup :entry "easy"))
-						click-medium (tcore/run-game (assoc web-game :status :level-setup :entry "medium"))
-						click-hard (tcore/run-game (assoc web-game :status :level-setup :entry "hard"))]
+			(let [click-easy (web/run-game (assoc @test-atom :status :level-setup :entry "easy"))
+						click-medium (web/run-game (assoc @test-atom :status :level-setup :entry "medium"))
+						click-hard (web/run-game (assoc @test-atom :status :level-setup :entry "hard"))]
 				(context "level selected:"
 					(it "easy"
 						(should= :easy (:level click-easy))
@@ -56,8 +56,8 @@
 						(should= :board-setup (:status click-hard))))))
 
 		(context "board-setup"
-			(let [three-by-three (tcore/run-game (assoc web-game :status :board-setup :entry 3))
-						two-by-two (tcore/run-game (assoc web-game :status :board-setup :entry 2))]
+			(let [three-by-three (web/run-game (assoc @test-atom :status :board-setup :entry 3))
+						two-by-two (web/run-game (assoc @test-atom :status :board-setup :entry 2))]
 				(context "board-size:"
 					(it "3x3"
 						(should= 3 (:board-size three-by-three))
@@ -71,12 +71,12 @@
 		(context "player-setup"
 			(context "human selects:"
 				(it "X"
-					(let [click-X (tcore/run-game (assoc web-game :status :player-setup :entry "X"))]
+					(let [click-X (web/run-game (assoc @test-atom :status :player-setup :entry "X"))]
 						(should= {:player-num 1 :piece "X" :type :human} (:player1 click-X))
 						(should= {:player-num 2 :piece "O" :type :computer} (:player2 click-X))
 						(should= :level-setup (:status click-X))))
 				(it "O"
-					(let [click-O (tcore/run-game (assoc web-game :status :player-setup :entry "O"))]
+					(let [click-O (web/run-game (assoc @test-atom :status :player-setup :entry "O"))]
 						(should= {:player-num 1 :piece "X" :type :computer} (:player1 click-O))
 						(should= {:player-num 2 :piece "O" :type :human} (:player2 click-O))
 						(should= :level-setup (:status click-O))))))

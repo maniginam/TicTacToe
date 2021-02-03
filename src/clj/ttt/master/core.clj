@@ -36,6 +36,8 @@
 (defmulti get-restart-input :console)
 (defmulti run-game :console)
 (defmulti set-parameters :status)
+(defmulti set-users :entry)
+(defmulti set-players :entry)
 
 (defmulti save-game (fn [game] (:db (:persistence game))))
 (defmulti save-turn (fn [game] (:db (:persistence game))))

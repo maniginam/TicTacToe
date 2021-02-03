@@ -1,8 +1,9 @@
 (ns ttt.web.components
 	(:require [sablono.core :as sab]
-						[ttt.master.multis :as web]
+						[ttt.web.web :as web]
+						#?(:clj [ttt.master.core :as tcore])
 						[ttt.web.setup :as setup] ;multimethod
-						[ttt.web.board :as board] ;multimethod
+						#?(:cljs [ttt.web.board :as board]) ;multimethod
 						))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
@@ -14,7 +15,7 @@
 												 [:button {:class    "h-center"
 																	 :id       "start"
 																	 :type     "submit"
-																	 :on-click #(swap! game-atom merge (web/run-game @game-atom))
+																	 :on-click #(swap! game-atom merge #?(:clj (tcore/run-game @game-atom)))
 																	 }
 													"Let's Play!"]]])]
 		comp))
@@ -26,15 +27,15 @@
 							[:h2 "How Many Humans Are Playing?"]
 							[:button {:id       "cvc"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 0)))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry 0)))
 												} "No humans are playing"]
 							[:button {:id       "hvc"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 1)))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry 1)))
 												} "Me VS Computer!"]
 							[:button {:id       "hvh"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 2)))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry 2)))
 												} "me & a human friend"]]]))
 
 (defmethod component :level-setup [game-atom]
@@ -45,17 +46,17 @@
 							[:br]
 							[:button {:id       "easy"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "easy")))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry "easy")))
 												} "easy"]
 							[:br]
 							[:button {:id       "medium"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "medium")))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry "medium")))
 												} "Medium"]
 							[:br]
 							[:button {:id       "hard"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "hard")))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry "hard")))
 												} "HARD!"]]]))
 
 (defmethod component :player-setup [game-atom]
@@ -66,12 +67,12 @@
 							[:br]
 							[:button {:id       "X"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "X")))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry "X")))
 												} "X"]
 							[:br]
 							[:button {:id       "O"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "O")))
+												:on-click #(swap! game-atom merge (tcore/run-game (assoc @game-atom :entry "O")))
 												} "O"]]]))
 
 (defmethod component :board-setup [game-atom]
@@ -85,7 +86,7 @@
 							[:button {:id       "play"
 												:type     "submit"
 												:on-click #(let [entry (.-value (.getElementById js/document "boardsize"))
-																				 game (web/run-game (assoc @game-atom :entry entry))]
+																				 game (tcore/run-game (assoc @game-atom :entry entry))]
 																		 (swap! game-atom merge game))}
 							 "Let's Play!"]]]))
 

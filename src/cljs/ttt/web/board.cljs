@@ -1,7 +1,5 @@
 (ns ttt.web.board
-	(:require [ttt.master.board :as board]
-						[ttt.master.multis :as tcore]
-						[ttt.master.game-master :as game]))
+	(:require [ttt.web.web :as web]))
 
 (def svg-size (atom 550))
 
@@ -76,7 +74,7 @@
 												:height   (str box-size) :width (str box-size)
 												:fill     "rgba(100, 50, 255,0.75)" :opacity "60%"
 												:on-click #(let [game (swap! game-atom assoc :box-played box)
-																				 updated-game (game/update-state game-atom)]
+																				 updated-game (web/update-game game-atom)]
 																		 (swap! game-atom merge updated-game))}])]
 		boxes))
 

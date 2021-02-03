@@ -1,8 +1,8 @@
 (ns ttt.master.game-master
 	(:require [ttt.persistence.mysql :as mysql]
-						[ttt.ttt.ai :as ai]
+						[ttt.terminal.ai :as ai]
 						[ttt.master.core :as tcore]
-						[ttt.ttt.human :as human]
+						[ttt.terminal.human :as human]
 						[ttt.board.board :as board]))
 
 (defn game-over? [game]

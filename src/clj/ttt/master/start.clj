@@ -1,7 +1,7 @@
 (ns ttt.master.start
   (:gen-class)
   (:require [ttt.master.core :refer :all]
-            [ttt.ttt.terminal :refer :all]
+            [ttt.terminal.terminal :refer :all]
             [ttt.gui.gui :refer :all]))
 
 (defn -main [& interface]

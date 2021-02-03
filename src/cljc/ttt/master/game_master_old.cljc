@@ -1,4 +1,4 @@
-(ns ttt.master.game-master
+(ns ttt.master.game-master-old
 	)
 
 (defn next-player [game]
@@ -11,12 +11,21 @@
 				new-board (replace {box piece} board)]
 		new-board))
 
-(defn set-move [game]
+(defn play-turn [game]
 	(let [box (:box-played @game)
 				new-board (update-board-with-move @game box)]
 		(swap! game assoc :board new-board
 					 :current-player (next-player @game))))
 
+(defn make-computer-move [game]
+  game)
+
+(defn maybe-make-computer-move [game]
+	(if (and (not (game-over? game)) (ai-turn? game))
+		(make-computer-move game)
+		game))
+
 (defn update-state [game]
-	(set-move game)
+	(play-turn game)
+	(maybe-make-computer-move game)
 	)
