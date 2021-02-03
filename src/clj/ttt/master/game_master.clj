@@ -122,6 +122,7 @@
 		state))
 
 (defn update-state [state]
+	(println "UPDATE STATE IN GAMEMASTER")
 	(-> state
 			maybe-load-game
 			maybe-start-game

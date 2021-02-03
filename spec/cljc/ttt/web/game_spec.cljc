@@ -2,7 +2,7 @@
 	(:require-macros [speclj.core :refer [run-specs before after describe context it should=]])
 	(:require [speclj.core]
 						[ttt.spec-helper :as helper]
-						[ttt.web.web :as web]))
+					[ttt.web.web :as web]))
 
 (def test-atom (atom (assoc helper/test-game :console :web)))
 
@@ -12,7 +12,7 @@
 		(it "X in box 1"
 			(swap! test-atom assoc :box-played 1 :board [0 1 2 3 4 5 6 7 8]
 						 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human})
-			(web/update-game test-atom)
+			#?(:cljs (web/update-game test-atom))
 			(should= [0 "X" 2 3 4 5 6 7 8] (:board @test-atom))
 			(should= :player2 (:current-player @test-atom)))
 		(it "O in box 4"

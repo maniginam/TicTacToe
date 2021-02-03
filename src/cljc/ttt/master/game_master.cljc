@@ -1,4 +1,4 @@
-(ns ttt.master.game-master-old
+(ns ttt.master.game-master
 	)
 
 (defn next-player [game]

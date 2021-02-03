@@ -14,6 +14,7 @@
                   :persistence {:db :mock :dbname "test" :table "TEST"}
                   :console :mock))
 (def test-game (assoc test-game
+                 :status :waiting
                  :persistence {:db :mock :dbname "test" :table "TEST"}
                  :console :mock
                  :users 0

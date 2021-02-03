@@ -1,4 +1,4 @@
-(ns ttt.master.multis)
+(ns ttt.master.core)
 
 (def console (atom :gui))
 (def types {0 :computer 1 nil 2 :human})
@@ -36,6 +36,8 @@
 (defmulti get-restart-input :console)
 (defmulti run-game :console)
 (defmulti set-parameters :status)
+(defmulti set-users :entry)
+(defmulti set-players :entry)
 
 (defmulti save-game (fn [game] (:db (:persistence game))))
 (defmulti save-turn (fn [game] (:db (:persistence game))))
