@@ -10,11 +10,11 @@
 				new-board (replace {box piece} board)]
 		new-board))
 
-(defn play-turn [game]
-	(let [box (:box-played @game)
-				new-board (update-board-with-move @game box)]
-		(swap! game assoc :board new-board
-					 :current-player (next-player @game))))
+(defn play-turn [game-atom]
+	(let [box (:box-played @game-atom)
+				new-board (update-board-with-move @game-atom box)]
+		(swap! game-atom assoc :board new-board
+					 :current-player (next-player @game-atom))))
 
 (defn make-computer-move [game]
 	game)

@@ -12,15 +12,31 @@
 
 		(it "vertical"
 			(reset! board/svg-size 300)
-			(let [lines (board/draw-vertical-lines {:boxes-per-row 3 :box-size 100 :svg-size 300})]
-				(should= [:line {:class "line" :x1 "100" :y1 "0%" :x2 "100" :y2 "100%" :stroke "rgb(94, 94, 99)" :stroke-width "4"}] (first lines))
-				(should= [:line {:class "line" :x1 "200" :y1 "0%" :x2 "200" :y2 "100%" :stroke "rgb(94, 94, 99)" :stroke-width "4"}] (last lines))))
+			(let [lines (board/draw-vertical-lines {:boxes-per-row 3 :box-size 100 :svg-size 300})
+						first (apply #(do (keyword (first %)) (second %)) (partition 2 (first lines)))
+						second (apply #(do (keyword (first %)) (second %)) (partition 2 (second lines)))]
+				(should= "vline@100" (:key first))
+				(should= "100" (:x1 first))
+				(should= "0%" (:y1 first))
+				(should= "100%" (:y2 first))
+				(should= "vline@200" (:key second))
+				(should= "200" (:x1 second))
+				(should= "0%" (:y1 second))
+				(should= "100%" (:y2 second))))
 
 		(it "horizontal"
 			(reset! board/svg-size 300)
-			(let [lines (board/draw-horizontal-lines {:boxes-per-row 3 :box-size 100 :svg-size 300})]
-				(should= [:line {:class "line" :x1 "0%" :y1 "100" :x2 "100%" :y2 "100" :stroke "rgb(94, 94, 99)" :stroke-width "4"}] (first lines))
-				(should= [:line {:class "line" :x1 "0%" :y1 "200" :x2 "100%" :y2 "200" :stroke "rgb(94, 94, 99)" :stroke-width "4"}] (last lines)))))
+			(let [lines (board/draw-horizontal-lines {:boxes-per-row 3 :box-size 100 :svg-size 300})
+						first (apply #(do (keyword (first %)) (second %)) (partition 2 (first lines)))
+						second (apply #(do (keyword (first %)) (second %)) (partition 2 (second lines)))]
+				(should= "hline@100" (:key first))
+				(should= "0%" (:x1 first))
+				(should= "100%" (:x2 first))
+				(should= "100" (:y1 first))
+				(should= "hline@200" (:key second))
+				(should= "0%" (:x1 second))
+				(should= "100%" (:x2 second))
+				(should= "200" (:y1 second)))))
 
 	(context "boxes"
 		(it "empty"

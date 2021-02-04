@@ -27,8 +27,8 @@
 				rt (+ x (* 0.8 box-size))
 				top (+ y (* 0.2 box-size))
 				bottom (+ y (* 0.8 box-size))
-				piece [[:line {:id (str (:id box) "d") :x1 lt :y1 top :x2 rt :y2 bottom :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]
-							 [:line {:id (str (:id box) "u") :x1 lt :y1 bottom :x2 rt :y2 top :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]]]
+				piece [[:line {:key (str (:id box) "d") :id (str (:id box) "d") :x1 lt :y1 top :x2 rt :y2 bottom :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]
+							 [:line {:key (str (:id box) "u") :id (str (:id box) "u") :x1 lt :y1 bottom :x2 rt :y2 top :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]]]
 		piece))
 
 (defn draw-pieces [game boxes]
@@ -45,7 +45,7 @@
 				left (str (* 0.05 @svg-size))
 				right (str (* 0.95 @svg-size))
 				constants (for [line (range 1 boxes)] (str (* line box-size)))]
-		(map #(vec [:line {:class "line" :x1 "0%" :y1 % :x2 "100%" :y2 % :stroke "rgb(94, 94, 99)" :stroke-width "4"}]) constants)))
+		(map #(vec [:line {:key (str "hline@" %) :class "line" :x1 "0%" :y1 % :x2 "100%" :y2 % :stroke "rgb(94, 94, 99)" :stroke-width "4"}]) constants)))
 
 (defn draw-vertical-lines [board-specs]
 	(let [box-size (:box-size board-specs)
@@ -53,7 +53,7 @@
 				top (str (* 0.05 @svg-size))
 				bottom (str (* 0.95 @svg-size))
 				constants (for [line (range 1 boxes)] (str (* line box-size)))]
-		(map #(vec [:line {:class "line" :x1 % :y1 "0%" :x2 % :y2 "100%" :stroke "rgb(94, 94, 99)" :stroke-width "4"}]) constants)))
+		(map #(vec [:line {:key (str "vline@" %) :class "line" :x1 % :y1 "0%" :x2 % :y2 "100%" :stroke "rgb(94, 94, 99)" :stroke-width "4"}]) constants)))
 
 (defn draw-lines [board-specs]
 	(let [h-lines (draw-horizontal-lines board-specs)
@@ -66,7 +66,8 @@
 				boxes (for [box (range 0 (* boxes-per-row boxes-per-row))
 										:let [x (str (* box-size (rem box boxes-per-row)))
 													y (str (* box-size (int (/ box boxes-per-row))))]]
-								[:rect {:id       (str box) :x x :y y
+								[:rect {:key (str box)
+												:id  (str box) :x x :y y
 												:height   (str box-size) :width (str box-size)
 												:fill     "rgba(100, 50, 255,0.75)" :opacity "60%"
 												:on-click #(let [game (swap! game-atom assoc :box-played box)
@@ -82,8 +83,8 @@
 				boxes (draw-boxes game-atom board-specs)
 				lines (draw-lines board-specs)
 				pieces (draw-pieces @game-atom boxes)]
-		[:div.board
-		 [:svg.board {:id "board"}
+		[:div.board {:key "board"}
+		 [:svg.board {:key "board" :id "board"}
 			boxes
 			lines
 			pieces]]))
