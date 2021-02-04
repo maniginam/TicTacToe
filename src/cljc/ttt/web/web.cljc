@@ -3,14 +3,28 @@
 						[ttt.master.game-master :as master]
 						))
 
+(def game-atom (atom {:status :waiting :console :web :current-player :player1}))
+
+(defmacro parseInt []
+	(let [num (:entry @game-atom)]
+	#?(:clj (Integer/parseInt num)
+		 :cljs (js/parseInt num)
+		 :default num)))
+
 (defmethod tcore/run-game :web [game]
-					(println "Run-game in Web.Web")
 					(if (= :playing (:status game))
 						(master/update-state game))
 						(tcore/set-parameters game))
 
-(defn run-game [game]
-	(tcore/run-game game))
+(defmacro parameters []
+	(tcore/set-parameters @game-atom))
 
-(defn update-game [game]
-	(master/update-state game))
+(defn maybe-setup [game-atom]
+	(if (= :playing (:status @game-atom))
+		game-atom
+		(swap! game-atom merge (parameters))))
+
+(defmacro update-game []
+	(parseInt (:entry @game-atom))
+	(maybe-setup game-atom)
+	)

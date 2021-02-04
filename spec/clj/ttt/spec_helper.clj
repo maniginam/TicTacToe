@@ -8,18 +8,15 @@
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def console (atom :mock))
 
-(def empty-game (assoc tcore/game-model
-                  :persistence {:db :mock :dbname "test" :table "TEST"}
-                  :console :mock))
-(def test-game (assoc tcore/game-model
-                 :persistence {:db :mock :dbname "test" :table "TEST"}
+
+(def test-game {:persistence {:db :mock :dbname "test" :table "TEST"}
                  :console :mock
                  :users 0
                  :player1 player1
                  :player2 player2
                  :level :hard
                  :board [0 1 2 3 4 5 6 7 8]
-                 :board-size 3))
+                 :board-size 3})
 
 (def mock-move (atom 0))
 (defmethod tcore/select-box :mock [_ game] @mock-move)

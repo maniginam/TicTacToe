@@ -2,8 +2,8 @@
 	(:require [sablono.core :as sab]
 						[ttt.web.web :as web]
 						#?(:clj [ttt.master.core :as tcore])
-						[ttt.web.setup :as setup] ;multimethod
-						#?(:cljs [ttt.web.board :as board]) ;multimethod
+						[ttt.web.setup :as setup]                             ;multimethod
+						#?(:cljs [ttt.web.board :as board])                   ;multimethod
 						))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
@@ -15,7 +15,7 @@
 												 [:button {:class    "h-center"
 																	 :id       "start"
 																	 :type     "submit"
-																	 :on-click #(swap! game-atom merge (web/run-game @game-atom))
+																	 :on-click #(swap! game-atom merge (web/update-game))
 																	 }
 													"Let's Play!"]]])]
 		comp))
@@ -27,15 +27,18 @@
 							[:h2 "How Many Humans Are Playing?"]
 							[:button {:id       "cvc"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 0)))
+												:on-click #(do (swap! game-atom assoc :entry 0)
+																			 (swap! game-atom merge (web/update-game)))
 												} "No humans are playing"]
 							[:button {:id       "hvc"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 1)))
+												:on-click #(do (swap! @game-atom assoc :entry 1)
+																		 (swap! game-atom merge (web/update-game)))
 												} "Me VS Computer!"]
 							[:button {:id       "hvh"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry 2)))
+												:on-click #(do (swap! game-atom assoc :entry 2)
+																		 (swap! game-atom merge (web/update-game)))
 												} "me & a human friend"]]]))
 
 (defmethod component :level-setup [game-atom]
@@ -46,17 +49,20 @@
 							[:br]
 							[:button {:id       "easy"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "easy")))
+												:on-click #(do (swap! game-atom assoc :entry "easy")
+																		 (swap! game-atom merge (web/update-game)))
 												} "easy"]
 							[:br]
 							[:button {:id       "medium"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "medium")))
+												:on-click #(do (game-atom assoc :entry "medium")
+																		 (swap! game-atom merge (web/update-game)))
 												} "Medium"]
 							[:br]
 							[:button {:id       "hard"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "hard")))
+												:on-click #(do  (swap! game-atom assoc :entry "hard")
+																		 (swap! game-atom merge (web/update-game)))
 												} "HARD!"]]]))
 
 (defmethod component :player-setup [game-atom]
@@ -67,12 +73,14 @@
 							[:br]
 							[:button {:id       "X"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "X")))
+												:on-click #(do (swap! game-atom assoc :entry "X")
+																		 (swap! game-atom merge (web/update-game)))
 												} "X"]
 							[:br]
 							[:button {:id       "O"
 												:type     "submit"
-												:on-click #(swap! game-atom merge (web/run-game (assoc @game-atom :entry "O")))
+												:on-click #(do (swap! game-atom assoc :entry "O")
+																		 (swap! game-atom merge (web/update-game)))
 												} "O"]]]))
 
 (defmethod component :board-setup [game-atom]
@@ -85,9 +93,9 @@
 							[:input {:id "boardsize" :type "text" :name "board-size"}]
 							[:button {:id       "play"
 												:type     "submit"
-												:on-click #(let [entry (.-value (.getElementById js/document "boardsize"))
-																				 game (web/run-game (assoc @game-atom :entry entry))]
-																		 (swap! game-atom merge game))}
+												:on-click #(let [entry (.-value (.getElementById js/document "boardsize"))]
+																		 (swap! game-atom assoc :entry entry)
+																		 (swap! game-atom merge (web/update-game)))}
 							 "Let's Play!"]]]))
 
 (defmethod component :playing [game-atom]

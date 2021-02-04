@@ -1,5 +1,4 @@
-(ns ttt.master.game-master
-	)
+(ns ttt.master.game-master)
 
 (defn next-player [game]
 	(if (= (:current-player game) :player1) :player2 :player1))
@@ -18,12 +17,11 @@
 					 :current-player (next-player @game))))
 
 (defn make-computer-move [game]
-  game)
+	game)
+	;(play-turn (assoc game :box-played (tcore/select-box (get game (:current-player game)) game))))
 
 (defn maybe-make-computer-move [game]
-	(if (and (not (game-over? game)) (ai-turn? game))
-		(make-computer-move game)
-		game))
+		game)
 
 (defn update-state [game]
 	(play-turn game)

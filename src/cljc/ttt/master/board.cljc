@@ -8,7 +8,7 @@
 
 (defn create-board [size]
 	(let [box-count (* size size)
-				board-map (if (= 1 box-count) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range box-count))))
+				;board-map (if (= 1 box-count) {0 0} (apply hash-map (mapcat #(repeat 2 %) (range box-count))))
 				board (vec (range box-count))]
 		board))
 

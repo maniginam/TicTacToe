@@ -8,13 +8,7 @@
 (def standard-board [0 1 2 3 4 5 6 7 8])
 (def console (atom :mock))
 
-#?(:clj (def test-game tcore/game-model))
-
-(def empty-game (assoc test-game
-                  :persistence {:db :mock :dbname "test" :table "TEST"}
-                  :console :mock))
-(def test-game (assoc test-game
-                 :status :waiting
+(def test-game {:status :waiting
                  :persistence {:db :mock :dbname "test" :table "TEST"}
                  :console :mock
                  :users 0
@@ -22,7 +16,7 @@
                  :player2 player2
                  :level :hard
                  :board [0 1 2 3 4 5 6 7 8]
-                 :board-size 3))
+                 :board-size 3})
 
 (def mock-move (atom 0))
 #?(:clj (defmethod tcore/select-box :mock [_ game] @mock-move))

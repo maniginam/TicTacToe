@@ -5,9 +5,7 @@
 (def game-atom (atom tcore/game-model))
 
 (defmethod tcore/set-parameters :waiting [game]
-	(let [updated-game (assoc game :status :user-setup)]
-		(swap! game-atom merge updated-game)
-		updated-game))
+	(assoc game :status :user-setup))
 
 (defmethod tcore/set-players 0 [game]
 	(assoc game :player1 {:player-num 1 :piece "X" :type :computer} :player2 {:player-num 2 :piece "O" :type :computer}))
@@ -44,10 +42,10 @@
 	(assoc game :status :board-setup :level (keyword (:entry game))))
 
 (defmethod tcore/set-parameters :board-setup [game]
-	(let [board-size (js/parseInt (:entry game))
-				board (board/create-board board-size)
+	(let [board-size (:entry game)]
+		(let [board (board/create-board board-size)
 				game-with-board (assoc game :board-size board-size :board board)]
-		(assoc game-with-board :status :playing)))
+		(assoc game-with-board :status :playing))))
 
 
 

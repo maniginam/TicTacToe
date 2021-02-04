@@ -4,7 +4,6 @@
 (def svg-size (atom 550))
 
 (defn draw-O [box]
-	(println "box: " box)
 	(let [box-width (js/parseInt (:width box))
 				box-height (js/parseInt (:height box))
 				box-size (min box-width box-height)
@@ -16,11 +15,9 @@
 		o [[:circle {:cx cx :cy cy :r r :stroke "rgb(248, 152, 121)" :fill "none" :stroke-width "25"}]
 			 [:circle {:cx cx :cy cy :r (+ r (/ 25 2)) :stroke "rgb(80 80 80)" :fill "none" :stroke-width "4"}]
 			 [:circle {:cx cx :cy cy :r (- r (/ 25 2)) :stroke "rgb(80 80 80)" :fill "none" :stroke-width "4"}]]]
-		(println "o: " o)
 		o))
 
 (defn draw-X [box]
-	(println "box: " box)
 	(let [box-width (js/parseInt (:width box))
 				box-height (js/parseInt (:height box))
 				box-size (min box-width box-height)
@@ -32,7 +29,6 @@
 				bottom (+ y (* 0.8 box-size))
 				piece [[:line {:id (str (:id box) "d") :x1 lt :y1 top :x2 rt :y2 bottom :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]
 							 [:line {:id (str (:id box) "u") :x1 lt :y1 bottom :x2 rt :y2 top :stroke "rgb(248, 152, 121)" :stroke-width "30" :stroke-linecap "round"}]]]
-		(println "x: " piece)
 		piece))
 
 (defn draw-pieces [game boxes]
@@ -86,7 +82,6 @@
 				boxes (draw-boxes game-atom board-specs)
 				lines (draw-lines board-specs)
 				pieces (draw-pieces @game-atom boxes)]
-		(println "boxes: " boxes)
 		[:div.board
 		 [:svg.board {:id "board"}
 			boxes
