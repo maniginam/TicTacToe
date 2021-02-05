@@ -2,7 +2,7 @@
 	(:require-macros [speclj.core :refer [run-specs before after describe context it should=]])
 	(:require [speclj.core]
 						[ttt.web.board :as board]
-						[ttt.spec-helper :as helper]))
+						[ttt.master.spec-helper :as helper]))
 
 (def test-atom (atom (assoc helper/test-game :console :web)))
 

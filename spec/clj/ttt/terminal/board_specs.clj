@@ -1,5 +1,5 @@
 (ns ttt.terminal.board-specs
-  (:require [ttt.spec-helper :as helper]
+  (:require [ttt.master.spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.board.board :as board]
             [ttt.master.core :as tcore]))

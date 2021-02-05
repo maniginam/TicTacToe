@@ -3,7 +3,7 @@
 						[ttt.gui.multimethods :as gcore]
 						[ttt.gui.mouse-location :as mouse]
 						[ttt.master.core :as tcore]
-						[ttt.spec-helper :as helper]
+						[ttt.master.spec-helper :as helper]
 						[ttt.gui.gui :as gui]
 						[ttt.master.game-master :as gm]
 						[ttt.gui.button :as button]

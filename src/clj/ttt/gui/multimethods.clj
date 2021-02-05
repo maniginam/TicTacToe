@@ -1,6 +1,5 @@
 (ns ttt.gui.multimethods
-  (:require [ttt.master.game-master]
-            [quil.core :as q]
+  (:require [quil.core :as q]
             [quil.middleware :as m]
             [ttt.master.core :as tcore]
             [ttt.master.game-master :as gm]))

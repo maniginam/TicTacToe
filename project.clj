@@ -17,8 +17,8 @@
 	:plugins [[speclj "3.3.2"]
 						[lein-cljsbuild "1.1.8"]
 						[lein-figwheel "0.5.20"]]
-	:source-paths ["src"]
-	:test-paths ["spec"]
+	:source-paths ["src/clj" "src/cljc"]
+	:test-paths ["spec/clj"]
 
 	:aliases {"specs"      ["cljsbuild" "dev" "unit-tests"]
 						"test-all"       ["do" "clean" "dev" "cljsbuild" "once"]
@@ -61,23 +61,3 @@
 
 
 
-;:profiles {:dev  {:dependencies [[speclj "3.3.2"]]}
-;					 :clj  {:source-paths ["src/clj"]
-;									:test-paths   ["spec/clj"]}
-;					 :cljs {:dependencies [[org.clojure/clojurescript "0.0-2014"] ;necessary or current version of speclj
-;																 [org.clojure/tools.reader "0.7.10"]       ;necessary or current version of speclj
-;																 [lein-cljsbuild "1.1.8"]
-;																 [lein-figwheel "0.5.20"]]
-;									:plugins      [[speclj "3.3.2"]
-;																 [lein-cljsbuild "1.1.8"]
-;																 [lein-figwheel "0.5.20"]]
-;									:test-paths   ["spec/clj"]
-;									:cljsbuild    {:builds        {:dev {:source-paths ["src/cljs" "spec/cljs"]
-;																											 :compiler     {:output-to    "compiled/tests/tests.js"
-;																																			:notify-command ["phantomjs" "bin/speclj" "compiled/tests/tests.js"]}}
-;																								 :prod {:source-paths  ["src/cljs"]
-;																												:compiler      {:output-to "compiled/tests/tests.js"
-;																																				:optimizations :simple}}}
-;																 :figwheel     {:on-jsload "web.start/on-js-reload"
-;																								:open-urls ["http://localhost:1234/index.html"]}
-;																 :test-commands {"test" ["phantomjs" "bin/speclj" "compiled/tests/tests.js"]}}}}

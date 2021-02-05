@@ -1,7 +1,5 @@
 (ns ttt.persistence.mock-db
-  (:require
-    [speclj.core :refer :all]
-    [ttt.master.core :as tcore]))
+  (:require [ttt.master.core :as tcore]))
 
 (def games (atom {}))
 

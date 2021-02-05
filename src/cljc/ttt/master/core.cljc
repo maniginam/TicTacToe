@@ -4,12 +4,12 @@
 (def types {0 :computer 1 nil 2 :human})
 (def dbname "ttt")
 (def game-model {:status           :waiting
-								 :persistence      {:db :mysql :dbname "ttt"}
-								 :users            nil
-								 :board-size       3
-								 :current-player   :player1
-								 :player1          {:player-num 1 :piece "X" :type nil}
-								 :player2          {:player-num 2 :piece "O" :type nil}})
+                 :persistence      {:db :mysql :dbname "ttt"}
+                 :users            nil
+                 :board-size       3
+                 :current-player   :player1
+                 :player1          {:player-num 1 :piece "X" :type nil}
+                 :player2          {:player-num 2 :piece "O" :type nil}})
 
 (defmulti report! :console)
 (defmulti welcome :console)
@@ -46,14 +46,18 @@
 (defmulti save-status (fn [game] (:db (:persistence game))))
 
 (defn set-state [state]
-	state)
+  state)
 
 (defn update-game-state [state key val]
-	(assoc state key val))
+  (assoc state key val))
 
 (defn get-state [state]
-	state)
+  state)
 
 (defn update-console [interface]
-	(reset! console interface))
+  (reset! console interface))
+
+
+
+
 

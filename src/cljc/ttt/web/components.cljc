@@ -1,35 +1,23 @@
 (ns ttt.web.components
 	(:require [sablono.core :as sab]
-						[ttt.web.web :as web]
 						[ttt.web.board :as board]
-						#?(:clj [ttt.master.core :as tcore])
 						[ttt.master.core :as tcore]
-						[ttt.web.setup :as setup]                             ;multimethod
-						#?(:cljs [ttt.web.board :as board])                   ;multimethod
-						))
-
-(def game-model {:status           :waiting
-								 :persistence      {:db :mysql :dbname "ttt"}
-								 :users            nil
-								 :board-size       3
-								 :current-player   :player1
-								 :player1          {:player-num 1 :piece "X" :type nil}
-								 :player2          {:player-num 2 :piece "O" :type nil}})
+						[ttt.master.game-master :as master]
+						[ttt.web.setup :as setup]))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
 
 (defmethod component :waiting [game-atom]
-	(let [comp (sab/html [:div.h-center
+	(sab/html [:div.h-center
 												[:div.container
 												 [:h1 "Welcome to Tic Tac Toe!"]
 												 [:button {:class    "h-center"
 																	 :id       "start"
 																	 :type     "submit"
-																	 :on-click #(do (swap! game-atom merge game-model)
-																								(swap! game-atom merge (web/update-game game-atom)))
+																	 :on-click #(do (swap! game-atom merge (assoc tcore/game-model :persistence {:db :web}))
+																									(swap! game-atom merge (tcore/set-parameters @game-atom)))
 																	 }
-													"Let's Play!"]]])]
-		comp))
+													"Let's Play!"]]]))
 
 (defmethod component :user-setup [game-atom]
 	(sab/html [:div.h-center
@@ -39,17 +27,17 @@
 							[:button {:id       "cvc"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry 0)
-																			 (swap! game-atom merge (web/update-game game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "No humans are playing"]
 							[:button {:id       "hvc"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry 1)
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "Me VS Computer!"]
 							[:button {:id       "hvh"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry 2)
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "me & a human friend"]]]))
 
 (defmethod component :level-setup [game-atom]
@@ -61,19 +49,19 @@
 							[:button {:id       "easy"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "easy")
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "easy"]
 							[:br]
 							[:button {:id       "medium"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "medium")
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "Medium"]
 							[:br]
 							[:button {:id       "hard"
 												:type     "submit"
 												:on-click #(do  (swap! game-atom assoc :entry "hard")
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "HARD!"]]]))
 
 (defmethod component :player-setup [game-atom]
@@ -85,13 +73,13 @@
 							[:button {:id       "X"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "X")
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "X"]
 							[:br]
 							[:button {:id       "O"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "O")
-																		 (swap! game-atom merge (web/update-game game-atom)))
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "O"]]]))
 
 (defmethod component :board-setup [game-atom]
@@ -106,7 +94,7 @@
 												:type     "submit"
 												:on-click #(let [entry (.-value (.getElementById js/document "boardsize"))]
 																		 (swap! game-atom assoc :entry entry :current-player :player1)
-																		 (swap! game-atom merge (web/update-game game-atom)))}
+																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))}
 							 "Let's Play!"]]]))
 
 (defmethod component :playing [game-atom]
@@ -118,5 +106,20 @@
 								[:h2 (str piece "'s Turn")]]
 							 (board/draw-board game-atom)]
 							)))
+
+(defmethod component :game-over [game-atom]
+	(let [winner (:winner @game-atom)]
+		(sab/html [:div.h-center
+							 [:div.container
+								[:h1 "GAME OVER!"]
+								[:h2 (str (cond (= 0 winner) "Cat's Game!"
+																(= 1 winner) "X Won!"
+																(= 2 winner) "O Won!"))]
+								[:button.h-center {:id       "play-again"
+													:type     "submit"
+													:on-click #(swap! game-atom merge (assoc tcore/game-model :status :user-setup :console :web :persistence {:db :web}))}
+								 "Let's Play Again!"]
+								[:br]
+								(board/draw-board game-atom)]])))
 
 

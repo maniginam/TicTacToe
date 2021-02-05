@@ -3,7 +3,7 @@
             [ttt.gui.dimensions :as dim]
             [ttt.gui.multimethods :as gcore]
             [ttt.gui.mouse-location :as mouse]
-            [ttt.ttt.console-messages :as cmsg]))
+            [ttt.terminal.console-messages :as cmsg]))
 
 (defn draw-prompt-box [state]
   (let [x dim/prompt-x

@@ -1,4 +1,4 @@
-(ns ttt.terminal.ai
+(ns ttt.master.ai
   (:require [ttt.master.core :as tcore]
             [ttt.master.optimal-play :as play]))
 
