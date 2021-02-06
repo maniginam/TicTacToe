@@ -1,4 +1,4 @@
-(ns ttt.persistence.mysql
+(ns ttt.persistence.game-saving
 	(:require [next.jdbc :as jdbc]
 						[next.jdbc.result-set :as rs]
 						[next.jdbc.sql :as sql]

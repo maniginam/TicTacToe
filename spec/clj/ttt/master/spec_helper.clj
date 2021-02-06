@@ -1,5 +1,5 @@
 (ns ttt.master.spec-helper
-  (:require [ttt.master.core :as tcore]))
+	(:require [ttt.master.core :as tcore]))
 
 (def player1 {:player-num 1 :piece "X" :type :mock})
 (def player2 {:player-num 2 :piece "O" :type :mock})
@@ -7,17 +7,17 @@
 (def console (atom :mock))
 
 (def empty-game (assoc tcore/game-model
-                  :persistence {:db :mock :dbname "test" :table "TEST"}
-                  :console :mock))
+									:persistence {:db :mock :dbname "test" :table "TEST"}
+									:console :mock))
 (def test-game (assoc tcore/game-model
-                 :persistence {:db :mock :dbname "test" :table "TEST"}
-                 :console :mock
-                 :users 0
-                 :player1 player1
-                 :player2 player2
-                 :level :hard
-                 :board [0 1 2 3 4 5 6 7 8]
-                 :board-size 3))
+								 :persistence {:db :mock :dbname "test" :table "TEST"}
+								 :console :mock
+								 :users 0
+								 :player1 player1
+								 :player2 player2
+								 :level :hard
+								 :board [0 1 2 3 4 5 6 7 8]
+								 :board-size 3))
 
 (def mock-move (atom 0))
 (defmethod tcore/select-box :mock [_ game] @mock-move)

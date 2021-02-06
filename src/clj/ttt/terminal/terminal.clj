@@ -1,6 +1,5 @@
 (ns ttt.terminal.terminal
-  (:require [ttt.persistence.mysql :as sql]
-            [ttt.board.board :as board]
+  (:require [ttt.board.board :as board]
             [ttt.terminal.console-messages :as msg]
             [ttt.master.core :as tcore]
             [ttt.master.core :as tcore]
@@ -8,6 +7,12 @@
             [ttt.terminal.user-inputs :as input]))
 
 ;; COMPLETE - TODO - GLM : duplicated in game master?
+
+(defmethod tcore/print-turn :terminal [game player box]
+  (tcore/print-type player box))
+
+(defmethod tcore/print-type :computer [player box]
+  (println (str "Computer plays box " box)))
 
 (defmethod tcore/validate-player-count :terminal [console]
   (loop [input (input/ask-num-of-players)

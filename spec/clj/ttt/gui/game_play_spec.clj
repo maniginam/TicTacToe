@@ -1,13 +1,8 @@
 (ns ttt.gui.game-play-spec
 	(:require [speclj.core :refer :all]
-						[ttt.gui.multimethods :as gcore]
-						[ttt.gui.mouse-location :as mouse]
-						[ttt.master.core :as tcore]
 						[ttt.master.spec-helper :as helper]
-						[ttt.gui.gui :as gui]
 						[ttt.master.game-master :as gm]
-						[ttt.gui.button :as button]
-						[ttt.persistence.mock-db :as db]))
+						[ttt.gui.button :as button]))
 
 (def test-game helper/test-game)
 (def mock-move helper/mock-move)

@@ -1,4 +1,4 @@
-(ns ttt.persistence.mysql
+(ns ttt.persistence.game-saving
 	(:require [ttt.master.core :as tcore]))
 
 (def game-num (atom 0))

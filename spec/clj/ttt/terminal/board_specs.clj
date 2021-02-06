@@ -2,7 +2,8 @@
   (:require [ttt.master.spec-helper :as helper]
             [speclj.core :refer :all]
             [ttt.board.board :as board]
-            [ttt.master.core :as tcore]))
+            [ttt.master.core :as tcore]
+            [ttt.persistence.mock-db :as db]))
 
 (def this-is-a-test true)
 (def human-is-player1 1)

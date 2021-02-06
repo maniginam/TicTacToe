@@ -4,7 +4,7 @@
             [ttt.master.core :as tcore]
             [ttt.master.game-master :as gm]
     ;; COMPLETE - TODO - GLM : sloppy, only used for show-move (not entirely sure how i fixed this)
-            [ttt.persistence.mysql :as mysql]))
+            [ttt.persistence.game-saving :as mysql]))
 
 (def test-db {:dbtype "mysql" :host :none :user "root" :password "topsecret"})
 (def db-test-name "test")
