@@ -10,6 +10,7 @@
   <component name="ProjectPlainTextFileTypeManager">
     <file url="file://$PROJECT_DIR$/example.mv.db" />
     <file url="file://$PROJECT_DIR$/spec/ttt/web/component_spec.cljc" />
+    <file url="file://$PROJECT_DIR$/src/cljc/ttt/web/web.cljc" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
