@@ -15,8 +15,7 @@
 								 [sablono "0.8.6"]]
 
 	:plugins [[speclj "3.3.2"]
-						[lein-cljsbuild "1.1.8"]
-						[lein-figwheel "0.5.20"]]
+						[lein-cljsbuild "1.1.8"]]
 	:source-paths ["src/clj" "src/cljc"]
 	:test-paths ["spec/clj"]
 
