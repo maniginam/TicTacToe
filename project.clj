@@ -25,16 +25,16 @@
 						"auto-prod"      ["cljsbuild" "auto" "prod"]
 						"spec-auto-test"      ["spec" "resources/public/specs/speclj.js" "-a"]}
 
-	:clean-targets ^{:protect false} [:resources-path "out" "resources/public/cljs"]
+	:clean-targets ^{:protect false} [:resources-path "prod" "resources/public/cljs"]
 	:profiles {:dev {:dependencies [[speclj "3.3.2"]]}}
 
 	:cljsbuild {:builds
 							{:dev
-							 {:source-paths ["src/clj" "src/cljs" "src/cljc" "spec/cljs" "spec/cljc"] ;:notify-command ["bin/speclj.js" "resources/public/cljs/specs/main_dev.js"]
+							 {:source-paths ["src/clj" "src/cljs" "src/cljc" "spec/cljs" "spec/cljc"]
 								:compiler     {:asset-path "../cljs"
 															 :output-to  "resources/public/cljs/main_dev.js"
 															 :output-dir "resources/public/cljs"
-															 :main       ttt.web.core-spec}}
+															 :main       ttt.web.core}}
 
 							 :prod
 							 {:source-paths ["src/clj" "src/cljs" "src/cljc"]

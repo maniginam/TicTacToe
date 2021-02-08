@@ -1,7 +1,7 @@
-(ns ttt.web.board
+(ns ttt.web.board-comps
 	(:require [ttt.master.game-master :as master]
 						[ttt.master.core :as tcore]
-						[ttt.board.board :as board]
+						[ttt.master.board :as board]
 						[ttt.web.int-parser :as int]))
 
 (def svg-size (atom 550))
@@ -73,17 +73,18 @@
 				v-lines (draw-vertical-lines board-specs)]
 		(list h-lines v-lines)))
 
-(defn play-turn [game]
+(defn set-piece-on-board [game]
 	(let [box (:box-played game)]
 		(assoc game :board (master/update-board-with-move game box)
 								:current-player (master/next-player game))))
 
 (defn play-box [game-atom box]
 	(if (not (master/ai-turn? @game-atom))
-		(when (and (= :playing (:status @game-atom)) (board/is-box-open? (:board @game-atom) box))
+		(if (and (= :playing (:status @game-atom)) (board/is-box-open? (:board @game-atom) box))
 			(let [game (swap! game-atom assoc :box-played box)
-						game-with-human-play (play-turn game)]
-				(swap! game-atom merge (master/update-state game-with-human-play))))
+						game-with-human-play (set-piece-on-board @game-atom)]
+				(swap! game-atom merge (master/update-state game-with-human-play)))
+			game-atom)
 		(swap! game-atom merge (master/update-state @game-atom))))
 
 (defn draw-boxes [game-atom board-specs]
@@ -100,7 +101,7 @@
 		boxes))
 
 (defn draw-board [game-atom]
-	(let [board-size (:board-size @game-atom)
+	(let [board-size (int/parseInt (:board-size @game-atom))
 				;; TODO - GLM : FIX THE SIZE TO COME FROM CSS
 				box-size (/ @svg-size board-size)
 				board-specs {:box-size box-size :boxes-per-row board-size}

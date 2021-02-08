@@ -1,11 +1,10 @@
-(ns ttt.web.game-spec
-	(:require-macros [speclj.core :refer [run-specs before after describe context it should=]])
-	(:require [speclj.core]
-						[ttt.master.spec-helper :as helper]
+(ns ttt.web.game_spec
+	(:require [speclj.core #?(:clj  :refer
+														:cljs :refer-macros) [before run-specs describe context it should=]]
 						[ttt.master.game-master :as master]
-						[ttt.persistence.mock-db :as db]
-						[ttt.master.core :as tcore]
-						[ttt.web.board :as web]))
+						[ttt.master.spec-helper :as helper]
+						[ttt.web.board-comps :as comp])
+	)
 
 (def test-atom (atom (assoc helper/test-game :console :web :current-player :player1 :persistence {:db :web})))
 
@@ -15,12 +14,12 @@
 		(it "X in box 1"
 			(swap! test-atom assoc :current-player :player1 :status :playing :box-played 1 :board [0 1 2 3 4 5 6 7 8]
 						 :player1 {:player-num 1 :piece "X" :type :human} :player2 {:player-num 2 :piece "O" :type :human :persistence {:db :web}})
-			(reset! test-atom (web/play-turn @test-atom))
+			(reset! test-atom (comp/set-piece-on-board @test-atom))
 			(should= [0 "X" 2 3 4 5 6 7 8] (:board @test-atom))
 			(should= :player2 (:current-player @test-atom)))
 		(it "O in box 4"
 			(swap! test-atom assoc :box-played 4 :current-player :player2 :status :playing :board [0 "X" 2 3 4 5 6 7 8] :player2 {:player-num 2 :piece "O" :type :human})
-			(reset! test-atom (web/play-turn @test-atom))
+			(reset! test-atom (comp/set-piece-on-board @test-atom))
 			(should= [0 "X" 2 3 "O" 5 6 7 8] (:board @test-atom))
 			(should= :player1 (:current-player @test-atom))))
 
@@ -45,6 +44,4 @@
 			(should= :player2 (:current-player @test-atom))))
 	)
 
-
-(run-specs)
 

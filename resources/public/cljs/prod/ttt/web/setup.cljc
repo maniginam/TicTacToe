@@ -1,5 +1,5 @@
 (ns ttt.web.setup
-	(:require [ttt.board.board :as board]
+	(:require [ttt.master.board :as board]
 						[ttt.master.core :as tcore]))
 
 (defmethod tcore/set-parameters :waiting [game]

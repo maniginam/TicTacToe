@@ -7,7 +7,7 @@
 						[ttt.gui.mouse-clicks :as mouse]
 						[quil.core :as q]
 						[quil.middleware :as m]
-						[ttt.board.board :as board]
+						[ttt.master.board :as board]
 						[ttt.master.core :as tcore]
 						[ttt.master.game-master :as gm]
 						[clojure.java.io :as io]))

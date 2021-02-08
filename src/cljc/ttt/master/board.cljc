@@ -1,4 +1,4 @@
-(ns ttt.board.board)
+(ns ttt.master.board)
 
 (def player1-piece "X")
 (def player2-piece "O")
@@ -53,7 +53,7 @@
 (defn line-is-winner? [board line]
 	(let [test (nth board (first line))
 				others (map #(nth board %) (rest line))]
-	(every? #(= test %) others)))
+		(every? #(= test %) others)))
 
 (defn get-winning-line [board]
 	(let [empty-board (create-board (Math/sqrt (count board)))
@@ -113,5 +113,3 @@
 
 (defn is-good-box? [board box]
 	(and (does-box-exist? box board) (is-box-open? board box)))
-
-

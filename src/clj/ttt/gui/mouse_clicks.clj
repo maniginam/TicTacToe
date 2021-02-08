@@ -2,7 +2,7 @@
   (:require [ttt.gui.boxes :as box]
             [ttt.gui.multimethods :as gcore]
             [ttt.gui.mouse-location :as mouse]
-            [ttt.board.board :as board]
+            [ttt.master.board :as board]
             [ttt.master.core :as tcore]
             [ttt.master.game-master :as game]
             [quil.core :as q]))

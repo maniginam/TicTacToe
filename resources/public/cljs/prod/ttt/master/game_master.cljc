@@ -1,7 +1,7 @@
 (ns ttt.master.game-master
 	(:require [ttt.master.core :as tcore]
 						[ttt.persistence.game-saving]
-						[ttt.board.board :as board]
+						[ttt.master.board :as board]
 						[ttt.master.ai :as ai]))
 
 (defn game-over? [game]

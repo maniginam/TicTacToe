@@ -1,7 +1,7 @@
 (ns ttt.terminal.board-specs
   (:require [ttt.master.spec-helper :as helper]
             [speclj.core :refer :all]
-            [ttt.board.board :as board]
+            [ttt.master.board :as board]
             [ttt.master.core :as tcore]
             [ttt.persistence.mock-db :as db]))
 

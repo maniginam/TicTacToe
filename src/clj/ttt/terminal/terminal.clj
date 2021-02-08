@@ -1,5 +1,5 @@
 (ns ttt.terminal.terminal
-  (:require [ttt.board.board :as board]
+  (:require [ttt.master.board :as board]
             [ttt.terminal.console-messages :as msg]
             [ttt.master.core :as tcore]
             [ttt.master.core :as tcore]

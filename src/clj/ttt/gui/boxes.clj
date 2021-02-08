@@ -3,7 +3,7 @@
             [ttt.gui.dimensions :as dim]
             [ttt.gui.multimethods :as gcore]
             [ttt.gui.game-pieces :as piece]
-            [ttt.board.board :as board]
+            [ttt.master.board :as board]
             [ttt.master.core :as tcore]))
 
 (defn size-boxes [state] (/ (- dim/board-size 100) (:board-size state)))

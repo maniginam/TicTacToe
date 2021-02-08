@@ -1,5 +1,5 @@
 (ns ttt.master.optimal-play
-  (:require [ttt.board.board :as board]))
+  (:require [ttt.master.board :as board]))
 
 (defn get-score [winner depth]
   (cond (= winner 1) (- 10 depth)

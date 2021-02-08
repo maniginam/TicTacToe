@@ -3,7 +3,7 @@
 						[next.jdbc.result-set :as rs]
 						[next.jdbc.sql :as sql]
 						[ttt.master.core :as tcore]
-						[ttt.board.board :as board]))
+						[ttt.master.board :as board]))
 
 (def database {:dbtype "mysql" :host "127.0.0.1" :user "root" :password "topsecret" :serverTimezone "UTC"})
 

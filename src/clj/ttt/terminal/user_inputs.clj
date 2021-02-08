@@ -1,5 +1,5 @@
 (ns ttt.terminal.user-inputs
-  (:require [ttt.board.board :as board]
+  (:require [ttt.master.board :as board]
             [ttt.terminal.console-messages :as msg]
             [ttt.master.core :as tcore]))
 

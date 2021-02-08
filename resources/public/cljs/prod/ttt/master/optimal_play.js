@@ -1,7 +1,7 @@
 // Compiled by ClojureScript 1.10.773 {}
 goog.provide('ttt.master.optimal_play');
 goog.require('cljs.core');
-goog.require('ttt.board.board');
+goog.require('ttt.master.board');
 ttt.master.optimal_play.get_score = (function ttt$master$optimal_play$get_score(winner,depth){
 if(cljs.core._EQ_.call(null,winner,(1))){
 return ((10) - depth);
@@ -29,30 +29,30 @@ return "O";
 }
 });
 ttt.master.optimal_play.get_box_scores = (function ttt$master$optimal_play$get_box_scores(board,player_num,depth){
-var iter__4529__auto__ = (function ttt$master$optimal_play$get_box_scores_$_iter__12422(s__12423){
+var iter__4529__auto__ = (function ttt$master$optimal_play$get_box_scores_$_iter__14610(s__14611){
 return (new cljs.core.LazySeq(null,(function (){
-var s__12423__$1 = s__12423;
+var s__14611__$1 = s__14611;
 while(true){
-var temp__5735__auto__ = cljs.core.seq.call(null,s__12423__$1);
+var temp__5735__auto__ = cljs.core.seq.call(null,s__14611__$1);
 if(temp__5735__auto__){
-var s__12423__$2 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__12423__$2)){
-var c__4527__auto__ = cljs.core.chunk_first.call(null,s__12423__$2);
+var s__14611__$2 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__14611__$2)){
+var c__4527__auto__ = cljs.core.chunk_first.call(null,s__14611__$2);
 var size__4528__auto__ = cljs.core.count.call(null,c__4527__auto__);
-var b__12425 = cljs.core.chunk_buffer.call(null,size__4528__auto__);
-if((function (){var i__12424 = (0);
+var b__14613 = cljs.core.chunk_buffer.call(null,size__4528__auto__);
+if((function (){var i__14612 = (0);
 while(true){
-if((i__12424 < size__4528__auto__)){
-var box = cljs.core._nth.call(null,c__4527__auto__,i__12424);
-cljs.core.chunk_append.call(null,b__12425,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
+if((i__14612 < size__4528__auto__)){
+var box = cljs.core._nth.call(null,c__4527__auto__,i__14612);
+cljs.core.chunk_append.call(null,b__14613,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
 var test_board = cljs.core.replace.call(null,cljs.core.PersistentArrayMap.createAsIfByAssoc([box,piece]),board);
-var box_score = ((ttt.board.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.board.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
+var box_score = ((ttt.master.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.master.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
 ))));
 return box_score;
 })());
 
-var G__12426 = (i__12424 + (1));
-i__12424 = G__12426;
+var G__14614 = (i__14612 + (1));
+i__14612 = G__14614;
 continue;
 } else {
 return true;
@@ -60,18 +60,18 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__12425),ttt$master$optimal_play$get_box_scores_$_iter__12422.call(null,cljs.core.chunk_rest.call(null,s__12423__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14613),ttt$master$optimal_play$get_box_scores_$_iter__14610.call(null,cljs.core.chunk_rest.call(null,s__14611__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__12425),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__14613),null);
 }
 } else {
-var box = cljs.core.first.call(null,s__12423__$2);
+var box = cljs.core.first.call(null,s__14611__$2);
 return cljs.core.cons.call(null,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
 var test_board = cljs.core.replace.call(null,cljs.core.PersistentArrayMap.createAsIfByAssoc([box,piece]),board);
-var box_score = ((ttt.board.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.board.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
+var box_score = ((ttt.master.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.master.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
 ))));
 return box_score;
-})(),ttt$master$optimal_play$get_box_scores_$_iter__12422.call(null,cljs.core.rest.call(null,s__12423__$2)));
+})(),ttt$master$optimal_play$get_box_scores_$_iter__14610.call(null,cljs.core.rest.call(null,s__14611__$2)));
 }
 } else {
 return null;
@@ -80,10 +80,10 @@ break;
 }
 }),null,null));
 });
-return iter__4529__auto__.call(null,ttt.board.board.open_boxes.call(null,board));
+return iter__4529__auto__.call(null,ttt.master.board.open_boxes.call(null,board));
 });
 ttt.master.optimal_play.play_optimal_box = (function ttt$master$optimal_play$play_optimal_box(board,player_num,depth){
-if(ttt.board.board.empty_board_QMARK_.call(null,board)){
+if(ttt.master.board.empty_board_QMARK_.call(null,board)){
 var box_count = cljs.core.count.call(null,board);
 var row_size = (Math.sqrt(box_count) | (0));
 var corners = new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [(0),(row_size - (1)),(box_count - row_size),(box_count - (1))], null);
@@ -91,9 +91,9 @@ var box = cljs.core.nth.call(null,corners,cljs.core.rand_int.call(null,(4)));
 return box;
 } else {
 var box_scores = ttt.master.optimal_play.get_box_scores.call(null,board,player_num,depth);
-var open_boxes = ttt.board.board.open_boxes.call(null,board);
-var same_QMARK_ = cljs.core.every_QMARK_.call(null,(function (p1__12427_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.first.call(null,box_scores),p1__12427_SHARP_);
+var open_boxes = ttt.master.board.open_boxes.call(null,board);
+var same_QMARK_ = cljs.core.every_QMARK_.call(null,(function (p1__14615_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.first.call(null,box_scores),p1__14615_SHARP_);
 }),cljs.core.rest.call(null,box_scores));
 var min = cljs.core.apply.call(null,cljs.core.min,box_scores);
 var max = cljs.core.apply.call(null,cljs.core.max,box_scores);
@@ -103,16 +103,16 @@ if(cljs.core._EQ_.call(null,player_num,(1))){
 if(cljs.core._EQ_.call(null,max,cljs.core.nth.call(null,box_scores,index))){
 return cljs.core.nth.call(null,open_boxes,index);
 } else {
-var G__12428 = (index + (1));
-index = G__12428;
+var G__14616 = (index + (1));
+index = G__14616;
 continue;
 }
 } else {
 if(cljs.core._EQ_.call(null,min,cljs.core.nth.call(null,box_scores,index))){
 return cljs.core.nth.call(null,open_boxes,index);
 } else {
-var G__12429 = (index + (1));
-index = G__12429;
+var G__14617 = (index + (1));
+index = G__14617;
 continue;
 }
 }

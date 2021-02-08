@@ -1,7 +1,7 @@
 // Compiled by ClojureScript 1.10.773 {}
 goog.provide('ttt.web.setup');
 goog.require('cljs.core');
-goog.require('ttt.board.board');
+goog.require('ttt.master.board');
 goog.require('ttt.master.core');
 cljs.core._add_method.call(null,ttt.master.core.set_parameters,new cljs.core.Keyword(null,"waiting","waiting",895906735),(function (game){
 return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"status","status",-1997798413),new cljs.core.Keyword(null,"user-setup","user-setup",-1883963594));
@@ -42,7 +42,7 @@ return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"status","statu
 }));
 cljs.core._add_method.call(null,ttt.master.core.set_parameters,new cljs.core.Keyword(null,"board-setup","board-setup",-844148113),(function (game){
 var board_size = new cljs.core.Keyword(null,"entry","entry",505168823).cljs$core$IFn$_invoke$arity$1(game);
-var board = ttt.board.board.create_board.call(null,board_size);
+var board = ttt.master.board.create_board.call(null,board_size);
 var game_with_board = cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"board-size","board-size",140730505),board_size,new cljs.core.Keyword(null,"board","board",-1907017633),board);
 return cljs.core.assoc.call(null,game_with_board,new cljs.core.Keyword(null,"status","status",-1997798413),new cljs.core.Keyword(null,"playing","playing",70013335),new cljs.core.Keyword(null,"current-player","current-player",-970625153),new cljs.core.Keyword(null,"player1","player1",-1491573636));
 }));

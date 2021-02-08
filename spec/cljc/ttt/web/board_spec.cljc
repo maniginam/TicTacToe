@@ -1,9 +1,8 @@
 (ns ttt.web.board-spec
-	(:require-macros [speclj.core :refer [run-specs before after describe context it should=]])
-	(:require [speclj.core]
-						[ttt.web.board :as board]
-						[ttt.master.spec-helper :as helper]
-						[ttt.web.int-parser :as int]))
+	(:require [speclj.core #?(:clj  :refer
+														:cljs :refer-macros) [run-specs describe context it should=]]
+						[ttt.web.board-comps :as board]
+						[ttt.master.spec-helper :as helper]))
 
 (def test-atom (atom (assoc helper/test-game :console :web)))
 
@@ -37,20 +36,19 @@
 				(should= "hline@200" (:key second))
 				(should= "0%" (:x1 second))
 				(should= "100%" (:x2 second))
-				(should= "200" (:y1 second)))))
+				(should= "200" (:y1 second))))
+		)
 
-	;(context "boxes"
-	;	(it "empty"
-	;		(reset! board/svg-size 300)
-	;		(let [boxes (board/draw-boxes test-atom {:board [0 1 2 3 4 5 6 7 8] :board-specs {:boxes-per-row 3 :box-size 100 :svg-size 300}})]
-	;			(for [box boxes
-	;						:let [id (int/parseInt (:id (second box)))
-	;									x (str (* (/ 300 3) (rem id 3)))
-	;									y (str (* (/ 300 3) (int (/ id 3))))]]
-	;						(should= [:rect {:id id :x x :y y :height "100" :width "100" :fill "rgba(100, 50, 255,0.45)" :opacity "30%" :on-click "click"}] [(first box) (assoc (second box) :on-click "click")])))))
+	(context "boxes"
+		(it "empty box0"
+			(reset! board/svg-size 300)
+			(let [boxes (board/draw-boxes test-atom {:boxes-per-row 3 :box-size 100})
+						box0 (first boxes)]
+				(should= "0" (:id (second box0)))
+				(should= "100" (:height (second box0)))
+				(should= "100" (:width (second box0))))))
 	)
 
-(run-specs)
 
 
 

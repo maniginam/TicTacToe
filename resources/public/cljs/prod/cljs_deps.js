@@ -40,11 +40,12 @@ goog.addDependency("../cljs/core.js", ['cljs.core'], ['goog.string', 'goog.Uri',
 goog.addDependency("../process/env.js", ['process.env'], ['cljs.core']);
 goog.addDependency("../ttt/master/core.js", ['ttt.master.core'], ['cljs.core']);
 goog.addDependency("../ttt/persistence/game_saving.js", ['ttt.persistence.game_saving'], ['ttt.master.core', 'cljs.core']);
-goog.addDependency("../ttt/board/board.js", ['ttt.board.board'], ['cljs.core']);
-goog.addDependency("../ttt/master/optimal_play.js", ['ttt.master.optimal_play'], ['cljs.core', 'ttt.board.board']);
+goog.addDependency("../ttt/master/board.js", ['ttt.master.board'], ['cljs.core']);
+goog.addDependency("../ttt/master/optimal_play.js", ['ttt.master.optimal_play'], ['cljs.core', 'ttt.master.board']);
 goog.addDependency("../ttt/master/ai.js", ['ttt.master.ai'], ['ttt.master.core', 'cljs.core', 'ttt.master.optimal_play']);
-goog.addDependency("../ttt/master/game_master.js", ['ttt.master.game_master'], ['ttt.master.core', 'ttt.persistence.game_saving', 'cljs.core', 'ttt.board.board', 'ttt.master.ai']);
+goog.addDependency("../ttt/master/game_master.js", ['ttt.master.game_master'], ['ttt.master.core', 'ttt.persistence.game_saving', 'cljs.core', 'ttt.master.board', 'ttt.master.ai']);
 goog.addDependency("../ttt/web/int_parser.js", ['ttt.web.int_parser'], ['cljs.core']);
+goog.addDependency("../ttt/web/board_comps.js", ['ttt.web.board_comps'], ['ttt.master.core', 'ttt.master.game_master', 'cljs.core', 'ttt.web.int_parser', 'ttt.master.board']);
 goog.addDependency("labs/useragent/engine.js", ['goog.labs.userAgent.engine'], ['goog.array', 'goog.labs.userAgent.util', 'goog.string']);
 goog.addDependency("labs/useragent/platform.js", ['goog.labs.userAgent.platform'], ['goog.labs.userAgent.util', 'goog.string']);
 goog.addDependency("useragent/useragent.js", ['goog.userAgent'], ['goog.labs.userAgent.browser', 'goog.labs.userAgent.engine', 'goog.labs.userAgent.platform', 'goog.labs.userAgent.util', 'goog.reflect', 'goog.string']);
@@ -60,7 +61,6 @@ goog.addDependency("../sablono/normalize.js", ['sablono.normalize'], ['sablono.u
 goog.addDependency("../cljsjs/react-dom/development/react-dom.inc.js", ['react_dom', 'cljsjs.react.dom'], ['react'], {'foreign-lib': true});
 goog.addDependency("../sablono/interpreter.js", ['sablono.interpreter'], ['sablono.util', 'react', 'cljs.core', 'goog.object', 'sablono.normalize', 'react_dom', 'clojure.string']);
 goog.addDependency("../sablono/core.js", ['sablono.core'], ['goog.dom', 'sablono.util', 'goog.string', 'react', 'cljs.core', 'sablono.interpreter', 'sablono.normalize', 'clojure.string']);
-goog.addDependency("../ttt/web/board.js", ['ttt.web.board'], ['ttt.master.core', 'ttt.master.game_master', 'cljs.core', 'ttt.web.int_parser', 'ttt.board.board']);
-goog.addDependency("../ttt/web/setup.js", ['ttt.web.setup'], ['ttt.master.core', 'cljs.core', 'ttt.board.board']);
-goog.addDependency("../ttt/web/components.js", ['ttt.web.components'], ['ttt.master.core', 'ttt.master.game_master', 'cljs.core', 'ttt.web.int_parser', 'sablono.core', 'ttt.web.board', 'ttt.web.setup']);
+goog.addDependency("../ttt/web/setup.js", ['ttt.web.setup'], ['ttt.master.core', 'cljs.core', 'ttt.master.board']);
+goog.addDependency("../ttt/web/components.js", ['ttt.web.components'], ['ttt.master.core', 'ttt.master.game_master', 'cljs.core', 'ttt.web.int_parser', 'ttt.web.board_comps', 'sablono.core', 'ttt.web.setup']);
 goog.addDependency("../ttt/web/core.js", ['ttt.web.core'], ['ttt.master.core', 'ttt.master.game_master', 'cljs.core', 'ttt.web.components']);

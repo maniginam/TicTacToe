@@ -3,11 +3,11 @@ goog.provide('ttt.master.game_master');
 goog.require('cljs.core');
 goog.require('ttt.master.core');
 goog.require('ttt.persistence.game_saving');
-goog.require('ttt.board.board');
+goog.require('ttt.master.board');
 goog.require('ttt.master.ai');
 ttt.master.game_master.game_over_QMARK_ = (function ttt$master$game_master$game_over_QMARK_(game){
 var board = new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(game);
-return ((ttt.board.board.is_win_QMARK_.call(null,board)) || (ttt.board.board.full_board_QMARK_.call(null,board)));
+return ((ttt.master.board.is_win_QMARK_.call(null,board)) || (ttt.master.board.full_board_QMARK_.call(null,board)));
 });
 ttt.master.game_master.next_player = (function ttt$master$game_master$next_player(game){
 if(cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"current-player","current-player",-970625153).cljs$core$IFn$_invoke$arity$1(game),new cljs.core.Keyword(null,"player1","player1",-1491573636))){
@@ -33,7 +33,7 @@ return new_board;
 }
 });
 ttt.master.game_master.get_move_from_player = (function ttt$master$game_master$get_move_from_player(game){
-if(ttt.board.board.full_board_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(game))){
+if(ttt.master.board.full_board_QMARK_.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(game))){
 return null;
 } else {
 var player = cljs.core.get.call(null,game,new cljs.core.Keyword(null,"current-player","current-player",-970625153).cljs$core$IFn$_invoke$arity$1(game));
@@ -59,10 +59,10 @@ return game;
 if(cljs.core._EQ_.call(null,(1),cljs.core.count.call(null,new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(game)))){
 return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"winner","winner",714604679),(1));
 } else {
-if(ttt.board.board.is_win_QMARK_.call(null,board)){
-return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"winner","winner",714604679),new cljs.core.Keyword(null,"player-num","player-num",1393572093).cljs$core$IFn$_invoke$arity$1(ttt.master.game_master.next_player.call(null,game).cljs$core$IFn$_invoke$arity$1(game)),new cljs.core.Keyword(null,"winning-line","winning-line",1521632579),ttt.board.board.get_winning_line.call(null,board));
+if(ttt.master.board.is_win_QMARK_.call(null,board)){
+return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"winner","winner",714604679),new cljs.core.Keyword(null,"player-num","player-num",1393572093).cljs$core$IFn$_invoke$arity$1(ttt.master.game_master.next_player.call(null,game).cljs$core$IFn$_invoke$arity$1(game)),new cljs.core.Keyword(null,"winning-line","winning-line",1521632579),ttt.master.board.get_winning_line.call(null,board));
 } else {
-if(ttt.board.board.full_board_QMARK_.call(null,board)){
+if(ttt.master.board.full_board_QMARK_.call(null,board)){
 return cljs.core.assoc.call(null,game,new cljs.core.Keyword(null,"winner","winner",714604679),(0),new cljs.core.Keyword(null,"winning-line","winning-line",1521632579),null);
 } else {
 return game;
