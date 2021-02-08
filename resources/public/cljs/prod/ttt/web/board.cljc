@@ -8,7 +8,6 @@
 (def winner-color "rgb(152 251 152)")
 (def cats-color "rgb(80 80 80)")
 
-
 (defn get-piece-color [game box]
 	(cond (not (master/game-over? game)) playing-color
 				(zero? (:winner game)) cats-color
