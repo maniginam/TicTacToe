@@ -74,6 +74,14 @@
 		(assoc game :board (master/update-board-with-move game box)
 								:current-player (master/next-player game))))
 
+(defn play-box [game-atom box]
+			(if (not (master/ai-turn? @game-atom))
+				(when (and (= :playing (:status @game-atom)) (board/is-box-open? (:board @game-atom) box))
+					(let [game (swap! game-atom assoc :box-played box)
+								game-with-human-play (play-turn game)]
+						(swap! game-atom merge (master/update-state game-with-human-play))))
+				(swap! game-atom merge (master/update-state @game-atom))))
+
 (defn draw-boxes [game-atom board-specs]
 	(let [box-size (:box-size board-specs)
 				boxes-per-row (:boxes-per-row board-specs)
@@ -84,10 +92,7 @@
 												:id       (str box) :x x :y y
 												:height   (str box-size) :width (str box-size)
 												:fill     "rgba(100, 50, 255,0.75)" :opacity "60%"
-												:on-click #(when (and (= :playing (:status @game-atom)) (board/is-box-open? (:board @game-atom) box))
-																		 (let [game (swap! game-atom assoc :box-played box)
-																					 game-with-human-play (play-turn game)]
-																			 (swap! game-atom merge (master/update-state game-with-human-play))))}])]
+												:on-click #(play-box game-atom box)}])]
 		boxes))
 
 (defn draw-board [game-atom]

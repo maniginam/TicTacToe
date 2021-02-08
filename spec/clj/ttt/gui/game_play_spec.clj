@@ -5,13 +5,12 @@
 						[ttt.gui.button :as button]))
 
 (def test-game helper/test-game)
-(def mock-move helper/mock-move)
 
 (describe "GUI State Tests: "
 	(with-stubs)
 	(context "game-play"
 		(it "game over"
-			(reset! mock-move 2)
+			(reset! helper/mock-move 2)
 			(let [playing-state (assoc test-game :console :mock :status :playing :board ["X" "X" 2 3 4 5 6 7 8])
 						result (gm/update-state playing-state)]
 				(should= ["X" "X" "X" 3 4 5 6 7 8] (:board result))
@@ -21,7 +20,7 @@
 
 	(context "play-again-pause"
 		(it "starts with game-over 1"
-			(reset! mock-move 2)
+			(reset! helper/mock-move 2)
 			(let [over-game (assoc test-game :console :mock :status :playing :board ["X" "X" 2 3 4 5 6 7 8])
 						result (gm/update-state over-game)]
 				(should= 1 (:play-again-pause result))

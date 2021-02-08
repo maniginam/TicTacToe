@@ -1,4 +1,4 @@
-(ns ttt.master.human
+(ns ttt.terminal.human
   (:require [ttt.master.core :as tcore]
             [ttt.board.board :as board]
             [ttt.terminal.user-inputs :as input]))
