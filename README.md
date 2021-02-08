@@ -18,7 +18,7 @@ Program
             - lein run (defaults to terminal)
             - lein run terminal
             - lein run gui
-        -cljs 
+        - cljs 
             - compile first with:
                 - lein build-prod
                 - or to auto compile production code: lein auto-prod
