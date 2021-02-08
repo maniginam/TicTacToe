@@ -9,15 +9,15 @@
 
 (defmethod component :waiting [game-atom]
 	(sab/html [:div.h-center
-												[:div.container
-												 [:h1 "Welcome to Tic Tac Toe!"]
-												 [:button {:class    "h-center"
-																	 :id       "start"
-																	 :type     "submit"
-																	 :on-click #(do (swap! game-atom merge (assoc tcore/game-model :persistence {:db :web}))
-																									(swap! game-atom merge (tcore/set-parameters @game-atom)))
-																	 }
-													"Let's Play!"]]]))
+						 [:div.container
+							[:h1 "Welcome to Tic Tac Toe!"]
+							[:button {:class    "h-center"
+												:id       "start"
+												:type     "submit"
+												:on-click #(do (swap! game-atom merge (assoc tcore/game-model :persistence {:db :web}))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+												}
+							 "Let's Play!"]]]))
 
 (defmethod component :user-setup [game-atom]
 	(sab/html [:div.h-center
@@ -32,12 +32,12 @@
 							[:button {:id       "hvc"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry 1)
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "Me VS Computer!"]
 							[:button {:id       "hvh"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry 2)
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "me & a human friend"]]]))
 
 (defmethod component :level-setup [game-atom]
@@ -49,19 +49,19 @@
 							[:button {:id       "easy"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "easy")
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "easy"]
 							[:br]
 							[:button {:id       "medium"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "medium")
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "Medium"]
 							[:br]
 							[:button {:id       "hard"
 												:type     "submit"
-												:on-click #(do  (swap! game-atom assoc :entry "hard")
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+												:on-click #(do (swap! game-atom assoc :entry "hard")
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "HARD!"]]]))
 
 (defmethod component :player-setup [game-atom]
@@ -73,13 +73,13 @@
 							[:button {:id       "X"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "X")
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "X"]
 							[:br]
 							[:button {:id       "O"
 												:type     "submit"
 												:on-click #(do (swap! game-atom assoc :entry "O")
-																		 (swap! game-atom merge (tcore/set-parameters @game-atom)))
+																			 (swap! game-atom merge (tcore/set-parameters @game-atom)))
 												} "O"]]]))
 
 (defmethod component :board-setup [game-atom]
@@ -117,8 +117,8 @@
 																(= 1 winner) "X Won!"
 																(= 2 winner) "O Won!"))]
 								[:button.h-center {:id       "play-again"
-													:type     "submit"
-													:on-click #(swap! game-atom merge (assoc tcore/game-model :status :user-setup :console :web :persistence {:db :web}))}
+																	 :type     "submit"
+																	 :on-click #(swap! game-atom merge (assoc tcore/game-model :status :user-setup :console :web :persistence {:db :web}))}
 								 "Let's Play Again!"]
 								[:br]
 								(board/draw-board game-atom)]])))
