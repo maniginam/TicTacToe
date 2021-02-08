@@ -1,7 +1,8 @@
 (ns ttt.web.board
 	(:require [ttt.master.game-master :as master]
 						[ttt.master.core :as tcore]
-						[ttt.board.board :as board]))
+						[ttt.board.board :as board]
+						[ttt.web.int-parser :as int]))
 
 (def svg-size (atom 550))
 (def playing-color "coral")
@@ -11,15 +12,15 @@
 (defn get-piece-color [game box]
 	(cond (not (master/game-over? game)) playing-color
 				(zero? (:winner game)) cats-color
-				(not (empty? (filter #(= (js/parseInt (:id box)) %) (:winning-line game)))) winner-color
+				(not (empty? (filter #(= (int/parseInt (:id box)) %) (:winning-line game)))) winner-color
 				:else playing-color))
 
 (defn draw-O [box game]
-	(let [box-width (js/parseInt (:width box))
-				box-height (js/parseInt (:height box))
+	(let [box-width (int/parseInt (:width box))
+				box-height (int/parseInt (:height box))
 				box-size (min box-width box-height)
-				x (js/parseInt (:x box))
-				y (js/parseInt (:y box))
+				x (int/parseInt (:x box))
+				y (int/parseInt (:y box))
 				r (/ (* 0.7 box-size) 2)
 				cx (+ x (/ box-size 2))
 				cy (+ y (/ box-size 2))
@@ -30,11 +31,11 @@
 		o))
 
 (defn draw-X [box game]
-	(let [box-width (js/parseInt (:width box))
-				box-height (js/parseInt (:height box))
+	(let [box-width (int/parseInt (:width box))
+				box-height (int/parseInt (:height box))
 				box-size (min box-width box-height)
-				x (js/parseInt (:x box))
-				y (js/parseInt (:y box))
+				x (int/parseInt (:x box))
+				y (int/parseInt (:y box))
 				lt (+ x (* 0.2 box-size))
 				rt (+ x (* 0.8 box-size))
 				top (+ y (* 0.2 box-size))
@@ -51,8 +52,8 @@
 	(let [board (:board game)
 				pieces (remove nil?
 											 (map #(cond
-															 (= "X" (nth board (js/parseInt (:id (second %))))) (draw-X (second %) game)
-															 (= "O" (nth board (js/parseInt (:id (second %))))) (draw-O (second %) game)) boxes))]
+															 (= "X" (nth board (int/parseInt (:id (second %))))) (draw-X (second %) game)
+															 (= "O" (nth board (int/parseInt (:id (second %))))) (draw-O (second %) game)) boxes))]
 		(list pieces)))
 
 (defn draw-horizontal-lines [board-specs]

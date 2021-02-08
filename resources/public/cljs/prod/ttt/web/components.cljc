@@ -1,8 +1,9 @@
 (ns ttt.web.components
 	(:require [sablono.core :as sab]
-						[ttt.web.board :as board]
 						[ttt.master.core :as tcore]
 						[ttt.master.game-master :as master]
+						[ttt.web.int-parser :as int]
+						[ttt.web.board :as board]
 						[ttt.web.setup :as setup]))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
@@ -92,7 +93,7 @@
 							[:input {:id "boardsize" :type "text" :name "board-size"}]
 							[:button {:id       "play"
 												:type     "submit"
-												:on-click #(let [entry (.-value (.getElementById js/document "boardsize"))]
+												:on-click #(let [entry (.-value (.getElementById #?(:cljs js/document) "boardsize"))]
 																		 (swap! game-atom assoc :entry entry :current-player :player1)
 																		 (swap! game-atom merge (tcore/set-parameters @game-atom))
 																		 (swap! game-atom merge (master/update-state @game-atom)))}

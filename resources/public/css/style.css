@@ -46,6 +46,10 @@ button.v-center {
     height: 550px;
     width: 550px;
 }
+.console {
+    height: 200px;
+    width: 550px;
+}
 
 svg {
     width: 100%;
