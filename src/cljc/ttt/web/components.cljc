@@ -3,6 +3,7 @@
 						[ttt.master.game-master :as master]
 						[ttt.web.board-comps :as board]
 						[ttt.web.int-parser :as int]
+						[ttt.web.setup :as setup]
 						[sablono.core :as sab]))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
