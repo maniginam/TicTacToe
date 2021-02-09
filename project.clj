@@ -34,7 +34,7 @@
 								:compiler     {:asset-path "../cljs"
 															 :output-to  "resources/public/cljs/main_dev.js"
 															 :output-dir "resources/public/cljs"
-															 :main       ttt.web.core}}
+															 :main       ttt.web.core-spec}}
 
 							 :prod
 							 {:source-paths ["src/clj" "src/cljs" "src/cljc"]

@@ -1,5 +1,5 @@
 (ns ttt.web.core
-	(:require [ttt.web.components :as comp]
+	(:require [ttt.web.components :refer [component]]
 						[ttt.master.core :as tcore]
 						[ttt.master.game-master :as master]))
 
@@ -8,7 +8,7 @@
 
 (defn render! []
 	(.render js/ReactDOM
-					 (comp/component game)
+					 (component game)
 					 (.getElementById js/document "ttt")))
 
 (add-watch game :on-change (fn [k a o n] (render!)))
