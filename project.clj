@@ -14,6 +14,7 @@
 								 [cljsjs/react-dom "17.0.1-0"]
 								 [sablono "0.8.6"]]
 
+	:java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/bin/java" ;for GUI
 	:plugins [[speclj "3.3.2"]
 						[lein-cljsbuild "1.1.8"]]
 	:source-paths ["src/clj" "src/cljc"]
@@ -25,7 +26,7 @@
 						"auto-prod"      ["cljsbuild" "auto" "prod"]
 						"spec-auto-test"      ["spec" "resources/public/specs/speclj.js" "-a"]}
 
-	:clean-targets ^{:protect false} [:resources-path "prod" "resources/public/cljs"]
+	:clean-targets ^{:protect false} [[:resources-path "out" "resources/public/cljs"] [:resources-path "target"]]
 	:profiles {:dev {:dependencies [[speclj "3.3.2"]]}}
 
 	:cljsbuild {:builds
@@ -43,7 +44,8 @@
 															 :output-to  "resources/public/cljs/main.js"
 															 :output-dir "resources/public/cljs/prod"}}}}
 
-	:main clj.ttt.master.start
+	:main ttt.master.start
+
 	)
 
 

@@ -1,8 +1,9 @@
 (ns ttt.master.game-master
-	(:require [ttt.master.core :as tcore]
-						[ttt.persistence.game-saving]
+	(:require [ttt.master.ai :as ai]
 						[ttt.master.board :as board]
-						[ttt.master.ai :as ai]))
+						[ttt.master.core :as tcore]
+						[ttt.persistence.game-saving]
+						#?(:clj [ttt.terminal.human :as human])))
 
 (defn game-over? [game]
 	(let [board (:board game)]

@@ -1,10 +1,10 @@
 // Compiled by ClojureScript 1.10.773 {}
 goog.provide('ttt.master.game_master');
 goog.require('cljs.core');
+goog.require('ttt.master.ai');
+goog.require('ttt.master.board');
 goog.require('ttt.master.core');
 goog.require('ttt.persistence.game_saving');
-goog.require('ttt.master.board');
-goog.require('ttt.master.ai');
 ttt.master.game_master.game_over_QMARK_ = (function ttt$master$game_master$game_over_QMARK_(game){
 var board = new cljs.core.Keyword(null,"board","board",-1907017633).cljs$core$IFn$_invoke$arity$1(game);
 return ((ttt.master.board.is_win_QMARK_.call(null,board)) || (ttt.master.board.full_board_QMARK_.call(null,board)));

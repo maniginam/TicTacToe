@@ -2,7 +2,6 @@
   (:require [ttt.master.board :as board]
             [ttt.terminal.console-messages :as msg]
             [ttt.master.core :as tcore]
-            [ttt.master.core :as tcore]
             [ttt.master.game-master :as gm]
             [ttt.terminal.user-inputs :as input]))
 
