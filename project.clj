@@ -14,7 +14,7 @@
 								 [cljsjs/react-dom "17.0.1-0"]
 								 [sablono "0.8.6"]]
 
-	:java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/bin/java" ;for GUI
+	:java-cmd "/Library/Java/JavaVirtualMachines/jdk1.8.0_251.jdk/Contents/Home/bin/java"
 	:plugins [[speclj "3.3.2"]
 						[lein-cljsbuild "1.1.8"]]
 	:source-paths ["src/clj" "src/cljc"]
@@ -44,7 +44,7 @@
 															 :output-to  "resources/public/cljs/main.js"
 															 :output-dir "resources/public/cljs/prod"}}}}
 
-	:main ttt.master.start
+	:main ^:skip-aot ttt.master.start
 
 	)
 
