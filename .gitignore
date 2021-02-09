@@ -18,5 +18,5 @@ target
 *resources.*
 *.rebel_readline_history
 *.specljs-timestamp
-*frames*
+frames/*
 
