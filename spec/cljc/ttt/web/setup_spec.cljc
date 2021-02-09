@@ -1,8 +1,8 @@
 (ns ttt.web.setup-spec
 	(:require [speclj.core #?(:clj  :refer
 														:cljs :refer-macros) [before run-specs describe context it should=]]
-						[ttt.master.spec-helper :as helper]
 						[ttt.master.core :as tcore]
+						[ttt.master.spec-helper :as helper]
 						[ttt.web.setup :as setup]))
 
 (def test-atom (atom (assoc helper/test-game :console :web)))

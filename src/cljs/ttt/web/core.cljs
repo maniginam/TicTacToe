@@ -1,7 +1,6 @@
 (ns ttt.web.core
-	(:require [ttt.web.components :refer [component]]
-						[ttt.master.core :as tcore]
-						[ttt.master.game-master :as master]))
+	(:require [ttt.master.core :as tcore]
+						[ttt.web.components :refer [component]]))
 
 (defonce game (atom (assoc tcore/game-model :status :waiting :console :web
 																						:persistence {:db :web} :current-player :player1)))

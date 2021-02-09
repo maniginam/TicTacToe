@@ -1,7 +1,7 @@
 (ns ttt.web.board-comps
-	(:require [ttt.master.game-master :as master]
+	(:require [ttt.master.board :as board]
 						[ttt.master.core :as tcore]
-						[ttt.master.board :as board]
+						[ttt.master.game-master :as master]
 						[ttt.web.int-parser :as int]))
 
 (def svg-size (atom 550))

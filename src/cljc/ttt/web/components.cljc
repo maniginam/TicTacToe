@@ -1,10 +1,9 @@
 (ns ttt.web.components
-	(:require [sablono.core :as sab]
-						[ttt.master.core :as tcore]
+	(:require [ttt.master.core :as tcore]
 						[ttt.master.game-master :as master]
-						[ttt.web.int-parser :as int]
 						[ttt.web.board-comps :as board]
-						[ttt.web.setup :as setup]))
+						[ttt.web.int-parser :as int]
+						[sablono.core :as sab]))
 
 (defmulti component (fn [game-atom] (:status @game-atom)))
 

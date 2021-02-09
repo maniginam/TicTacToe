@@ -1,8 +1,8 @@
 (ns ttt.web.board-spec
 	(:require [speclj.core #?(:clj  :refer
 														:cljs :refer-macros) [run-specs describe context it should=]]
-						[ttt.web.board-comps :as board]
-						[ttt.master.spec-helper :as helper]))
+						[ttt.master.spec-helper :as helper]
+						[ttt.web.board-comps :as board]))
 
 (def test-atom (atom (assoc helper/test-game :console :web)))
 

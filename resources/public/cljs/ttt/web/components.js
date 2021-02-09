@@ -1,12 +1,11 @@
 // Compiled by ClojureScript 1.10.773 {}
 goog.provide('ttt.web.components');
 goog.require('cljs.core');
-goog.require('sablono.core');
 goog.require('ttt.master.core');
 goog.require('ttt.master.game_master');
-goog.require('ttt.web.int_parser');
 goog.require('ttt.web.board_comps');
-goog.require('ttt.web.setup');
+goog.require('ttt.web.int_parser');
+goog.require('sablono.core');
 if((typeof ttt !== 'undefined') && (typeof ttt.web !== 'undefined') && (typeof ttt.web.components !== 'undefined') && (typeof ttt.web.components.component !== 'undefined')){
 } else {
 ttt.web.components.component = (function (){var method_table__4619__auto__ = cljs.core.atom.call(null,cljs.core.PersistentArrayMap.EMPTY);
@@ -80,14 +79,14 @@ return cljs.core.swap_BANG_.call(null,game_atom,cljs.core.merge,ttt.master.game_
 cljs.core._add_method.call(null,ttt.web.components.component,new cljs.core.Keyword(null,"playing","playing",70013335),(function (game_atom){
 var player = new cljs.core.Keyword(null,"current-player","current-player",-970625153).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,game_atom));
 var piece = ((cljs.core._EQ_.call(null,new cljs.core.Keyword(null,"player1","player1",-1491573636),player))?"X":"O");
-return sablono.core.create_element.call(null,"div",({"className": "h-center"}),sablono.core.create_element.call(null,"div",({"className": "container"}),sablono.core.create_element.call(null,"h1",null,"TicTacToe!"),(function (){var attrs20840 = [piece,"'s Turn"].join('');
-return cljs.core.apply.call(null,sablono.core.create_element,"h2",((cljs.core.map_QMARK_.call(null,attrs20840))?sablono.interpreter.attributes.call(null,attrs20840):null),((cljs.core.map_QMARK_.call(null,attrs20840))?null:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sablono.interpreter.interpret.call(null,attrs20840)], null)));
+return sablono.core.create_element.call(null,"div",({"className": "h-center"}),sablono.core.create_element.call(null,"div",({"className": "container"}),sablono.core.create_element.call(null,"h1",null,"TicTacToe!"),(function (){var attrs31353 = [piece,"'s Turn"].join('');
+return cljs.core.apply.call(null,sablono.core.create_element,"h2",((cljs.core.map_QMARK_.call(null,attrs31353))?sablono.interpreter.attributes.call(null,attrs31353):null),((cljs.core.map_QMARK_.call(null,attrs31353))?null:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sablono.interpreter.interpret.call(null,attrs31353)], null)));
 })()),sablono.interpreter.interpret.call(null,ttt.web.board_comps.draw_board.call(null,game_atom)));
 }));
 cljs.core._add_method.call(null,ttt.web.components.component,new cljs.core.Keyword(null,"game-over","game-over",-607322695),(function (game_atom){
 var winner = new cljs.core.Keyword(null,"winner","winner",714604679).cljs$core$IFn$_invoke$arity$1(cljs.core.deref.call(null,game_atom));
-return sablono.core.create_element.call(null,"div",({"className": "h-center"}),sablono.core.create_element.call(null,"div",({"className": "container"}),sablono.core.create_element.call(null,"h1",null,"GAME OVER!"),(function (){var attrs20843 = cljs.core.str.cljs$core$IFn$_invoke$arity$1(((cljs.core._EQ_.call(null,(0),winner))?"Cat's Game!":((cljs.core._EQ_.call(null,(1),winner))?"X Won!":((cljs.core._EQ_.call(null,(2),winner))?"O Won!":null))));
-return cljs.core.apply.call(null,sablono.core.create_element,"h2",((cljs.core.map_QMARK_.call(null,attrs20843))?sablono.interpreter.attributes.call(null,attrs20843):null),((cljs.core.map_QMARK_.call(null,attrs20843))?null:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sablono.interpreter.interpret.call(null,attrs20843)], null)));
+return sablono.core.create_element.call(null,"div",({"className": "h-center"}),sablono.core.create_element.call(null,"div",({"className": "container"}),sablono.core.create_element.call(null,"h1",null,"GAME OVER!"),(function (){var attrs31356 = cljs.core.str.cljs$core$IFn$_invoke$arity$1(((cljs.core._EQ_.call(null,(0),winner))?"Cat's Game!":((cljs.core._EQ_.call(null,(1),winner))?"X Won!":((cljs.core._EQ_.call(null,(2),winner))?"O Won!":null))));
+return cljs.core.apply.call(null,sablono.core.create_element,"h2",((cljs.core.map_QMARK_.call(null,attrs31356))?sablono.interpreter.attributes.call(null,attrs31356):null),((cljs.core.map_QMARK_.call(null,attrs31356))?null:new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [sablono.interpreter.interpret.call(null,attrs31356)], null)));
 })(),sablono.core.create_element.call(null,"button",({"id": "play-again", "type": "submit", "onClick": (function (){
 return cljs.core.swap_BANG_.call(null,game_atom,cljs.core.merge,cljs.core.assoc.call(null,ttt.master.core.game_model,new cljs.core.Keyword(null,"status","status",-1997798413),new cljs.core.Keyword(null,"user-setup","user-setup",-1883963594),new cljs.core.Keyword(null,"console","console",1228072057),new cljs.core.Keyword(null,"web","web",-654701153),new cljs.core.Keyword(null,"persistence","persistence",-203044807),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"db","db",993250759),new cljs.core.Keyword(null,"web","web",-654701153)], null)));
 }), "className": "h-center"}),"Let's Play Again!"),sablono.core.create_element.call(null,"br",null),sablono.interpreter.interpret.call(null,ttt.web.board_comps.draw_board.call(null,game_atom))));

@@ -1,8 +1,6 @@
 (ns ttt.master.start
   (:gen-class)
-  (:require [ttt.master.core :refer :all]
-            [ttt.terminal.terminal :refer :all]
-            [ttt.gui.gui :refer :all]))
+  (:require [ttt.master.core :refer :all]))
 
 (defn -main [& interface]
   (let [interface (if (nil? interface) :terminal (keyword (first interface)))]
