@@ -3,8 +3,7 @@
 														:cljs :refer-macros) [before run-specs describe context it should=]]
 						[ttt.master.game-master :as master]
 						[ttt.master.spec-helper :as helper]
-						[ttt.web.board-comps :as comp])
-	)
+						[ttt.web.board-comps :as comp]))
 
 (def test-atom (atom (assoc helper/test-game :console :web :current-player :player1 :persistence {:db :web})))
 
@@ -33,6 +32,16 @@
 			(should= [0 "X" 2 3 4 5 6 7 8] (:board @test-atom))
 			(should= :player2 (:current-player @test-atom))))
 
+	(context "box-taken"
+		(reset! test-atom (assoc helper/test-game :status :playing :board ["X" 0 1 2]))
+		(it "tries to play box 0 again"
+			(reset! helper/mock-move 0)
+			(swap! test-atom assoc :status :playing :board ["X" 1 2 3]
+						 :box-played 0 :current-player :player2 :player2 {:player-num 2 :piece "O" :type :human})
+			(let [current-state @test-atom]
+				(reset! test-atom (master/update-state @test-atom))
+				(should= ["X" 1 2 3] (:board @test-atom)))))
+
 	(context "game over"
 		(reset! test-atom helper/test-game)
 		(it "X wins"
@@ -41,7 +50,6 @@
 			(reset! test-atom (master/update-state @test-atom))
 			(should= ["X" "X" "X" 3 4 5 6 7 8] (:board @test-atom))
 			(should= :game-over (:status @test-atom))
-			(should= :player2 (:current-player @test-atom))))
-	)
+			(should= :player2 (:current-player @test-atom)))))
 
 

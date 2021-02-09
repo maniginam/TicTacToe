@@ -29,30 +29,30 @@ return "O";
 }
 });
 ttt.master.optimal_play.get_box_scores = (function ttt$master$optimal_play$get_box_scores(board,player_num,depth){
-var iter__4529__auto__ = (function ttt$master$optimal_play$get_box_scores_$_iter__6815(s__6816){
+var iter__4529__auto__ = (function ttt$master$optimal_play$get_box_scores_$_iter__20445(s__20446){
 return (new cljs.core.LazySeq(null,(function (){
-var s__6816__$1 = s__6816;
+var s__20446__$1 = s__20446;
 while(true){
-var temp__5735__auto__ = cljs.core.seq.call(null,s__6816__$1);
+var temp__5735__auto__ = cljs.core.seq.call(null,s__20446__$1);
 if(temp__5735__auto__){
-var s__6816__$2 = temp__5735__auto__;
-if(cljs.core.chunked_seq_QMARK_.call(null,s__6816__$2)){
-var c__4527__auto__ = cljs.core.chunk_first.call(null,s__6816__$2);
+var s__20446__$2 = temp__5735__auto__;
+if(cljs.core.chunked_seq_QMARK_.call(null,s__20446__$2)){
+var c__4527__auto__ = cljs.core.chunk_first.call(null,s__20446__$2);
 var size__4528__auto__ = cljs.core.count.call(null,c__4527__auto__);
-var b__6818 = cljs.core.chunk_buffer.call(null,size__4528__auto__);
-if((function (){var i__6817 = (0);
+var b__20448 = cljs.core.chunk_buffer.call(null,size__4528__auto__);
+if((function (){var i__20447 = (0);
 while(true){
-if((i__6817 < size__4528__auto__)){
-var box = cljs.core._nth.call(null,c__4527__auto__,i__6817);
-cljs.core.chunk_append.call(null,b__6818,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
+if((i__20447 < size__4528__auto__)){
+var box = cljs.core._nth.call(null,c__4527__auto__,i__20447);
+cljs.core.chunk_append.call(null,b__20448,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
 var test_board = cljs.core.replace.call(null,cljs.core.PersistentArrayMap.createAsIfByAssoc([box,piece]),board);
 var box_score = ((ttt.master.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.master.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
 ))));
 return box_score;
 })());
 
-var G__6819 = (i__6817 + (1));
-i__6817 = G__6819;
+var G__20449 = (i__20447 + (1));
+i__20447 = G__20449;
 continue;
 } else {
 return true;
@@ -60,18 +60,18 @@ return true;
 break;
 }
 })()){
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__6818),ttt$master$optimal_play$get_box_scores_$_iter__6815.call(null,cljs.core.chunk_rest.call(null,s__6816__$2)));
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20448),ttt$master$optimal_play$get_box_scores_$_iter__20445.call(null,cljs.core.chunk_rest.call(null,s__20446__$2)));
 } else {
-return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__6818),null);
+return cljs.core.chunk_cons.call(null,cljs.core.chunk.call(null,b__20448),null);
 }
 } else {
-var box = cljs.core.first.call(null,s__6816__$2);
+var box = cljs.core.first.call(null,s__20446__$2);
 return cljs.core.cons.call(null,(function (){var piece = ttt.master.optimal_play.get_player_piece.call(null,player_num);
 var test_board = cljs.core.replace.call(null,cljs.core.PersistentArrayMap.createAsIfByAssoc([box,piece]),board);
 var box_score = ((ttt.master.board.is_win_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,player_num,depth):((ttt.master.board.full_board_QMARK_.call(null,test_board))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) <= (9))) && ((depth >= (5)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):(((((cljs.core.count.call(null,board) > (9))) && ((depth > (3)))))?ttt.master.optimal_play.get_score.call(null,(0),depth):((cljs.core._EQ_.call(null,player_num,(1)))?cljs.core.apply.call(null,cljs.core.min,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))):cljs.core.apply.call(null,cljs.core.max,ttt.master.optimal_play.get_box_scores.call(null,test_board,ttt.master.optimal_play.get_next_player.call(null,player_num),(depth + (1)))))
 ))));
 return box_score;
-})(),ttt$master$optimal_play$get_box_scores_$_iter__6815.call(null,cljs.core.rest.call(null,s__6816__$2)));
+})(),ttt$master$optimal_play$get_box_scores_$_iter__20445.call(null,cljs.core.rest.call(null,s__20446__$2)));
 }
 } else {
 return null;
@@ -92,8 +92,8 @@ return box;
 } else {
 var box_scores = ttt.master.optimal_play.get_box_scores.call(null,board,player_num,depth);
 var open_boxes = ttt.master.board.open_boxes.call(null,board);
-var same_QMARK_ = cljs.core.every_QMARK_.call(null,(function (p1__6820_SHARP_){
-return cljs.core._EQ_.call(null,cljs.core.first.call(null,box_scores),p1__6820_SHARP_);
+var same_QMARK_ = cljs.core.every_QMARK_.call(null,(function (p1__20450_SHARP_){
+return cljs.core._EQ_.call(null,cljs.core.first.call(null,box_scores),p1__20450_SHARP_);
 }),cljs.core.rest.call(null,box_scores));
 var min = cljs.core.apply.call(null,cljs.core.min,box_scores);
 var max = cljs.core.apply.call(null,cljs.core.max,box_scores);
@@ -103,16 +103,16 @@ if(cljs.core._EQ_.call(null,player_num,(1))){
 if(cljs.core._EQ_.call(null,max,cljs.core.nth.call(null,box_scores,index))){
 return cljs.core.nth.call(null,open_boxes,index);
 } else {
-var G__6821 = (index + (1));
-index = G__6821;
+var G__20451 = (index + (1));
+index = G__20451;
 continue;
 }
 } else {
 if(cljs.core._EQ_.call(null,min,cljs.core.nth.call(null,box_scores,index))){
 return cljs.core.nth.call(null,open_boxes,index);
 } else {
-var G__6822 = (index + (1));
-index = G__6822;
+var G__20452 = (index + (1));
+index = G__20452;
 continue;
 }
 }
